@@ -18,3 +18,8 @@ body {
   font-family: 'Lato-Light';
   src: url('./fonts/Lato-Light.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Lato-SemiBold';
+  src: url('./fonts/Lato-SemiBold.ttf') format('truetype');
+}
