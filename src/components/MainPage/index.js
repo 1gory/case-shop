@@ -1,20 +1,25 @@
 import React, {Component} from 'react';
-import Header from '../header';
-import Menu from '../menu';
-import Banner from './banner'
-import Offer from './offer';
+import styled from 'styled-components';
+import Header from '../Header';
+import Menu from '../Menu';
+import Banner from './Banner'
+import Offer from './Offer';
+import Form from './Form';
 
-class App extends Component {
+const Wrapper = styled.div`
+  background-color: #f9f9f9;
+`;
+
+export default class App extends Component {
     render() {
         return (
-            <div>
+            <Wrapper>
                 <Header/>
                 <Menu />
                 <Banner />
                 <Offer />
-            </div>
+                <Form />
+            </Wrapper>
         );
     }
 }
-
-export default App;

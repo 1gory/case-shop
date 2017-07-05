@@ -5,6 +5,7 @@ import dark from './dark.jpg';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
+  background-color: #fff;
 `;
 
 const H2 = styled.h2`

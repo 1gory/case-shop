@@ -26,10 +26,6 @@ const Button = styled.button`
   margin-top: 45px;
   font-size: 20px;
   cursor: pointer;
-
-  &:focus {
-    outline:0;
-  }
 `;
 
 const Wrapper = styled.div`
