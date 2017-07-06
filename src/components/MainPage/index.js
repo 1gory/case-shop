@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import Banner from './Banner'
 import Offer from './Offer';
 import Form from './Form';
+import CaseExamples from './CaseExamples';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -19,6 +20,7 @@ export default class App extends Component {
                 <Banner />
                 <Offer />
                 <Form />
+                <CaseExamples />
             </Wrapper>
         );
     }
