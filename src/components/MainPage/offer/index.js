@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import white from './white.jpg';
 import dark from './dark.jpg';
+import RubleSign from '../RubleSign';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
@@ -45,11 +46,6 @@ const Price = styled.div`
   height: 80px;
   font-size: 24px;
   font-family: 'Lato-Regular';
-`;
-
-const RubleSign = styled.span`
-  color: #696969;
-  margin-left: 3px;
 `;
 
 export default () => (

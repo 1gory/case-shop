@@ -11,6 +11,7 @@ const H2 = styled.h2`
 
 const Wrapper = styled.div`
   text-align: center;
+  padding-bottom: 70px;
 `;
 
 const ImgExample = styled.img`
@@ -24,6 +25,7 @@ const ExampleWrapper = styled.div`
 
 const RowWrapper = styled.div`
   margin: 15px;
+  font-family: 'Lato-SemiBold';
 `;
 
 export default () => (

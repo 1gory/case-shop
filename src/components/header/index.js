@@ -7,15 +7,15 @@ const Wrapper = styled.div`
     display: flex;
     height: 40px;
     justify-content: space-between;
-    padding: 20px;
+    padding: 15px;
 `;
 
 const Hamburger = styled.img`
-   width: 50px;
+   width: 30px;
 `;
 
 const Logo = styled.img`
-    width: 180px;   
+    width: 150px;   
 `;
 
 export default () => (
