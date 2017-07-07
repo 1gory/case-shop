@@ -10,26 +10,34 @@ import Catalog from './Catalog';
 import FeedbackForm from './FeedbackForm';
 import OurAdvantages from './OurAdvantages';
 import HowWeWork from './HowWeWork';
+import Comments from './Comments';
+import FAQ from './FAQ';
+import SelfDelivery from './SelfDelivery';
+import Map from './Map'
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
 `;
 
 export default class App extends Component {
-    render() {
-        return (
-            <Wrapper>
-                <Header/>
-                <Menu />
-                <Banner />
-                <Offer />
-                <Form />
-                <CaseExamples />
-                <Catalog />
-                <FeedbackForm />
-                <OurAdvantages />
-                <HowWeWork />
-            </Wrapper>
-        );
-    }
+  render() {
+    return (
+      <Wrapper>
+        <Header/>
+        <Menu />
+        <Banner />
+        <Offer />
+        <Form />
+        <CaseExamples />
+        <Catalog />
+        <FeedbackForm />
+        <OurAdvantages />
+        <HowWeWork />
+        <Comments />
+        <FAQ />
+        <SelfDelivery />
+        <Map />
+      </Wrapper>
+    );
+  }
 }
