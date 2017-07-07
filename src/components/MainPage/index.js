@@ -8,6 +8,8 @@ import Form from './Form';
 import CaseExamples from './CaseExamples';
 import Catalog from './Catalog';
 import FeedbackForm from './FeedbackForm';
+import OurAdvantages from './OurAdvantages';
+import HowWeWork from './HowWeWork';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -25,6 +27,8 @@ export default class App extends Component {
                 <CaseExamples />
                 <Catalog />
                 <FeedbackForm />
+                <OurAdvantages />
+                <HowWeWork />
             </Wrapper>
         );
     }

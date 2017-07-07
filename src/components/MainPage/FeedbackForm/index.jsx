@@ -23,7 +23,7 @@ const H4 = styled.h4`
 `;
 
 const Form = styled.form`
-  padding: 10px 100px 20px 100px;
+  padding: 10px 80px 20px 80px;
   font-family: 'Lato-Regular';
 
   & input, button {
