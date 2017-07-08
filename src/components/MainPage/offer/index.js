@@ -57,12 +57,12 @@ export default () => (
     <Cases>
       <CaseWrapper>
         <Case src={white} />
-        <span>Гравировка <br />по фотографии</span>
+        <div>Гравировка <br />по фотографии</div>
       </CaseWrapper>
       <Price>1290<RubleSign>₽</RubleSign></Price>
       <CaseWrapper>
         <Case src={dark} />
-        <span>Гравировка <br />по картинке</span>
+        <div>Гравировка <br />по картинке</div>
       </CaseWrapper>
     </Cases>
   </Wrapper>

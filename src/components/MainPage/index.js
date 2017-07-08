@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
+import Footer from '../Footer';
 import Menu from '../Menu';
 import Banner from './Banner'
 import Offer from './Offer';
@@ -14,6 +15,7 @@ import Comments from './Comments';
 import FAQ from './FAQ';
 import SelfDelivery from './SelfDelivery';
 import Map from './Map'
+import Contacts from './Contacts'
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -37,6 +39,8 @@ export default class App extends Component {
         <FAQ />
         <SelfDelivery />
         <Map />
+        <Contacts />
+        <Footer />
       </Wrapper>
     );
   }
