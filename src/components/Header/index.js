@@ -5,6 +5,7 @@ import hamburger from './hamburger.svg';
 import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './styles.css';
+import Basklogo from './basklogo.svg'
 
 const Wrapper = styled.div`
 
@@ -23,6 +24,28 @@ const Hamburger = styled.img`
 
 const Logo = styled.img`
   width: 150px;
+`;
+
+const Basklist = styled.div`
+  border-radius: 21px;
+  background-color: #ebebeb;
+  padding: 15px;
+
+
+
+`;
+const Basklistlogo = styled.img`
+  width: 16px;
+  float: left;
+  margin-left: 27px;
+
+`;
+const Basklisttext = styled.div`
+  font-family: Lato-Regular, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  color: #222222;
+  margin-left: 50px;
 `;
 
 const items = () => (
@@ -55,7 +78,10 @@ export default class extends Component {
           <Logo src={logo} alt="casewood"/>
           <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
         </Header>
-
+      <Basklist>
+        <Basklistlogo src={Basklogo}/>
+        <Basklisttext>1 товар - 1000 рублей</Basklisttext>
+      </Basklist>
         <CSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={400}
