@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
 import RubleSign from '../RubleSign';
+import Scroll from 'react-scroll';
 import dummy from './16.jpg';
+
+const CatalogAncor = Scroll.Element;
 
 const Wrapper = styled.div`
   color: #4a4a4a;
@@ -58,6 +61,7 @@ const GoToCatalogButton = styled.button`
 
 export default () => (
   <Wrapper>
+    <CatalogAncor name="CatalogAncor"/>
     <H2>Каталог грвированных чехлов</H2>
     <RowWrapper>
       <Row>

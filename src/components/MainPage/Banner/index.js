@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
+import Scroll from 'react-scroll';
 import background from './sb-min.jpg';
 import styles from './styles.css';
 
@@ -8,6 +9,8 @@ const Banner = styled.div`
   height: 450px;
   color: white;
 `;
+
+const scroller = Scroll.scroller;
 
 const Pixel = styled.div`
   width: 100%;
@@ -42,17 +45,30 @@ const MainHeader = styled.span`
   font-family: 'Lato-Light';
 `;
 
-export default () => (
-  <Banner className='main-banner'>
-    <Pixel className='main-banner-pixel'/>
-    <Wrapper>
-      <Header>
-        <MainHeader>Качественные деревянные чехлы</MainHeader><br />
-        c вашей гравировкой
-      </Header>
-      <Button>
-        Примеры гравировок
-      </Button>
-    </Wrapper>
-  </Banner>
-)
+export default class extends Component {
+
+  handleClick(){
+    scroller.scrollTo('CatalogAncor', {
+      duration: 800,
+      delay: 100,
+      smooth: true,
+    })
+  }
+
+  render (){
+    return (
+      <Banner className='main-banner'>
+        <Pixel className='main-banner-pixel'/>
+        <Wrapper>
+          <Header>
+            <MainHeader>Качественные деревянные чехлы</MainHeader><br />
+            c вашей гравировкой
+          </Header>
+          <Button onClick={this.handleClick}>
+            Примеры гравировок
+          </Button>
+        </Wrapper>
+      </Banner>
+  );
+  }
+}
