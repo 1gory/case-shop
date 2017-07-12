@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import arrowCollapse from './faq-collapse.svg'
+import arrowExpand from './faq-expand.svg'
 
 const Wrapper = styled.div`
   text-align: center;
@@ -17,7 +19,6 @@ const Section = styled.section`
   text-align: left;
   background-color: #fff;
   padding: 20px;
-  padding-bottom: 35px;
 `;
 
 const Question = styled.h4`
@@ -40,36 +41,52 @@ const Sections = styled.div`
 
 const SectionFolded = styled(Section)`
   background-color: inherit;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #e7eef3;
+`;
+
+const Arrow = styled.img`
+  width: 15px;
+  height: 15px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export default () => (
   <Wrapper>
     <H2>FAQ</H2>
+
     <Sections>
       <Section>
-        <Question>Как сделать заказ</Question>
+        <Header>
+            <Question>Как сделать заказ</Question>
+            <Arrow src={arrowCollapse} />
+        </Header>
+
         <Answer>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </Answer>
       </Section>
 
       <SectionFolded>
-        <Question>Как сделать заказ</Question>
+        <Header>
+          <Question>Макет чехла</Question>
+            <Arrow src={arrowExpand} />
+        </Header>
         <Answer>
 
         </Answer>
       </SectionFolded>
 
       <SectionFolded>
-        <Question>Как сделать заказ</Question>
-        <Answer>
-
-        </Answer>
-      </SectionFolded>
-
-      <SectionFolded>
-        <Question>Как сделать заказ</Question>
+        <Header>
+          <Question>Доставка и оплата</Question>
+            <Arrow src={arrowExpand} />
+        </Header>
         <Answer>
 
         </Answer>

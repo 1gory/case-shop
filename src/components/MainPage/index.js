@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
 import Footer from '../Footer';
-import Menu from '../Menu';
 import Banner from './Banner'
 import Offer from './Offer';
 import Form from './Form';
@@ -26,9 +25,8 @@ export default class App extends Component {
     return (
       <Wrapper>
         <Header/>
-        <Menu />
         <Banner />
-        <Offer />
+        <Offer />        
         <Form />
         <CaseExamples />
         <Catalog />

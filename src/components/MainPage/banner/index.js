@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import background from './sb-min.jpg';
-import pixel from './pixel.png';
+import styles from './styles.css';
 
 const Banner = styled.div`
-  background-image: url(${background});
   background-size: cover;
   height: 450px;
   color: white;
 `;
 
 const Pixel = styled.div`
-  background: url(${pixel}) repeat;
   width: 100%;
   height: inherit;
   position: absolute;
@@ -45,20 +43,16 @@ const MainHeader = styled.span`
 `;
 
 export default () => (
-  <Banner>
-
-      <Pixel>
-      </Pixel>
-
-      <Wrapper>
-        <Header>
-          <MainHeader>Качественные деревянные чехлы</MainHeader><br />
-          c вашей гравировкой
-        </Header>
-        <Button>
-          Примеры гравировок
-        </Button>
-      </Wrapper>
-
+  <Banner className='main-banner'>
+    <Pixel className='main-banner-pixel'/>
+    <Wrapper>
+      <Header>
+        <MainHeader>Качественные деревянные чехлы</MainHeader><br />
+        c вашей гравировкой
+      </Header>
+      <Button>
+        Примеры гравировок
+      </Button>
+    </Wrapper>
   </Banner>
 )
