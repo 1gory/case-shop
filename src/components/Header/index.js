@@ -6,9 +6,9 @@ import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './styles.css';
 import Basklogo from './basklogo.svg'
+import RubleSign from '../MainPage/RubleSign'
 
 const Wrapper = styled.div`
-
 `;
 
 const Header = styled.div`
@@ -26,33 +26,20 @@ const Logo = styled.img`
   width: 150px;
 `;
 
-const Basklist = styled.div`
-  border-radius: 21px;
+const BasketList = styled.div`
+  border-radius: 20px;
   background-color: #ebebeb;
-  padding: 15px;
-
-
-
-`;
-const Basklistlogo = styled.img`
-  width: 16px;
-  float: left;
-  margin-left: 27px;
-
-`;
-const Basklisttext = styled.div`
-  font-family: Lato-Regular, sans-serif;
+  padding: 10px 30px;
+  margin: 15px;
+  font-family: 'Lato-Regular';
   font-size: 16px;
-  text-align: left;
   color: #222222;
-  margin-left: 50px;
 `;
 
-const items = () => (
-  <div>
-    I'm a Kat
-  </div>
-);
+const BasketLogo = styled.img`
+  width: 15px;
+  padding-right: 15px;
+`;
 
 export default class extends Component {
 
@@ -68,7 +55,6 @@ export default class extends Component {
     this.setState(state => ({
       isOpened: !state.isOpened,
     }));
-    console.log('test test test test tes!');
   }
 
   render(){
@@ -78,10 +64,10 @@ export default class extends Component {
           <Logo src={logo} alt="casewood"/>
           <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
         </Header>
-      <Basklist>
-        <Basklistlogo src={Basklogo}/>
-        <Basklisttext>1 товар - 1000 рублей</Basklisttext>
-      </Basklist>
+      <BasketList>
+        <BasketLogo src={Basklogo}/>
+        1 товар - 1000<RubleSign>₽</RubleSign>
+      </BasketList>
         <CSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={400}
