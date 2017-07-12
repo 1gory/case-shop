@@ -5,9 +5,10 @@ import hamburger from './hamburger.svg';
 import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './styles.css';
+import Basklogo from './basket-logo.svg'
+import RubleSign from '../MainPage/RubleSign'
 
 const Wrapper = styled.div`
-
 `;
 
 const Header = styled.div`
@@ -25,11 +26,20 @@ const Logo = styled.img`
   width: 150px;
 `;
 
-const items = () => (
-  <div>
-    I'm a Kat
-  </div>
-);
+const BasketList = styled.div`
+  border-radius: 20px;
+  background-color: #ebebeb;
+  padding: 10px 30px;
+  margin: 15px;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
+  color: #222222;
+`;
+
+const BasketLogo = styled.img`
+  width: 15px;
+  padding-right: 15px;
+`;
 
 export default class extends Component {
 
@@ -45,7 +55,6 @@ export default class extends Component {
     this.setState(state => ({
       isOpened: !state.isOpened,
     }));
-    console.log('test test test test tes!');
   }
 
   render(){
@@ -55,7 +64,10 @@ export default class extends Component {
           <Logo src={logo} alt="casewood"/>
           <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
         </Header>
-
+      <BasketList>
+        <BasketLogo src={Basklogo}/>
+        1 товар - 1000<RubleSign>₽</RubleSign>
+      </BasketList>
         <CSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={400}
