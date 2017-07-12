@@ -5,7 +5,7 @@ import hamburger from './hamburger.svg';
 import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './styles.css';
-import Basklogo from './basklogo.svg'
+import Basklogo from './basket-logo.svg'
 import RubleSign from '../MainPage/RubleSign'
 
 const Wrapper = styled.div`
