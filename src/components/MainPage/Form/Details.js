@@ -26,6 +26,10 @@ const DetailsFormWrapper = styled.form`
     box-sizing: border-box;
     margin-top: 10px;
     margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  & input::placeholder {
+    color: #9e9e9e;
   }
 `;
 
@@ -52,11 +56,9 @@ const Button = styled.button`
 `;
 
 const StyledInputMask = styled(InputMask)`
-opacity: 0.5;
-font-family: Lato-Regular;
-font-size: 16px;
-text-align: left;
-color: rgba(74, 74, 74, 0.5);
+  font-family: Lato-Regular;
+  font-size: 16px;
+  text-align: left;
 `;
 
 export default class extends Component {

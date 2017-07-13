@@ -38,21 +38,23 @@ const Form = styled.form`
 
   & input {
     background-color: #585858;
-    color: rgba(255, 255, 255, 0.5);
+    color: #4a4a4a;
   }
 
   & button {
     background-color: #fff;
     color: #3b3b3b;
   }
+
+  & input::placeholder {
+    color: #9e9e9e;
+  }
 `;
 
-  const StyledInputMask = styled(InputMask)`
-  opacity: 0.5;
+const StyledInputMask = styled(InputMask)`
   font-family: Lato-Regular;
   font-size: 16px;
   text-align: left;
-  color: rgba(74, 74, 74, 0.5);
 `;
 
 
@@ -62,7 +64,7 @@ export default () => (
     <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
     <Form>
       <input placeholder='Имя' type='text'/>
-      <StyledInputMask mask="+7 (999) 999-99-99" placeholder="Телефон" />
+      <StyledInputMask mask='+7 (999) 999-99-99' placeholder='Телефон'/>
       <button>Отправить</button>
     </Form>
   </Wrapper>

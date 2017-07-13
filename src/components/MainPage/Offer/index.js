@@ -80,6 +80,6 @@ export default class extends Component {
           </CaseWrapper>
         </Cases>
       </Wrapper>
-              );
+    );
   }
 }
