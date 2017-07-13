@@ -52,7 +52,7 @@ export default class SimpleMap extends Component {
 
   static defaultProps = {
     center: {lat: 55.856689, lng: 37.530180},
-    zoom: 13
+    zoom: 12
   };
 
   render() {
