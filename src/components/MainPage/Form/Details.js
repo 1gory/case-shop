@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import InputMask from 'react-input-mask';
 
 const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
@@ -57,7 +58,7 @@ export default class extends Component {
         <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
         <label>
           <span>Номер телефона</span>
-          <input type='text'/>
+          <InputMask mask="+7 (999) 999-99-99" />
         </label>
         <label>
           <span>Какой способ связи удобнее?</span>

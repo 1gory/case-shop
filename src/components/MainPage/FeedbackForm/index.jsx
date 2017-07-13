@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import InputMask from 'react-input-mask';
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
@@ -52,7 +53,7 @@ export default () => (
     <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
     <Form>
       <input placeholder='Имя' type='text'/>
-      <input placeholder='Телефон' type='text'/>
+      <InputMask mask="+7 (999) 999-99-99" placeholder="Телефон " />
       <button>Отправить</button>
     </Form>
   </Wrapper>
