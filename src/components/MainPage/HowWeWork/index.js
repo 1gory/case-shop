@@ -27,6 +27,7 @@ const IconWrapper = styled.div`
   margin: 0 auto;
   fill: #646464;
   width: 40px;
+  height: 40px;
   border: solid 2px #cccccc;
   padding: 25px;
   border-radius: 50px;
@@ -35,11 +36,13 @@ const IconWrapper = styled.div`
 const IconWrapper3 = styled(IconWrapper)`
   padding: 20px;
   width: 50px;
+  height: 50px;
 `;
 
 const IconWrapper4 = styled(IconWrapper)`
   padding: 30px;
   width: 30px;
+  height: 30px;
 `;
 
 const Name = styled.div`
