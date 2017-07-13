@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import white from './white.jpg';
 import dark from './dark.jpg';
-import RubleSign from '../RubleSign';
+import RubleSign from '../../RubleSign';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
@@ -59,7 +59,7 @@ export default () => (
         <Case src={white} />
         <div>Гравировка <br />по фотографии</div>
       </CaseWrapper>
-      <Price>1290<RubleSign>₽</RubleSign></Price>
+      <Price>1290<RubleSign/></Price>
       <CaseWrapper>
         <Case src={dark} />
         <div>Гравировка <br />по картинке</div>
