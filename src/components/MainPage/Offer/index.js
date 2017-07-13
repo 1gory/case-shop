@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import white from './white.jpg';
 import dark from './dark.jpg';
 import RubleSign from '../../RubleSign';
+import Scroll from 'react-scroll';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
@@ -48,22 +49,37 @@ const Price = styled.div`
   font-family: 'Lato-Regular';
 `;
 
-export default () => (
-  <Wrapper>
-    <H2>
-      Загрузите свое изображение <br/>
-    <H2Light>и мы вышлем вам макет<br/> вашего будущего чехла</H2Light>
-    </H2>
-    <Cases>
-      <CaseWrapper>
-        <Case src={white} />
-        <div>Гравировка <br />по фотографии</div>
-      </CaseWrapper>
-      <Price>1290<RubleSign/></Price>
-      <CaseWrapper>
-        <Case src={dark} />
-        <div>Гравировка <br />по картинке</div>
-      </CaseWrapper>
-    </Cases>
-  </Wrapper>
-);
+const scroller = Scroll.scroller;
+
+export default class extends Component {
+
+  handleClick(){
+    scroller.scrollTo('FileFormAncor', {
+      duration: 800,
+      delay: 100,
+      smooth: true,
+    })
+  }
+
+  render (){
+    return (
+      <Wrapper>
+        <H2 onClick={this.handleClick}>
+          Загрузите свое изображение <br/>
+        <H2Light>и мы вышлем вам макет<br/> вашего будущего чехла</H2Light>
+        </H2>
+        <Cases>
+          <CaseWrapper>
+            <Case src={white} />
+            <div>Гравировка <br />по фотографии</div>
+          </CaseWrapper>
+          <Price>1290<RubleSign/></Price>
+          <CaseWrapper>
+            <Case src={dark} />
+            <div>Гравировка <br />по картинке</div>
+          </CaseWrapper>
+        </Cases>
+      </Wrapper>
+    );
+  }
+}

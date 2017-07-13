@@ -7,6 +7,7 @@ import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
 import DetailsForm from './Details';
 import './styles.css';
+import Scroll from 'react-scroll';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -46,6 +47,8 @@ const FileForm = styled.form`
     color: #9a9a9a;
   }
 `;
+
+const FileFormAncor = Scroll.Element;
 
 export default class extends Component {
 
@@ -92,6 +95,7 @@ export default class extends Component {
 
     return (
       <Wrapper>
+        <FileFormAncor  name='FileFormAncor'/>
         <SkipArrow src={skip} alt=''/>
         <Form>
           <FileForm >

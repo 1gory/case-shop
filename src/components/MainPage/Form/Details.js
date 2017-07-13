@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import InputMask from 'react-input-mask';
 import Dropdown from '../../Dropdown/index.js';
 
 const DetailsFormWrapper = styled.form`
@@ -26,6 +27,10 @@ const DetailsFormWrapper = styled.form`
     box-sizing: border-box;
     margin-top: 10px;
     margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  & input::placeholder {
+    color: #9e9e9e;
   }
 `;
 
@@ -51,6 +56,12 @@ const Button = styled.button`
   padding: 10px 30px;
 `;
 
+const StyledInputMask = styled(InputMask)`
+  font-family: Lato-Regular;
+  font-size: 16px;
+  text-align: left;
+`;
+
 export default class extends Component {
   render () {
     return (
@@ -58,7 +69,7 @@ export default class extends Component {
         <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
         <label>
           <span>Номер телефона</span>
-          <input type='text'/>
+          <StyledInputMask mask="+7 (999) 999-99-99" placeholder="+7" />
         </label>
         <label>
           <span>Какой способ связи удобнее?</span>
