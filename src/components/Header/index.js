@@ -33,10 +33,10 @@ const BasketList = styled.div`
   font-size: 16px;
   color: #222222;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   padding: 10px 30px;
+  padding: 10px 30px;
+  margin: 15px;
 `;
 
 const BasketLogo = styled.img`
