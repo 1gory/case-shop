@@ -68,7 +68,7 @@ export default class extends Component {
         </Header>
       <BasketList>
         <BasketLogo src={Basklogo}/>
-        <span>1 товар - 1000 <RubleSign/></span>
+        <span>1 товар - 1000<RubleSign/></span>
       </BasketList>
         <CSSTransitionGroup
           transitionName="example"
