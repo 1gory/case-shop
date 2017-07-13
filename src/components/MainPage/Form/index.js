@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
+import { CSSTransitionGroup } from 'react-transition-group';
 import skip from './skip-to-form.svg';
+import UploadedFileForm from './State/Uploaded';
+import EmptyFileForm from './State/Empty';
+import LoadingFileForm from './State/Loading';
+import DetailsForm from './Details';
+import './styles.css';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -16,13 +22,14 @@ const SkipArrow = styled.img`
 const Form = styled.div`
   padding: 30px 15px;
   background-color: #f3f3f3;
-  padding: 30px 15px;
+  border-radius: 4px;
 `;
 
 const FileForm = styled.form`
   padding: 40px 30px;
   background-color: #ebebeb;
   box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
+  border-radius: 4px;
 
   & input {
     font-family: 'Lato-Regular';
@@ -40,120 +47,61 @@ const FileForm = styled.form`
   }
 `;
 
-const DetailsForm = styled.form`
-  padding: 40px 25px 10px 25px;
-  color: #4a4a4a;
+export default class extends Component {
 
-  & label {
-    display: block;
-    text-align: left;
-    font-family: 'Lato-Regular';
+  constructor(){
+    super();
 
-    & span {
-      margin-left: 15px;
+    this.state = {
+      isOpened: false,
+      fileFormStatus: 'empty'
     }
+
+    this.handleChangeLinkToPhoto = this.handleChangeLinkToPhoto.bind(this);
   }
 
-  & input {
-    width: 100%;
-    border-radius: 20px;
-    border: solid 1px #cccccc;
-    background: none;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    margin-top: 10px;
-    margin-bottom: 20px;
+  handleChangeLinkToPhoto() {
+    this.setState(state => ({
+      isOpened: !state.isOpened,
+      fileFormStatus: 'uploaded'
+    }))
   }
-`;
 
-const ChoseInputTitle = styled.div`
-  padding: 30px 0;
-  color: #4a4a4a;
-`;
+  render () {
 
-const H3 = styled.h3`
-  font-size: 16px;
-  font-family: 'Lato-SemiBold';
-  margin-bottom: 30px;
-`;
+    let fileForm = '';
 
-const H4 = styled.h4`
-  font-size: 16px;
-  font-family: 'Lato-SemiBold';
-  margin-top: 10px;
-`;
+    switch (this.state.fileFormStatus) {
+      case 'empty':
+          fileForm = <EmptyFileForm handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}/>
+        break;
+      case 'uploaded':
+          fileForm = <UploadedFileForm />
+        break;
+      case 'loading':
+          fileForm = <LoadingFileForm />
+        break;
 
-const Button = styled.button`
-  border-radius: 20px;
-  background-color: #7f5152;
-  border: none;
-  font-size: 16px;
-	color: #ffffff;
-  font-family: 'Lato-Light';
-  padding: 10px 30px;
-`;
+      default: fileForm = '';
+    }
 
-const FileLabel = styled.label`
-  padding: 10px;
-  font-size: 22px;
-  color: white;
-  background-color: #3b3b3b;
-  display: inline-block;
-  cursor: pointer;
-  font-family: 'Lato-Light';
-  font-size: 16px;
-  width: 100%;
-  text-align: left;
-  border-radius: 20px;
-  padding: 10px 20px;
-  box-sizing: border-box;
+    return (
+      <Wrapper>
+        <SkipArrow src={skip} alt=''/>
+        <Form>
+          <FileForm >
+            {fileForm}
+          </FileForm>
 
-  & input {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+          <CSSTransitionGroup
+            transitionName="detalis"
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
+            >
+            {this.state.isOpened && <DetailsForm />}
+          </CSSTransitionGroup>
+        </Form>
+      </Wrapper>
+    );
   }
-`;
-
-export default () => (
-  <Wrapper>
-    <SkipArrow src={skip} alt=''/>
-    <Form>
-      <FileForm>
-        <FileLabel>
-          Выберите файл..
-          <input type='file'/>
-        </FileLabel>
-        <ChoseInputTitle>или вставьте ссылку</ChoseInputTitle>
-        <input placeholder='http://' type='text'/>
-      </FileForm>
-
-      <DetailsForm>
-        <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
-        <label>
-          <span>Номер телефона</span>
-          <input type='text'/>
-        </label>
-        <label>
-          <span>Какой способ связи удобнее?</span>
-          <input type='text'/>
-        </label>
-
-        <H4>Детали товара</H4>
-        <label>
-          <span>Устройство</span>
-          <input type='text'/>
-        </label>
-        <label>
-          <span>Материал для чехла</span>
-          <input type='text'/>
-        </label>
-      </DetailsForm>
-
-      <Button>Получить макет</Button>
-    </Form>
-  </Wrapper>
-);
+};

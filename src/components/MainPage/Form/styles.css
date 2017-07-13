@@ -1,0 +1,17 @@
+.detalis-enter {
+  max-height : 0;
+  transition: max-height 0.4s ease-in;
+}
+
+.detalis-enter.detalis-enter-active {
+  max-height : 500px;
+}
+
+.detalis-leave {
+  max-height: 500px;
+  transition: max-height 0.4s ease-in;
+}
+
+.detalis-leave.detalis-leave-active {
+  max-height: 0;
+}
