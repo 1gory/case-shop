@@ -35,7 +35,6 @@ const BasketList = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 30px;
-  padding: 10px 30px;
   margin: 15px;
 `;
 
