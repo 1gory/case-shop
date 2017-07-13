@@ -54,7 +54,7 @@ const scroller = Scroll.scroller;
 export default class extends Component {
 
   handleClick(){
-    scroller.scrollTo('FileLabelForm', {
+    scroller.scrollTo('FileFormAncor', {
       duration: 800,
       delay: 100,
       smooth: true,
@@ -80,6 +80,6 @@ export default class extends Component {
           </CaseWrapper>
         </Cases>
       </Wrapper>
-  );
+              );
   }
 }

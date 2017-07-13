@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import Scroll from 'react-scroll';
 
 const FileLabel = styled.label`
   padding: 10px;
@@ -32,13 +31,10 @@ const ChoseInputTitle = styled.div`
   color: #4a4a4a;
 `;
 
-const FileLabelForm = Scroll.Element;
-
 export default class extends Component {
   render () {
     return (
-    <div>
-      <FileLabelForm  name='FileLabelForm'/>  
+      <div>
         <FileLabel>
           Выберите файл..
           <input type='file'/>

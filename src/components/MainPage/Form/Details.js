@@ -51,6 +51,14 @@ const Button = styled.button`
   padding: 10px 30px;
 `;
 
+const StyledInputMask = styled(InputMask)`
+opacity: 0.5;
+font-family: Lato-Regular;
+font-size: 16px;
+text-align: left;
+color: rgba(74, 74, 74, 0.5);
+`;
+
 export default class extends Component {
   render () {
     return (
@@ -58,7 +66,7 @@ export default class extends Component {
         <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
         <label>
           <span>Номер телефона</span>
-          <InputMask mask="+7 (999) 999-99-99" />
+          <StyledInputMask mask="+7 (999) 999-99-99" placeholder="+7" />
         </label>
         <label>
           <span>Какой способ связи удобнее?</span>
