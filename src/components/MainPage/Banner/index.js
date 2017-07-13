@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import Scroll from 'react-scroll';
-import background from './sb-min.jpg';
-import styles from './styles.css';
+import './styles.css';
 
 const Banner = styled.div`
   background-size: cover;

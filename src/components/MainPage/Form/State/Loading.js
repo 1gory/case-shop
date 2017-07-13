@@ -10,7 +10,7 @@ export default class extends Component {
   render () {
     return (
       <PreloaderWrapper>
-        <img src={preloader}/>
+        <img src={preloader} alt='preloader'/>
       </PreloaderWrapper>
     )
   }
