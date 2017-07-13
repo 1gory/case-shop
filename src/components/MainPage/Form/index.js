@@ -65,9 +65,14 @@ export default class extends Component {
 
   handleChangeLinkToPhoto() {
     this.setState(state => ({
-      isOpened: !state.isOpened,
-      fileFormStatus: 'uploaded'
+      fileFormStatus: 'loading'
     }))
+
+    setTimeout(() => {
+      this.setState(state => ({
+        isOpened: !state.isOpened,
+        fileFormStatus: 'uploaded'
+      }))}, 1000);
   }
 
   render () {

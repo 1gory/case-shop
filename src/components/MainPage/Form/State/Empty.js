@@ -37,13 +37,16 @@ export default class extends Component {
       <div>
         <FileLabel>
           Выберите файл..
-          <input type='file'/>
+          <input
+            onChange={this.props.handleChangeLinkToPhoto}
+            type='file'
+          />
         </FileLabel>
         <ChoseInputTitle>или вставьте ссылку</ChoseInputTitle>
         <input
           placeholder='http://'
           type='text'
-          onChange={this.props.handleChangeLinkToPhoto}
+          onBlur={this.props.handleChangeLinkToPhoto}
         />
       </div>
     )

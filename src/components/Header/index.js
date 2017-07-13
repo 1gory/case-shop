@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import hamburger from './hamburger.svg';
 import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
-import './styles.css';
+import styles from './styles.css';
 import Basklogo from './basket-logo.svg';
 import RubleSign from './../RubleSign';
 
@@ -71,7 +71,7 @@ export default class extends Component {
         <span>1 товар - 1000<RubleSign/></span>
       </BasketList>
         <CSSTransitionGroup
-          transitionName="example"
+          transitionName="menu"
           transitionEnterTimeout={400}
           transitionLeaveTimeout={400}
           >

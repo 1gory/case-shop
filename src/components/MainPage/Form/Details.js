@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
+import Dropdown from '../../Dropdown/index.js';
 
 const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
@@ -72,17 +73,30 @@ export default class extends Component {
         </label>
         <label>
           <span>Какой способ связи удобнее?</span>
-          <input type='text'/>
+          <Dropdown>
+            <option value='whatsapp'>WhatsApp</option>
+            <option value='telegram'>Telegram</option>
+            <option value='viber'>Viber</option>
+          </Dropdown>
         </label>
 
         <H4>Детали товара</H4>
         <label>
           <span>Устройство</span>
-          <input type='text'/>
+          <Dropdown>
+            <option value='iPhone 5/5S/5SE'>iPhone 5/5S/5SE</option>
+            <option value='iPhone 6/6S'>iPhone 6/6S</option>
+            <option value='iPhone 6 PLUS/6S PLUS'>iPhone 6 PLUS/6S PLUS</option>
+            <option value='iPhone 7'>iPhone 7</option>
+            <option value='iPhone 7PLUS'>iPhone 7PLUS</option>
+          </Dropdown>
         </label>
         <label>
           <span>Материал для чехла</span>
-          <input type='text'/>
+          <Dropdown>
+            <option value='light'>Светлое дерево</option>
+            <option value='dark'>Темное дерево</option>
+          </Dropdown>
         </label>
 
         <Button>Получить макет</Button>
