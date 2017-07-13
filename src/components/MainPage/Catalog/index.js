@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
-import RubleSign from '../RubleSign';
+import RubleSign from '../../RubleSign';
 import Scroll from 'react-scroll';
 import dummy from './16.jpg';
 
@@ -70,7 +70,7 @@ export default () => (
             <Card>
               <Img src={dummy} />
               <Name>Flower Pattern</Name>
-              <Price>1290<RubleSign>₽</RubleSign></Price>
+              <Price>1290<RubleSign/></Price>
             </Card>
           </Col>)}
       </Row>

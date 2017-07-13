@@ -5,8 +5,8 @@ import hamburger from './hamburger.svg';
 import Menu from './Menu';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './styles.css';
-import Basklogo from './basket-logo.svg'
-import RubleSign from '../MainPage/RubleSign'
+import Basklogo from './basket-logo.svg';
+import RubleSign from './../RubleSign';
 
 const Wrapper = styled.div`
 `;
@@ -29,11 +29,13 @@ const Logo = styled.img`
 const BasketList = styled.div`
   border-radius: 20px;
   background-color: #ebebeb;
-  padding: 10px 30px;
-  margin: 15px;
   font-family: 'Lato-Regular';
   font-size: 16px;
   color: #222222;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  margin: 15px;
 `;
 
 const BasketLogo = styled.img`
@@ -66,7 +68,7 @@ export default class extends Component {
         </Header>
       <BasketList>
         <BasketLogo src={Basklogo}/>
-        1 товар - 1000<RubleSign>₽</RubleSign>
+        <span>1 товар - 1000<RubleSign/></span>
       </BasketList>
         <CSSTransitionGroup
           transitionName="example"

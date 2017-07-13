@@ -7,5 +7,5 @@ const RubleSign = styled.span`
 `;
 
 export default props => (
-  <RubleSign>{props.children}</RubleSign>
+  <RubleSign>₽</RubleSign>
 );
