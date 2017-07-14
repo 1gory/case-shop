@@ -25,6 +25,7 @@ const H2Light = styled.span`
 `;
 
 const Cases = styled.div`
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -32,7 +33,7 @@ const Cases = styled.div`
 `;
 
 const Case = styled.img`
-  width: 120px;
+  width: 130px;
   padding-bottom: 15px;
 `;
 
