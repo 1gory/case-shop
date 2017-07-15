@@ -12,8 +12,8 @@ import OurAdvantages from './OurAdvantages';
 import HowWeWork from './HowWeWork';
 import Comments from './Comments';
 import FAQ from './FAQ';
-import SelfDelivery from './SelfDelivery';
-import Map from './Map'
+import SelfDelivery from '../Footer/SelfDelivery';
+import Map from '../Footer/Map'
 import Contacts from './Contacts'
 
 const Wrapper = styled.div`
@@ -26,7 +26,7 @@ export default class App extends Component {
       <Wrapper>
         <Header/>
         <Banner />
-        <Offer />        
+        <Offer />
         <Form />
         <CaseExamples />
         <Catalog />
