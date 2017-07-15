@@ -34,11 +34,12 @@ const Form = styled.form`
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
+    font-size: 16px;
   }
 
   & input {
     background-color: #585858;
-    color: #4a4a4a;
+    color: #fff;
   }
 
   & button {

@@ -24,6 +24,7 @@ const Card = styled.div`
   margin-top: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
+  border-radius: 4px;
 `;
 
 const Img = styled.img`
@@ -62,7 +63,7 @@ const GoToCatalogButton = styled.button`
 export default () => (
   <Wrapper>
     <CatalogAncor name="CatalogAncor"/>
-    <H2>Каталог грвированных чехлов</H2>
+    <H2>Каталог гравированных чехлов</H2>
     <RowWrapper>
       <Row>
         {[...Array(4)].map((x, i) =>
