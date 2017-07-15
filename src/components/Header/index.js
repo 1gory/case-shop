@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import Menu from './Menu';
+import RubleSign from './../RubleSign';
+import { CSSTransitionGroup } from 'react-transition-group';
+import './styles.css';
+import Basklogo from './basket-logo.svg';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
-import Menu from './Menu';
-import { CSSTransitionGroup } from 'react-transition-group';
-import styles from './styles.css';
-import Basklogo from './basket-logo.svg';
-import RubleSign from './../RubleSign';
 
 const Wrapper = styled.div`
 `;
