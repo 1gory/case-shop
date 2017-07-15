@@ -32,6 +32,7 @@ const Location = styled.div`
   display: flex;
   align-items: center;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 `;
 
 const Label = styled.div`
