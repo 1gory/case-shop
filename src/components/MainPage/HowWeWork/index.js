@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
-
 import HowWeWorkIcon1 from './HowWeWork1';
 import HowWeWorkIcon2 from './HowWeWork2';
 import HowWeWorkIcon3 from './HowWeWork3';
