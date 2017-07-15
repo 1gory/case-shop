@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
 import RubleSign from '../../RubleSign';
 import Scroll from 'react-scroll';
-import dummy from './16.jpg';
+import Card from '../../Card'
 
 const CatalogAncor = Scroll.Element;
 
@@ -16,35 +16,6 @@ const Wrapper = styled.div`
 const H2 = styled.h2`
   font-family: 'Lato-SemiBold';
   font-size: 24px;
-`;
-
-const Card = styled.div`
-  background-color: #ffffff;
-  box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
-  margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  border-radius: 4px;
-`;
-
-const Img = styled.img`
-  width: 80px;
-  display: block;
-  margin: 0 auto;
-`;
-
-const Name = styled.div`
-  font-family: 'Lato-Bold';
-  text-transform: uppercase;
-  font-size: 16px;
-  padding-top: 40px;
-  padding-bottom: 20px;
-`;
-
-const Price = styled.div`
-  font-family: 'Lato-Regular';
-  font-size: 18px;
-  color: #222222;
 `;
 
 const RowWrapper = styled.div`
@@ -68,11 +39,7 @@ export default () => (
       <Row>
         {[...Array(4)].map((x, i) =>
           <Col xs={6} sm={6} md={4} lg={3}>
-            <Card>
-              <Img src={dummy} />
-              <Name>Flower Pattern</Name>
-              <Price>1290<RubleSign/></Price>
-            </Card>
+            <Card />
           </Col>)}
       </Row>
     </RowWrapper>
