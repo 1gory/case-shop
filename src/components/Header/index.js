@@ -10,14 +10,14 @@ import hamburger from './hamburger.svg';
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;
-  padding: 15px;
+  padding-bottom: 15px;
 `;
 
 const Header = styled.div`
   display: flex;
   height: 40px;
   justify-content: space-between;
-  padding-bottom: 15px;
+  padding: 15px;
 `;
 
 const Hamburger = styled.img`
@@ -37,6 +37,7 @@ const BasketList = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 30px;
+  margin: 0 15px;
 `;
 
 const BasketLogo = styled.img`
