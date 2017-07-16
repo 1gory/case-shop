@@ -15,21 +15,20 @@ const H2 = styled.h2`
 `;
 
 const BreadCrumbs = styled.div`
-  margin: 15px;
-  color: #4a4a4a;
+  color: #7e7e7e;
+  margin-left: 10px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   font-family: 'Lato-Regular';
   font-size: 16px;
-  margin: 5px;
   color: #7e7e7e;
+  padding: 5px;
 `;
 
 const Wrapper = styled.div`
-  color: #4a4a4a;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
 `;
 
 const RowWrapper = styled.div`
@@ -41,6 +40,7 @@ const PaginationWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Lato-Regular';
+  padding: 50px;
 `;
 
 const PaginationLink = styled.span`

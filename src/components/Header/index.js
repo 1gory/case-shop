@@ -9,6 +9,7 @@ import Basklogo from './basket-logo.svg';
 import RubleSign from './../RubleSign';
 
 const Wrapper = styled.div`
+  background-color: #f5f5f6;
 `;
 
 const Header = styled.div`
