@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
 import RubleSign from '../../RubleSign';
 import Scroll from 'react-scroll';
-import Card from '../../Card'
+import Card from '../../Card';
+import { Link } from 'react-router-dom';
 
 const CatalogAncor = Scroll.Element;
 
@@ -24,11 +25,16 @@ const RowWrapper = styled.div`
 
 const GoToCatalogButton = styled.button`
   border-radius: 20px;
-  font-family: 'Lato-Regular';
   border: solid 1px #222222;
   background: none;
   padding: 8px 30px;
   margin-top: 40px;
+& a {
+  font-family: 'Lato-Regular';
+  font-size: 16px;
+  text-decoration: none;
+  color: #222222;
+}
 `;
 
 export default () => (
@@ -43,6 +49,8 @@ export default () => (
           </Col>)}
       </Row>
     </RowWrapper>
-    <GoToCatalogButton>Перейти в каталог</GoToCatalogButton>
+    <GoToCatalogButton>
+      <Link to='/catalog'>Перейти в каталог</Link>
+    </GoToCatalogButton>
   </Wrapper>
 );

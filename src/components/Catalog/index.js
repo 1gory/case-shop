@@ -65,7 +65,7 @@ export default class App extends Component {
           <BreadCrumbs>
             <StyledLink to='/'>Главная</StyledLink>
             /
-            <StyledLink to='/'>Каталог</StyledLink>
+            <StyledLink to='/catalog'>Каталог</StyledLink>
           </BreadCrumbs>
           <H2>Гравированные чехлы</H2>
           <RowWrapper>
