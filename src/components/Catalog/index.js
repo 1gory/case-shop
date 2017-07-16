@@ -10,7 +10,7 @@ import Map from '../Footer/Map'
 
 const H2 = styled.h2`
   font-family: 'Lato-SemiBold';
-  font-size: 32px;
+  font-size: 28px;
   text-align: left;
   margin: 15px;
 `;
@@ -18,45 +18,43 @@ const H2 = styled.h2`
 const BreadCrumbs = styled.div`
   text-align: left;
   margin: 15px;
+  color: #4a4a4a;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #4a4a4a;
   font-family: 'Lato-Regular';
   font-size: 16px;
-  margin :6px;
-  opacity: 0.7;
+  margin: 6px;
+  color: #7e7e7e;
 `;
 
 const Wrapper = styled.div`
   color: #4a4a4a;
   text-align: center;
+  background-color: #ffffff;
 `;
 
 const RowWrapper = styled.div`
   margin: 15px;
 `;
 
-const PagWrapper = styled.div`
+const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 38px;
   font-family: 'Lato-Regular';
-  margin: 50px 0 0 50px;
 `;
 
-const PagLink = styled.span`
-  width: 38px;
-  height: 38px;
+const PaginationLink = styled.span`
+  padding: 10px 15px;
   margin: 5px;
   border: solid 1px #222222;
   border-radius: 20px;
 `;
 
 const NextPage = styled.span`
-  width: 138px;
+  padding: 10px 20px;
   margin: 5px;
   border: solid 1px #222222;
   border-radius: 20px;
@@ -81,14 +79,14 @@ export default class App extends Component {
                 </Col>)}
             </Row>
           </RowWrapper>
-          <PagWrapper>
-            <PagLink>1</PagLink>
-            <PagLink>2</PagLink>
-            <PagLink>3</PagLink>
+          <PaginationWrapper>
+            <PaginationLink>1</PaginationLink>
+            <PaginationLink>2</PaginationLink>
+            <PaginationLink>3</PaginationLink>
               ...
-            <PagLink>9</PagLink>
+            <PaginationLink>9</PaginationLink>
             <NextPage>Следующая</NextPage>
-          </PagWrapper>
+          </PaginationWrapper>
         <SelfDelivery/>
         <Map/>
         <Footer />
