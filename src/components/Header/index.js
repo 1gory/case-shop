@@ -65,7 +65,9 @@ export default class extends Component {
     return (
       <Wrapper>
         <Header>
-          <Logo src={logo} alt="casewood"/>
+          <a href="/">
+            <Logo src={logo} alt="casewood"/>
+          </a>
           <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
         </Header>
       <BasketList>
