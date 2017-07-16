@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
-import RubleSign from '../../RubleSign';
 import Scroll from 'react-scroll';
 import Card from '../../Card';
 import { Link } from 'react-router-dom';
@@ -23,18 +22,17 @@ const RowWrapper = styled.div`
   margin: 15px;
 `;
 
-const GoToCatalogButton = styled.button`
+const GoToCatalogButton = styled(Link)`
   border-radius: 20px;
   border: solid 1px #222222;
   background: none;
   padding: 8px 30px;
   margin-top: 40px;
-& a {
+  display: inline-block;
   font-family: 'Lato-Regular';
   font-size: 16px;
   text-decoration: none;
   color: #222222;
-}
 `;
 
 export default () => (
@@ -49,8 +47,8 @@ export default () => (
           </Col>)}
       </Row>
     </RowWrapper>
-    <GoToCatalogButton>
-      <Link to='/catalog'>Перейти в каталог</Link>
+    <GoToCatalogButton to='/catalog'>
+      Перейти в каталог
     </GoToCatalogButton>
   </Wrapper>
 );
