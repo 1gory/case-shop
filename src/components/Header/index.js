@@ -7,6 +7,7 @@ import './styles.css';
 import Basklogo from './basket-logo.svg';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;
@@ -65,9 +66,9 @@ export default class extends Component {
     return (
       <Wrapper>
         <Header>
-          <a href="/">
+          <Link to="/">
             <Logo src={logo} alt="casewood"/>
-          </a>
+          </Link>
           <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
         </Header>
       <BasketList>
