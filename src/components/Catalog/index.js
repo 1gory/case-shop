@@ -10,13 +10,11 @@ import Map from '../Footer/Map'
 
 const H2 = styled.h2`
   font-family: 'Lato-SemiBold';
-  font-size: 28px;
-  text-align: left;
+  font-size: 24px;
   margin: 15px;
 `;
 
 const BreadCrumbs = styled.div`
-  text-align: left;
   margin: 15px;
   color: #4a4a4a;
 `;
@@ -25,13 +23,12 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-family: 'Lato-Regular';
   font-size: 16px;
-  margin: 6px;
+  margin: 5px;
   color: #7e7e7e;
 `;
 
 const Wrapper = styled.div`
   color: #4a4a4a;
-  text-align: center;
   background-color: #ffffff;
 `;
 

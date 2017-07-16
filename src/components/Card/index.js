@@ -10,6 +10,7 @@ const Card = styled.div`
   border-radius: 4px;
   cursor: pointer;
   padding-bottom: 30px;
+  text-align: center;
 
 //For desktop version
   ${'' /* &:hover {
