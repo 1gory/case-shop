@@ -17,6 +17,7 @@ const H2 = styled.h2`
 const BreadCrumbs = styled.div`
   color: #7e7e7e;
   margin-left: 10px;
+  padding-top: 30px;
 `;
 
 const StyledLink = styled(Link)`

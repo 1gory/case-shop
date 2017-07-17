@@ -7,16 +7,20 @@ import './styles.css';
 import Basklogo from './basket-logo.svg';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;
+`;
+
+const HeaderWrapper = styled.div`
+  padding: 15px;
 `;
 
 const Header = styled.div`
   display: flex;
   height: 40px;
   justify-content: space-between;
-  padding: 15px;
 `;
 
 const Hamburger = styled.img`
@@ -36,7 +40,7 @@ const BasketList = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 30px;
-  margin: 15px;
+  margin-top: 15px;
 `;
 
 const BasketLogo = styled.img`
@@ -63,14 +67,18 @@ export default class extends Component {
   render(){
     return (
       <Wrapper>
-        <Header>
-          <Logo src={logo} alt="casewood"/>
-          <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
-        </Header>
-      <BasketList>
-        <BasketLogo src={Basklogo}/>
-        <span>1 товар - 1000<RubleSign/></span>
-      </BasketList>
+        <HeaderWrapper>
+          <Header>
+            <Link to='/'>
+              <Logo src={logo} alt="casewood"/>
+            </Link>
+            <Hamburger onClick={this.handleClick} src={hamburger} alt="menu"/>
+          </Header>
+          <BasketList>
+            <BasketLogo src={Basklogo}/>
+            <span>1 товар - 1000<RubleSign/></span>
+          </BasketList>
+        </HeaderWrapper>
         <CSSTransitionGroup
           transitionName="menu"
           transitionEnterTimeout={400}
