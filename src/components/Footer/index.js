@@ -40,7 +40,7 @@ export default () => (
 
     <FooterLinks>
       <LinkWrapper>
-        <StyledLink to='/'>Работы</StyledLink>
+        <StyledLink to='/catalog'>Работы</StyledLink>
       </LinkWrapper>
 
       <LinkWrapper>

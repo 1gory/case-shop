@@ -27,7 +27,7 @@ const MenuLink = styled(Link)`
 export default props => (
   <Wrapper>
     <Links>
-      <MenuLink to="">Работы</MenuLink>
+      <MenuLink to="/catalog">Работы</MenuLink>
       <MenuLink to="">Доставка</MenuLink>
       <MenuLink to="">Контакты</MenuLink>
       <MenuLink to="">Сотрудничество</MenuLink>

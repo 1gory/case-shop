@@ -9,6 +9,7 @@ import logo from './logo.svg';
 import hamburger from './hamburger.svg';
 
 const Wrapper = styled.div`
+  background-color: #f5f5f6;
 `;
 
 const Header = styled.div`

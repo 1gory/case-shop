@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Row, Col} from 'react-flexbox-grid';
-import RubleSign from '../../RubleSign';
 import Scroll from 'react-scroll';
-import dummy from './16.jpg';
+import Card from '../../Card';
+import { Link } from 'react-router-dom';
 
 const CatalogAncor = Scroll.Element;
 
@@ -18,46 +18,21 @@ const H2 = styled.h2`
   font-size: 24px;
 `;
 
-const Card = styled.div`
-  background-color: #ffffff;
-  box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
-  margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  border-radius: 4px;
-`;
-
-const Img = styled.img`
-  width: 80px;
-  display: block;
-  margin: 0 auto;
-`;
-
-const Name = styled.div`
-  font-family: 'Lato-Bold';
-  text-transform: uppercase;
-  font-size: 16px;
-  padding-top: 40px;
-  padding-bottom: 20px;
-`;
-
-const Price = styled.div`
-  font-family: 'Lato-Regular';
-  font-size: 18px;
-  color: #222222;
-`;
-
 const RowWrapper = styled.div`
   margin: 15px;
 `;
 
-const GoToCatalogButton = styled.button`
+const GoToCatalogButton = styled(Link)`
   border-radius: 20px;
-  font-family: 'Lato-Regular';
   border: solid 1px #222222;
   background: none;
   padding: 8px 30px;
   margin-top: 40px;
+  display: inline-block;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
+  text-decoration: none;
+  color: #222222;
 `;
 
 export default () => (
@@ -68,14 +43,12 @@ export default () => (
       <Row>
         {[...Array(4)].map((x, i) =>
           <Col xs={6} sm={6} md={4} lg={3}>
-            <Card>
-              <Img src={dummy} />
-              <Name>Flower Pattern</Name>
-              <Price>1290<RubleSign/></Price>
-            </Card>
+            <Card />
           </Col>)}
       </Row>
     </RowWrapper>
-    <GoToCatalogButton>Перейти в каталог</GoToCatalogButton>
+    <GoToCatalogButton to='/catalog'>
+      Перейти в каталог
+    </GoToCatalogButton>
   </Wrapper>
 );
