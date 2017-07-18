@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Message = styled.h3`
   color: #59cb78;
-  font-family: 'Lato-Light';
+  font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
   padding: 80px 40px 120px 40px;

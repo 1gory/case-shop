@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Message = styled.h3`
   color: #ffffff;
-  font-family: 'Lato-Light';
+  font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
   padding: 80px 40px 102px 40px;

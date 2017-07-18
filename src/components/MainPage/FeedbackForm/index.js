@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import FeedbackForm from './FeedbackForm';
 import FeedbackFail from './FeedbackFail';
-import FeedbackSucces from './FeedbackSucces';
+import FeedbackSuccess from './FeedbackSuccess';
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
