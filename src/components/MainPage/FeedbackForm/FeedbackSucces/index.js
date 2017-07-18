@@ -1,21 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
+import Header from '../../../Header';
+import Footer from '../../../Footer';
+import Banner from '../../Banner'
+import Offer from '../../Offer';
+import Form from '../../Form';
+import CaseExamples from '../../CaseExamples';
+import Catalog from '../../Catalog';
+import FeedbackForm from './FeedbackSucces';
+import OurAdvantages from '../../OurAdvantages';
+import HowWeWork from '../../HowWeWork';
+import Comments from '../../Comments';
+import FAQ from '../../FAQ';
+import SelfDelivery from '../../../Footer/SelfDelivery';
+import Map from '../../../Footer/Map'
+import Contacts from '../../Contacts'
 
 const Wrapper = styled.div`
-  background-color: #3b3b3b;
-  text-align: center;
-  padding: 100px 40px 140px 40px;
+  background-color: #f9f9f9;
 `;
 
-const Message = styled.h3`
-  color: #59cb78;
-  font-family: 'Lato-Light';
-  font-size: 16px;
-  font-weight: normal;
-`;
-
-export default () => (
-  <Wrapper>
-    <Message>Спасибо! Мы свяжемся с вами как можно скорее.</Message>
-  </Wrapper>
-);
+export default class App extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <Header/>
+        <Banner />
+        <Offer />
+        <Form />
+        <CaseExamples />
+        <Catalog />
+        <FeedbackForm />
+        <OurAdvantages />
+        <HowWeWork />
+        <Comments />
+        <FAQ />
+        <SelfDelivery />
+        <Map />
+        <Contacts />
+        <Footer />
+      </Wrapper>
+    );
+  }
+}

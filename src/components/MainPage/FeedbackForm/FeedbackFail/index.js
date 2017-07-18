@@ -1,35 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Header from '../../../Header';
+import Footer from '../../../Footer';
+import Banner from '../../Banner'
+import Offer from '../../Offer';
+import Form from '../../Form';
+import CaseExamples from '../../CaseExamples';
+import Catalog from '../../Catalog';
+import FeedbackForm from './FeedbackFail';
+import OurAdvantages from '../../OurAdvantages';
+import HowWeWork from '../../HowWeWork';
+import Comments from '../../Comments';
+import FAQ from '../../FAQ';
+import SelfDelivery from '../../../Footer/SelfDelivery';
+import Map from '../../../Footer/Map'
+import Contacts from '../../Contacts'
 
 const Wrapper = styled.div`
-  background-color: #3b3b3b;
-  text-align: center;
-  padding: 100px 40px 130px 40px;
+  background-color: #f9f9f9;
 `;
 
-const Message = styled.h3`
-  color: #ffffff;
-  font-family: 'Lato-Light';
-  font-size: 16px;
-  font-weight: normal;
-`;
-
-const RedText = styled.span`
-  color: #fe5e5e;
-`;
-
-const PhoneLink = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  border-bottom: 1px dashed #ffffff;
-  padding-bottom: 3px;
-`;
-
-export default () => (
-  <Wrapper>
-    <Message>
-      <RedText>Ошибка! </RedText>Похоже что форма не работает, попробуйте связаться с нами по одному из <PhoneLink to='/'>номеров</PhoneLink> ниже.
-    </Message>
-  </Wrapper>
-);
+export default class App extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <Header/>
+        <Banner />
+        <Offer />
+        <Form />
+        <CaseExamples />
+        <Catalog />
+        <FeedbackForm />
+        <OurAdvantages />
+        <HowWeWork />
+        <Comments />
+        <FAQ />
+        <SelfDelivery />
+        <Map />
+        <Contacts />
+        <Footer />
+      </Wrapper>
+    );
+  }
+}
