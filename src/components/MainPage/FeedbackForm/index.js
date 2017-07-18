@@ -18,6 +18,6 @@ export default class extends Component {
       <Wrapper>
         <FeedbackForm/>
       </Wrapper>
-    )
+    );
   }
 };
