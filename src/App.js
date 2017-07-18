@@ -21,8 +21,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={MainPage}/>
             <Route path="/catalog" component={Catalog}/>
-            <Route path="/feedbackfail" component={FeedbackFail}/>
-            <Route path="/feedbacksucces" component={FeedbackSucces}/>
           </Switch>
         </div>
       </Router>
