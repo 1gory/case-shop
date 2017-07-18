@@ -23,6 +23,6 @@ const PhoneLink = styled(Link)`
 
 export default () => (
   <Message>
-      <RedText>Ошибка! </RedText>Похоже что форма не работает, попробуйте связаться с нами по одному из <PhoneLink to='/'>номеров</PhoneLink> ниже.
+    <RedText>Ошибка! </RedText>Похоже что форма не работает, попробуйте связаться с нами по одному из <PhoneLink to='/'>номеров</PhoneLink> ниже.
   </Message>
 );

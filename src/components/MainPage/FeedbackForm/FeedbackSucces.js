@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
 const Message = styled.h3`
   color: #59cb78;
   font-family: 'Lato-Light';
