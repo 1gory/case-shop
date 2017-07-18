@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 import skip from './skip-to-form.svg';
@@ -51,14 +51,13 @@ const FileForm = styled.form`
 const FileFormAncor = Scroll.Element;
 
 export default class extends Component {
-
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
       isOpened: false,
       fileFormStatus: 'empty'
-    }
+    };
 
     this.handleChangeLinkToPhoto = this.handleChangeLinkToPhoto.bind(this);
   }
@@ -66,39 +65,44 @@ export default class extends Component {
   handleChangeLinkToPhoto() {
     this.setState(state => ({
       fileFormStatus: 'loading'
-    }))
+    }));
 
     setTimeout(() => {
       this.setState(state => ({
         isOpened: !state.isOpened,
         fileFormStatus: 'uploaded'
-      }))}, 1000);
+      }));
+    }, 1000);
   }
 
-  render () {
-
+  render() {
     let fileForm = '';
 
     switch (this.state.fileFormStatus) {
       case 'empty':
-          fileForm = <EmptyFileForm handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}/>
+        fileForm = (
+          <EmptyFileForm
+            handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}
+          />
+        );
         break;
       case 'uploaded':
-          fileForm = <UploadedFileForm />
+        fileForm = <UploadedFileForm />;
         break;
       case 'loading':
-          fileForm = <LoadingFileForm />
+        fileForm = <LoadingFileForm />;
         break;
 
-      default: fileForm = '';
+      default:
+        fileForm = '';
     }
 
     return (
       <Wrapper>
-        <FileFormAncor  name='FileFormAncor'/>
-        <SkipArrow src={skip} alt=''/>
+        <FileFormAncor name="FileFormAncor" />
+        <SkipArrow src={skip} alt="" />
         <Form>
-          <FileForm >
+          <FileForm>
             {fileForm}
           </FileForm>
 
@@ -106,11 +110,11 @@ export default class extends Component {
             transitionName="detalis"
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
-            >
+          >
             {this.state.isOpened && <DetailsForm />}
           </CSSTransitionGroup>
         </Form>
       </Wrapper>
     );
   }
-};
+}
