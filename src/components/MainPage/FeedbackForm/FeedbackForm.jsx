@@ -1,20 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 
-const Wrapper = styled.div`
-  background-color: #3b3b3b;
-  color: #fff;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-`;
-
 const H3 = styled.h3`
-    font-family: 'Lato-Bold';
-    font-size: 24px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  font-family: 'Lato-Bold';
+  font-size: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 const H4 = styled.h4`
@@ -58,15 +50,18 @@ const StyledInputMask = styled(InputMask)`
   text-align: left;
 `;
 
-
-export default () => (
-  <Wrapper>
-    <H3>Не можете определиться?</H3>
-    <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
-    <Form>
-      <input placeholder='Имя' type='text'/>
-      <StyledInputMask mask='+7 (999) 999-99-99' placeholder='Телефон'/>
-      <button>Отправить</button>
-    </Form>
-  </Wrapper>
-);
+export default class extends Component {
+  render () {
+    return (
+      <div>
+        <H3>Не можете определиться?</H3>
+        <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
+        <Form>
+          <input placeholder='Имя' type='text'/>
+          <StyledInputMask mask='+7 (999) 999-99-99' placeholder='Телефон'/>
+          <button>Отправить</button>
+        </Form>
+      </div>
+    )
+  }
+}
