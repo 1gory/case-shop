@@ -4,7 +4,7 @@ import FeedbackForm from './FeedbackForm';
 import FeedbackFail from './FeedbackFail';
 import FeedbackSucces from './FeedbackSucces';
 
-const Wrapper =styled.div`
+const Wrapper = styled.div`
   background-color: #3b3b3b;
   color: #fff;
   text-align: center;
@@ -16,8 +16,8 @@ export default class extends Component {
   render () {
     return (
       <Wrapper>
-        <FeedbackSucces/>
+        <FeedbackForm/>
       </Wrapper>
     )
   }
-}
+};

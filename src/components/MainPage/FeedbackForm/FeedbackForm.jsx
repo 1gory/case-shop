@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 
-const Wrapper = styled.div`
-`;
-
 const H3 = styled.h3`
   font-family: 'Lato-Bold';
   font-size: 24px;
@@ -56,7 +53,7 @@ const StyledInputMask = styled(InputMask)`
 export default class extends Component {
   render () {
     return (
-      <Wrapper>
+      <div>
         <H3>Не можете определиться?</H3>
         <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
         <Form>
@@ -64,7 +61,7 @@ export default class extends Component {
           <StyledInputMask mask='+7 (999) 999-99-99' placeholder='Телефон'/>
           <button>Отправить</button>
         </Form>
-      </Wrapper>
+      </div>
     )
   }
 }
