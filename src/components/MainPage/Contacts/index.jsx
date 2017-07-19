@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import contactsEmail from './contact-email.svg';
 import contactsPhone from './contact-phone.svg';
 import contactsMessenger from './contact-messengers.svg';
+import FeedbackPopUp from './FeedbackPopUp';
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
@@ -85,5 +86,6 @@ export default () => (
       />
       <Button>Оставить сообщение</Button>
     </Contacts>
+    <FeedbackPopUp/>
   </Wrapper>
 );
