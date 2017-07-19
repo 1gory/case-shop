@@ -6,6 +6,7 @@ import Scroll from 'react-scroll';
 import contactsEmail from './contact-email.svg';
 import contactsPhone from './contact-phone.svg';
 import contactsMessenger from './contact-messengers.svg';
+import FeedbackPopUp from './FeedbackPopUp';
 
 const ContactsAnchor = Scroll.Element;
 
@@ -89,5 +90,6 @@ export default () => (
       />
       <Button>Оставить сообщение</Button>
     </Contacts>
+    <FeedbackPopUp/>
   </Wrapper>
 );
