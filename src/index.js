@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'normalize.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -17,7 +18,7 @@ ReactDOM.render(
       <App />
     </div>
   </Router>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 registerServiceWorker();
