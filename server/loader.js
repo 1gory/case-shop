@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
@@ -10,7 +12,7 @@ export default (req, res) => {
 
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      console.error('read err', err);
+      // console.error('read err', err);
       return res.status(404).end();
     }
 
@@ -19,18 +21,17 @@ export default (req, res) => {
     const markup = renderToString(
       <StaticRouter location={req.url} context={context}>
         <App />
-      </StaticRouter>
+      </StaticRouter>,
     );
 
     if (context.url) {
       res.writeHead(301, {
-        Location: context.url
+        Location: context.url,
       });
-      res.end();
-    } else {
-      const RenderedApp = htmlData.replace('{{ServerSideRendering}}', markup);
-      res.send(RenderedApp);
-      res.end();
+      return res.end();
     }
+    const RenderedApp = htmlData.replace('{{ServerSideRendering}}', markup);
+    res.send(RenderedApp);
+    return res.end();
   });
 };

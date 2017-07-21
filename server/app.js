@@ -4,7 +4,6 @@ import compression from 'compression';
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
-import fs from 'fs';
 import index from './routes/index';
 import api from './routes/api';
 import loader from './loader';
