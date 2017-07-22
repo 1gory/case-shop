@@ -1,62 +1,76 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
-import ModalClose from './modal-close.svg';
-import { Link } from 'react-router-dom';
+import modalclose from './modal-close.svg';
 
 const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
+
+const PopupForm = styled.div`
   padding: 30px;
   font-family: 'Lato-Regular';
   box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
   background-color: #ffffff;
   border-radius: 5px;
+  width: 350px;
+`;
+
+const WrapperH3 = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const H3 = styled.h3`
-  float: left;
   margin: 0;
   font-size: 20px;
   font-weight: bold;
 `;
 
-const StyledLink = styled(Link)`
-  float: right;
+const StyledImg = styled.img`
   width: 13px;
   height: 13px;
-  color: #b0b0b0;
   padding-top: 5px;
 `;
 
-const H4 = styled.p`
+const H4 = styled.h4`
   font-size: 16px;
   color: #4a4a4a;
   padding: 15px 0 0 15px;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 `;
 
 const Form = styled.form`
-  clear: both;
   padding-top: 25px;
   & input, textarea {
     border: 2px solid #cccccc;
-    border-radius: 19px;
+    border-radius: 20px;
     padding: 8px 15px;
     width: 100%;
     box-sizing: border-box;
     font-family: 'Lato-Regular';
+    color: #4a4a4a;
   }
-  & div {
-    text-align: center;
-  }
-  & button {
-    border: none;
-    border-radius: 19px;
-    background-color: #3b3b3b;
-    color: #ffffff;
-    font-family: 'Lato-Regular';
-    padding: 12px 51px;
-    margin: 30px;
-  }
+`;
+
+const SendButton = styled.button`
+  border: none;
+  border-radius: 20px;
+  background-color: #3b3b3b;
+  color: #ffffff;
+  font-family: 'Lato-Regular';
+  padding: 10px 50px;
+  margin: 30px;
+`;
+
+const ButtonWrapper = styled.div`
+  text-align: center;
 `;
 
 const StyledInputMask = styled(InputMask)`
@@ -72,16 +86,20 @@ const InputMessage = styled.textarea`
 
 export default () => (
   <Wrapper>
-    <H3>Оставить сообщение</H3>
-    <StyledLink to='/'><img src={ModalClose}/></StyledLink>
-    <Form>
-      <H4>Номер телефона (для связи)</H4>
-      <StyledInputMask mask='+7 (999) 999-99-99' placeholder='+7'/>
-      <H4>Сообщение</H4>
-      <InputMessage placeholder='Введите сообщение...' type='text' height='135'/>
-      <div>
-        <button>Отправить</button>
-      </div>
-    </Form>
+    <PopupForm>
+      <WrapperH3>
+        <H3>Оставить сообщение</H3>
+        <StyledImg src={modalclose}/>
+      </WrapperH3>
+      <Form>
+        <H4>Номер телефона (для связи)</H4>
+        <StyledInputMask mask='+7 (999) 999-99-99' placeholder='+7'/>
+        <H4>Сообщение</H4>
+        <InputMessage placeholder='Введите сообщение...' type='text' height='135'/>
+        <ButtonWrapper>
+          <SendButton>Отправить</SendButton>
+        </ButtonWrapper>
+      </Form>
+    </PopupForm>
   </Wrapper>
 );
