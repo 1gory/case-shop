@@ -14,10 +14,7 @@ const Wrapper = styled.div`
 const Contacts = styled.div`
   width: 250px;
   margin: 0 auto;
-<<<<<<< HEAD:src/components/MainPage/Contacts/index.jsx
-=======
   padding: 15px;
->>>>>>> Changed popup (feedback) position:src/components/MainPage/Contacts/index.js
 `;
 
 const ContactWrapper = styled.div`
