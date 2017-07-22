@@ -9,12 +9,15 @@ import FeedbackPopUp from './FeedbackPopUp';
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
-  padding: 15px;
 `;
 
 const Contacts = styled.div`
   width: 250px;
   margin: 0 auto;
+<<<<<<< HEAD:src/components/MainPage/Contacts/index.jsx
+=======
+  padding: 15px;
+>>>>>>> Changed popup (feedback) position:src/components/MainPage/Contacts/index.js
 `;
 
 const ContactWrapper = styled.div`
@@ -65,6 +68,7 @@ const Contact = props => (
 
 export default () => (
   <Wrapper>
+    <FeedbackPopUp/>
     <Contacts>
       <Contact
         icon={contactsEmail}
@@ -86,6 +90,5 @@ export default () => (
       />
       <Button>Оставить сообщение</Button>
     </Contacts>
-    <FeedbackPopUp/>
   </Wrapper>
 );
