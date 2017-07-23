@@ -88,14 +88,14 @@ export default () => (
   <Wrapper>
     <PopupForm>
       <WrapperH3>
-        <H3>Оставить сообщение</H3>
-        <StyledImg src={modalclose}/>
+        <H3>Оставить сообщение </H3>
+        <StyledImg src={modalclose} />
       </WrapperH3>
       <Form>
         <H4>Номер телефона (для связи)</H4>
-        <StyledInputMask mask='+7 (999) 999-99-99' placeholder='+7'/>
+        <StyledInputMask mask="+7 (999) 999-99-99" placeholder="+7" />
         <H4>Сообщение</H4>
-        <InputMessage placeholder='Введите сообщение...' type='text' height='135'/>
+        <InputMessage placeholder="Введите сообщение..." type="text" height="135" />
         <ButtonWrapper>
           <SendButton>Отправить</SendButton>
         </ButtonWrapper>
