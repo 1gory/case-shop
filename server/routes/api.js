@@ -12,34 +12,53 @@ router.use((req, res, next) => {
 });
 
 router.post('/order', (req, res, next) => {
-  res.json({});
-  next();
+  try {
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post('/maquette', (req, res, next) => {
-  res.json({});
-  next();
+  try {
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post('/image', (req, res, next) => {
-  res.json({
-    status: 'success',
-  });
-  next();
+  try {
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post('/feedback', (req, res, next) => {
-  res.json({
-    status: 'success',
-  });
-  next();
+  try {
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post('/message', (req, res, next) => {
-  res.json({
-    status: 'success',
-  });
-  next();
+  try {
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
-module.exports = router;
+export default router;

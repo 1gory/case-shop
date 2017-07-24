@@ -2,9 +2,12 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import Scroll from 'react-scroll';
 import contactsEmail from './contact-email.svg';
 import contactsPhone from './contact-phone.svg';
 import contactsMessenger from './contact-messengers.svg';
+
+const ContactsAnchor = Scroll.Element;
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
@@ -64,6 +67,7 @@ const Contact = props => (
 
 export default () => (
   <Wrapper>
+    <ContactsAnchor name="ContactsAnchor" />
     <Contacts>
       <Contact
         icon={contactsEmail}

@@ -48,7 +48,7 @@ const FileForm = styled.form`
   }
 `;
 
-const FileFormAncor = Scroll.Element;
+const FileFormAnchor = Scroll.Element;
 
 export default class extends Component {
   constructor() {
@@ -99,7 +99,7 @@ export default class extends Component {
 
     return (
       <Wrapper>
-        <FileFormAncor name="FileFormAncor" />
+        <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <Form>
           <FileForm>
