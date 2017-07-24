@@ -9,8 +9,6 @@ const Message = styled.h3`
   padding: 80px 40px 120px 40px;
 `;
 
-
-
 export default () => (
   <Message>
     Спасибо! Мы свяжемся с вами как можно скорее.

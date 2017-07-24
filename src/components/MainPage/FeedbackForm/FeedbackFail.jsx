@@ -35,6 +35,6 @@ const handleClick = () => {
 export default () => (
   <Message>
     <RedText>Ошибка! </RedText>
-    Похоже что форма не работает, попробуйте связаться с нами по одному из <PhoneLink onClick={handleClick}>номеров</PhoneLink> ниже.
+    Похоже, что форма не работает, попробуйте связаться с нами по одному из <PhoneLink onClick={handleClick}>номеров</PhoneLink> ниже.
   </Message>
 );
