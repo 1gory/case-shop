@@ -50,14 +50,14 @@ const StyledInputMask = styled(InputMask)`
   text-align: left;
 `;
 
-export default () => (
+export default ({ handleSend }) => (
   <div>
     <H3>Не можете определиться?</H3>
     <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
     <Form>
       <input placeholder="Имя" type="text" />
       <StyledInputMask mask="+7 (999) 999-99-99" placeholder="Телефон" />
-      <button>Отправить</button>
+      <button onClick={handleSend}>Отправить</button>
     </Form>
   </div>
 );

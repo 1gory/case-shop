@@ -10,5 +10,7 @@ const Message = styled.h3`
 `;
 
 export default () => (
-  <Message>Спасибо! Мы свяжемся с вами как можно скорее.</Message>
+  <Message>
+    Спасибо! Мы свяжемся с вами как можно скорее.
+  </Message>
 );
