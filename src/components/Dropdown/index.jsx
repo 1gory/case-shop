@@ -28,10 +28,10 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-export default () => (
+export default props => (
   <Wrapper>
     <Select>
-      {this.props.children}
+      {props.children}
     </Select>
     <Arrow src={dropdown} />
   </Wrapper>

@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  padding: 30px;
+`;
+
 const FileLabel = styled.label`
-  padding: 10px;
   font-size: 22px;
   color: white;
   background-color: #3b3b3b;
@@ -32,12 +35,13 @@ const ChoseInputTitle = styled.div`
 `;
 
 export default props => (
-  <div>
+  <Wrapper>
     <FileLabel>
       Выберите файл..
       <input
-        onChange={props.handleChangeLinkToPhoto}
+        onChange={props.handleChangeFile}
         type="file"
+        accept="image/x-png,image/gif,image/jpeg"
       />
     </FileLabel>
     <ChoseInputTitle>или вставьте ссылку</ChoseInputTitle>
@@ -46,5 +50,5 @@ export default props => (
       type="text"
       onBlur={props.handleChangeLinkToPhoto}
     />
-  </div>
+  </Wrapper>
 );

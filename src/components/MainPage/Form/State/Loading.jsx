@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import preloader from './preloader.svg';
 
 const PreloaderWrapper = styled.div`
-  padding: 56px;
+  padding: 86px;
 `;
 
 export default () => (

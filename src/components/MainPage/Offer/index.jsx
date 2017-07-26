@@ -53,7 +53,7 @@ const Price = styled.div`
 const scroller = Scroll.scroller;
 
 const handleClick = () => {
-  scroller.scrollTo('FileFormAncor', {
+  scroller.scrollTo('FileFormAnchor', {
     duration: 800,
     delay: 100,
     smooth: true,

@@ -6,6 +6,7 @@ import skip from './skip-to-form.svg';
 import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
+import SentFileForm from './State/Sent';
 import DetailsForm from './Details';
 import './styles.css';
 
@@ -27,7 +28,7 @@ const Form = styled.div`
 `;
 
 const FileForm = styled.form`
-  padding: 40px 30px;
+  padding: 10px;
   background-color: #ebebeb;
   box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
   border-radius: 4px;
@@ -50,51 +51,139 @@ const FileForm = styled.form`
 
 const FileFormAnchor = Scroll.Element;
 
+const EMPTY_FORM_STATUS = 'empty';
+const UPLOADED_FROM_STATUS = 'uploaded';
+const LOADING_FORM_STATUS = 'loading';
+const SENT_FORM_STATUS = 'sent';
+
 export default class extends Component {
   constructor() {
     super();
 
     this.state = {
       isOpened: false,
-      fileFormStatus: 'empty',
+      fileFormStatus: EMPTY_FORM_STATUS,
     };
 
     this.handleChangeLinkToPhoto = this.handleChangeLinkToPhoto.bind(this);
+    this.handleSendForm = this.handleSendForm.bind(this);
+    this.handleChangeFile = this.handleChangeFile.bind(this);
+    this.sendFile = this.sendFile.bind(this);
+    this.handleRemoveImage = this.handleRemoveImage.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
   }
 
-  handleChangeLinkToPhoto() {
+  handleChangeLinkToPhoto(event) {
+    if (!event.target.value) {
+      return;
+    }
+
     this.setState({
-      fileFormStatus: 'loading',
+      fileFormStatus: LOADING_FORM_STATUS,
+    });
+    fetch('http://localhost:3001/api/imageUrl', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        link: event.target.value,
+      }),
+    }).then(async (response) => {
+      const responseData = await response.json();
+      this.setState({
+        uploadedImagePath: responseData.path,
+        isHorizontalImage: responseData.horizontal,
+        fileFormStatus: UPLOADED_FROM_STATUS,
+        isOpened: true,
+      });
+    });
+  }
+
+  handleSendForm(event) {
+    event.preventDefault();
+    this.setState({});
+  }
+
+  handleChangeFile(event) {
+    this.setState({
+      fileFormStatus: LOADING_FORM_STATUS,
     });
 
-    setTimeout(() => {
-      this.setState(state => ({
-        isOpened: !state.isOpened,
-        fileFormStatus: 'uploaded',
-      }));
-    }, 1000);
+    const reader = new FileReader();
+    const file = event.target.files[0];
+    reader.onload = (e) => {
+
+      if (file.size > 3000000) {
+        alert('Пожалуйста, выберите файл меньше 2.5Мб');
+        this.setState({
+          fileFormStatus: EMPTY_FORM_STATUS,
+        });
+      } else {
+        this.sendFile(file);
+      }
+    };
+
+    reader.readAsText(file);
+  }
+
+  handleRemoveImage(event) {
+    event.preventDefault();
+    this.setState({
+      fileFormStatus: EMPTY_FORM_STATUS,
+      isOpened: false,
+    });
+  }
+
+  handleClearForm() {
+    this.setState({
+      fileFormStatus: EMPTY_FORM_STATUS,
+      isOpened: false,
+    });
+  }
+
+  sendFile(file) {
+    const form = new FormData();
+    form.append('file', file);
+    fetch('http://localhost:3001/api/image', {
+      method: 'POST',
+      body: form,
+    }).then(async (response) => {
+      const responseData = await response.json();
+      this.setState({
+        uploadedImagePath: responseData.path,
+        isHorizontalImage: responseData.horizontal,
+        fileFormStatus: UPLOADED_FROM_STATUS,
+        isOpened: true,
+      });
+    });
   }
 
   render() {
-    let fileForm = '';
+    let fileForm = (<EmptyFileForm
+      handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}
+      handleChangeFile={this.handleChangeFile}
+    />);
 
     switch (this.state.fileFormStatus) {
-      case 'empty':
+      case UPLOADED_FROM_STATUS:
         fileForm = (
-          <EmptyFileForm
-            handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}
+          <UploadedFileForm
+            isHorizontal={this.state.isHorizontalImage}
+            filePath={this.state.uploadedImagePath}
+            handleRemoveImage={this.handleRemoveImage}
           />
         );
         break;
-      case 'uploaded':
-        fileForm = <UploadedFileForm />;
-        break;
-      case 'loading':
+      case LOADING_FORM_STATUS:
         fileForm = <LoadingFileForm />;
         break;
-
+      case SENT_FORM_STATUS:
+        fileForm = <SentFileForm handleClick={this.handleClearForm} />;
+        break;
       default:
-        fileForm = '';
+        break;
     }
 
     return (
@@ -103,7 +192,7 @@ export default class extends Component {
         <SkipArrow src={skip} alt="" />
         <Form>
           <FileForm>
-            {fileForm}
+            {this.state.fileFormStatus && fileForm}
           </FileForm>
 
           <CSSTransitionGroup
@@ -111,7 +200,7 @@ export default class extends Component {
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
           >
-            {this.state.isOpened && <DetailsForm />}
+            {this.state.isOpened && <DetailsForm handleSendForm={this.handleSendForm} />}
           </CSSTransitionGroup>
         </Form>
       </Wrapper>

@@ -64,7 +64,7 @@ const StyledInputMask = styled(InputMask)`
   text-align: left;
 `;
 
-export default () => (
+export default ({ handleSendForm }) => (
   <DetailsFormWrapper>
     <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
     <label>
@@ -99,6 +99,6 @@ export default () => (
       </Dropdown>
     </label>
 
-    <Button>Получить макет</Button>
+    <Button onClick={handleSendForm}>Получить макет</Button>
   </DetailsFormWrapper>
 );

@@ -1,5 +1,5 @@
 import 'ignore-styles';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import morgan from 'morgan';
@@ -12,15 +12,17 @@ const app = express();
 
 app.use(compression());
 
-// Suport post requests with body data (doesn't support multipart, use multer)
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+// Support post requests with body data (doesn't support multipart, use multer)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(morgan('combined'));
 
 app.use('/', index);
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+app.use(express.static(path.resolve(__dirname, '..', 'uploads')));
 
 app.use('/api', api);
 
