@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 
 export default props => (
   <Wrapper>
-    <Select>
+    <Select onChange={props.onChange} name={props.name}>
       {props.children}
     </Select>
     <Arrow src={dropdown} />

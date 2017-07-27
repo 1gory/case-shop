@@ -7,7 +7,9 @@ import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
 import SentFileForm from './State/Sent';
+import ErrorFileForm from './State/Error';
 import DetailsForm from './Details';
+import validatePhone from '../../../functions/validatePhone';
 import './styles.css';
 
 const Wrapper = styled.div`
@@ -28,6 +30,7 @@ const Form = styled.div`
 `;
 
 const FileForm = styled.form`
+  min-height: 210px;
   padding: 10px;
   background-color: #ebebeb;
   box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
@@ -55,6 +58,7 @@ const EMPTY_FORM_STATUS = 'empty';
 const UPLOADED_FROM_STATUS = 'uploaded';
 const LOADING_FORM_STATUS = 'loading';
 const SENT_FORM_STATUS = 'sent';
+const ERROR_FORM_STATUS = 'error';
 
 export default class extends Component {
   constructor() {
@@ -65,7 +69,7 @@ export default class extends Component {
       fileFormStatus: EMPTY_FORM_STATUS,
     };
 
-    this.handleChangeLinkToPhoto = this.handleChangeLinkToPhoto.bind(this);
+    this.handleSendLinkToPhoto = this.handleSendLinkToPhoto.bind(this);
     this.handleSendForm = this.handleSendForm.bind(this);
     this.handleChangeFile = this.handleChangeFile.bind(this);
     this.sendFile = this.sendFile.bind(this);
@@ -73,24 +77,31 @@ export default class extends Component {
     this.handleClearForm = this.handleClearForm.bind(this);
   }
 
-  handleChangeLinkToPhoto(event) {
-    if (!event.target.value) {
+  handleSendLinkToPhoto(link) {
+    if (!link) {
       return;
     }
 
     this.setState({
       fileFormStatus: LOADING_FORM_STATUS,
     });
-    fetch('http://localhost:3001/api/imageUrl', {
+    fetch('/api/imageUrl', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        link: event.target.value,
+        link,
       }),
     }).then(async (response) => {
+      if (response.status !== 200) {
+        this.setState({
+          fileFormStatus: ERROR_FORM_STATUS,
+          isOpened: false,
+        });
+        return;
+      }
       const responseData = await response.json();
       this.setState({
         uploadedImagePath: responseData.path,
@@ -98,12 +109,23 @@ export default class extends Component {
         fileFormStatus: UPLOADED_FROM_STATUS,
         isOpened: true,
       });
+    }).catch((e) => {
+      this.setState({
+        fileFormStatus: ERROR_FORM_STATUS,
+        isOpened: false,
+      });
     });
   }
 
-  handleSendForm(event) {
+  handleSendForm(event, formData) {
     event.preventDefault();
-    this.setState({});
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      return;
+    }
+    this.setState({
+      fileFormStatus: SENT_FORM_STATUS,
+      isOpened: false,
+    });
   }
 
   handleChangeFile(event) {
@@ -116,7 +138,7 @@ export default class extends Component {
     reader.onload = (e) => {
 
       if (file.size > 3000000) {
-        alert('Пожалуйста, выберите файл меньше 2.5Мб');
+        alert('Пожалуйста, выберите файл меньше 3Мб');
         this.setState({
           fileFormStatus: EMPTY_FORM_STATUS,
         });
@@ -146,10 +168,17 @@ export default class extends Component {
   sendFile(file) {
     const form = new FormData();
     form.append('file', file);
-    fetch('http://localhost:3001/api/image', {
+    fetch('/api/image', {
       method: 'POST',
       body: form,
     }).then(async (response) => {
+      if (response.status !== 200) {
+        this.setState({
+          fileFormStatus: ERROR_FORM_STATUS,
+          isOpened: false,
+        });
+        return;
+      }
       const responseData = await response.json();
       this.setState({
         uploadedImagePath: responseData.path,
@@ -157,12 +186,17 @@ export default class extends Component {
         fileFormStatus: UPLOADED_FROM_STATUS,
         isOpened: true,
       });
+    }).catch(() => {
+      this.setState({
+        fileFormStatus: ERROR_FORM_STATUS,
+        isOpened: false,
+      });
     });
   }
 
   render() {
     let fileForm = (<EmptyFileForm
-      handleChangeLinkToPhoto={this.handleChangeLinkToPhoto}
+      handleSendLinkToPhoto={this.handleSendLinkToPhoto}
       handleChangeFile={this.handleChangeFile}
     />);
 
@@ -178,6 +212,9 @@ export default class extends Component {
         break;
       case LOADING_FORM_STATUS:
         fileForm = <LoadingFileForm />;
+        break;
+      case ERROR_FORM_STATUS:
+        fileForm = <ErrorFileForm handleClick={this.handleClearForm} />;
         break;
       case SENT_FORM_STATUS:
         fileForm = <SentFileForm handleClick={this.handleClearForm} />;

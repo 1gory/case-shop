@@ -95,7 +95,12 @@ router.post('/imageUrl', async (req, res, next) => {
   try {
     const download = (uri) => {
       request.head(uri, (err, response) => {
-        if (err) throw err;
+        if (err) {
+          res.status(500).json({
+            status: 'error',
+          });
+          return;
+        }
 
         let ext = '';
 
@@ -110,19 +115,19 @@ router.post('/imageUrl', async (req, res, next) => {
             ext = 'jpg';
             break;
           default:
-            res.json({
+            res.status(415).json({
               status: 'error',
               code: 'content-type',
             });
-            next();
+            return;
         }
 
         if (response.headers['content-length'] > MAX_ALLOWED_CONTENT_LENGTH) {
-          res.json({
+          res.status(415).json({
             status: 'error',
             path: 'content-length',
           });
-          next();
+          return;
         }
 
         const dateFolder = getDateFolderName();

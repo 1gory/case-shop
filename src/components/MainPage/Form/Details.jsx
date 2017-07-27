@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 import Dropdown from '../../Dropdown/index';
@@ -64,41 +64,69 @@ const StyledInputMask = styled(InputMask)`
   text-align: left;
 `;
 
-export default ({ handleSendForm }) => (
-  <DetailsFormWrapper>
-    <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
-    <label>
-      <span>Номер телефона</span>
-      <StyledInputMask mask="+7 (999) 999-99-99" placeholder="+7" />
-    </label>
-    <label htmlFor="firstName">
-      <span>Какой способ связи удобнее?</span>
-      <Dropdown>
-        <option value="whatsapp">WhatsApp</option>
-        <option value="telegram">Telegram</option>
-        <option value="viber">Viber</option>
-      </Dropdown>
-    </label>
+export default class extends Component {
+  constructor() {
+    super();
 
-    <H4>Детали товара</H4>
-    <label>
-      <span>Устройство</span>
-      <Dropdown>
-        <option value="iPhone 5/5S/5SE">iPhone 5/5S/5SE</option>
-        <option value="iPhone 6/6S">iPhone 6/6S</option>
-        <option value="iPhone 6 PLUS/6S PLUS">iPhone 6 PLUS/6S PLUS</option>
-        <option value="iPhone 7">iPhone 7</option>
-        <option value="iPhone 7PLUS">iPhone 7PLUS</option>
-      </Dropdown>
-    </label>
-    <label>
-      <span>Материал для чехла</span>
-      <Dropdown>
-        <option value="light">Светлое дерево</option>
-        <option value="dark">Темное дерево</option>
-      </Dropdown>
-    </label>
+    this.state = {
+      messenger: 'whatsapp',
+      model: 'iPhone 5/5S/5SE',
+      woodType: 'light',
+    };
+    this.handleChangeForm = this.handleChangeForm.bind(this);
+  }
 
-    <Button onClick={handleSendForm}>Получить макет</Button>
-  </DetailsFormWrapper>
-);
+  handleChangeForm(e) {
+    const state = {};
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  }
+
+  render() {
+    return (
+      <DetailsFormWrapper>
+        <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
+        <label>
+          <span>Номер телефона</span>
+          <StyledInputMask
+            name="phone"
+            mask="+7 (999) 999-99-99"
+            placeholder="+7"
+            onChange={this.handleChangeForm}
+          />
+        </label>
+        <label htmlFor="firstName">
+          <span>Какой способ связи удобнее?</span>
+          <Dropdown name="messenger" onChange={this.handleChangeForm}>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram">Telegram</option>
+            <option value="viber">Viber</option>
+          </Dropdown>
+        </label>
+
+        <H4>Детали товара</H4>
+        <label>
+          <span>Устройство</span>
+          <Dropdown name="model" onChange={this.handleChangeForm}>
+            <option value="iPhone 5/5S/5SE">iPhone 5/5S/5SE</option>
+            <option value="iPhone 6/6S">iPhone 6/6S</option>
+            <option value="iPhone 6 PLUS/6S PLUS">iPhone 6 PLUS/6S PLUS</option>
+            <option value="iPhone 7">iPhone 7</option>
+            <option value="iPhone 7PLUS">iPhone 7PLUS</option>
+          </Dropdown>
+        </label>
+        <label>
+          <span>Материал для чехла</span>
+          <Dropdown name="woodType" onChange={this.handleChangeForm}>
+            <option value="light">Светлое дерево</option>
+            <option value="dark">Темное дерево</option>
+          </Dropdown>
+        </label>
+
+        <Button onClick={event => (this.props.handleSendForm(event, this.state))}>
+          Получить макет
+        </Button>
+      </DetailsFormWrapper>
+    );
+  }
+}
