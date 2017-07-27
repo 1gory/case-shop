@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 
@@ -50,15 +50,42 @@ const StyledInputMask = styled(InputMask)`
   text-align: left;
 `;
 
-export default ({ handleSend }) => (
-  <div>
-    <H3>Не можете определиться?</H3>
-    <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
-    <Form>
-      <input placeholder="Имя" type="text" />
-      <StyledInputMask mask="+7 (999) 999-99-99" placeholder="Телефон" />
-      <button onClick={handleSend}>Отправить</button>
-    </Form>
-  </div>
-);
+export default class extends Component {
+
+  constructor() {
+    super();
+    this.state = {};
+    this.handleChangeForm = this.handleChangeForm.bind(this);
+  }
+
+  handleChangeForm(e) {
+    const state = {};
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  }
+
+  render() {
+    return (
+      <div>
+        <H3>Не можете определиться?</H3>
+        <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
+        <Form>
+          <input
+            onChange={this.handleChangeForm}
+            placeholder="Имя"
+            type="text"
+            name="name"
+          />
+          <StyledInputMask
+            onChange={this.handleChangeForm}
+            mask="+7 (999) 999-99-99"
+            placeholder="Телефон"
+            name="phone"
+          />
+          <button onClick={e => (this.props.handleSend(e, this.state))}>Отправить</button>
+        </Form>
+      </div>
+    );
+  }
+}
 

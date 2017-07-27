@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import FeedbackForm from './FeedbackForm';
 import FeedbackFail from './FeedbackFail';
 import FeedbackSuccess from './FeedbackSuccess';
-import modalClose from './modal-close.svg';
+import modalClose from '../../icons/modal-close.svg';
+import validatePhone from '../../../functions/validatePhone';
 
 const Wrapper = styled.div`
   background-color: #3b3b3b;
@@ -36,9 +37,12 @@ export default class extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  handleSend(event) {
+  handleSend(event, formData) {
     event.preventDefault();
-    fetch('http://localhost:3001/api/feedback', {
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      return;
+    }
+    fetch('/api/feedback', {
       method: 'POST',
       body: JSON.stringify({ test: 'test' }),
     }).then(async (data) => {
