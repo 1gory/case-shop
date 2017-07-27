@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './index.css';
-import MainPage from './components/MainPage/index';
-import Catalog from './components/Catalog/index';
+import MainPage from './components/MainPage';
+import Catalog from './components/Catalog';
+import Delivery from './components/Delivery';
 
 export default () => (
   <Switch>
     <Route exact path="/" component={MainPage} />
     <Route path="/catalog" component={Catalog} />
+    <Route path="/delivery" component={Delivery} />
   </Switch>
 );

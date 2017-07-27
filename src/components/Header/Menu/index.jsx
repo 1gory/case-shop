@@ -28,9 +28,9 @@ export default () => (
   <Wrapper>
     <Links>
       <MenuLink to="/catalog">Работы</MenuLink>
-      <MenuLink to="">Доставка</MenuLink>
-      <MenuLink to="">Контакты</MenuLink>
-      <MenuLink to="">Сотрудничество</MenuLink>
+      <MenuLink to="/delivery">Доставка</MenuLink>
+      {/* <MenuLink to="">Контакты</MenuLink> */}
+      {/* <MenuLink to="">Сотрудничество</MenuLink> */}
     </Links>
   </Wrapper>
 );
