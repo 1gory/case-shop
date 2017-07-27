@@ -37,3 +37,8 @@ input:focus, button:focus {
   font-family: 'Lato-Bold';
   src: url('./fonts/Lato-Bold.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Lato-Italic';
+  src: url('./fonts/Lato-Italic.ttf') format('truetype');
+}

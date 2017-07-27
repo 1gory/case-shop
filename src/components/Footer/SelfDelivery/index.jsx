@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Scroll from 'react-scroll';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -19,8 +20,11 @@ const Description = styled.p`
   color: #3b3b3b;
 `;
 
+const SelfDeliveryAnchor = Scroll.Element;
+
 export default () => (
   <Wrapper>
+    <SelfDeliveryAnchor name="SelfDeliveryAnchor" />
     <H2>Точка самовывоза</H2>
     <Description>
       Ст. метро «Речной вокзал». Последний вагон из центра и налево. Торговый центр «Интер-Север».

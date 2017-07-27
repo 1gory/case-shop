@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
-import Menu from './Menu/index';
-import RubleSign from '../RubleSign';
-import './styles.css';
-import Basklogo from './basket-logo.svg';
+import Menu from './Menu';
+// import RubleSign from '../RubleSign';
+// import basketLogo from './basket-logo.svg';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
+import './styles.css';
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;
@@ -31,22 +31,22 @@ const Logo = styled.img`
   width: 150px;
 `;
 
-const BasketList = styled.div`
-  border-radius: 20px;
-  background-color: #ebebeb;
-  font-family: 'Lato-Regular';
-  font-size: 16px;
-  color: #222222;
-  display: flex;
-  align-items: center;
-  padding: 10px 30px;
-  margin-top: 15px;
-`;
-
-const BasketLogo = styled.img`
-  width: 15px;
-  padding-right: 15px;
-`;
+// const BasketList = styled.div`
+//   border-radius: 20px;
+//   background-color: #ebebeb;
+//   font-family: 'Lato-Regular';
+//   font-size: 16px;
+//   color: #222222;
+//   display: flex;
+//   align-items: center;
+//   padding: 10px 30px;
+//   margin-top: 15px;
+// `;
+//
+// const BasketLogo = styled.img`
+//   width: 15px;
+//   padding-right: 15px;
+// `;
 
 export default class extends Component {
 
@@ -64,7 +64,7 @@ export default class extends Component {
     }));
   }
 
-  render(){
+  render() {
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -74,10 +74,10 @@ export default class extends Component {
             </Link>
             <Hamburger onClick={this.handleClick} src={hamburger} alt="menu" />
           </Header>
-          <BasketList>
-            <BasketLogo src={Basklogo} />
-            <span>1 товар - 1000<RubleSign /></span>
-          </BasketList>
+          {/* <BasketList> */}
+          {/* <BasketLogo src={basketLogo} /> */}
+          {/* <span>1 товар - 1000<RubleSign /></span> */}
+          {/* </BasketList> */}
         </HeaderWrapper>
         <CSSTransitionGroup
           transitionName="menu"

@@ -12,9 +12,6 @@ import OurAdvantages from './OurAdvantages/index';
 import HowWeWork from './HowWeWork/index';
 import Comments from './Comments/index';
 import FAQ from './FAQ/index';
-import SelfDelivery from '../Footer/SelfDelivery/index';
-import Map from '../Footer/Map/index';
-import Contacts from './Contacts/index';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -33,9 +30,6 @@ export default () => (
     <HowWeWork />
     <Comments />
     <FAQ />
-    <SelfDelivery />
-    <Map />
-    <Contacts />
     <Footer />
   </Wrapper>
 );
