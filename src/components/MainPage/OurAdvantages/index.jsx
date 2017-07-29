@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import advantage1 from './advantage-1.jpg';
+import advantage3 from './advantage-3.jpg';
 import advantage from './advantage.jpg';
 
 const Wrapper = styled.div`
@@ -18,7 +20,7 @@ const ImgWrapper = styled.div`
 `;
 
 const Img = styled.div`
-  background: url(${advantage});
+  background: url(${props => props.src});
   height: 250px;
   background-size: cover;
   display: flex;
@@ -41,17 +43,17 @@ export default () => (
     <H2>Наши преимущества</H2>
     <Advantages>
       <ImgWrapper>
-        <Img>
+        <Img src={advantage1}>
           <Advantage>Натуральное <br />дерево</Advantage>
         </Img>
       </ImgWrapper>
       <ImgWrapper>
-        <Img>
+        <Img src={advantage}>
           <Advantage>Рельефная <br />фактура</Advantage>
         </Img>
       </ImgWrapper>
       <ImgWrapper>
-        <Img>
+        <Img src={advantage3}>
           <Advantage>Основа <br />soft-touch</Advantage>
         </Img>
       </ImgWrapper>

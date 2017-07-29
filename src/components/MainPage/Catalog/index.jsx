@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import Scroll from 'react-scroll';
-import Card from '../../Card/index';
+import Card from '../../generic/Card/index';
 
 const CatalogAncor = Scroll.Element;
 

@@ -40,16 +40,16 @@ export default () => (
   <Wrapper>
     <FooterLinks>
       <LinkWrapper>
+        <StyledLink to="/">Главная</StyledLink>
+      </LinkWrapper>
+
+      <LinkWrapper>
         <StyledLink to="/catalog">Работы</StyledLink>
       </LinkWrapper>
 
       <LinkWrapper>
         <StyledLink to="/delivery">Доставка</StyledLink>
       </LinkWrapper>
-
-      {/* <LinkWrapper>*/}
-      {/* <StyledLink to="/">Контакты</StyledLink>*/}
-      {/* </LinkWrapper>*/}
 
       {/* <LinkWrapper>*/}
       {/* <StyledLink to="/">Сотрудничество</StyledLink>*/}

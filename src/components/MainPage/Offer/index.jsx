@@ -3,7 +3,7 @@ import Scroll from 'react-scroll';
 import styled from 'styled-components';
 import white from './white.jpg';
 import dark from './dark.jpg';
-import RubleSign from '../../RubleSign';
+import RubleSign from '../../generic/RubleSign';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;

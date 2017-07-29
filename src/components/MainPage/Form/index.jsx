@@ -35,21 +35,6 @@ const FileForm = styled.form`
   background-color: #ebebeb;
   box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
   border-radius: 4px;
-
-  & input {
-    font-family: 'Lato-Regular';
-    width: 100%;
-    border-radius: 20px;
-    border: solid 1px #cccccc;
-    background: none;
-    padding: 10px 20px;
-    color: rgba(74, 74, 74, 0.5);
-    box-sizing: border-box;
-  }
-
-  & input::placeholder {
-    color: #9a9a9a;
-  }
 `;
 
 const FileFormAnchor = Scroll.Element;
@@ -65,7 +50,7 @@ export default class extends Component {
     super();
 
     this.state = {
-      isOpened: false,
+      isOpened: true,
       fileFormStatus: EMPTY_FORM_STATUS,
     };
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import modalClose from '../../../icons/modal-close.svg';
+import modalClose from '../../../../icons/modal-close.svg';
 
 const Wrapper = styled.div`
   padding: 30px;
+  text-align: center;
 `;
 
 const FileLabel = styled.label`
@@ -37,6 +38,21 @@ const ChoseInputTitle = styled.div`
 
 const InputLinkWrapper = styled.div`
   position: relative;
+  
+  & input {
+    font-family: 'Lato-Regular';
+    width: 100%;
+    border-radius: 20px;
+    border: solid 1px #cccccc;
+    background: none;
+    padding: 10px 20px;
+    color: rgba(74, 74, 74, 0.5);
+    box-sizing: border-box;
+  }
+
+  & input::placeholder {
+    color: #9a9a9a;
+  }
 `;
 
 const CancelIcon = styled.img`
@@ -87,6 +103,7 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
+
         <FileLabel>
           Выберите файл..
           <input
@@ -95,6 +112,7 @@ export default class extends Component {
             accept="image/x-png,image/gif,image/jpeg"
           />
         </FileLabel>
+
         <ChoseInputTitle>или вставьте ссылку</ChoseInputTitle>
         <InputLinkWrapper>
           <input

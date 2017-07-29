@@ -27,6 +27,7 @@ const MenuLink = styled(Link)`
 export default () => (
   <Wrapper>
     <Links>
+      <MenuLink to="/">Главная</MenuLink>
       <MenuLink to="/catalog">Работы</MenuLink>
       <MenuLink to="/delivery">Доставка</MenuLink>
       {/* <MenuLink to="">Контакты</MenuLink> */}

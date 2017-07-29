@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import FeedbackForm from './FeedbackForm';
 import FeedbackFail from './FeedbackFail';
 import FeedbackSuccess from './FeedbackSuccess';
-import modalClose from '../../icons/modal-close.svg';
+import modalClose from '../../../icons/modal-close.svg';
 import validatePhone from '../../../functions/validatePhone';
 
 const Wrapper = styled.div`
