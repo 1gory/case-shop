@@ -6,7 +6,7 @@ import BreadCrumbs from '../generic/BreadCrumbs';
 import productImage1 from './slide1.jpg';
 import productImage2 from './slide2.jpg';
 import productImage3 from './slide3.jpg';
-import { Model, WoodType, Messenger, PhoneNumber } from '../generic/ProductDetails';
+import { Model, Material, Messenger, PhoneNumber } from '../generic/ProductDetails';
 import Form from '../MainPage/Form/State/Empty';
 
 const Wrapper = styled.div`
@@ -169,7 +169,7 @@ export default class extends Component {
           </Description>
           <From>
             <Model handleChangeForm={this.handleChangeForm} />
-            <WoodType handleChangeForm={this.handleChangeForm} />
+            <Material handleChangeForm={this.handleChangeForm} />
             {/* <Messenger handleChangeForm={this.handleChangeForm} />*/}
             <PhoneNumber handleChangeForm={this.handleChangeForm} />
           </From>

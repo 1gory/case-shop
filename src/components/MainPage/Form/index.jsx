@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Scroll from 'react-scroll';
+import Cookies from 'universal-cookie';
 import skip from './skip-to-form.svg';
 import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
@@ -50,7 +51,7 @@ export default class extends Component {
     super();
 
     this.state = {
-      isOpened: true,
+      isOpened: false,
       fileFormStatus: EMPTY_FORM_STATUS,
     };
 
@@ -60,6 +61,10 @@ export default class extends Component {
     this.sendFile = this.sendFile.bind(this);
     this.handleRemoveImage = this.handleRemoveImage.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
+  }
+
+  componentDidMount() {
+    this.cookies = new Cookies();
   }
 
   handleSendLinkToPhoto(link) {
@@ -94,7 +99,7 @@ export default class extends Component {
         fileFormStatus: UPLOADED_FROM_STATUS,
         isOpened: true,
       });
-    }).catch((e) => {
+    }).catch((/* e */) => {
       this.setState({
         fileFormStatus: ERROR_FORM_STATUS,
         isOpened: false,
@@ -107,9 +112,27 @@ export default class extends Component {
     if (!formData.phone || !(validatePhone(formData.phone))) {
       return;
     }
-    this.setState({
-      fileFormStatus: SENT_FORM_STATUS,
-      isOpened: false,
+
+    fetch('/api/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(formData),
+    }).then(async (data) => {
+      const response = await data.json();
+      if (response.status) {
+        this.setState({
+          fileFormStatus: SENT_FORM_STATUS,
+          isOpened: false,
+        });
+      }
+    }).catch((/* error */) => {
+      this.setState({
+        fileFormStatus: ERROR_FORM_STATUS,
+      });
     });
   }
 
@@ -120,8 +143,7 @@ export default class extends Component {
 
     const reader = new FileReader();
     const file = event.target.files[0];
-    reader.onload = (e) => {
-
+    reader.onload = (/* e */) => {
       if (file.size > 3000000) {
         alert('Пожалуйста, выберите файл меньше 3Мб');
         this.setState({
@@ -139,7 +161,6 @@ export default class extends Component {
     event.preventDefault();
     this.setState({
       fileFormStatus: EMPTY_FORM_STATUS,
-      isOpened: false,
     });
   }
 
@@ -165,16 +186,16 @@ export default class extends Component {
         return;
       }
       const responseData = await response.json();
+      this.cookies.set('imageUrl', responseData.path, { path: '/' });
       this.setState({
         uploadedImagePath: responseData.path,
         isHorizontalImage: responseData.horizontal,
         fileFormStatus: UPLOADED_FROM_STATUS,
         isOpened: true,
       });
-    }).catch(() => {
+    }).catch((/* e */) => {
       this.setState({
         fileFormStatus: ERROR_FORM_STATUS,
-        isOpened: false,
       });
     });
   }

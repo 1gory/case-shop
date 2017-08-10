@@ -44,7 +44,11 @@ export default class extends Component {
     }
     fetch('/api/feedback', {
       method: 'POST',
-      body: JSON.stringify({ test: 'test' }),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(formData),
     }).then(async (data) => {
       const response = await data.json();
       if (response.status) {

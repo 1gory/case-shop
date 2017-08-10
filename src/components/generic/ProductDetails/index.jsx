@@ -73,10 +73,10 @@ export const Model = ({ handleChangeForm }) => (
   </Label>
 );
 
-export const WoodType = ({ handleChangeForm }) => (
+export const Material = ({ handleChangeForm }) => (
   <Label>
     <span>Материал для чехла</span>
-    <Dropdown name="woodType" onChange={handleChangeForm}>
+    <Dropdown name="material" onChange={handleChangeForm}>
       <option value="light">Светлое дерево</option>
       <option value="dark">Темное дерево</option>
     </Dropdown>

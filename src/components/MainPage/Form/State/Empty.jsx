@@ -63,14 +63,17 @@ const CancelIcon = styled.img`
   display: ${({ isInputEmpty }) => (isInputEmpty ? ' none' : 'block')};
 `;
 
-const Done = styled.span`
+const DoneButton = styled.span`
   color: #4a4a4a;
   font-size: 14px;
-  position: absolute;
-  left: 40%;
-  top: 50px;
   border-bottom: 1px dashed #4a4a4a;;
-  display: ${({ isInputEmpty }) => (isInputEmpty ? ' none' : 'block')};
+  display: ${({ isInputEmpty }) => (isInputEmpty ? ' none' : 'initial')};
+`;
+
+const ButtonWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 50px;
 `;
 
 export default class extends Component {
@@ -127,12 +130,14 @@ export default class extends Component {
             onClick={this.handleClick}
             isInputEmpty={this.state.isInputEmpty}
           />
-          <Done
-            isInputEmpty={this.state.isInputEmpty}
-            onClick={() => this.props.handleSendLinkToPhoto(this.state.linkToPhoto)}
-          >
-            Готово
-          </Done>
+          <ButtonWrapper>
+            <DoneButton
+              isInputEmpty={this.state.isInputEmpty}
+              onClick={() => this.props.handleSendLinkToPhoto(this.state.linkToPhoto)}
+            >
+              Готово
+            </DoneButton>
+          </ButtonWrapper>
         </InputLinkWrapper>
       </Wrapper>
     );

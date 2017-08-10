@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Model, WoodType, Messenger, PhoneNumber } from '../../generic/ProductDetails';
+import { Model, Material, Messenger, PhoneNumber } from '../../generic/ProductDetails';
 
 const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
@@ -65,7 +65,7 @@ export default class extends Component {
     this.state = {
       messenger: 'whatsapp',
       model: 'iPhone 5/5S/5SE',
-      woodType: 'light',
+      material: 'light',
     };
     this.handleChangeForm = this.handleChangeForm.bind(this);
   }
@@ -85,7 +85,7 @@ export default class extends Component {
 
         <H4>Детали товара</H4>
         <Model handleChangeForm={this.handleChangeForm} />
-        <WoodType handleChangeForm={this.handleChangeForm} />
+        <Material handleChangeForm={this.handleChangeForm} />
 
         <Button onClick={event => (this.props.handleSendForm(event, this.state))}>
           Получить макет

@@ -11,7 +11,7 @@ const H2 = styled.h2`
 
 const Wrapper = styled.div`
   text-align: center;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
 `;
 
 const ImgExample = styled.img`
@@ -26,6 +26,20 @@ const ExampleWrapper = styled.div`
 const RowWrapper = styled.div`
   margin: 15px;
   font-family: 'Lato-SemiBold';
+`;
+
+const ButtonWrapper = styled.div`
+  padding-top: 30px;
+`;
+
+const Button = styled.button`
+  border-radius: 20px;
+  background-color: #7f5152;
+  border: none;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: 'Lato-Light';
+  padding: 10px 30px;
 `;
 
 export default () => (
@@ -59,5 +73,10 @@ export default () => (
         </Col>
       </Row>
     </RowWrapper>
+    <ButtonWrapper>
+      <Button>
+        Заказать
+      </Button>
+    </ButtonWrapper>
   </Wrapper>
 );

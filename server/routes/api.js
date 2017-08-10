@@ -2,10 +2,16 @@ import express from 'express';
 import multiparty from 'multiparty';
 import fs from 'fs';
 import path from 'path';
-import request from 'request';
 import sizeOf from 'image-size';
+import mongoose from 'mongoose';
+import request from 'request';
+
+mongoose.connect('mongodb://localhost/casewood');
 
 const router = express.Router();
+
+router.use(require('./api/feedback').default);
+router.use(require('./api/order').default);
 
 const getFormData = req =>
   new Promise((resolve, reject) => {
@@ -44,16 +50,6 @@ router.use((req, res, next) => {
     'Origin, X-Requested-With, Content-Type, Accept',
   );
   next();
-});
-
-router.post('/order', (req, res, next) => {
-  try {
-    res.json({
-      status: 'success',
-    });
-  } catch (e) {
-    next(e);
-  }
 });
 
 router.post('/maquette', (req, res, next) => {
@@ -150,16 +146,6 @@ router.post('/imageUrl', async (req, res, next) => {
     };
 
     download(req.body.link);
-  } catch (e) {
-    next(e);
-  }
-});
-
-router.post('/feedback', (req, res, next) => {
-  try {
-    res.json({
-      status: 'success',
-    });
   } catch (e) {
     next(e);
   }
