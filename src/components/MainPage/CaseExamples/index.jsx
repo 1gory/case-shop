@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import dummy from './16.jpg';
+import OrderPopUp from './OrderPopUp';
 
 const H2 = styled.h2`
   font-family: 'Lato-SemiBold';
@@ -42,41 +43,71 @@ const Button = styled.button`
   padding: 10px 30px;
 `;
 
-export default () => (
-  <Wrapper>
-    <H2>Примеры работы</H2>
-    <RowWrapper>
-      <Row>
-        <Col xs={6} sm={6} md={4} lg={3}>
-          <ExampleWrapper>
-            <ImgExample src={dummy} alt="" />
-            <div>С вашей картинкой или логотипом</div>
-          </ExampleWrapper>
-        </Col>
-        <Col xs={6} sm={6} md={4} lg={3}>
-          <ExampleWrapper>
-            <ImgExample src={dummy} alt="" />
-            <div>С лого любимой футбольной команды</div>
-          </ExampleWrapper>
-        </Col>
-        <Col xs={6} sm={6} md={4} lg={3}>
-          <ExampleWrapper>
-            <ImgExample src={dummy} alt="" />
-            <div>С вашим именем</div>
-          </ExampleWrapper>
-        </Col>
-        <Col xs={6} sm={6} md={4} lg={3}>
-          <ExampleWrapper>
-            <ImgExample src={dummy} alt="" />
-            <div>С вашим гороскопом</div>
-          </ExampleWrapper>
-        </Col>
-      </Row>
-    </RowWrapper>
-    <ButtonWrapper>
-      <Button>
-        Заказать
-      </Button>
-    </ButtonWrapper>
-  </Wrapper>
-);
+export default class extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isOpened: false,
+    };
+
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleOpen() {
+    this.setState({
+      isOpened: true,
+    });
+  }
+
+  handleClose() {
+    this.setState({
+      isOpened: false,
+    });
+  }
+
+  render() {
+    return (
+      (
+        <Wrapper>
+          <OrderPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
+          <H2>Примеры работы</H2>
+          <RowWrapper>
+            <Row>
+              <Col xs={6} sm={6} md={4} lg={3}>
+                <ExampleWrapper>
+                  <ImgExample src={dummy} alt="" />
+                  <div>С вашей картинкой или логотипом</div>
+                </ExampleWrapper>
+              </Col>
+              <Col xs={6} sm={6} md={4} lg={3}>
+                <ExampleWrapper>
+                  <ImgExample src={dummy} alt="" />
+                  <div>С лого любимой футбольной команды</div>
+                </ExampleWrapper>
+              </Col>
+              <Col xs={6} sm={6} md={4} lg={3}>
+                <ExampleWrapper>
+                  <ImgExample src={dummy} alt="" />
+                  <div>С вашим именем</div>
+                </ExampleWrapper>
+              </Col>
+              <Col xs={6} sm={6} md={4} lg={3}>
+                <ExampleWrapper>
+                  <ImgExample src={dummy} alt="" />
+                  <div>С вашим гороскопом</div>
+                </ExampleWrapper>
+              </Col>
+            </Row>
+          </RowWrapper>
+          <ButtonWrapper>
+            <Button onClick={this.handleOpen}>
+              Заказать
+            </Button>
+          </ButtonWrapper>
+        </Wrapper>
+      )
+    );
+  }
+}
