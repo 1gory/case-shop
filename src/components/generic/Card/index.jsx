@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import RubleSign from '../RubleSign';
-import dummy from './16.jpg';
 
 const WrapperLink = styled(Link)`
   text-decoration: none;
@@ -45,12 +44,12 @@ const Price = styled.div`
   color: #222222;
 `;
 
-export default () => (
-  <WrapperLink to="/product/1">
+export default props => (
+  <WrapperLink to={`/product/${props.id}`}>
     <Card>
-      <Img src={dummy} />
-      <Name>Flower Pattern</Name>
-      <Price>1290<RubleSign /></Price>
+      <Img src={props.image} />
+      <Name>{props.name}</Name>
+      <Price>{props.price}<RubleSign /></Price>
     </Card>
   </WrapperLink>
 );

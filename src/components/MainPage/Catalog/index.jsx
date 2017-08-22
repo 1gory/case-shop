@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import Scroll from 'react-scroll';
 import Card from '../../generic/Card/index';
+import getProducts from '../../../functions/getProduct';
 
 const CatalogAncor = Scroll.Element;
 
@@ -35,20 +36,45 @@ const GoToCatalogButton = styled(Link)`
   color: #222222;
 `;
 
-export default () => (
-  <Wrapper>
-    <CatalogAncor name="CatalogAncor" />
-    <H2>Каталог гравированных чехлов</H2>
-    <RowWrapper>
-      <Row>
-        {[...Array(4)].map((x, i) =>
-          <Col xs={6} sm={6} md={4} lg={3}>
-            <Card />
-          </Col>)}
-      </Row>
-    </RowWrapper>
-    <GoToCatalogButton to="/catalog">
-      Перейти в каталог
-    </GoToCatalogButton>
-  </Wrapper>
-);
+
+export default class extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      products: [],
+    };
+  }
+
+  async componentWillMount() {
+
+    const products = await getProducts('products');
+
+    this.setState({
+      products: products.slice(0, 4),
+    });
+  }
+
+  render() {
+    return (<Wrapper>
+      <CatalogAncor name="CatalogAncor" />
+      <H2>Каталог гравированных чехлов</H2>
+      <RowWrapper>
+        <Row>
+          {this.state.products && this.state.products.map(product =>
+            (<Col xs={6} sm={6} md={4} lg={3}>
+              <Card
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                id={product.id}
+              />
+            </Col>))}
+        </Row>
+      </RowWrapper>
+      <GoToCatalogButton to="/catalog">
+        Перейти в каталог
+      </GoToCatalogButton>
+    </Wrapper>);
+  }
+}

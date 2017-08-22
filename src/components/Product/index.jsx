@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import Header from '../Header';
 import Footer from '../Footer';
 import BreadCrumbs from '../generic/BreadCrumbs';
-import productImage1 from './slide1.jpg';
-import productImage2 from './slide2.jpg';
-import productImage3 from './slide3.jpg';
 import { Model, Material, Messenger, PhoneNumber } from '../generic/ProductDetails';
 import Form from '../MainPage/Form/State/Empty';
+import getProducts from '../../functions/getProduct';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -111,20 +109,26 @@ const Button = styled.button`
 `;
 
 export default class extends Component {
-  componentWillMount() {
-    console.log(this.props.match.url);
-
-    this.state = {
-      id: '1',
-      name: 'Flower Pattern',
-      images: [],
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      price: 1290,
-      individualCase: false,
-    };
-
+  constructor() {
+    super();
+    this.state = {};
     this.handleChangeForm = this.handleChangeForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  async componentWillMount() {
+    const id = this.props.match.url.split('/').pop();
+
+    const products = await getProducts(`products/${id}`);
+    const product = products[0];
+
+    this.setState({
+      id: product.id,
+      name: product.name,
+      images: product.images,
+      description: product.description,
+      price: product.price,
+    });
   }
 
   handleChangeForm(e) {
@@ -155,9 +159,9 @@ export default class extends Component {
             <MainImage src={productImage1} />
           </MainImageWrapper>
           <Thumbs>
-            <Thumb src={productImage1} />
-            <Thumb src={productImage2} />
-            <Thumb src={productImage3} />
+            {this.state.images && this.state.images.map(image => (
+              <Thumb src={image} />
+            ))}
           </Thumbs>
         </Gallery>
         <Details>
@@ -178,17 +182,17 @@ export default class extends Component {
           </OrderButtonWrapper>
           <IndividualCaseFromWrapper>
             {this.state.individualCase &&
-              <Form />
+            <Form />
             }
             {!this.state.individualCase &&
-              <IndividualCaseFrom>
-                <Message>
-                  Если вы хотите создать свою<br /> гравировку, воспользуйтесь<br /> специальной формой:
-                </Message>
-                <Button onClick={this.handleClick}>
-                  Создать свою гравировку
-                </Button>
-              </IndividualCaseFrom>
+            <IndividualCaseFrom>
+              <Message>
+                Если вы хотите создать свою<br /> гравировку, воспользуйтесь<br /> специальной формой:
+              </Message>
+              <Button onClick={this.handleClick}>
+                Создать свою гравировку
+              </Button>
+            </IndividualCaseFrom>
             }
           </IndividualCaseFromWrapper>
         </Details>

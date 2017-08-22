@@ -12,6 +12,7 @@ const router = express.Router();
 
 router.use(require('./api/feedback').default);
 router.use(require('./api/order').default);
+router.use(require('./api/product').default);
 
 const getFormData = req =>
   new Promise((resolve, reject) => {
