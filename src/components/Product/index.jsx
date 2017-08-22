@@ -111,7 +111,10 @@ const Button = styled.button`
 export default class extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      product: {},
+      activeImageIndex: 0,
+    };
     this.handleChangeForm = this.handleChangeForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -120,14 +123,9 @@ export default class extends Component {
     const id = this.props.match.url.split('/').pop();
 
     const products = await getProducts(`products/${id}`);
-    const product = products[0];
 
     this.setState({
-      id: product.id,
-      name: product.name,
-      images: product.images,
-      description: product.description,
-      price: product.price,
+      product: products[0],
     });
   }
 
@@ -144,6 +142,12 @@ export default class extends Component {
     });
   }
 
+  handleClickToThumb(index) {
+    this.setState({
+      activeImageIndex: index,
+    });
+  }
+
   render() {
     return (
       <Wrapper>
@@ -151,25 +155,25 @@ export default class extends Component {
         <BreadCrumbs
           breadcrumbs={[
             { name: 'Каталог', link: '/catalog' },
-            { name: this.state.name, link: `/product/${this.state.id}` },
+            { name: this.state.product.name, link: `/product/${this.state.product.id}` },
           ]}
         />
-        {this.state.images && <Gallery>
+        {this.state.product.images && <Gallery>
           <MainImageWrapper>
-            <MainImage src={this.state.images.pop()} />
+            <MainImage src={this.state.product.images[this.state.activeImageIndex]} />
           </MainImageWrapper>
           <Thumbs>
-            {this.state.images.map(image => (
-              <Thumb src={image} />
+            {this.state.product.images.map((image, index) => (
+              <Thumb onClick={() => this.handleClickToThumb(index)} src={image} />
             ))}
           </Thumbs>
         </Gallery>}
         <Details>
           <Name>
-            {this.state.name}
+            {this.state.product.name}
           </Name>
           <Description>
-            {this.state.description}
+            {this.state.product.description}
           </Description>
           <From>
             <Model handleChangeForm={this.handleChangeForm} />
