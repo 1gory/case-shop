@@ -154,16 +154,16 @@ export default class extends Component {
             { name: this.state.name, link: `/product/${this.state.id}` },
           ]}
         />
-        <Gallery>
+        {this.state.images && <Gallery>
           <MainImageWrapper>
-            <MainImage src={productImage1} />
+            <MainImage src={this.state.images.pop()} />
           </MainImageWrapper>
           <Thumbs>
-            {this.state.images && this.state.images.map(image => (
+            {this.state.images.map(image => (
               <Thumb src={image} />
             ))}
           </Thumbs>
-        </Gallery>
+        </Gallery>}
         <Details>
           <Name>
             {this.state.name}
