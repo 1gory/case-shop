@@ -45,6 +45,9 @@ export default class extends Component {
   handleSendForm(event, formData) {
     event.preventDefault();
     if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
       return;
     }
 
@@ -79,7 +82,7 @@ export default class extends Component {
         {/* ====================== */}
         {this.state.isSent ?
           <SentState handleClick={this.newOrder} /> :
-          <Form handleSendForm={this.handleSendForm} />
+          <Form handleSendForm={this.handleSendForm} invalidNumber={this.state.invalidNumber} />
         }
       </Popup>
     );

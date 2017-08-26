@@ -43,7 +43,10 @@ export default class extends Component {
       (
         <div>
           <Messenger handleChangeForm={this.handleChangeForm} />
-          <PhoneNumber handleChangeForm={this.handleChangeForm} />
+          <PhoneNumber
+            handleChangeForm={this.handleChangeForm}
+            invalidNumber={this.props.invalidNumber}
+          />
 
           <H4>Детали товара</H4>
           <Model handleChangeForm={this.handleChangeForm} />

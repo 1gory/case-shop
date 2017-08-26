@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 import modalClose from '../../../icons/modal-close.svg';

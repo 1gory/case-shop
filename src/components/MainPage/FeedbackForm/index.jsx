@@ -37,9 +37,19 @@ export default class extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  // TODO move sending to separated method
   handleSend(event, formData) {
     event.preventDefault();
     if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
+      return;
+    }
+    if (!formData.name) {
+      this.setState({
+        invalidName: true,
+      });
       return;
     }
     fetch('/api/feedback', {
@@ -79,7 +89,11 @@ export default class extends Component {
         form = <FeedbackFail />;
         break;
       default:
-        form = <FeedbackForm handleSend={this.handleSend} />;
+        form = (<FeedbackForm
+          handleSend={this.handleSend}
+          invalidNumber={this.state.invalidNumber}
+          invalidName={this.state.invalidName}
+        />);
     }
     return (
       <Wrapper>

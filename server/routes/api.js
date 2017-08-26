@@ -22,7 +22,10 @@ const getFormData = req =>
         return reject(err);
       }
       const data = [];
-      Object.keys(fields).map(key => (data[key] = fields[key].pop()));
+      Object.keys(fields).map((key) => {
+        data[key] = fields[key].pop();
+        return null;
+      });
       return resolve({ fields, files });
     });
   });

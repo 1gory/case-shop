@@ -30,7 +30,7 @@ const Form = styled.form`
   }
 
   & input {
-    background-color: #585858;
+    background: ${props => (props.invalidName ? '#ab7d7d' : '#585858')};  
     color: #fff;
   }
 
@@ -48,6 +48,7 @@ const StyledInputMask = styled(InputMask)`
   font-family: Lato-Regular;
   font-size: 16px;
   text-align: left;
+  background: ${props => (props.invalidNumber ? '#ab7d7d' : '#585858')} !important;
 `;
 
 export default class extends Component {
@@ -69,7 +70,8 @@ export default class extends Component {
       <div>
         <H3>Не можете определиться?</H3>
         <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
-        <Form>
+        {/* TODO fix all included styles */}
+        <Form invalidName={this.props.invalidName}>
           <input
             onChange={this.handleChangeForm}
             placeholder="Имя"
@@ -81,6 +83,7 @@ export default class extends Component {
             mask="+7 (999) 999-99-99"
             placeholder="Телефон"
             name="phone"
+            invalidNumber={this.props.invalidNumber}
           />
           <button onClick={e => (this.props.handleSend(e, this.state))}>Отправить</button>
         </Form>

@@ -35,12 +35,14 @@ const StyledInputMask = styled(InputMask)`
   font-family: Lato-Regular;
   font-size: 16px;
   text-align: left;
+  background: ${props => (props.invalidNumber ? '#ffd4d4' : 'initial')} !important;
 `;
 
-export const PhoneNumber = ({ handleChangeForm }) => (
+export const PhoneNumber = ({ handleChangeForm, invalidNumber }) => (
   <Label>
     <span>Номер телефона</span>
     <StyledInputMask
+      invalidNumber={invalidNumber}
       name="phone"
       mask="+7 (999) 999-99-99"
       placeholder="+7"
