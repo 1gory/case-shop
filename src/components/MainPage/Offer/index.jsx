@@ -25,6 +25,7 @@ const H2Light = styled.span`
 `;
 
 const Cases = styled.div`
+  overflow: hidden;
   padding: 0 40px;
   display: flex;
   align-items: center;

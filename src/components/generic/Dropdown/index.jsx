@@ -10,7 +10,7 @@ const Select = styled.select`
   padding: 10px 20px;
   box-sizing: border-box;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 
   font-family: 'Lato-Regular';
   appearance: button;

@@ -1,17 +1,16 @@
 import request from 'request-promise';
+import { amoCrmConfig as config } from '../config';
 
-const USER = {
-  USER_LOGIN: 'suvenirstudio@ya.ru',
-  USER_HASH: '',
-};
-
-const link = 'https://cswd.amocrm.ru/private/api/auth.php?type=json';
+const link = `https://${config.project}.amocrm.ru/private/api/auth.php?type=json`;
 
 export default cookie => (
   request.post({
     url: link,
     jar: cookie,
-    body: USER,
+    body: {
+      USER_LOGIN: config.login,
+      USER_HASH: config.hash,
+    },
     json: true,
   })
 );

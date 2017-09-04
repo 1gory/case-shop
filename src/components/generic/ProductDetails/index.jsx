@@ -22,10 +22,10 @@ const Label = styled.label`
     padding: 10px 20px;
     box-sizing: border-box;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     color: #4a4a4a;
   }
-  
+
   & input::placeholder {
     color: #9e9e9e;
   }
@@ -66,6 +66,7 @@ export const Model = ({ handleChangeForm }) => (
   <Label>
     <span>Устройство</span>
     <Dropdown name="model" onChange={handleChangeForm}>
+      <option value="iPhone 4/4S">iPhone 4/4S</option>
       <option value="iPhone 5/5S/5SE">iPhone 5/5S/5SE</option>
       <option value="iPhone 6/6S">iPhone 6/6S</option>
       <option value="iPhone 6 PLUS/6S PLUS">iPhone 6 PLUS/6S PLUS</option>

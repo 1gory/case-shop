@@ -11,7 +11,7 @@ import FeedbackForm from './FeedbackForm/index';
 import OurAdvantages from './OurAdvantages/index';
 import HowWeWork from './HowWeWork/index';
 import Comments from './Comments/index';
-import FAQ from './FAQ/index';
+// import FAQ from './FAQ/index';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -29,7 +29,7 @@ export default () => (
     <OurAdvantages />
     <HowWeWork />
     <Comments />
-    <FAQ />
+    {/* <FAQ /> */}
     <Footer />
   </Wrapper>
 );

@@ -5,7 +5,7 @@ import { Model, Material, Messenger, PhoneNumber } from '../../../generic/Produc
 const H4 = styled.h4`
   font-size: 16px;
   color: #4a4a4a;
-  padding: 15px 0 0 15px;
+  padding: 0 0 0 15px;
   margin-bottom: 10px;
 `;
 
@@ -16,7 +16,7 @@ const SendButton = styled.button`
   color: #ffffff;
   font-family: 'Lato-Regular';
   padding: 10px 50px;
-  margin: 30px;
+  margin: 20px;
 `;
 
 export default class extends Component {

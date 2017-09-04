@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/casewood');
 const router = express.Router();
 
 router.use(require('./api/feedback').default);
+router.use(require('./api/message').default);
 router.use(require('./api/order').default);
 router.use(require('./api/product').default);
 

@@ -4,7 +4,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
-import IndividualPrintForm from './FormState/Form';
+import ProductForm from './FormState/Form';
 import SentState from './FormState/Sent';
 
 const Wrapper = styled.div`
@@ -121,7 +121,7 @@ export default class extends Component {
           </Description>
           {this.state.isSent ?
             <SentState handleClick={this.newOrder} /> :
-            <IndividualPrintForm
+            <ProductForm
               handleSend={this.handleSend}
               invalidNumber={this.state.invalidNumber}
             />

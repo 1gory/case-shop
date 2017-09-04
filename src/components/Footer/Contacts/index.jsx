@@ -6,7 +6,8 @@ import Scroll from 'react-scroll';
 import contactsEmail from './contact-email.svg';
 import contactsPhone from './contact-phone.svg';
 import contactsMessenger from './contact-messengers.svg';
-import FeedbackPopUp from './FeedbackPopUp';
+import FeedbackPopUp from './FeedbackPopUp/index';
+import Button from '../../generic/Form/Buttons/GhostButton';
 
 const ContactsAnchor = Scroll.Element;
 
@@ -45,16 +46,8 @@ const Info = styled.a`
   color: #ffffff;
 `;
 
-const Button = styled.button`
-  background-color: none;
-  border: solid 1px #fff;
-  border-radius: 20px;
-  background: none;
-  font-family: 'Lato-Light';
-  font-size: 16px;
-  padding: 10px 25px;
+const LeaveMessageButton = styled(Button)`
   margin: 15px;
-  color: #fff
 `;
 
 const Contact = props => (
@@ -94,7 +87,11 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
-        <FeedbackPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
+        <FeedbackPopUp
+          isOpened={this.state.isOpened}
+          handleClose={this.handleClose}
+          header="Оставить сообщение"
+        />
         <ContactsAnchor name="ContactsAnchor" />
         <Contacts>
           <Contact
@@ -115,7 +112,7 @@ export default class extends Component {
             info="+7 (925) 654-34-92"
             href="whatsapp://send?text=Здравствуйте!&phone=+79256543492"
           />
-          <Button onClick={this.handleOpen}>Оставить сообщение</Button>
+          <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>
         </Contacts>
       </Wrapper>
     );

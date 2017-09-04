@@ -1,0 +1,46 @@
+import express from 'express';
+import request from 'request';
+import Message from '../../models/message';
+import Customer from '../../models/customer';
+import auth from '../../connectors/auth';
+import lead from '../../connectors/lead';
+
+const router = express.Router();
+
+router.post('/message', async (req, res, next) => {
+  try {
+    const phone = req.body.phone;
+    const message = req.body.message;
+    const name = 'new customer';
+    const customer = await Customer.findOneOrCreate({ phone }, { phone, name });
+    await Message.create({
+      message,
+      customer,
+    });
+    const cookieJar = request.jar();
+    await auth(cookieJar);
+    await lead(
+      {
+        name: 'Сообщение',
+        custom_fields: [
+          {
+            id: 386315,
+            values: [
+              {
+                value: phone,
+              },
+            ],
+          },
+        ],
+      },
+      cookieJar,
+    );
+    res.json({
+      status: 'success',
+    });
+  } catch (e) {
+    next(e);
+  }
+});
+
+export default router;

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import modalClose from '../../../../icons/modal-close.svg';
 import Popup from '../../../generic/Popup';
+import validatePhone from '../../../../functions/validatePhone';
 import SentState from './Sent';
 import Form from './Details';
-import validatePhone from '../../../../functions/validatePhone';
 
 const WrapperH3 = styled.div`
   display: flex;
@@ -27,22 +27,19 @@ const StyledImg = styled.img`
 export default class extends Component {
   constructor() {
     super();
-    this.state = {
-      isSent: false,
-    };
-
-    this.handleSendForm = this.handleSendForm.bind(this);
-    this.newOrder = this.newOrder.bind(this);
+    this.state = {};
+    this.handleSend = this.handleSend.bind(this);
+    this.newMessage = this.newMessage.bind(this);
   }
 
-  newOrder(event) {
+  newMessage(event) {
     event.preventDefault();
     this.setState({
       isSent: false,
     });
   }
 
-  handleSendForm(event, formData) {
+  handleSend(event, formData) {
     event.preventDefault();
     if (!formData.phone || !(validatePhone(formData.phone))) {
       this.setState({
@@ -50,8 +47,7 @@ export default class extends Component {
       });
       return;
     }
-
-    fetch('/api/order', {
+    fetch('/api/message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -71,19 +67,18 @@ export default class extends Component {
     });
   }
 
-  // TODO компонент дублируется
   render() {
     return (
       <Popup isOpened={this.props.isOpened}>
         {/* TODO move to component */}
         <WrapperH3>
-          <H3>Детали заказа</H3>
+          <H3>{this.props.header}</H3>
           <StyledImg onClick={this.props.handleClose} src={modalClose} />
         </WrapperH3>
         {/* ====================== */}
         {this.state.isSent ?
-          <SentState handleClick={this.newOrder} /> :
-          <Form handleSendForm={this.handleSendForm} invalidNumber={this.state.invalidNumber} />
+          <SentState handleClick={this.newMessage} /> :
+          <Form handleSend={this.handleSend} invalidNumber={this.state.invalidNumber} />
         }
       </Popup>
     );

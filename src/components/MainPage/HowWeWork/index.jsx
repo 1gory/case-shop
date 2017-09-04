@@ -41,9 +41,9 @@ const IconWrapper3 = styled(IconWrapper)`
 `;
 
 const IconWrapper4 = styled(IconWrapper)`
-  padding: 30px;
-  width: 30px;
-  height: 30px;
+  padding: 25px;
+  width: 45px;
+  height: 45px;
 `;
 
 const Name = styled.div`
@@ -79,8 +79,7 @@ export default () => (
           </IconWrapper>
           <Name>Заказ</Name>
           <Description>
-            Вы выбираете тип одежды, цвет, цифры и надпись.
-            Также возможен заказ индивидуального принта.
+            Вы загружаете свое фото или картинку и выбираете способ получения макета
           </Description>
           <Delimiter />
         </Col>
@@ -91,7 +90,18 @@ export default () => (
           </IconWrapper>
           <Name>Оформление</Name>
           <Description>
-            Наши специалисты свяжутся с вами для уточнения пожеланий и подверждения заказа.
+            Наши специалисты свяжутся для уточнения деталей. После этого мы отправим макет Вашего будущего чехла
+          </Description>
+          <Delimiter />
+        </Col>
+
+        <Col xs={12} sm={12} md={3} lg={3}>
+          <IconWrapper4>
+            <HowWeWorkIcon4 />
+          </IconWrapper4>
+          <Name>Изготовление</Name>
+          <Description>
+            Мы изготовим чехол учитывая все Ваши пожелания и отправим его в день заказа
           </Description>
           <Delimiter />
         </Col>
@@ -102,20 +112,7 @@ export default () => (
           </IconWrapper3>
           <Name>Доставка</Name>
           <Description>
-            Мы отправляем товар в день заказа и вы получаете его через 2-3 дня (Мск, Спб),
-            либо в течение 3-7 дней. Оплата при получении.
-          </Description>
-          <Delimiter />
-        </Col>
-
-        <Col xs={12} sm={12} md={3} lg={3}>
-          <IconWrapper4>
-            <HowWeWorkIcon4 />
-          </IconWrapper4>
-          <Name>Результат</Name>
-          <Description>
-            С именной одеждой вы всегда будете в центре внимания!
-            Нам будет очень приятно, если вы оставите фотографию и отзыв.
+            Мы отправляем товар в день заказа и вы получаете его через 1-3 дня (Мск, Спб), либо в течение 3-7 дней
           </Description>
         </Col>
       </Row>

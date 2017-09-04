@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReactSwipe from 'react-swipe';
 import avatar from './avatar.jpg';
+// import blankAvatar from './user-min.png';
 import nextArrow from './carousel-next.svg';
 import prevArrow from './carousel-prev.svg';
+import LeaveCommentForm from './LeaveCommentForm';
 
 const Wrapper = styled.div`
   position: relative;
@@ -63,6 +65,10 @@ const Thumb = styled.div`
     (activeIndex === index ? '#e9e9e9' : '#b7b7b7')};
   display: inline-block;
   margin: 8px;
+`;
+
+const Thumbs = styled.div`
+  padding-top: 20px;
 `;
 
 export default class extends Component {
@@ -131,13 +137,17 @@ export default class extends Component {
               Спасибо, хорошие чехлы.
             </Comment>
           </div>
+
+          <div>
+            <LeaveCommentForm />
+          </div>
         </ReactSwipe>
 
-        <div>
+        <Thumbs>
           {[...Array(3)].map((x, i) =>
             <Thumb index={i} activeIndex={this.state.activeIndex} />,
           )}
-        </div>
+        </Thumbs>
 
         <PrevButton src={prevArrow} onClick={this.prev} />
         <NextButton src={nextArrow} onClick={this.next} />
