@@ -27,6 +27,7 @@
     "react-scroll": "^1.5.4",
     "react-swipe": "^5.0.8",
     "react-transition-group": "^1.2.0",
+    "react-yandex-metrika": "^2.2.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "styled-components": "^2.1.2",

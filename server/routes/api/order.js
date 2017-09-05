@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/order', async (req, res, next) => {
   try {
+    const ip = req.headers['x-forwarded-for'];
     const cookies = new Cookies(req.headers.cookie);
     const phone = req.body.phone;
     const model = req.body.model;
@@ -67,6 +68,14 @@ router.post('/order', async (req, res, next) => {
             values: [
               {
                 value: image,
+              },
+            ],
+          },
+          {
+            id: 428587,
+            values: [
+              {
+                value: ip,
               },
             ],
           },

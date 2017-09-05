@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/feedback', async (req, res, next) => {
   try {
+    const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
     const name = req.body.name;
     const customer = await Customer.findOneOrCreate({ phone }, { phone, name });
@@ -22,6 +23,16 @@ router.post('/feedback', async (req, res, next) => {
       {
         name: 'Запрос обратной связи',
         phone: name,
+        custom_fields: [
+          {
+            id: 428587,
+            values: [
+              {
+                value: ip,
+              },
+            ],
+          },
+        ],
       },
       cookieJar,
     );

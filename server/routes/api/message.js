@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/message', async (req, res, next) => {
   try {
+    const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
     const message = req.body.message;
     const name = 'new customer';
@@ -28,6 +29,22 @@ router.post('/message', async (req, res, next) => {
             values: [
               {
                 value: phone,
+              },
+            ],
+          },
+          {
+            id: 428575,
+            values: [
+              {
+                value: message,
+              },
+            ],
+          },
+          {
+            id: 428587,
+            values: [
+              {
+                value: ip,
               },
             ],
           },

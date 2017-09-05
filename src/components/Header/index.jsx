@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
+import Mertika from '../generic/YandexMetrika';
 import Menu from './Menu';
 // import RubleSign from '../RubleSign';
 // import basketLogo from './basket-logo.svg';
@@ -67,6 +68,7 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
+        <Mertika />
         <HeaderWrapper>
           <Header>
             <Link to="/">
