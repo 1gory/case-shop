@@ -97,8 +97,8 @@ export default class extends Component {
     const reader = new FileReader();
     const file = event.target.files[0];
     reader.onload = (/* e */) => {
-      if (file.size > 3000000) {
-        alert('Пожалуйста, выберите файл меньше 3Мб');
+      if (file.size > 5000000) {
+        alert('Пожалуйста, выберите файл меньше 5Мб');
         this.setState({
           fileFormStatus: EMPTY_FORM_STATUS,
         });
