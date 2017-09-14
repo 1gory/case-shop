@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
-import SentFileForm from './State/Sent';
 import ErrorFileForm from './State/Error';
 import '../../MainPage/Form/styles.css';
 
@@ -19,7 +18,6 @@ const FileForm = styled.form`
 const EMPTY_FORM_STATUS = 'empty';
 const UPLOADED_FROM_STATUS = 'uploaded';
 const LOADING_FORM_STATUS = 'loading';
-const SENT_FORM_STATUS = 'sent';
 const ERROR_FORM_STATUS = 'error';
 
 export default class extends Component {
@@ -112,6 +110,7 @@ export default class extends Component {
 
   handleRemoveImage(event) {
     event.preventDefault();
+    this.cookies.remove('imageUrl', { path: '/' });
     this.setState({
       fileFormStatus: EMPTY_FORM_STATUS,
     });
@@ -180,9 +179,6 @@ export default class extends Component {
         break;
       case ERROR_FORM_STATUS:
         fileForm = <ErrorFileForm handleClick={this.handleClearForm} />;
-        break;
-      case SENT_FORM_STATUS:
-        fileForm = <SentFileForm handleClick={this.handleClearForm} />;
         break;
       default:
         break;

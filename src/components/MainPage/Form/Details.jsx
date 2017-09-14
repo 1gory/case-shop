@@ -64,7 +64,7 @@ export default class extends Component {
 
     this.state = {
       messenger: 'whatsapp',
-      model: 'iPhone 5/5S/5SE',
+      model: 'iPhone 4/4S',
       material: 'light',
     };
     this.handleChangeForm = this.handleChangeForm.bind(this);

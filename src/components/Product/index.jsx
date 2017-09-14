@@ -6,6 +6,7 @@ import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import SentState from './FormState/Sent';
+import validatePhone from '../../functions/validatePhone';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -21,10 +22,14 @@ const MainImageWrapper = styled.div`
   text-align: center;
   padding: 30px 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MainImage = styled.img`
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 `;
 
 const Thumbs = styled.div`
@@ -70,6 +75,7 @@ export default class extends Component {
     };
 
     this.newOrder = this.newOrder.bind(this);
+    this.handleSend = this.handleSend.bind(this);
   }
 
   async componentWillMount() {
@@ -89,6 +95,35 @@ export default class extends Component {
   newOrder() {
     this.setState({
       isSent: false,
+    });
+  }
+
+  // TODO move sending to separated method
+  handleSend(event, formData) {
+    event.preventDefault();
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
+      return;
+    }
+    fetch('/api/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(formData),
+    }).then(async (data) => {
+      const response = await data.json();
+      if (response.status) {
+        this.setState({
+          isSent: true,
+        });
+      }
+    }).catch((e) => {
+      console.log(e);
     });
   }
 

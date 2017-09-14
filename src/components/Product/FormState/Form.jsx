@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Cookies from 'universal-cookie';
 import { Model, Material, PhoneNumber } from '../../generic/ProductDetails';
 import ImageForm from '../../generic/UploadFileForm';
-import validatePhone from '../../../functions/validatePhone';
 
 const OrderForm = styled.form`
   padding-top: 45px;
@@ -57,7 +57,11 @@ export default class extends Component {
     this.state = {};
     this.handleChangeForm = this.handleChangeForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleSend = this.handleSend.bind(this);
+  }
+
+  componentDidMount() {
+    this.cookies = new Cookies();
+    this.cookies.remove('imageUrl', { path: '/' });
   }
 
   handleClick(e) {
@@ -71,35 +75,6 @@ export default class extends Component {
     const state = {};
     state[e.target.name] = e.target.value;
     this.setState(state);
-  }
-
-  // TODO move sending to separated method
-  handleSend(event, formData) {
-    event.preventDefault();
-    if (!formData.phone || !(validatePhone(formData.phone))) {
-      this.setState({
-        invalidNumber: true,
-      });
-      return;
-    }
-    fetch('/api/order', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(formData),
-    }).then(async (data) => {
-      const response = await data.json();
-      if (response.status) {
-        this.setState({
-          isSent: true,
-        });
-      }
-    }).catch((e) => {
-      console.log(e);
-    });
   }
 
   render() {

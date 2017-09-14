@@ -1,7 +1,6 @@
 import express from 'express';
 import request from 'request';
 import moment from 'moment';
-import Cookies from 'universal-cookie';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
 
@@ -10,12 +9,11 @@ const router = express.Router();
 router.post('/order', async (req, res, next) => {
   try {
     const ip = req.headers['x-forwarded-for'];
-    const cookies = new Cookies(req.headers.cookie);
     const phone = req.body.phone;
     const model = req.body.model;
     const messenger = req.body.messenger;
     const material = req.body.material;
-    const image = `http://casewood.ru/${cookies.get('imageUrl')}`;
+    const image = `http://casewood.ru/${req.body.image}`;
     const cookieJar = request.jar();
     await auth(cookieJar);
     const date = new Date();

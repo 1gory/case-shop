@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
-import dummy from './16.jpg';
+import image from './1_grut_turn_bamb_gray.jpg';
+import teamLogo from './2_barcelona_turn_red_gray.jpg';
+import name from './3_marina_turn_red_gray.jpg';
+import zodiac from './4_aries_zodiac_turn_bamb_gray.jpg';
 import OrderPopUp from './OrderPopUp';
 
 const H2 = styled.h2`
@@ -77,25 +80,25 @@ export default class extends Component {
             <Row>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper>
-                  <ImgExample src={dummy} alt="" />
+                  <ImgExample src={image} alt="" />
                   <div>С вашей картинкой или логотипом</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper>
-                  <ImgExample src={dummy} alt="" />
-                  <div>С лого любимой футбольной команды</div>
+                  <ImgExample src={teamLogo} alt="" />
+                  <div>С логотипом любимой команды</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper>
-                  <ImgExample src={dummy} alt="" />
+                  <ImgExample src={name} alt="" />
                   <div>С вашим именем</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper>
-                  <ImgExample src={dummy} alt="" />
+                  <ImgExample src={zodiac} alt="" />
                   <div>С вашим гороскопом</div>
                 </ExampleWrapper>
               </Col>

@@ -1,6 +1,9 @@
+/* eslint-disable no-param-reassign */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
+import Cookies from 'universal-cookie';
 import Scroll from 'react-scroll';
 import skip from './skip-to-form.svg';
 import DetailsForm from './Details';
@@ -8,6 +11,7 @@ import validatePhone from '../../../functions/validatePhone';
 import './styles.css';
 
 import UpoadFileForm from '../../generic/UploadFileForm';
+import SentFileForm from '../../generic/UploadFileForm/State/Sent';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -42,8 +46,13 @@ export default class extends Component {
     };
 
     this.handleSendForm = this.handleSendForm.bind(this);
+    this.newOrder = this.newOrder.bind(this);
     this.expand = this.expand.bind(this);
     this.collapse = this.collapse.bind(this);
+  }
+
+  componentDidMount() {
+    this.cookies = new Cookies();
   }
 
   expand() {
@@ -58,12 +67,19 @@ export default class extends Component {
     });
   }
 
+  newOrder() {
+    this.setState({
+      fileFormStatus: EMPTY_FORM_STATUS,
+      isOpened: true,
+    });
+  }
+
   handleSendForm(event, formData) {
     event.preventDefault();
     if (!formData.phone || !(validatePhone(formData.phone))) {
       return;
     }
-
+    formData.image = this.cookies.get('imageUrl');
     fetch('/api/order', {
       method: 'POST',
       headers: {
@@ -93,7 +109,12 @@ export default class extends Component {
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <Form>
-          <UpoadFileForm expand={this.expand} collapse={this.collapse} />
+          {this.state.fileFormStatus === SENT_FORM_STATUS ?
+            <SentFileForm handleClick={this.newOrder} /> :
+            <UpoadFileForm
+              expand={this.expand}
+              collapse={this.collapse}
+            /> }
 
           <CSSTransitionGroup
             transitionName="detalis"
