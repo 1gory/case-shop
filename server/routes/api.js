@@ -85,25 +85,16 @@ router.post('/image', async (req, res, next) => {
       ExifImage({ image: targetPath }, (error, exifData) => {
         if (error) {
           console.log(`Error: ' + ${error.message}`);
-          // console.log(exifData); // Do something with your data!
         } else if (exifData.image.Orientation === 8 || exifData.image.Orientation === 6) {
-          console.log("=-=-=-=-==--==-=-==-=-==--==--=-=-=-=-=-=-=-=-==-=--=");
-          console.log(exifData.image.Orientation);
-          console.log("=-=-=-=-==--==-=-==-=-==--==--=-=-=-=-=-=-=-=-==-=--=");
           swapRotation = true;
         }
 
-        sizeOf(targetPath, (error, size) => {
-          if (error) throw error;
+        sizeOf(targetPath, (sizeOfError, size) => {
+          if (sizeOfError) throw sizeOfError;
           let horizontal = size.width / size.height;
           if (swapRotation) {
             horizontal = 1 / horizontal;
           }
-          console.log("++++++++++++++++++");
-          console.log(horizontal);
-          console.log(swapRotation);
-          console.log("++++++++++++++++++");
-          console.log(size);
           res.json({
             status: 'success',
             path: path.join(dateFolder, fileName),
