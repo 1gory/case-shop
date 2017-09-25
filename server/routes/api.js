@@ -5,6 +5,7 @@ import path from 'path';
 import sizeOf from 'image-size';
 import mongoose from 'mongoose';
 import request from 'request';
+import { ExifImage } from 'exif';
 
 mongoose.connect('mongodb://localhost/casewood');
 
@@ -78,12 +79,36 @@ router.post('/image', async (req, res, next) => {
     const targetPath = path.join(uploadDir, fileName);
     fs.rename(file.path, targetPath, (err) => {
       if (err) throw err;
-      sizeOf(targetPath, (error, size) => {
-        if (error) throw error;
-        res.json({
-          status: 'success',
-          path: path.join(dateFolder, fileName),
-          horizontal: size.width / size.height > 1,
+
+      let swapRotation = false;
+
+      ExifImage({ image: targetPath }, (error, exifData) => {
+        if (error) {
+          console.log(`Error: ' + ${error.message}`);
+          // console.log(exifData); // Do something with your data!
+        } else if (exifData.image.Orientation === 8 || exifData.image.Orientation === 6) {
+          console.log("=-=-=-=-==--==-=-==-=-==--==--=-=-=-=-=-=-=-=-==-=--=");
+          console.log(exifData.image.Orientation);
+          console.log("=-=-=-=-==--==-=-==-=-==--==--=-=-=-=-=-=-=-=-==-=--=");
+          swapRotation = true;
+        }
+
+        sizeOf(targetPath, (error, size) => {
+          if (error) throw error;
+          let horizontal = size.width / size.height;
+          if (swapRotation) {
+            horizontal = 1 / horizontal;
+          }
+          console.log("++++++++++++++++++");
+          console.log(horizontal);
+          console.log(swapRotation);
+          console.log("++++++++++++++++++");
+          console.log(size);
+          res.json({
+            status: 'success',
+            path: path.join(dateFolder, fileName),
+            horizontal: horizontal > 1,
+          });
         });
       });
     });

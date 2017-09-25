@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReactSwipe from 'react-swipe';
-import avatar from './avatar.jpg';
+import noPhoto from './user-min.png';
+import marinaAvatar from './marina.jpg';
+import dmitryAvatar from './dmitry.jpg';
 // import blankAvatar from './user-min.png';
 import nextArrow from './carousel-next.svg';
 import prevArrow from './carousel-prev.svg';
@@ -112,29 +114,28 @@ export default class extends Component {
         >
           {/* For some reason the included components don't work correctly */}
           <div>
-            <Avatar src={avatar} alt="avatar" />
-            <Name>Алексей, Москва</Name>
+            <Avatar src={marinaAvatar} alt="avatar" />
+            <Name>Марина, Саратов</Name>
             <Comment>
-              Подарил своей девушке чехол со своим портретом на день валентина.
-              Спасибо, хорошие чехлы.
+              Заказала два чехла, себе и в продарок (на фото мой)
+              всё понравилось, доставили быстро.
             </Comment>
           </div>
 
           <div>
-            <Avatar src={avatar} alt="avatar" />
-            <Name>Алексей, Москва</Name>
+            <Avatar src={dmitryAvatar} alt="avatar" />
+            <Name>Дмитрий, Москва</Name>
             <Comment>
-              Подарил своей девушке чехол со своим портретом на день валентина.
-              Спасибо, хорошие чехлы.
+              Качественный чехол, приятно лежит в руке, еще не ронял, но выглядит прочным.
             </Comment>
           </div>
 
           <div>
-            <Avatar src={avatar} alt="avatar" />
-            <Name>Алексей, Москва</Name>
+            <Avatar src={noPhoto} alt="avatar" />
+            <Name>Алексей, Новосибирск</Name>
             <Comment>
-              Подарил своей девушке чехол со своим портретом на день валентина.
-              Спасибо, хорошие чехлы.
+              Девушка подарила чехол со своей фотографией на день Валентина.
+              Хороший чехол, Спасибо!
             </Comment>
           </div>
 

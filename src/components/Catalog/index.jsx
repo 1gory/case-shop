@@ -6,6 +6,7 @@ import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Card from '../generic/Card/index';
 import getProducts from '../../functions/getProduct';
+import getImage from '../../functions/getImage';
 
 const H2 = styled.h2`
   font-family: 'Lato-SemiBold';
@@ -76,13 +77,13 @@ export default class extends Component {
                 <Card
                   name={product.name}
                   price={product.price}
-                  image={product.image}
+                  image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
                   id={product.id}
                 />
               </Col>))}
           </Row>
         </RowWrapper>
-        {/* <PaginationWrapper>*/}
+        {/* <PaginationWrapper> */}
         {/* <PaginationLink>1</PaginationLink> */}
         {/* <PaginationLink>2</PaginationLink> */}
         {/* <PaginationLink>3</PaginationLink> */}

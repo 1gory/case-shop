@@ -5,6 +5,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import Scroll from 'react-scroll';
 import Card from '../../generic/Card/index';
 import getProducts from '../../../functions/getProduct';
+import getImage from '../../../functions/getImage';
 
 const CatalogAncor = Scroll.Element;
 
@@ -47,7 +48,6 @@ export default class extends Component {
   }
 
   async componentWillMount() {
-
     const products = await getProducts('products');
 
     this.setState({
@@ -66,7 +66,7 @@ export default class extends Component {
               <Card
                 name={product.name}
                 price={product.price}
-                image={product.image}
+                image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
                 id={product.id}
               />
             </Col>))}

@@ -1,8 +1,9 @@
 import React from 'react';
 import Scroll from 'react-scroll';
 import styled from 'styled-components';
-import white from './white.jpg';
-import dark from './dark.jpg';
+import { Link } from 'react-router-dom';
+import white from './23_girl_front_bamb_white.jpg';
+import dark from './22_sailor_2_front_red_white.jpg';
 import RubleSign from '../../generic/RubleSign';
 
 const Wrapper = styled.div`
@@ -34,15 +35,17 @@ const Cases = styled.div`
 `;
 
 const Case = styled.img`
-  width: 130px;
+  width: 145px;
   padding-bottom: 15px;
 `;
 
-const CaseWrapper = styled.div`
+const CaseWrapper = styled(Link)`
   color: black;
   text-align: cener;
   font-size: 16px;
   font-family: 'Lato-SemiBold';
+  text-decoration: none;
+  color: #000;
 `;
 
 const Price = styled.div`
@@ -68,12 +71,12 @@ export default () => (
       <H2Light>и мы вышлем вам макет<br /> вашего будущего чехла</H2Light>
     </H2>
     <Cases>
-      <CaseWrapper>
+      <CaseWrapper to="#">
         <Case src={white} />
         <div>Гравировка <br />по фотографии</div>
       </CaseWrapper>
       <Price>1290<RubleSign /></Price>
-      <CaseWrapper>
+      <CaseWrapper to="/product/59c54598c9ae0a42557fa1a1">
         <Case src={dark} />
         <div>Гравировка <br />по картинке</div>
       </CaseWrapper>

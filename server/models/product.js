@@ -9,12 +9,27 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  mainImage: {
+  print_code: {
+    type: String,
+    required: true,
+  },
+  order: {
+    type: Number,
+    required: true,
+  },
+  active: {
+    type: Boolean,
+    required: true,
+  },
+  main_image_wood_type: {
     type: String,
     required: true,
   },
   images: {
     type: [String],
+  },
+  active_images_keys: {
+    type: [Number],
   },
   description: {
     type: String,

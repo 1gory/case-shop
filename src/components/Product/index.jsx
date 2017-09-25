@@ -7,6 +7,7 @@ import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import SentState from './FormState/Sent';
 import validatePhone from '../../functions/validatePhone';
+import getGalleryImage from '../../functions/getGalleryImage';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -70,7 +71,6 @@ export default class extends Component {
     super();
     this.state = {
       product: {},
-      activeImageIndex: 0,
       isSent: false,
     };
 
@@ -81,8 +81,30 @@ export default class extends Component {
   async componentWillMount() {
     const id = this.props.match.url.split('/').pop();
     const products = await getProducts(`products/${id}`);
+
+    products[0].images = products[0].images.map(image =>
+      getGalleryImage(
+        products[0].printCode,
+        'compressed',
+        image,
+      ),
+    );
+
+    if (products[0].activeImagesKeys.length <= 2) {
+      products[0].images.push(
+        getGalleryImage(
+          'common',
+          '',
+          'photo3.jpg',
+        ),
+      );
+
+      products[0].activeImagesKeys.push(products[0].images.length - 1);
+    }
+
     this.setState({
       product: products[0],
+      activeImageIndex: products[0].activeImagesKeys[0],
     });
   }
 
@@ -139,12 +161,22 @@ export default class extends Component {
         />
         {this.state.product.images && <Gallery>
           <MainImageWrapper>
-            <MainImage src={this.state.product.images[this.state.activeImageIndex]} />
+            <MainImage
+              src={this.state.product.images[this.state.activeImageIndex]}
+            />
           </MainImageWrapper>
           <Thumbs>
-            {this.state.product.images.map((image, index) => (
-              <Thumb onClick={() => this.handleClickToThumb(index)} src={image} />
-            ))}
+            {this.state.product.images.map((image, index) => {
+              if (this.state.product.activeImagesKeys.indexOf(index) !== -1) {
+                return (
+                  <Thumb
+                    onClick={() => this.handleClickToThumb(index)}
+                    src={image}
+                  />
+                );
+              }
+              return null;
+            })}
           </Thumbs>
         </Gallery>}
         <Details>

@@ -31,6 +31,7 @@ const Form = styled.div`
 `;
 
 const FileFormAnchor = Scroll.Element;
+const scroller = Scroll.scroller;
 
 const EMPTY_FORM_STATUS = 'empty';
 const SENT_FORM_STATUS = 'sent';
@@ -100,7 +101,13 @@ export default class extends Component {
       this.setState({
         fileFormStatus: ERROR_FORM_STATUS,
       });
-    });
+    }).then(() => (
+      scroller.scrollTo('FileFormAnchor', {
+        duration: 800,
+        delay: 0,
+        smooth: true,
+      })
+    ));
   }
 
   render() {

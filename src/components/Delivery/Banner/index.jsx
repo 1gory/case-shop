@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import worldMap from './world-map.png';
+import worldMap from './world-map.jpg';
 
 const Wrapper = styled.div`
   background-image: url(${worldMap});

@@ -12,7 +12,9 @@ export default url => (
     return responseData.result.map(product => ({
       id: product._id,
       name: product.name,
-      image: product.mainImage,
+      woodType: product.main_image_wood_type,
+      printCode: product.print_code,
+      activeImagesKeys: product.active_images_keys,
       images: product.images,
       price: product.price,
       description: product.description,

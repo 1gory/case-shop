@@ -13,8 +13,7 @@ const UploadedFileWrapper = styled.div`
 `;
 
 const UploadedFile = styled.img`
-  ${({ isHorizontal }) => (isHorizontal ? 'max-width: 300px;' : 'height: inherit')};
-  width: ${({ isHorizontal }) => (isHorizontal ? '80%' : 'initial')};
+  ${({ isHorizontal }) => (isHorizontal ? 'max-width: 80%; max-height: 100%' : 'height: inherit')};
 `;
 
 const RemoveUploadedImageLink = styled.div`

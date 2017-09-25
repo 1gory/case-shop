@@ -15,7 +15,7 @@ router.param('productId', (req, res, next, id) => {
 
 router.get('/products', async (req, res, next) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find({ active: true }, null, { sort: { order: 1 } });
     res.json({
       status: 'success',
       result: products,

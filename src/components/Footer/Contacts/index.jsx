@@ -97,8 +97,8 @@ export default class extends Component {
           <Contact
             icon={contactsEmail}
             label="Email"
-            info="casewod.store@gmail.com"
-            href="mailto:casewod.store@gmail.com"
+            info="casewood.store@gmail.com"
+            href="mailto:casewood.store@gmail.com"
           />
           <Contact
             icon={contactsPhone}

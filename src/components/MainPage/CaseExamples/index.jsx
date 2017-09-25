@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
-import image from './1_grut_turn_bamb_gray.jpg';
+import { Link } from 'react-router-dom';
+import image from './22_lion_turn_bamb_gray.jpg';
 import teamLogo from './2_barcelona_turn_red_gray.jpg';
 import name from './3_marina_turn_red_gray.jpg';
 import zodiac from './4_aries_zodiac_turn_bamb_gray.jpg';
@@ -23,8 +24,11 @@ const ImgExample = styled.img`
   padding-bottom: 40px;
 `;
 
-const ExampleWrapper = styled.div`
+const ExampleWrapper = styled(Link)`
   padding-top: 40px;
+  display: block;
+  text-decoration: none;
+  color: #000;
 `;
 
 const RowWrapper = styled.div`
@@ -79,25 +83,25 @@ export default class extends Component {
           <RowWrapper>
             <Row>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper>
+                <ExampleWrapper to="/product/59c36eebc9ae0a42557f4ad4">
                   <ImgExample src={image} alt="" />
                   <div>С вашей картинкой или логотипом</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper>
+                <ExampleWrapper to="/product/59c2cee2c9ae0a42557f3dfa">
                   <ImgExample src={teamLogo} alt="" />
                   <div>С логотипом любимой команды</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper>
+                <ExampleWrapper to="/product/59c2d14bc9ae0a42557f3ec2">
                   <ImgExample src={name} alt="" />
                   <div>С вашим именем</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper>
+                <ExampleWrapper to="/product/59c2d957c9ae0a42557f413c">
                   <ImgExample src={zodiac} alt="" />
                   <div>С вашим гороскопом</div>
                 </ExampleWrapper>

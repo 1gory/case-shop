@@ -6,6 +6,7 @@ const Message = styled.h3`
   font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
+  text-align: center;
   padding: 80px 40px 120px 40px;
 `;
 

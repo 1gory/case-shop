@@ -4,6 +4,7 @@ import preloader from './preloader.svg';
 
 const PreloaderWrapper = styled.div`
   padding: 86px;
+  text-align: center;
 `;
 
 export default () => (

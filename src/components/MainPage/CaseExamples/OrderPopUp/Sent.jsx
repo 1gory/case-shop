@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  padding: 80px 40px 120px 40px;
+`;
+
 const Message = styled.h3`
   color: #59cb78;
   font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
-  padding: 80px 40px 120px 40px;
 `;
 
 const Button = styled.button`
@@ -23,8 +26,10 @@ const Button = styled.button`
 `;
 
 export default ({ handleClick }) => (
-  <Message>
-    Спасибо! Мы свяжемся с вами как можно скорее.
+  <Wrapper>
+    <Message>
+      Спасибо! Мы свяжемся с вами как можно скорее.
+    </Message>
     <Button onClick={handleClick}>Сделать еще заказ</Button>
-  </Message>
+  </Wrapper>
 );
