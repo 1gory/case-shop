@@ -5,7 +5,11 @@ import path from 'path';
 import sizeOf from 'image-size';
 import mongoose from 'mongoose';
 import request from 'request';
-import { ExifImage } from 'exif';
+// import { ExifImage } from 'exif';
+import Thumbnail from 'thumbnail';
+// import readChunk from 'read-chunk';
+// import fileType from 'file-type';
+import jo from 'jpeg-autorotate';
 
 mongoose.connect('mongodb://localhost/casewood');
 
@@ -40,12 +44,52 @@ const getDateFolderName = () => {
 const getUploadPath = (dateFolderPath) => {
   let uploadDir = '../../uploads';
   uploadDir = path.join(__dirname, uploadDir, dateFolderPath);
+  const thumbnail = path.join(uploadDir, 'thumbnails');
+  const rotate = path.join(uploadDir, 'rotate');
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
+    fs.mkdirSync(thumbnail);
+    fs.mkdirSync(rotate);
   }
 
   return uploadDir;
 };
+
+const rotateImage = fileName => (
+  new Promise((resolve) => {
+    const dateFolder = getDateFolderName();
+    const uploadDir = getUploadPath(dateFolder);
+    const targetPath = path.join(uploadDir, fileName);
+
+    jo.rotate(targetPath, { quality: 85 }, (rotateError, buffer, orientation) => {
+      if (rotateError) {
+        console.log(`An error occurred when rotating the file: ${rotateError.message}`);
+        resolve(uploadDir);
+      }
+      console.log(`Orientation was: ${orientation}`);
+      // console.log(buffer);
+      const newTargetPath = path.join(uploadDir, 'rotate', fileName);
+      fs.writeFile(newTargetPath, buffer);
+      resolve(path.join(uploadDir, 'rotate'));
+    });
+  })
+);
+
+const makeThumbnail = (imagePath, imageName) => (
+  new Promise((resolve) => {
+    const dateFolder = getDateFolderName();
+    const uploadDir = getUploadPath(dateFolder);
+    const thumbnailPath = path.join(uploadDir, 'thumbnails');
+    const thumbnail = new Thumbnail(imagePath, thumbnailPath);
+    thumbnail.ensureThumbnail(imageName, 200, 200, (thumbnailErr, thumbnailFilename) => {
+      if (thumbnailErr) {
+        resolve(path.join(dateFolder, imageName));
+      } else {
+        resolve(path.join(dateFolder, 'thumbnails', thumbnailFilename));
+      }
+    });
+  })
+);
 
 const MAX_ALLOWED_CONTENT_LENGTH = 10e6; // 10Mb
 
@@ -76,32 +120,18 @@ router.post('/image', async (req, res, next) => {
     const fileName = `${Date.now()}_${originalFileName}`;
     const dateFolder = getDateFolderName();
     const uploadDir = getUploadPath(dateFolder);
-    const targetPath = path.join(uploadDir, fileName);
-    fs.rename(file.path, targetPath, (err) => {
+    const imagePath = path.join(uploadDir, fileName);
+    fs.rename(file.path, imagePath, (err) => {
       if (err) throw err;
-
-      let swapRotation = false;
-
-      ExifImage({ image: targetPath }, (error, exifData) => {
-        if (error) {
-          console.log(`Error: ' + ${error.message}`);
-        } else if (exifData.image.Orientation === 8 || exifData.image.Orientation === 6) {
-          swapRotation = true;
-        }
-
-        sizeOf(targetPath, (sizeOfError, size) => {
-          if (sizeOfError) throw sizeOfError;
-          let horizontal = size.width / size.height;
-          if (swapRotation) {
-            horizontal = 1 / horizontal;
-          }
+      rotateImage(fileName)
+        .then(rotatedImagePath => (makeThumbnail(rotatedImagePath, fileName)))
+        .then((imageUrl) => {
           res.json({
             status: 'success',
-            path: path.join(dateFolder, fileName),
-            horizontal: horizontal > 1,
+            path: imageUrl,
+            // horizontal: horizontal > 1,
           });
         });
-      });
     });
   } catch (e) {
     next(e);

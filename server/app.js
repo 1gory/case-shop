@@ -8,6 +8,10 @@ import index from './routes/index';
 import api from './routes/api';
 import loader from './loader';
 
+process.on('uncaughtException', (error) => {
+  console.log(error.stack);
+});
+
 const app = express();
 
 app.use(compression());
@@ -21,7 +25,7 @@ app.use(morgan('combined'));
 app.use('/', index);
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
-
+app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.static(path.resolve(__dirname, '..', 'uploads')));
 
 app.use('/api', api);

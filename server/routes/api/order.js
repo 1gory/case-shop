@@ -3,6 +3,7 @@ import request from 'request';
 import moment from 'moment';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
+import { config } from '../../config';
 
 const router = express.Router();
 
@@ -11,9 +12,10 @@ router.post('/order', async (req, res, next) => {
     const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
     const model = req.body.model;
+    const referer = req.headers.referer;
     const messenger = req.body.messenger;
     const material = req.body.material;
-    const image = `http://casewood.ru/${req.body.image}`;
+    const image = req.body.image ? `${config.production.url}/${req.body.image}` : null;
     const cookieJar = request.jar();
     await auth(cookieJar);
     const date = new Date();
@@ -74,6 +76,14 @@ router.post('/order', async (req, res, next) => {
             values: [
               {
                 value: ip,
+              },
+            ],
+          },
+          {
+            id: 434443,
+            values: [
+              {
+                value: referer,
               },
             ],
           },

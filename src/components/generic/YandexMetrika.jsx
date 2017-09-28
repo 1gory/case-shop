@@ -11,6 +11,7 @@ export default () => (
         accurateTrackBounce: true,
         webvisor: true,
       }}
+      version="2"
     />
   </div>
 );

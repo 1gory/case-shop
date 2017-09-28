@@ -54,7 +54,11 @@ const Button = styled.button`
 export default class extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      messenger: 'whatsapp',
+      model: 'iPhone 4/4S',
+      material: 'light',
+    };
     this.handleChangeForm = this.handleChangeForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
