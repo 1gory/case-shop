@@ -17,6 +17,7 @@
     "ignore-styles": "^5.0.1",
     "image-size": "^0.6.1",
     "jpeg-autorotate": "^3.0.1",
+    "log4js": "^2.3.4",
     "moment": "^2.18.1",
     "mongoose": "^4.11.5",
     "morgan": "^1.8.2",

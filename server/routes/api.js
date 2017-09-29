@@ -10,6 +10,15 @@ import Thumbnail from 'thumbnail';
 // import readChunk from 'read-chunk';
 // import fileType from 'file-type';
 import jo from 'jpeg-autorotate';
+import log4js from 'log4js';
+
+log4js.configure({
+  appenders: { main: { type: 'file', filename: 'server/log/log.log' } },
+  categories: { default: { appenders: ['main'], level: 'error' } },
+});
+
+const logger = log4js.getLogger('main');
+logger.level = 'debug';
 
 mongoose.connect('mongodb://localhost/casewood');
 
@@ -55,7 +64,7 @@ const getUploadPath = (dateFolderPath) => {
   return uploadDir;
 };
 
-const rotateImage = fileName => (
+const rotateImage = (fileName, logId) => (
   new Promise((resolve) => {
     const dateFolder = getDateFolderName();
     const uploadDir = getUploadPath(dateFolder);
@@ -63,19 +72,19 @@ const rotateImage = fileName => (
 
     jo.rotate(targetPath, { quality: 85 }, (rotateError, buffer, orientation) => {
       if (rotateError) {
-        console.log(`An error occurred when rotating the file: ${rotateError.message}`);
+        logger.error(`An error occurred when rotating the file: ${rotateError.message} ${logId}`);
         resolve(uploadDir);
+      } else {
+        logger.info(`Orientation was: ${orientation} ${logId}`);
+        const newTargetPath = path.join(uploadDir, 'rotate', fileName);
+        fs.writeFile(newTargetPath, buffer);
+        resolve(path.join(uploadDir, 'rotate'));
       }
-      console.log(`Orientation was: ${orientation}`);
-      // console.log(buffer);
-      const newTargetPath = path.join(uploadDir, 'rotate', fileName);
-      fs.writeFile(newTargetPath, buffer);
-      resolve(path.join(uploadDir, 'rotate'));
     });
   })
 );
 
-const makeThumbnail = (imagePath, imageName) => (
+const makeThumbnail = (imagePath, imageName, logId) => (
   new Promise((resolve) => {
     const dateFolder = getDateFolderName();
     const uploadDir = getUploadPath(dateFolder);
@@ -83,8 +92,10 @@ const makeThumbnail = (imagePath, imageName) => (
     const thumbnail = new Thumbnail(imagePath, thumbnailPath);
     thumbnail.ensureThumbnail(imageName, 200, 200, (thumbnailErr, thumbnailFilename) => {
       if (thumbnailErr) {
+        logger.error(`An error occurred when making the thumbnail: ${thumbnailErr} ${logId}`);
         resolve(path.join(dateFolder, imageName));
       } else {
+        logger.info(`thumbnail is ready: ${thumbnailFilename} ${logId}`);
         resolve(path.join(dateFolder, 'thumbnails', thumbnailFilename));
       }
     });
@@ -114,6 +125,8 @@ router.post('/maquette', (req, res, next) => {
 
 router.post('/image', async (req, res, next) => {
   try {
+    const logId = Math.floor(Math.random() * 1000);
+    logger.info(`Start uploading an image: ${logId}`);
     const data = await getFormData(req);
     const file = data.files.file[0];
     const originalFileName = file.originalFilename.split(' ').join('_');
@@ -121,10 +134,11 @@ router.post('/image', async (req, res, next) => {
     const dateFolder = getDateFolderName();
     const uploadDir = getUploadPath(dateFolder);
     const imagePath = path.join(uploadDir, fileName);
+    logger.info(`File name is: ${fileName} ${logId}`);
     fs.rename(file.path, imagePath, (err) => {
       if (err) throw err;
-      rotateImage(fileName)
-        .then(rotatedImagePath => (makeThumbnail(rotatedImagePath, fileName)))
+      rotateImage(fileName, logId)
+        .then(rotatedImagePath => (makeThumbnail(rotatedImagePath, fileName, logId)))
         .then((imageUrl) => {
           res.json({
             status: 'success',

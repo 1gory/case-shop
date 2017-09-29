@@ -23,5 +23,6 @@ yarn-error.log*
 uploads*
 
 /server/config.js
+/server/log/log.log
 
 /public/product/*
