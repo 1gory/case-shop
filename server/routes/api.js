@@ -77,8 +77,12 @@ const rotateImage = (fileName, logId) => (
       } else {
         logger.info(`Orientation was: ${orientation} ${logId}`);
         const newTargetPath = path.join(uploadDir, 'rotate', fileName);
-        fs.writeFile(newTargetPath, buffer);
-        resolve(path.join(uploadDir, 'rotate'));
+        fs.writeFile(newTargetPath, buffer, (writeFileErr) => {
+          if (writeFileErr) {
+            logger.error(`An error occurred when trying write the file: ${newTargetPath} ${logId}`);
+          }
+          resolve(path.join(uploadDir, 'rotate'));
+        });
       }
     });
   })

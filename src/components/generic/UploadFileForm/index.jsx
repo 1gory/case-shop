@@ -91,9 +91,11 @@ export default class extends Component {
     this.setState({
       fileFormStatus: LOADING_FORM_STATUS,
     });
-
     const reader = new FileReader();
     const file = event.target.files[0];
+    if (this.props.expand) {
+      this.props.expand();
+    }
     reader.onload = (/* e */) => {
       if (file.size > 5000000) {
         alert('Пожалуйста, выберите файл меньше 5Мб');
@@ -148,9 +150,6 @@ export default class extends Component {
         isHorizontalImage: responseData.horizontal,
         fileFormStatus: UPLOADED_FROM_STATUS,
       });
-      if (this.props.expand) {
-        this.props.expand();
-      }
     }).catch((/* e */) => {
       this.setState({
         fileFormStatus: ERROR_FORM_STATUS,
