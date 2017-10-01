@@ -36,7 +36,7 @@ export default (req, res) => {
       });
       return res.end();
     }
-    const RenderedApp = htmlData.replace('{{CSS}}', styleTags).replace('{{ServerSideRendering}}', markup);
+    const RenderedApp = htmlData.replace('<!--{{CSS}}-->', styleTags).replace('<!--{{SSR}}-->', markup);
     res.send(RenderedApp);
     return res.end();
   });
