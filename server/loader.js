@@ -5,6 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import App from '../src/App';
 
 export default (req, res) => {
@@ -18,11 +19,16 @@ export default (req, res) => {
 
     const context = {};
 
+    const sheet = new ServerStyleSheet();
     const markup = renderToString(
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>,
+      <StyleSheetManager sheet={sheet.instance}>
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>
+      </StyleSheetManager>,
     );
+
+    const styleTags = sheet.getStyleTags();
 
     if (context.url) {
       res.writeHead(301, {
@@ -30,7 +36,7 @@ export default (req, res) => {
       });
       return res.end();
     }
-    const RenderedApp = htmlData.replace('{{ServerSideRendering}}', markup);
+    const RenderedApp = htmlData.replace('{{CSS}}', styleTags).replace('{{ServerSideRendering}}', markup);
     res.send(RenderedApp);
     return res.end();
   });

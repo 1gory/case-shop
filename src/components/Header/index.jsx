@@ -72,7 +72,7 @@ export default class extends Component {
         <HeaderWrapper>
           <Header>
             <Link to="/">
-              <Logo src={logo} alt="casewood" />
+              <Logo src={logo} alt="CASEWOOD" />
             </Link>
             <Hamburger onClick={this.handleClick} src={hamburger} alt="menu" />
           </Header>
