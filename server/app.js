@@ -7,9 +7,12 @@ import path from 'path';
 import index from './routes/index';
 import api from './routes/api';
 import loader from './loader';
+import { logger } from './logger';
+
+logger.level = 'debug';
 
 process.on('uncaughtException', (error) => {
-  console.log(error.stack);
+  logger.error(error.stack);
 });
 
 const app = express();
@@ -31,5 +34,11 @@ app.use(express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use('/api', api);
 
 app.use('/', loader);
+
+app.use((err, req, res, next) => {
+  logger.error(err.stack);
+  res.send(500, 'Error');
+  next(err);
+});
 
 export default app;

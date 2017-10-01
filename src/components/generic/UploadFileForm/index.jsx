@@ -69,7 +69,7 @@ export default class extends Component {
       }
       const responseData = await response.json();
       this.setState({
-        uploadedImagePath: responseData.path,
+        uploadedImagePath: responseData.thumbnail,
         isHorizontalImage: responseData.horizontal,
         fileFormStatus: UPLOADED_FROM_STATUS,
       });
@@ -146,7 +146,7 @@ export default class extends Component {
       const responseData = await response.json();
       this.cookies.set('imageUrl', responseData.path, { path: '/' });
       this.setState({
-        uploadedImagePath: responseData.path,
+        uploadedImagePath: responseData.thumbnail,
         isHorizontalImage: responseData.horizontal,
         fileFormStatus: UPLOADED_FROM_STATUS,
       });

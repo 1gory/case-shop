@@ -1,7 +1,10 @@
+/* eslint-disable no-param-reassign */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
 import Footer from '../Footer';
+import Cookies from 'universal-cookie';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
@@ -90,6 +93,7 @@ export default class extends Component {
       ),
     );
 
+    // add photo to the gallery for prints without real photos
     if (products[0].activeImagesKeys.length <= 2) {
       products[0].images.push(
         getGalleryImage(
@@ -106,6 +110,10 @@ export default class extends Component {
       product: products[0],
       activeImageIndex: products[0].activeImagesKeys[0],
     });
+  }
+
+  componentDidMount() {
+    this.cookies = new Cookies();
   }
 
   handleClickToThumb(index) {
@@ -129,6 +137,7 @@ export default class extends Component {
       });
       return;
     }
+    formData.image = this.cookies.get('imageUrl');
     fetch('/api/order', {
       method: 'POST',
       headers: {

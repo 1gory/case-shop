@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import preloader from './preloader.svg';
 
 const PreloaderWrapper = styled.div`
-  padding: 86px;
+  padding: 86px 30px 32px 30px;
   text-align: center;
 `;
 

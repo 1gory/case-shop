@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
+import Button from '../../generic/Form/Buttons/PrimaryButton';
 import image from './22_lion_turn_bamb_gray.jpg';
 import teamLogo from './2_barcelona_turn_red_gray.jpg';
 import name from './3_marina_turn_red_gray.jpg';
@@ -36,18 +37,8 @@ const RowWrapper = styled.div`
   font-family: 'Lato-SemiBold';
 `;
 
-const ButtonWrapper = styled.div`
-  padding-top: 30px;
-`;
-
-const Button = styled.button`
-  border-radius: 20px;
-  background-color: #7f5152;
-  border: none;
-  font-size: 16px;
-  color: #ffffff;
-  font-family: 'Lato-Light';
-  padding: 10px 30px;
+const StyledButton = styled(Button)`
+  margin-top: 30px;
 `;
 
 export default class extends Component {
@@ -108,11 +99,9 @@ export default class extends Component {
               </Col>
             </Row>
           </RowWrapper>
-          <ButtonWrapper>
-            <Button onClick={this.handleOpen}>
-              Заказать
-            </Button>
-          </ButtonWrapper>
+          <StyledButton onClick={this.handleOpen}>
+            Заказать
+          </StyledButton>
         </Wrapper>
       )
     );

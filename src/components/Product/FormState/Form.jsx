@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import { Model, Material, PhoneNumber } from '../../generic/ProductDetails';
 import ImageForm from '../../generic/UploadFileForm';
+import OrderButton from '../../generic/Form/Buttons/PrimaryButton';
 
 const OrderForm = styled.form`
   padding-top: 45px;
@@ -11,16 +12,6 @@ const OrderForm = styled.form`
 const OrderButtonWrapper = styled.div`
   padding-top: 25px;
   text-align: center;
-`;
-
-const OrderButton = styled.button`
-  border-radius: 20px;
-  background-color: #7f5152;
-  border: none;
-  font-size: 16px;
-  color: #ffffff;
-  font-family: 'Lato-Light';
-  padding: 10px 30px;
 `;
 
 const IndividualCaseFormWrapper = styled.div`

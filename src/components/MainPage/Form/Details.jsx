@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Model, Material, Messenger, PhoneNumber } from '../../generic/ProductDetails';
+import Button from '../../generic/Form/Buttons/PrimaryButton';
 
 const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
@@ -47,14 +48,8 @@ const H4 = styled.h4`
   margin-top: 10px;
 `;
 
-const Button = styled.button`
-  border-radius: 20px;
-  background-color: #7f5152;
-  border: none;
-  font-size: 16px;
-  color: #ffffff;
-  font-family: 'Lato-Light';
-  padding: 10px 30px;
+const StyledButton = styled(Button)`
+  margin-top: 18px;
 `;
 
 
@@ -87,9 +82,9 @@ export default class extends Component {
         <Model handleChangeForm={this.handleChangeForm} />
         <Material handleChangeForm={this.handleChangeForm} />
 
-        <Button onClick={event => (this.props.handleSendForm(event, this.state))}>
+        <StyledButton onClick={event => (this.props.handleSendForm(event, this.state))}>
           Получить макет
-        </Button>
+        </StyledButton>
       </DetailsFormWrapper>
     );
   }
