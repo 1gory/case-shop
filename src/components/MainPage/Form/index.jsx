@@ -78,6 +78,9 @@ export default class extends Component {
   handleSendForm(event, formData) {
     event.preventDefault();
     if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
       return;
     }
     formData.image = this.cookies.get('imageUrl');
@@ -128,7 +131,12 @@ export default class extends Component {
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
           >
-            {this.state.isOpened && <DetailsForm handleSendForm={this.handleSendForm} />}
+            {this.state.isOpened &&
+              <DetailsForm
+                handleSendForm={this.handleSendForm}
+                invalidNumber={this.state.invalidNumber}
+              />
+            }
           </CSSTransitionGroup>
         </Form>
       </Wrapper>

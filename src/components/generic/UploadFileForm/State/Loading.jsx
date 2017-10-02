@@ -15,6 +15,6 @@ const Title = styled.p`
 export default () => (
   <PreloaderWrapper>
     <img src={preloader} alt="preloader" />
-    <Title>Пока изображение загружается,<br />заполните заполните форму</Title>
+    <Title>Пока изображение загружается,<br /> заполните форму</Title>
   </PreloaderWrapper>
 );

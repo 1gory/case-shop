@@ -76,7 +76,10 @@ export default class extends Component {
       <DetailsFormWrapper>
         <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
         <Messenger handleChangeForm={this.handleChangeForm} />
-        <PhoneNumber handleChangeForm={this.handleChangeForm} />
+        <PhoneNumber
+          handleChangeForm={this.handleChangeForm}
+          invalidNumber={this.props.invalidNumber}
+        />
 
         <H4>Детали товара</H4>
         <Model handleChangeForm={this.handleChangeForm} />
