@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   font-size: 24px;
   color: #9d9d9d;
 `;

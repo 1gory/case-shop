@@ -36,7 +36,8 @@ const Location = styled.div`
 `;
 
 const Label = styled.div`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   color: rgba(59, 59, 59, 0.5);
   font-size: 12px;
   background: #fff;

@@ -38,13 +38,13 @@ const DetailsFormWrapper = styled.form`
 
 const H3 = styled.h3`
   font-size: 16px;
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   margin-bottom: 30px;
 `;
 
 const H4 = styled.h4`
   font-size: 16px;
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   margin-top: 10px;
 `;
 

@@ -34,7 +34,8 @@ const ContactIcon = styled.img`
 `;
 
 const Label = styled.div`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   color: #9d9d9d;
   font-size: 12px;
   padding-bottom: 5px;

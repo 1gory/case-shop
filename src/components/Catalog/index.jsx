@@ -9,7 +9,7 @@ import getProducts from '../../functions/getProduct';
 import getImage from '../../functions/getImage';
 
 const H2 = styled.h2`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   font-size: 24px;
   margin: 15px;
 `;

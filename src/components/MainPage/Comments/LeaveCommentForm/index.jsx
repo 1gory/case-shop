@@ -10,7 +10,7 @@ const Wrapper = styled.form`
 `;
 
 const H4 = styled.h4`
-  font-family: 'Lato-SemiBold'; 
+  font-family: 'Lato-Regular'; 
 `;
 
 const MessageInput = styled(Input)`

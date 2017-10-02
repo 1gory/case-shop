@@ -6,12 +6,12 @@ const Wrapper = styled.div`
 `;
 
 const H4 = styled.h4`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   color: #59cb78;
 `;
 
 const Message = styled.p`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   color: #4a4a4a;
   font-size: 14px;
 `;

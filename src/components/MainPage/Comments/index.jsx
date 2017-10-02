@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   font-size: 24px;
   color: #4a4a4a;
 `;
@@ -30,7 +30,8 @@ const Avatar = styled.img`
 `;
 
 const Name = styled.div`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   font-size: 16px;
 `;
 

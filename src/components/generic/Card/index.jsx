@@ -31,7 +31,8 @@ const Img = styled.img`
 `;
 
 const Name = styled.div`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   text-transform: uppercase;
   font-size: 16px;
   padding: 25px 10px 10px 10px;

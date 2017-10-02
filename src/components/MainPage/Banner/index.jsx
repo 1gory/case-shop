@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  font-family: 'Lato-Medium';
+  font-family: 'Lato-Regular';
   font-size: 24px;
 `;
 

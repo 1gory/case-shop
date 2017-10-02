@@ -54,7 +54,7 @@ const Details = styled.div`
 `;
 
 const Name = styled.h1`
-   font-family: 'Lato-SemiBold';
+   font-family: 'Lato-Regular';
    text-transform: uppercase;
    font-size: 28px;
    margin: 30px 0;

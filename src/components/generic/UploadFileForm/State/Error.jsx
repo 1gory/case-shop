@@ -7,12 +7,12 @@ const Wrapper = styled.div`
 `;
 
 const H4 = styled.h4`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   color: #fe5e5e;
 `;
 
 const Message = styled.p`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   color: #4a4a4a;
   font-size: 14px;
 `;

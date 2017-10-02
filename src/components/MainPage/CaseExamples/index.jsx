@@ -10,7 +10,7 @@ import zodiac from './4_aries_zodiac_turn_bamb_gray.jpg';
 import OrderPopUp from './OrderPopUp';
 
 const H2 = styled.h2`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   font-size: 24px;
   color: #4a4a4a;
 `;
@@ -34,7 +34,8 @@ const ExampleWrapper = styled(Link)`
 
 const RowWrapper = styled.div`
   margin: 15px;
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
 `;
 
 const StyledButton = styled(Button)`

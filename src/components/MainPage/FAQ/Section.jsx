@@ -14,7 +14,8 @@ const SectionWrapper = styled.section`
 
 const Question = styled.h4`
   color: #7f5152;
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   font-size: 20px;
   margin-bottom: 15px;
 `;

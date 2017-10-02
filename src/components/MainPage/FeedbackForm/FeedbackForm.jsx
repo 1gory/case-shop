@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 
 const H3 = styled.h3`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   font-size: 24px;
   margin-top: 5px;
   margin-bottom: 5px;

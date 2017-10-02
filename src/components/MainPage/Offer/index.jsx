@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const H2 = styled.h2`
   color: #7f5152;
   font-size: 24px;
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   text-align: center;
   padding-top: 60px;
   padding-bottom: 40px;
@@ -43,7 +43,8 @@ const CaseWrapper = styled(Link)`
   color: black;
   text-align: cener;
   font-size: 16px;
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   text-decoration: none;
   color: #000;
 `;

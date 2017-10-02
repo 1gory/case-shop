@@ -19,7 +19,7 @@ const Steps = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
   font-size: 24px;
   color: #4a4a4a
 `;
@@ -47,7 +47,8 @@ const IconWrapper4 = styled(IconWrapper)`
 `;
 
 const Name = styled.div`
-  font-family: 'Lato-SemiBold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   font-size: 16px;
   padding-top: 15px;
   padding-bottom: 8px;

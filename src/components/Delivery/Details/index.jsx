@@ -27,7 +27,7 @@ const Table = styled.table`
   
   & thead {
     background-color: #e1e1e1;
-    font-family: 'Lato-SemiBold';
+    font-family: 'Lato-Regular';
     font-size: 18px;
     
     & th {
@@ -41,7 +41,8 @@ const TableWrapper = styled.div`
 `;
 
 const Subhead = styled.tr`
-  font-family: 'Lato-Bold';
+  font-family: 'Lato-Regular';
+  font-weight: bold;
   color: #a3a3a3;
 `;
 
