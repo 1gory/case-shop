@@ -16,14 +16,17 @@ input:focus, button:focus {
 @font-face {
   font-family: 'Lato-Regular';
   src: url('./fonts/Lato-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Lato-Light';
   src: url('./fonts/Lato-Light.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Lato-Italic';
   src: url('./fonts/Lato-Italic.ttf') format('truetype');
+  font-display: swap;
 }
