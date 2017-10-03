@@ -18,6 +18,7 @@ const Pixel = styled.div`
 `;
 
 const Button = styled.button`
+  font-family: 'Lato-Regular', sans-serif;
   border: 1px solid white;
   color: white;
   background: none;
@@ -36,12 +37,12 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  font-family: 'Lato-Regular';
+  font-family: 'Lato-Regular', sans-serif;
   font-size: 24px;
 `;
 
 const MainHeader = styled.span`
-  font-family: 'Lato-Light';
+  font-family: 'Lato-Light', sans-serif;
 `;
 
 const handleClick = () => {

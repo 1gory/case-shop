@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
@@ -17,19 +17,37 @@ const Wrapper = styled.div`
   background-color: #f9f9f9;
 `;
 
-export default () => (
-  <Wrapper>
-    <Header />
-    <Banner />
-    <Offer />
-    <Form />
-    <CaseExamples />
-    <Catalog />
-    <FeedbackForm />
-    <OurAdvantages />
-    <HowWeWork />
-    <Comments />
-    {/* <FAQ /> */}
-    <Footer />
-  </Wrapper>
-);
+export default class extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      mapPreloader: true,
+    };
+
+    this.handleWaypointEnter = this.handleWaypointEnter.bind(this);
+  }
+
+  handleWaypointEnter() {
+    this.setState({
+      mapPreloader: false,
+    });
+  }
+
+  render() {
+    return (<Wrapper>
+      <Header />
+      <Banner />
+      <Offer />
+      <Form />
+      <CaseExamples />
+      <Catalog />
+      <FeedbackForm />
+      <OurAdvantages />
+      <HowWeWork />
+      <Comments handleScroll={this.handleWaypointEnter} />
+      {/* <FAQ /> */}
+      <Footer mapPreloader={this.state.mapPreloader} />
+    </Wrapper>);
+  }
+}

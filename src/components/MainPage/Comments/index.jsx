@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReactSwipe from 'react-swipe';
+import Waypoint from 'react-waypoint';
 import noPhoto from './user-min.png';
 import marinaAvatar from './marina.jpg';
 import dmitryAvatar from './dmitry.jpg';
-// import blankAvatar from './user-min.png';
 import nextArrow from './carousel-next.svg';
 import prevArrow from './carousel-prev.svg';
 import LeaveCommentForm from './LeaveCommentForm';
@@ -106,6 +106,7 @@ export default class extends Component {
     return (
       <Wrapper>
         <H2>Отзывы</H2>
+        <Waypoint onEnter={this.props.handleScroll} />
         <ReactSwipe
           ref="reactSwipe"
           swipeOptions={{
