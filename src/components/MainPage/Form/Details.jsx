@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Model, Material, Messenger, PhoneNumber } from '../../generic/ProductDetails';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
+import validatePhone from '../../../functions/validatePhone';
 
 const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
@@ -50,6 +51,7 @@ const H4 = styled.h4`
 
 const StyledButton = styled(Button)`
   margin-top: 18px;
+  background-color: ${({ disabled }) => (disabled ? '#c1999a' : '#7f5152')};
 `;
 
 
@@ -63,6 +65,24 @@ export default class extends Component {
       material: 'light',
     };
     this.handleChangeForm = this.handleChangeForm.bind(this);
+    this.disableForm = this.disableForm.bind(this);
+    this.checkPhone = this.checkPhone.bind(this);
+  }
+
+  checkPhone(formData) {
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
+      return false;
+    }
+    return true;
+  }
+
+  disableForm() {
+    this.setState({
+      disabled: true,
+    });
   }
 
   handleChangeForm(e) {
@@ -78,14 +98,23 @@ export default class extends Component {
         <Messenger handleChangeForm={this.handleChangeForm} />
         <PhoneNumber
           handleChangeForm={this.handleChangeForm}
-          invalidNumber={this.props.invalidNumber}
+          invalidNumber={this.state.invalidNumber}
         />
 
         <H4>Детали товара</H4>
         <Model handleChangeForm={this.handleChangeForm} />
         <Material handleChangeForm={this.handleChangeForm} />
 
-        <StyledButton onClick={event => (this.props.handleSendForm(event, this.state))}>
+        <StyledButton
+          onClick={(event) => {
+            event.preventDefault();
+            if (this.checkPhone(this.state)) {
+              this.disableForm();
+              this.props.handleSendForm(this.state);
+            }
+          }}
+          disabled={this.state.disabled}
+        >
           Получить макет
         </StyledButton>
       </DetailsFormWrapper>

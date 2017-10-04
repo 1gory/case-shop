@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
 import ErrorFileForm from './State/Error';
 import '../../MainPage/Form/styles.css';
-
-const FileForm = styled.form`
-  min-height: 210px;
-  padding: 10px;
-  background-color: #ebebeb;
-  box-shadow: 0 7px 15px 0 rgba(1, 1, 1, 0.1);
-  border-radius: 4px;
-`;
+import FileForm from './FormWrap';
 
 const EMPTY_FORM_STATUS = 'empty';
 const UPLOADED_FROM_STATUS = 'uploaded';

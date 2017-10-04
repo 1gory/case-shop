@@ -7,11 +7,11 @@ import Cookies from 'universal-cookie';
 import Scroll from 'react-scroll';
 import skip from './skip-to-form.svg';
 import DetailsForm from './Details';
-import validatePhone from '../../../functions/validatePhone';
 import './styles.css';
 
 import UpoadFileForm from '../../generic/UploadFileForm';
-import SentFileForm from '../../generic/UploadFileForm/State/Sent';
+import SentFileForm from './State/Sent';
+import Loading from './State/Loading';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -36,6 +36,7 @@ const scroller = Scroll.scroller;
 const EMPTY_FORM_STATUS = 'empty';
 const SENT_FORM_STATUS = 'sent';
 const ERROR_FORM_STATUS = 'error';
+const LOADING_FORM_STATUS = 'loading';
 
 export default class extends Component {
   constructor() {
@@ -68,21 +69,24 @@ export default class extends Component {
     });
   }
 
-  newOrder() {
+  newOrder(event) {
+    event.preventDefault();
     this.setState({
       fileFormStatus: EMPTY_FORM_STATUS,
       isOpened: true,
     });
   }
 
-  handleSendForm(event, formData) {
-    event.preventDefault();
-    if (!formData.phone || !(validatePhone(formData.phone))) {
-      this.setState({
-        invalidNumber: true,
-      });
-      return;
-    }
+  handleSendForm(formData) {
+    scroller.scrollTo('FileFormAnchor', {
+      duration: 800,
+      delay: 0,
+      smooth: true,
+    });
+    this.setState({
+      isOpened: false,
+      fileFormStatus: LOADING_FORM_STATUS,
+    });
     formData.image = this.cookies.get('imageUrl');
     fetch('/api/order', {
       method: 'POST',
@@ -97,20 +101,13 @@ export default class extends Component {
       if (response.status) {
         this.setState({
           fileFormStatus: SENT_FORM_STATUS,
-          isOpened: false,
         });
       }
     }).catch((/* error */) => {
       this.setState({
         fileFormStatus: ERROR_FORM_STATUS,
       });
-    }).then(() => (
-      scroller.scrollTo('FileFormAnchor', {
-        duration: 800,
-        delay: 0,
-        smooth: true,
-      })
-    ));
+    });
   }
 
   render() {
@@ -119,24 +116,24 @@ export default class extends Component {
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <Form>
-          {this.state.fileFormStatus === SENT_FORM_STATUS ?
-            <SentFileForm handleClick={this.newOrder} /> :
+          {this.state.fileFormStatus === SENT_FORM_STATUS &&
+            <SentFileForm handleClick={this.newOrder} />
+          }
+          {this.state.fileFormStatus === LOADING_FORM_STATUS &&
+            <Loading />
+          }
+          {this.state.fileFormStatus === EMPTY_FORM_STATUS &&
             <UpoadFileForm
               expand={this.expand}
               collapse={this.collapse}
-            /> }
-
+            />
+          }
           <CSSTransitionGroup
             transitionName="detalis"
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
           >
-            {this.state.isOpened &&
-              <DetailsForm
-                handleSendForm={this.handleSendForm}
-                invalidNumber={this.state.invalidNumber}
-              />
-            }
+            {this.state.isOpened && <DetailsForm handleSendForm={this.handleSendForm} /> }
           </CSSTransitionGroup>
         </Form>
       </Wrapper>

@@ -2,14 +2,13 @@
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Cookies from 'universal-cookie';
 import Header from '../Header';
 import Footer from '../Footer';
-import Cookies from 'universal-cookie';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import SentState from './FormState/Sent';
-import validatePhone from '../../functions/validatePhone';
 import getGalleryImage from '../../functions/getGalleryImage';
 
 const Wrapper = styled.div`
@@ -78,7 +77,7 @@ export default class extends Component {
     };
 
     this.newOrder = this.newOrder.bind(this);
-    this.handleSend = this.handleSend.bind(this);
+    this.handleSendForm = this.handleSendForm.bind(this);
   }
 
   async componentWillMount() {
@@ -129,14 +128,7 @@ export default class extends Component {
   }
 
   // TODO move sending to separated method
-  handleSend(event, formData) {
-    event.preventDefault();
-    if (!formData.phone || !(validatePhone(formData.phone))) {
-      this.setState({
-        invalidNumber: true,
-      });
-      return;
-    }
+  handleSendForm(formData) {
     formData.image = this.cookies.get('imageUrl');
     fetch('/api/order', {
       method: 'POST',
@@ -197,10 +189,7 @@ export default class extends Component {
           </Description>
           {this.state.isSent ?
             <SentState handleClick={this.newOrder} /> :
-            <ProductForm
-              handleSend={this.handleSend}
-              invalidNumber={this.state.invalidNumber}
-            />
+            <ProductForm handleSendForm={this.handleSendForm} />
           }
         </Details>
         <Footer />

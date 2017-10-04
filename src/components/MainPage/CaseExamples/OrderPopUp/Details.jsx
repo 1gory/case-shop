@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Model, Material, Messenger, PhoneNumber } from '../../../generic/ProductDetails';
+import validatePhone from '../../../../functions/validatePhone';
 
 const H4 = styled.h4`
   font-size: 16px;
@@ -17,6 +18,7 @@ const SendButton = styled.button`
   font-family: 'Lato-Regular';
   padding: 10px 50px;
   margin: 20px;
+  background-color: ${({ disabled }) => (disabled ? '#797979' : '#3b3b3b')}
 `;
 
 export default class extends Component {
@@ -38,6 +40,22 @@ export default class extends Component {
     this.setState(state);
   }
 
+  disableForm() {
+    this.setState({
+      disabled: true,
+    });
+  }
+
+  checkPhone(formData) {
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
+      return false;
+    }
+    return true;
+  }
+
   render() {
     return (
       (
@@ -45,14 +63,23 @@ export default class extends Component {
           <Messenger handleChangeForm={this.handleChangeForm} />
           <PhoneNumber
             handleChangeForm={this.handleChangeForm}
-            invalidNumber={this.props.invalidNumber}
+            invalidNumber={this.state.invalidNumber}
           />
 
           <H4>Детали товара</H4>
           <Model handleChangeForm={this.handleChangeForm} />
           <Material handleChangeForm={this.handleChangeForm} />
 
-          <SendButton onClick={event => (this.props.handleSendForm(event, this.state))}>
+          <SendButton
+            onClick={(event) => {
+              event.preventDefault();
+              if (this.checkPhone(this.state)) {
+                this.disableForm();
+                this.props.handleSendForm(this.state);
+              }
+            }}
+            disabled={this.state.disabled}
+          >
             Заказать
           </SendButton>
         </div>

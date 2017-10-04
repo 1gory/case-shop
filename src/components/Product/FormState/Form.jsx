@@ -4,9 +4,14 @@ import Cookies from 'universal-cookie';
 import { Model, Material, PhoneNumber } from '../../generic/ProductDetails';
 import ImageForm from '../../generic/UploadFileForm';
 import OrderButton from '../../generic/Form/Buttons/PrimaryButton';
+import validatePhone from '../../../functions/validatePhone';
 
 const OrderForm = styled.form`
   padding-top: 45px;
+`;
+
+const StyledOrderButton = styled(OrderButton)`
+  background-color: ${({ disabled }) => (disabled ? '#c1999a' : '#7f5152')};
 `;
 
 const OrderButtonWrapper = styled.div`
@@ -72,6 +77,22 @@ export default class extends Component {
     this.setState(state);
   }
 
+  disableForm() {
+    this.setState({
+      disabled: true,
+    });
+  }
+
+  checkPhone(formData) {
+    if (!formData.phone || !(validatePhone(formData.phone))) {
+      this.setState({
+        invalidNumber: true,
+      });
+      return false;
+    }
+    return true;
+  }
+
   render() {
     return (
       <OrderForm>
@@ -80,12 +101,21 @@ export default class extends Component {
         {/* <Messenger handleChangeForm={this.handleChangeForm} /> */}
         <PhoneNumber
           handleChangeForm={this.handleChangeForm}
-          invalidNumber={this.props.invalidNumber}
+          invalidNumber={this.state.invalidNumber}
         />
         <OrderButtonWrapper>
-          <OrderButton onClick={event => (this.props.handleSend(event, this.state))}>
+          <StyledOrderButton
+            disabled={this.state.disabled}
+            onClick={(event) => {
+              event.preventDefault();
+              if (this.checkPhone(this.state)) {
+                this.disableForm();
+                this.props.handleSendForm(this.state);
+              }
+            }}
+          >
             Заказать
-          </OrderButton>
+          </StyledOrderButton>
         </OrderButtonWrapper>
 
         <IndividualCaseFormWrapper>

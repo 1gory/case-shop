@@ -4,7 +4,6 @@ import modalClose from '../../../../icons/modal-close.svg';
 import Popup from '../../../generic/Popup';
 import SentState from './Sent';
 import Form from './Details';
-import validatePhone from '../../../../functions/validatePhone';
 
 const WrapperH3 = styled.div`
   display: flex;
@@ -42,15 +41,7 @@ export default class extends Component {
     });
   }
 
-  handleSendForm(event, formData) {
-    event.preventDefault();
-    if (!formData.phone || !(validatePhone(formData.phone))) {
-      this.setState({
-        invalidNumber: true,
-      });
-      return;
-    }
-
+  handleSendForm(formData) {
     fetch('/api/order', {
       method: 'POST',
       headers: {
@@ -83,7 +74,7 @@ export default class extends Component {
         {/* ====================== */}
         {this.state.isSent ?
           <SentState handleClick={this.newOrder} /> :
-          <Form handleSendForm={this.handleSendForm} invalidNumber={this.state.invalidNumber} />
+          <Form handleSendForm={this.handleSendForm} />
         }
       </Popup>
     );

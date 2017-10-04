@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import Form from '../../../generic/UploadFileForm/FormWrap';
 
 const Wrapper = styled.div`
-  // padding: 56px;
+  padding: 15px 0;
 `;
 
 const H4 = styled.h4`
@@ -30,13 +31,15 @@ const Button = styled.button`
 `;
 
 export default ({ handleClick }) => (
-  <Wrapper>
-    <H4>Заказ успешно отправлен!</H4>
-    <Message>
-      Благодарим вас за ваш выбор.
-      Наш оператор свяжется с вами в течении дня по указанному номеру,
-      чтобы обсудить детали заказа.
-    </Message>
-    <Button onClick={handleClick}>Сделать еще заказ</Button>
-  </Wrapper>
+  <Form>
+    <Wrapper>
+      <H4>Заказ успешно отправлен!</H4>
+      <Message>
+        Благодарим вас за ваш выбор.
+        Наш оператор свяжется с вами в течении дня по указанному номеру,
+        чтобы обсудить детали заказа.
+      </Message>
+      <Button onClick={event => (handleClick(event))}>Сделать еще заказ</Button>
+    </Wrapper>
+  </Form>
 );
