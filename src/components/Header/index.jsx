@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import ReactPixel from 'react-facebook-pixel';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Mertika from '../generic/YandexMetrika';
 import Menu from './Menu';
@@ -9,6 +10,9 @@ import Menu from './Menu';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
 import './styles.css';
+
+ReactPixel.init('179889939225358');
+ReactPixel.pageView();
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;
