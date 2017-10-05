@@ -7,12 +7,22 @@ const Wrapper = styled.div`
   overflow: hidden;
   width: 100%;
   z-index: 2;
+  
+  @media (min-width: 768px) {
+    width: auto;
+    position: relative;
+  }
 `;
 
 const Links = styled.div`
   box-sizing: border-box;
   padding: 15px;
   background-color: #f2f2f2;
+  
+  @media (min-width: 768px) {
+    background-color: #f5f5f6;
+    padding: 0;
+  }
 `;
 
 const MenuLink = styled(Link)`
@@ -20,8 +30,13 @@ const MenuLink = styled(Link)`
   padding-bottom: 15px;
   padding-top: 15px;
   text-decoration: none;
-  color: black;
+  color: #222222;
   font-family: 'Lato-Regular';
+  
+  @media (min-width: 768px) {
+    display: inline-block;
+    padding-left: 25px;
+  }
 `;
 
 export default () => (
