@@ -3,6 +3,12 @@
   background-color: #7b7b7b;
 }
 
+@media (min-width: 768px) {
+  .main-banner {
+    background-image: url('./sb.jpg');
+  }
+}
+
 .main-banner-pixel {
   background-image: url('./pixel.png');
 }

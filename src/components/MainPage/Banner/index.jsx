@@ -7,6 +7,10 @@ const Banner = styled.div`
   background-size: cover;
   height: 450px;
   color: white;
+  
+  @media (min-width: 768px) {
+    height: 660px;
+  }
 `;
 
 const scroller = Scroll.scroller;
@@ -27,6 +31,10 @@ const Button = styled.button`
   margin-top: 45px;
   font-size: 20px;
   cursor: pointer;
+  
+  @media (min-width: 768px) {
+    margin-top: 60px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -34,11 +42,19 @@ const Wrapper = styled.div`
   text-align: center;
   width: 100%;
   margin-top: 140px;
+  
+  @media (min-width: 768px) {
+    margin-top: 200px;
+  }
 `;
 
 const Header = styled.div`
   font-family: 'Lato-Regular', sans-serif;
   font-size: 24px;
+  
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const MainHeader = styled.span`

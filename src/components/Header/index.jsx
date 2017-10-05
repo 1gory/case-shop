@@ -23,7 +23,6 @@ const HeaderWrapper = styled.div`
 
   @media (min-width: 768px) {
     display: flex;
-    // align-items: center;
     justify-content: center;
     padding: 25px;
   }
@@ -35,7 +34,8 @@ const Header = styled.div`
   justify-content: space-between;
   
   @media (min-width: 768px) {
-    min-width: 768px;
+    width: 100%;
+    max-width: 970px;
   }
 `;
 
