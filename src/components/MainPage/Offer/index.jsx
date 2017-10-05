@@ -8,17 +8,36 @@ import RubleSign from '../../generic/RubleSign';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
+  padding-top: 60px;
   background-color: #fff;
+  
+  @media (min-width: 768px) {
+    padding-top: 120px;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+const ResponsiveWrapper = styled.div`
+  @media (min-width: 768px) {
+    width: 100%;
+    max-width: 970px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 const H2 = styled.h2`
   color: #7f5152;
   font-size: 24px;
   font-family: 'Lato-Regular';
-  text-align: center;
-  padding-top: 60px;
   padding-bottom: 40px;
   margin: 0;
+  
+  @media (min-width: 768px) {
+    text-align: left;
+  }
 `;
 
 const H2Light = styled.span`
@@ -67,20 +86,22 @@ const handleClick = () => {
 
 export default () => (
   <Wrapper>
-    <H2 onClick={handleClick}>
-      Загрузите свое изображение <br />
-      <H2Light>и мы вышлем вам макет<br /> вашего будущего чехла</H2Light>
-    </H2>
-    <Cases>
-      <CaseWrapper to="#">
-        <Case src={white} />
-        <div>Гравировка <br />по фотографии</div>
-      </CaseWrapper>
-      <Price>1290<RubleSign /></Price>
-      <CaseWrapper to="/product/59c54598c9ae0a42557fa1a1">
-        <Case src={dark} />
-        <div>Гравировка <br />по картинке</div>
-      </CaseWrapper>
-    </Cases>
+    <ResponsiveWrapper>
+      <H2 onClick={handleClick}>
+        Загрузите свое изображение <br />
+        <H2Light>и мы вышлем вам макет<br /> вашего будущего чехла</H2Light>
+      </H2>
+      <Cases>
+        <CaseWrapper to="#">
+          <Case src={white} />
+          <div>Гравировка <br />по фотографии</div>
+        </CaseWrapper>
+        <Price>1290<RubleSign /></Price>
+        <CaseWrapper to="/product/59c54598c9ae0a42557fa1a1">
+          <Case src={dark} />
+          <div>Гравировка <br />по картинке</div>
+        </CaseWrapper>
+      </Cases>
+    </ResponsiveWrapper>
   </Wrapper>
 );
