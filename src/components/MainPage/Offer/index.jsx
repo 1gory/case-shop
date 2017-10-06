@@ -31,6 +31,7 @@ const ResponsiveWrapper = styled.div`
 const H2 = styled.h2`
   color: #7f5152;
   font-size: 24px;
+  text-align: center;
   font-family: 'Lato-Regular';
   padding-bottom: 40px;
   margin: 0;

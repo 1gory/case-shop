@@ -1,6 +1,6 @@
 .menu-enter {
   max-height : 0;
-  transition: max-height 0.3s ease-in;
+  transition: max-height 0.5s ease-in;
 }
 
 .menu-enter.menu-enter-active {
@@ -9,7 +9,7 @@
 
 .menu-leave {
   max-height: 222px;
-  transition: max-height 0.3s ease-in;
+  transition: max-height 0.5s ease-in;
 }
 
 .menu-leave.menu-leave-active {

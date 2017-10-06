@@ -16,18 +16,41 @@ import Loading from './State/Loading';
 const Wrapper = styled.div`
   text-align: center;
   padding: 30px 15px;
+  
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    width: 820px;
+    padding: 85px 15px;
+  }
 `;
 
 const SkipArrow = styled.img`
   display: inline-block;
   margin-bottom: 30px;
   width: 40px;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 75px;
+  }
 `;
 
 const Form = styled.div`
   padding: 30px 15px;
   background-color: #f3f3f3;
   border-radius: 4px;
+  
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+  }
+`;
+
+const FormWrapper = styled.div`
+  ${({ render, errorss }) => (render &&
+    `margin-left: ${(errorss ? '20%' : '-60px')};
+    transition: margin 0.4s ease-in;
+    transition-delay: ${(errorss ? '0.5s' : '0')};`)
+  };
 `;
 
 const FileFormAnchor = Scroll.Element;
@@ -38,12 +61,14 @@ const SENT_FORM_STATUS = 'sent';
 const ERROR_FORM_STATUS = 'error';
 const LOADING_FORM_STATUS = 'loading';
 
+const checkWidth = () => window && window.innerWidth > 768;
+
 export default class extends Component {
   constructor() {
     super();
 
     this.state = {
-      isOpened: false,
+      isOpened: checkWidth(),
       fileFormStatus: EMPTY_FORM_STATUS,
     };
 
@@ -74,6 +99,7 @@ export default class extends Component {
     this.setState({
       fileFormStatus: EMPTY_FORM_STATUS,
       isOpened: true,
+      secrets: false,
     });
   }
 
@@ -85,6 +111,7 @@ export default class extends Component {
     });
     this.setState({
       isOpened: false,
+      secrets: true,
       fileFormStatus: LOADING_FORM_STATUS,
     });
     formData.image = this.cookies.get('imageUrl');
@@ -116,20 +143,25 @@ export default class extends Component {
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <Form>
-          {this.state.fileFormStatus === SENT_FORM_STATUS &&
-            <SentFileForm handleClick={this.newOrder} />
-          }
-          {this.state.fileFormStatus === LOADING_FORM_STATUS &&
-            <Loading />
-          }
-          {this.state.fileFormStatus === EMPTY_FORM_STATUS &&
-            <UpoadFileForm
-              expand={this.expand}
-              collapse={this.collapse}
-            />
-          }
+          {<FormWrapper errorss={this.state.secrets} render={checkWidth()}>
+            {this.state.fileFormStatus === ERROR_FORM_STATUS &&
+              <SentFileForm handleClick={this.newOrder} />
+            }
+            {this.state.fileFormStatus === SENT_FORM_STATUS &&
+              <SentFileForm handleClick={this.newOrder} />
+            }
+            {this.state.fileFormStatus === LOADING_FORM_STATUS &&
+              <Loading />
+            }
+            {this.state.fileFormStatus === EMPTY_FORM_STATUS &&
+              <UpoadFileForm
+                expand={this.expand}
+                collapse={this.collapse}
+              />
+            }
+          </FormWrapper>}
           <CSSTransitionGroup
-            transitionName="detalis"
+            transitionName="details"
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
           >

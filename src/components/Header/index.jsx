@@ -11,8 +11,10 @@ import logo from './logo.svg';
 import hamburger from './hamburger.svg';
 import './styles.css';
 
-ReactPixel.init('179889939225358');
-ReactPixel.pageView();
+if (typeof window !== 'undefined') {
+  ReactPixel.init('179889939225358');
+  ReactPixel.pageView();
+}
 
 const Wrapper = styled.div`
   background-color: #f5f5f6;

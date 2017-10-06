@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { CSSTransitionGroup } from 'react-transition-group';
 import { Model, Material, Messenger, PhoneNumber } from '../../generic/ProductDetails';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
 import validatePhone from '../../../functions/validatePhone';
@@ -10,30 +11,9 @@ const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
   color: #4a4a4a;
   overflow: hidden;
-
-  & label {
-    display: block;
-    text-align: left;
-    font-family: 'Lato-Regular';
-
-    & span {
-      margin-left: 15px;
-    }
-  }
-
-  & input {
-    width: 100%;
-    border-radius: 20px;
-    border: solid 1px #cccccc;
-    background: none;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color: #4a4a4a;
-  }
-  & input::placeholder {
-    color: #9e9e9e;
+  
+  @media (min-width: 768px) {
+    padding-top: 0;
   }
 `;
 
@@ -67,6 +47,7 @@ export default class extends Component {
     this.handleChangeForm = this.handleChangeForm.bind(this);
     this.disableForm = this.disableForm.bind(this);
     this.checkPhone = this.checkPhone.bind(this);
+    this.handleOpenSubMunu = this.handleOpenSubMunu.bind(this);
   }
 
   checkPhone(formData) {
@@ -85,10 +66,16 @@ export default class extends Component {
     });
   }
 
-  handleChangeForm(e) {
+  handleOpenSubMunu() {
+    this.setState({
+      subMenuIsOpened: true,
+    });
+  }
+
+  async handleChangeForm(e) {
     const state = {};
     state[e.target.name] = e.target.value;
-    this.setState(state);
+    await this.setState(state);
   }
 
   render() {
@@ -97,13 +84,28 @@ export default class extends Component {
         <H3>Наш оператор свяжется с вами, чтобы обсудить детали макета</H3>
         <Messenger handleChangeForm={this.handleChangeForm} />
         <PhoneNumber
-          handleChangeForm={this.handleChangeForm}
+          handleChangeForm={async (e) => {
+            await this.handleChangeForm(e);
+            if (this.state.phone && validatePhone(this.state.phone)) {
+              this.setState({ subMenuIsOpened: true });
+            }
+          }}
           invalidNumber={this.state.invalidNumber}
         />
 
-        <H4>Детали товара</H4>
-        <Model handleChangeForm={this.handleChangeForm} />
-        <Material handleChangeForm={this.handleChangeForm} />
+        <CSSTransitionGroup
+          transitionName="details"
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
+        >
+          {this.state.subMenuIsOpened &&
+            <div>
+              <H4>Детали товара</H4>
+              <Model handleChangeForm={this.handleChangeForm} />
+              <Material handleChangeForm={this.handleChangeForm} />
+            </div>
+          }
+        </CSSTransitionGroup>
 
         <StyledButton
           onClick={(event) => {
