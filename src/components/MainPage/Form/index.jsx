@@ -61,7 +61,7 @@ const SENT_FORM_STATUS = 'sent';
 const ERROR_FORM_STATUS = 'error';
 const LOADING_FORM_STATUS = 'loading';
 
-const checkWidth = () => window && window.innerWidth > 768;
+const checkWidth = () => typeof window !== 'undefined' && window.innerWidth > 768;
 
 export default class extends Component {
   constructor() {
