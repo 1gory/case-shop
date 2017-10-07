@@ -7,13 +7,14 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import App from '../src/App';
+import { logger } from './logger';
 
 export default (req, res) => {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
 
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      console.error('read err', err);
+      logger.error('read err', err);
       return res.status(404).end();
     }
 
