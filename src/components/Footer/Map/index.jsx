@@ -23,6 +23,12 @@ const LocationWrapper = styled.div`
   z-index: 1;
   width: 100%;
   padding: 15px;
+  
+  @media (min-width: 765px) {
+    width: auto;
+    padding-right: 40px;
+    right: 0;
+  }
 `;
 
 const Location = styled.div`

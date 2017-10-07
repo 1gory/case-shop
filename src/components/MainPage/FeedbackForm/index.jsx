@@ -14,12 +14,22 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const ResponsiveWrapper = styled.div`
+  @media (min-width: 768px) {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+`;
+
 const CloseButton = styled.img`
-  position: absolute;
   position: absolute;
   width: 15px;
   right: 40px;
-  top: 40px;
+  
+  @media (min-width: 768px) {
+    top: 0;
+  }
 `;
 
 const STATUS_SUCCESS = 'success';
@@ -97,9 +107,11 @@ export default class extends Component {
     }
     return (
       <Wrapper>
-        {(this.state.status === STATUS_SUCCESS || this.state.status === STATUS_FAIL)
+        <ResponsiveWrapper>
+          {(this.state.status === STATUS_SUCCESS || this.state.status === STATUS_FAIL)
           && <CloseButton src={modalClose} onClick={this.handleClose} /> }
-        {form}
+          {form}
+        </ResponsiveWrapper>
       </Wrapper>
     );
   }

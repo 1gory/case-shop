@@ -22,6 +22,11 @@ const H2 = styled.h2`
 
 const RowWrapper = styled.div`
   margin: 15px;
+  
+  @media (min-width: 768px) {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
 `;
 
 const GoToCatalogButton = styled(Link)`

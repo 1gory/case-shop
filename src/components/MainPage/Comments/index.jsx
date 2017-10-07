@@ -10,11 +10,19 @@ import prevArrow from './carousel-prev.svg';
 import LeaveCommentForm from './LeaveCommentForm';
 
 const Wrapper = styled.div`
-  position: relative;
   text-align: center;
   background: #fff;
   padding-top: 20px;
   padding-bottom: 40px;
+`;
+
+const ResponsiveWrapper = styled.div`
+  position: relative;
+  
+  @media (min-width: 768px) {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 `;
 
 const H2 = styled.h2`
@@ -39,6 +47,7 @@ const SwipeButton = styled.img`
   top: 35%;
   width: 20px;
   position: absolute;
+  cursor: pointer;
 `;
 
 const PrevButton = styled(SwipeButton)`
@@ -107,53 +116,55 @@ export default class extends Component {
       <Wrapper>
         <H2>Отзывы</H2>
         <Waypoint onEnter={this.props.handleScroll} />
-        <ReactSwipe
-          ref="reactSwipe"
-          swipeOptions={{
-            continuous: false,
-            callback: this.swipeCallback,
-          }}
-        >
-          {/* For some reason the included components don't work correctly */}
-          <div>
-            <Avatar src={marinaAvatar} alt="avatar" />
-            <Name>Марина, Саратов</Name>
-            <Comment>
-              Заказала два чехла, себе и в продарок (на фото мой)
-              всё понравилось, доставили быстро.
-            </Comment>
-          </div>
+        <ResponsiveWrapper>
+          <ReactSwipe
+            ref="reactSwipe"
+            swipeOptions={{
+              continuous: false,
+              callback: this.swipeCallback,
+            }}
+          >
+            {/* For some reason the included components don't work correctly */}
+            <div>
+              <Avatar src={marinaAvatar} alt="avatar" />
+              <Name>Марина, Саратов</Name>
+              <Comment>
+                Заказала два чехла, себе и в продарок (на фото мой)
+                всё понравилось, доставили быстро.
+              </Comment>
+            </div>
 
-          <div>
-            <Avatar src={dmitryAvatar} alt="avatar" />
-            <Name>Дмитрий, Москва</Name>
-            <Comment>
-              Качественный чехол, приятно лежит в руке, еще не ронял, но выглядит прочным.
-            </Comment>
-          </div>
+            <div>
+              <Avatar src={dmitryAvatar} alt="avatar" />
+              <Name>Дмитрий, Москва</Name>
+              <Comment>
+                Качественный чехол, приятно лежит в руке, еще не ронял, но выглядит прочным.
+              </Comment>
+            </div>
 
-          <div>
-            <Avatar src={noPhoto} alt="avatar" />
-            <Name>Алексей, Новосибирск</Name>
-            <Comment>
-              Девушка подарила чехол со своей фотографией на день Валентина.
-              Хороший чехол, Спасибо!
-            </Comment>
-          </div>
+            <div>
+              <Avatar src={noPhoto} alt="avatar" />
+              <Name>Алексей, Новосибирск</Name>
+              <Comment>
+                Девушка подарила чехол со своей фотографией на день Валентина.
+                Хороший чехол, Спасибо!
+              </Comment>
+            </div>
 
-          <div>
-            <LeaveCommentForm />
-          </div>
-        </ReactSwipe>
+            <div>
+              <LeaveCommentForm />
+            </div>
+          </ReactSwipe>
 
-        <Thumbs>
-          {[...Array(3)].map((x, i) =>
-            <Thumb index={i} activeIndex={this.state.activeIndex} />,
-          )}
-        </Thumbs>
+          <Thumbs>
+            {[...Array(3)].map((x, i) =>
+              <Thumb index={i} activeIndex={this.state.activeIndex} />,
+            )}
+          </Thumbs>
 
-        <PrevButton src={prevArrow} onClick={this.prev} />
-        <NextButton src={nextArrow} onClick={this.next} />
+          <PrevButton src={prevArrow} onClick={this.prev} />
+          <NextButton src={nextArrow} onClick={this.next} />
+        </ResponsiveWrapper>
       </Wrapper>
     );
   }

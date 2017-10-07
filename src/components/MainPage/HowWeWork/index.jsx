@@ -16,6 +16,11 @@ const Wrapper = styled.div`
 const Steps = styled.div`
   padding-top: 40px;
   margin: 15px;
+  
+  @media (min-width: 768px) {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
 `;
 
 const H2 = styled.h2`
@@ -67,6 +72,10 @@ const Delimiter = styled.div`
   width: 1px;
   margin: 20px auto;
   height: 40px;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export default () => (

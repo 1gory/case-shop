@@ -21,6 +21,11 @@ const OrderButtonWrapper = styled.div`
 
 const IndividualCaseFormWrapper = styled.div`
   margin: 35px 0;
+  
+  @media (min-width: 768px) {
+    margin: 35px auto;   
+    width: 425px;
+  }
 `;
 
 const IndividualCaseForm = styled.div`

@@ -36,6 +36,11 @@ const RowWrapper = styled.div`
   margin: 15px;
   font-family: 'Lato-Regular';
   font-weight: bold;
+  
+  @media (min-width: 768px) {
+    max-width: 970px;
+    margin: 0 auto;
+  }
 `;
 
 const StyledButton = styled(Button)`
