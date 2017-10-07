@@ -13,7 +13,7 @@ export default (req, res) => {
 
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      // console.error('read err', err);
+      console.error('read err', err);
       return res.status(404).end();
     }
 
@@ -36,7 +36,10 @@ export default (req, res) => {
       });
       return res.end();
     }
-    const RenderedApp = htmlData.replace('<!--{{CSS}}-->', styleTags).replace('<!--{{SSR}}-->', markup);
+    const RenderedApp = htmlData
+      .replace('<style id="serverStyleTags"></style>', styleTags)
+      .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
+
     res.send(RenderedApp);
     return res.end();
   });
