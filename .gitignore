@@ -25,5 +25,7 @@ uploads*
 /server/config.js
 /server/log/main.log
 /server/log/uploadFileForm.log
+/server/encryption/
+!/server/encryption/.gitkeep
 
 /public/product/*

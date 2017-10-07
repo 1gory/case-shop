@@ -38,6 +38,11 @@ const Table = styled.table`
 
 const TableWrapper = styled.div`
   padding: 0 15px;
+  
+  @media (min-width: 768px) {
+    width: 768px;
+    margin: 0 auto;
+  }
 `;
 
 const Subhead = styled.tr`
