@@ -8,10 +8,17 @@ import Card from '../generic/Card/index';
 import getProducts from '../../functions/getProduct';
 import getImage from '../../functions/getImage';
 
-const H2 = styled.h2`
+const H1 = styled.h1`
   font-family: 'Lato-Regular';
   font-size: 24px;
   margin: 15px;
+  
+  @media (min-width: 768px) {
+    text-align: center;
+    max-width: 1170px;
+    margin: 0 auto;
+    font-size: 36px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -21,6 +28,13 @@ const Wrapper = styled.div`
 const RowWrapper = styled.div`
   margin: 15px;
   margin-bottom: 60px;
+`;
+
+const Section = styled.section`
+  @media (min-width: 768px) {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
 `;
 
 // const PaginationWrapper = styled.div`
@@ -64,25 +78,27 @@ export default class extends Component {
     return (
       <Wrapper>
         <Header />
-        <BreadCrumbs
-          breadcrumbs={[
-            { name: 'Каталог', link: '/catalog' },
-          ]}
-        />
-        <H2>Гравированные чехлы</H2>
-        <RowWrapper>
-          <Row>
-            {this.state.products && this.state.products.map(product =>
-              (<Col xs={6} sm={6} md={4} lg={3}>
-                <Card
-                  name={product.name}
-                  price={product.price}
-                  image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
-                  id={product.id}
-                />
-              </Col>))}
-          </Row>
-        </RowWrapper>
+        <Section>
+          <BreadCrumbs
+            breadcrumbs={[
+              { name: 'Каталог', link: '/catalog' },
+            ]}
+          />
+          <H1>Гравированные чехлы</H1>
+          <RowWrapper>
+            <Row>
+              {this.state.products && this.state.products.map(product =>
+                (<Col xs={6} sm={6} md={4} lg={3}>
+                  <Card
+                    name={product.name}
+                    price={product.price}
+                    image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
+                    id={product.id}
+                  />
+                </Col>))}
+            </Row>
+          </RowWrapper>
+        </Section>
         {/* <PaginationWrapper> */}
         {/* <PaginationLink>1</PaginationLink> */}
         {/* <PaginationLink>2</PaginationLink> */}

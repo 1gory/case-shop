@@ -26,7 +26,7 @@ const Links = styled.div`
 `;
 
 const MenuLink = styled(Link)`
-  display: block;
+  display: ${({ onlyDesktop }) => (onlyDesktop ? 'none' : 'block')};
   padding-bottom: 15px;
   padding-top: 15px;
   text-decoration: none;
@@ -44,9 +44,9 @@ export default () => (
     <Links>
       <MenuLink to="/">Главная</MenuLink>
       <MenuLink to="/catalog">Работы</MenuLink>
+      <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
       <MenuLink to="/delivery">Доставка</MenuLink>
       {/* <MenuLink to="">Контакты</MenuLink> */}
-      {/* <MenuLink to="">Сотрудничество</MenuLink> */}
     </Links>
   </Wrapper>
 );
