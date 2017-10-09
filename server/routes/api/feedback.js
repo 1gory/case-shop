@@ -22,13 +22,28 @@ router.post('/feedback', async (req, res, next) => {
     await lead(
       {
         name: 'Запрос обратной связи',
-        phone: name,
         custom_fields: [
           {
             id: 428587,
             values: [
               {
                 value: ip,
+              },
+            ],
+          },
+          {
+            id: 386315,
+            values: [
+              {
+                value: phone,
+              },
+            ],
+          },
+          {
+            id: 386379,
+            values: [
+              {
+                value: name,
               },
             ],
           },
