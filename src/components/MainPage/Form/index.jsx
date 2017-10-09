@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Cookies from 'universal-cookie';
+import ReactPixel from 'react-facebook-pixel';
 import Scroll from 'react-scroll';
 import skip from './skip-to-form.svg';
 import DetailsForm from './Details';
@@ -104,6 +105,7 @@ export default class extends Component {
   }
 
   handleSendForm(formData) {
+    ReactPixel.track('Lead', { value: 1290 });
     scroller.scrollTo('FileFormAnchor', {
       duration: 800,
       delay: 0,
