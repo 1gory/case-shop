@@ -77,25 +77,25 @@ export default class extends Component {
             <Row>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/product/59c36eebc9ae0a42557f4ad4">
-                  <ImgExample src="/case-examples/22_lion_turn_bamb_gray.jpg" alt="" />
+                  <ImgExample src="/case-examples/gray/22_lion_turn_bamb_gray.jpg" alt="" />
                   <div>С вашей картинкой или логотипом</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/product/59c2cee2c9ae0a42557f3dfa">
-                  <ImgExample src="/case-examples/2_barcelona_turn_red_gray.jpg" alt="" />
+                  <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
                   <div>С логотипом любимой команды</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/product/59c2d14bc9ae0a42557f3ec2">
-                  <ImgExample src="/case-examples/3_marina_turn_red_gray.jpg" alt="" />
+                  <ImgExample src="/case-examples/gray/3_marina_turn_red_gray.jpg" alt="" />
                   <div>С вашим именем</div>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/product/59c2d957c9ae0a42557f413c">
-                  <ImgExample src="/case-examples/4_aries_zodiac_turn_bamb_gray.jpg" alt="" />
+                  <ImgExample src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt="" />
                   <div>С вашим гороскопом</div>
                 </ExampleWrapper>
               </Col>
