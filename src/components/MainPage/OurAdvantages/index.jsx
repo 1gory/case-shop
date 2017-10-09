@@ -23,8 +23,10 @@ const H2 = styled.h2`
 `;
 
 const ImgWrapper = styled.div`
-  width: 100%;
-  padding: 0 15px;
+  @media (min-width: 768px) {
+    width: 100%;
+    padding: 0 15px;
+  }
 `;
 
 const Img = styled.div`
