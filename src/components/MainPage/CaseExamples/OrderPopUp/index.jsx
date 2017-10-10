@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import ReactPixel from 'react-facebook-pixel';
 import modalClose from '../../../../icons/modal-close.svg';
 import Popup from '../../../generic/Popup';
 import SentState from './Sent';
@@ -42,6 +43,7 @@ export default class extends Component {
   }
 
   handleSendForm(formData) {
+    ReactPixel.track('Lead', { value: 1290 });
     fetch('/api/order', {
       method: 'POST',
       headers: {
