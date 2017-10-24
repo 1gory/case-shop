@@ -117,7 +117,7 @@ export default class extends Component {
           }}
           disabled={this.state.disabled}
         >
-          Получить макет
+          Заказать
         </StyledButton>
       </DetailsFormWrapper>
     );

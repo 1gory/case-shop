@@ -111,7 +111,7 @@ export default class extends Component {
             icon={contactsMessenger}
             label="WhatsApp, Viber, Telegram"
             info="+7 (985) 935-59-88"
-            href="whatsapp://send?text=Здравствуйте!&phone=+79256543492"
+            href="whatsapp://send?text=Здравствуйте!&phone=+79859355988"
           />
           <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>
         </Contacts>

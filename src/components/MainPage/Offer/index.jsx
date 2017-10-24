@@ -90,7 +90,7 @@ export default () => (
     <ResponsiveWrapper>
       <H2 onClick={handleClick}>
         Загрузите свое изображение <br />
-        <H2Light>и мы вышлем вам макет<br /> вашего будущего чехла</H2Light>
+        <H2Light>Для гравировки по <br />индивидуальному заказу</H2Light>
       </H2>
       <Cases>
         <CaseWrapper to="#">
