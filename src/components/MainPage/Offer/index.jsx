@@ -5,21 +5,23 @@ import { Link } from 'react-router-dom';
 import white from './23_girl_front_bamb_white.jpg';
 import dark from './22_sailor_2_front_red_white.jpg';
 import RubleSign from '../../generic/RubleSign';
+import Button from '../../generic/Form/Buttons/GhostButton';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
   padding-top: 60px;
   background-color: #fff;
   
-  @media (min-width: 768px) {
-    padding-top: 120px;
-    display: flex;
-    justify-content: center;
-  }
+  // @media (min-width: 768px) {
+  //   padding-top: 120px;
+  //   display: flex;
+  //   justify-content: center;
+  // }
 `;
 
 const ResponsiveWrapper = styled.div`
   @media (min-width: 768px) {
+    margin: 0 auto;
     width: 100%;
     max-width: 970px;
     display: flex;
@@ -75,6 +77,15 @@ const Price = styled.div`
   font-family: 'Lato-Regular';
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 35px;
+`;
+
+const ToExamplesButton = Button.withComponent(Link);
+
 const scroller = Scroll.scroller;
 
 const handleClick = () => {
@@ -104,5 +115,10 @@ export default () => (
         </CaseWrapper>
       </Cases>
     </ResponsiveWrapper>
+    <ButtonWrapper>
+      <ToExamplesButton to="/product/59ef645ffcd73411beec96c7">
+        Примеры гравировок
+      </ToExamplesButton>
+    </ButtonWrapper>
   </Wrapper>
 );
