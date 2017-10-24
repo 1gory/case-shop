@@ -104,12 +104,12 @@ export default () => (
         <H2Light>Для гравировки по <br />индивидуальному заказу</H2Light>
       </H2>
       <Cases>
-        <CaseWrapper to="#">
+        <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
           <Case src={white} />
           <div>Гравировка <br />по фотографии</div>
         </CaseWrapper>
         <Price>1290<RubleSign /></Price>
-        <CaseWrapper to="/product/59c54598c9ae0a42557fa1a1">
+        <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
           <Case src={dark} />
           <div>Гравировка <br />по картинке</div>
         </CaseWrapper>
