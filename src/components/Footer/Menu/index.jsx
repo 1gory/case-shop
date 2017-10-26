@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ym from 'react-yandex-metrika';
 import instagramIcon from './contact-social-insta.svg';
 import vkIcon from './contact-social-vk.svg';
 
@@ -57,10 +58,10 @@ export default () => (
     </FooterLinks>
 
     <SocialNetworksIcons>
-      <a href="https://vk.com/casewoodru">
+      <a href="https://vk.com/casewoodru" onClick={() => (ym('reachGoal', 'gotovk'))}>
         <Icon src={vkIcon} />
       </a>
-      <a href="https://instagram.com/casewood.ru/">
+      <a href="https://instagram.com/casewood.ru/" onClick={() => (ym('reachGoal', 'gotoinstagram'))}>
         <Icon src={instagramIcon} />
       </a>
     </SocialNetworksIcons>

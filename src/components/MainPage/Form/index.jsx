@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ym from 'react-yandex-metrika';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
 import Scroll from 'react-scroll';
@@ -106,6 +107,7 @@ export default class extends Component {
 
   handleSendForm(formData) {
     ReactPixel.track('Lead', { value: 1290 });
+    ym('reachGoal', 'order');
     scroller.scrollTo('FileFormAnchor', {
       duration: 800,
       delay: 0,

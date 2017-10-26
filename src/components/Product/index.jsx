@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
+import ym from 'react-yandex-metrika';
 import Header from '../Header';
 import Footer from '../Footer';
 import BreadCrumbs from '../generic/BreadCrumbs';
@@ -131,6 +132,7 @@ export default class extends Component {
   // TODO move sending to separated method
   handleSendForm(formData) {
     ReactPixel.track('Lead', { value: 1290 });
+    ym('reachGoal', 'order');
     formData.image = this.cookies.get('imageUrl');
     fetch('/api/order', {
       method: 'POST',
