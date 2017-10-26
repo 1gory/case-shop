@@ -19,6 +19,7 @@ router.post('/order', async (req, res, next) => {
     const cookieJar = request.jar();
     await auth(cookieJar);
     const date = new Date();
+    date.setHours(date.getHours() + 3); // TODO fix problem with timezone
     await lead(
       {
         name: `Заказ ${moment().format('HH:mm')}`,
