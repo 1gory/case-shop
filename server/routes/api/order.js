@@ -22,7 +22,7 @@ router.post('/order', async (req, res, next) => {
     date.setHours(date.getHours() + 3); // TODO fix problem with timezone
     await lead(
       {
-        name: `Заказ ${moment().format('HH:mm')}`,
+        name: `Заказ ${moment().utcOffset('+0300').format('HH:mm')}`,
         custom_fields: [
           {
             id: 386299,
