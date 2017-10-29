@@ -15,6 +15,8 @@ router.post('/order', async (req, res, next) => {
     const referer = req.headers.referer;
     const messenger = req.body.messenger;
     const material = req.body.material;
+    const customerName = req.body.customerName ?
+      req.body.customerName : `Заказ ${moment().utcOffset('+0300').format('HH:mm')}`;
     const image = req.body.image ? `${config.production.url}/${req.body.image}` : null;
     const cookieJar = request.jar();
     await auth(cookieJar);
@@ -22,7 +24,7 @@ router.post('/order', async (req, res, next) => {
     date.setHours(date.getHours() + 3); // TODO fix problem with timezone
     await lead(
       {
-        name: `Заказ ${moment().utcOffset('+0300').format('HH:mm')}`,
+        name: customerName,
         custom_fields: [
           {
             id: 386299,

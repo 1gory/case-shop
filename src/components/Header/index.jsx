@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Mertika from '../generic/YandexMetrika';
+import Jivosite from '../generic/Jivosite';
 import MenuList from './Menu';
 // import RubleSign from '../RubleSign';
 // import basketLogo from './basket-logo.svg';
@@ -106,6 +107,7 @@ export default class extends Component {
     return (
       <Wrapper>
         <Mertika />
+        <Jivosite />
         <HeaderWrapper>
           <Header>
             <Link to="/">

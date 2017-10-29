@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { Model, Material, Messenger, PhoneNumber } from '../../generic/ProductDetails';
+import { Model, Material, Messenger, PhoneNumber, CustomerName } from '../../generic/ProductDetails';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
 import validatePhone from '../../../functions/validatePhone';
 
@@ -103,6 +103,7 @@ export default class extends Component {
               <H4>Детали товара</H4>
               <Model handleChangeForm={this.handleChangeForm} />
               <Material handleChangeForm={this.handleChangeForm} />
+              <CustomerName handleChangeForm={this.handleChangeForm} />
             </div>
           }
         </CSSTransitionGroup>

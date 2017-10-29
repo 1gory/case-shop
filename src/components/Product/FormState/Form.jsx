@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
-import { Model, Material, PhoneNumber } from '../../generic/ProductDetails';
+import { Model, Material, PhoneNumber, CustomerName } from '../../generic/ProductDetails';
 import ImageForm from '../../generic/UploadFileForm';
 import OrderButton from '../../generic/Form/Buttons/PrimaryButton';
 import validatePhone from '../../../functions/validatePhone';
@@ -108,6 +108,7 @@ export default class extends Component {
           handleChangeForm={this.handleChangeForm}
           invalidNumber={this.state.invalidNumber}
         />
+        <CustomerName handleChangeForm={this.handleChangeForm} />
         <OrderButtonWrapper>
           <StyledOrderButton
             disabled={this.state.disabled}

@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 import Dropdown from '../../generic/Dropdown/index';
+import TextInput from '../../generic/Form/TextInput';
 
 const Label = styled.label`
   display: block;
@@ -73,6 +74,9 @@ export const Model = ({ handleChangeForm }) => (
       <option value="iPhone 6 PLUS/6S PLUS">iPhone 6 PLUS/6S PLUS</option>
       <option value="iPhone 7">iPhone 7</option>
       <option value="iPhone 7PLUS">iPhone 7PLUS</option>
+      <option value="iPhone 8">iPhone 8</option>
+      <option value="iPhone 8PLUS">iPhone 8PLUS</option>
+      <option value="iPhone 10">iPhone 10</option>
     </Dropdown>
   </Label>
 );
@@ -84,5 +88,12 @@ export const Material = ({ handleChangeForm }) => (
       <option value="light">Светлое дерево</option>
       <option value="dark">Темное дерево</option>
     </Dropdown>
+  </Label>
+);
+
+export const CustomerName = ({ handleChangeForm }) => (
+  <Label>
+    <span>Как к вам обращаться?</span>
+    <TextInput handleChangeForm={handleChangeForm} placeholder="Ф.И.О" name="customerName" />
   </Label>
 );
