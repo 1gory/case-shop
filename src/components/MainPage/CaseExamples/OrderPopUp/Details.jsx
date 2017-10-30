@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Model, Material, Messenger, PhoneNumber } from '../../../generic/ProductDetails';
+import { Model, Material, Messenger, PhoneNumber, CustomerName } from '../../../generic/ProductDetails';
 import validatePhone from '../../../../functions/validatePhone';
 
 const H4 = styled.h4`
@@ -69,7 +69,7 @@ export default class extends Component {
           <H4>Детали товара</H4>
           <Model handleChangeForm={this.handleChangeForm} />
           <Material handleChangeForm={this.handleChangeForm} />
-
+          <CustomerName handleChangeForm={this.handleChangeForm} />
           <SendButton
             onClick={(event) => {
               event.preventDefault();
