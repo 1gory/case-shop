@@ -4,6 +4,7 @@ import Message from '../../models/message';
 import Customer from '../../models/customer';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
+import mailer from '../../services/mailer';
 
 const router = express.Router();
 
@@ -52,6 +53,7 @@ router.post('/message', async (req, res, next) => {
       },
       cookieJar,
     );
+    mailer('Сообщение', { phone });
     res.json({
       status: 'success',
     });

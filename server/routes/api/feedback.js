@@ -4,6 +4,7 @@ import Message from '../../models/message';
 import Customer from '../../models/customer';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
+import mailer from '../../services/mailer';
 
 const router = express.Router();
 
@@ -11,8 +12,8 @@ router.post('/feedback', async (req, res, next) => {
   try {
     const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
-    const name = req.body.name;
-    const customer = await Customer.findOneOrCreate({ phone }, { phone, name });
+    const customerName = req.body.name;
+    const customer = await Customer.findOneOrCreate({ phone }, { phone, customerName });
     await Message.create({
       message: 'Перезвоните мне, пожалуйста',
       customer,
@@ -43,7 +44,7 @@ router.post('/feedback', async (req, res, next) => {
             id: 386379,
             values: [
               {
-                value: name,
+                value: customerName,
               },
             ],
           },
@@ -51,6 +52,7 @@ router.post('/feedback', async (req, res, next) => {
       },
       cookieJar,
     );
+    mailer('Запрос обратной связи', { phone, customerName });
     res.json({
       status: 'success',
     });

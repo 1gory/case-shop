@@ -3,6 +3,7 @@ import request from 'request';
 import moment from 'moment';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
+import mailer from '../../services/mailer';
 import { config } from '../../config';
 
 const router = express.Router();
@@ -94,6 +95,7 @@ router.post('/order', async (req, res, next) => {
       },
       cookieJar,
     );
+    mailer('Заказ', { phone, model, material, customerName });
     res.json({
       status: 'success',
     });
