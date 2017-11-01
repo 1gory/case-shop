@@ -1,2 +1,2 @@
-export default (printCode, resolution, image) =>
-  `/product/${printCode}/${resolution ? (`${resolution}/`) : ''}${image}`;
+export default (category, printCode, resolution, image) =>
+  `/product${category ? `/${category}` : ''}/${printCode}/${resolution ? (`${resolution}/`) : ''}${image}`;

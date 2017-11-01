@@ -84,10 +84,10 @@ export default class extends Component {
 
   async componentWillMount() {
     const id = this.props.match.url.split('/').pop();
-    const products = await getProducts(`products/${id}`);
-
+    const products = await getProducts(`products/id/${id}`);
     products[0].images = products[0].images.map(image =>
       getGalleryImage(
+        products[0].category,
         products[0].printCode,
         'compressed',
         image,
@@ -98,6 +98,7 @@ export default class extends Component {
     if (products[0].activeImagesKeys.length <= 2) {
       products[0].images.push(
         getGalleryImage(
+          null,
           'common',
           '',
           'photo3.jpg',

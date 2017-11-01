@@ -21,6 +21,13 @@ const H1 = styled.h1`
   }
 `;
 
+const H2 = styled.h2`
+  font-family: 'Lato-Regular';
+  font-size: 20px;
+  color: #4a4a4a;
+  margin-bottom: 0;
+`;
+
 const Wrapper = styled.div`
   background-color: #f9f9f9;
 `;
@@ -59,6 +66,23 @@ const Section = styled.section`
 //   border-radius: 20px;
 // `;
 
+const CatalogCategory = ({ products, categoryName, category }) => (
+  <RowWrapper>
+    { categoryName ? <H2>{categoryName}</H2> : '' }
+    <Row>
+      {products && products.map(product =>
+        (<Col xs={6} sm={6} md={4} lg={3}>
+          <Card
+            name={product.name}
+            price={product.price}
+            image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white', category)}
+            id={product.id}
+          />
+        </Col>))}
+    </Row>
+  </RowWrapper>
+);
+
 export default class extends Component {
   constructor() {
     super();
@@ -71,6 +95,9 @@ export default class extends Component {
   async componentWillMount() {
     this.setState({
       products: await getProducts('products'),
+      productsFk: await getProducts('products/fk'),
+      productsZodiac: await getProducts('products/zodiac'),
+      productsAuto: await getProducts('products/auto'),
     });
   }
 
@@ -85,19 +112,18 @@ export default class extends Component {
             ]}
           />
           <H1>Гравированные чехлы</H1>
-          <RowWrapper>
-            <Row>
-              {this.state.products && this.state.products.map(product =>
-                (<Col xs={6} sm={6} md={4} lg={3}>
-                  <Card
-                    name={product.name}
-                    price={product.price}
-                    image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
-                    id={product.id}
-                  />
-                </Col>))}
-            </Row>
-          </RowWrapper>
+          <CatalogCategory
+            products={this.state.productsFk} category="fk" categoryName="Футбольные клубы"
+          />
+          <CatalogCategory
+            products={this.state.productsAuto} category="auto" categoryName="Автомобили"
+          />
+          <CatalogCategory
+            products={this.state.productsZodiac} category="zodiac" categoryName="Знаки зодиака"
+          />
+          <CatalogCategory
+            products={this.state.products} categoryName="Принты"
+          />
         </Section>
         {/* <PaginationWrapper> */}
         {/* <PaginationLink>1</PaginationLink> */}

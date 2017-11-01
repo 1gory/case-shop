@@ -13,24 +13,31 @@ router.param('productId', (req, res, next, id) => {
   return next();
 });
 
-router.get('/products', async (req, res, next) => {
+router.param('category', (req, res, next, category) => {
+  req.category = category;
+  return next();
+});
+
+router.get('/products/id/:productId', async (req, res, next) => {
   try {
-    const products = await Product.find({ active: true }, null, { sort: { order: 1 } });
+    const product = await Product.find({ _id: ObjectId(req.productId) });
     res.json({
       status: 'success',
-      result: products,
+      result: product,
     });
   } catch (e) {
     next(e);
   }
 });
 
-router.get('/products/:productId', async (req, res, next) => {
+router.get('/products/:category*?', async (req, res, next) => {
   try {
-    const product = await Product.find({ _id: ObjectId(req.productId) });
+    const query = { active: true };
+    query.category = req.category ? req.category : null;
+    const products = await Product.find(query, null, { sort: { order: 1 } });
     res.json({
       status: 'success',
-      result: product,
+      result: products,
     });
   } catch (e) {
     next(e);
