@@ -95,6 +95,7 @@ export default class extends Component {
   async componentWillMount() {
     this.setState({
       products: await getProducts('products'),
+      productsNames: await getProducts('products/names'),
       productsFk: await getProducts('products/fk'),
       productsZodiac: await getProducts('products/zodiac'),
       productsAuto: await getProducts('products/auto'),
@@ -112,6 +113,9 @@ export default class extends Component {
             ]}
           />
           <H1>Гравированные чехлы</H1>
+          <CatalogCategory
+            products={this.state.productsNames} category="names" categoryName="Именные чехлы"
+          />
           <CatalogCategory
             products={this.state.productsFk} category="fk" categoryName="Футбольные клубы"
           />
