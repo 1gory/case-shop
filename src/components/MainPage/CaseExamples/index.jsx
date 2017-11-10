@@ -124,7 +124,7 @@ export default class extends Component {
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/product/prints">
+                <ExampleWrapper to="/catalog/prints">
                   <ImgExample src="/case-examples/gray/12_skull_turn_red_gray.jpg" alt="" />
                   <div>С вашей картинкой или логотипом</div>
                 </ExampleWrapper>

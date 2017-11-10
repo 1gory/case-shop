@@ -1,18 +1,8 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import Category from '../../models/category';
 import Product from '../../models/product';
 
 const router = express.Router();
-const ObjectId = mongoose.Types.ObjectId;
-
-router.param('productId', (req, res, next, id) => {
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new Error('NotFoundException'));
-  }
-  req.productId = id;
-  return next();
-});
 
 router.param('category', (req, res, next, category) => {
   req.category = category;
