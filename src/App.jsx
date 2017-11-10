@@ -10,7 +10,7 @@ import Product from './components/Product';
 export default () => (
   <Switch>
     <Route exact path="/" component={MainPage} />
-    <Route path="/catalog" component={Catalog} />
+    <Route path="/catalog/:catalogName?" component={Catalog} />
     <Route path="/delivery" component={Delivery} />
     <Route path="/cooperation" component={Cooperation} />
     <Route path="/product/:id" component={Product} />

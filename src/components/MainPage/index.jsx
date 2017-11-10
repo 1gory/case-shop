@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Banner from './Banner/index';
-import Offer from './Offer/index';
-import Form from './Form/index';
+// import Offer from './Offer/index';
+// import Form from './Form/index';
 import CaseExamples from './CaseExamples/index';
 import Catalog from './Catalog/index';
 import FeedbackForm from './FeedbackForm/index';
@@ -38,8 +38,8 @@ export default class extends Component {
     return (<Wrapper>
       <Header />
       <Banner />
-      <Offer />
-      <Form />
+      {/* <Offer /> */}
+      {/* <Form /> */}
       <CaseExamples />
       <Catalog />
       <FeedbackForm />

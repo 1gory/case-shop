@@ -62,7 +62,7 @@ const MainHeader = styled.span`
 `;
 
 const handleClick = () => {
-  scroller.scrollTo('CatalogAncor', {
+  scroller.scrollTo('CatalogAnchor', {
     duration: 800,
     delay: 100,
     smooth: true,

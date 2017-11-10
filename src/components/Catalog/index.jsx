@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
+import { Link } from 'react-router-dom';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Card from '../generic/Card/index';
-import getProducts from '../../functions/getProduct';
+import getCatalog from '../../functions/getCatalog';
 import getImage from '../../functions/getImage';
+import Button from '../generic/Form/Buttons/GhostButton';
+import MapPreloader from '../Footer/Map/MapPreloader';
 
 const H1 = styled.h1`
   font-family: 'Lato-Regular';
@@ -44,6 +47,12 @@ const Section = styled.section`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+`;
+
 // const PaginationWrapper = styled.div`
 //   display: flex;
 //   justify-content: center;
@@ -66,7 +75,9 @@ const Section = styled.section`
 //   border-radius: 20px;
 // `;
 
-const CatalogCategory = ({ products, categoryName, category }) => (
+const ToCategoryButton = Button.withComponent(Link);
+
+const CatalogCategory = ({ products, categoryName, category, toCategoryButton }) => (
   <RowWrapper>
     { categoryName ? <H2>{categoryName}</H2> : '' }
     <Row>
@@ -80,25 +91,61 @@ const CatalogCategory = ({ products, categoryName, category }) => (
           />
         </Col>))}
     </Row>
+    {toCategoryButton && <ButtonWrapper>
+      <ToCategoryButton to={`/catalog/${category}`}>
+        В категорию
+      </ToCategoryButton>
+    </ButtonWrapper>
+    }
   </RowWrapper>
 );
+
+const getCategory = (catalog, categoryName) => {
+  const category = catalog.find(item => (item.category === categoryName));
+  return [{
+    category: category.category,
+    categoryRu: category.categoryRu,
+    products: category.products,
+  }];
+};
+
+const sliceCatalog = catalog => (catalog.map(item => ({
+  category: item.category,
+  categoryRu: item.categoryRu,
+  products: item.products.slice(0, 4),
+})));
 
 export default class extends Component {
   constructor() {
     super();
 
     this.state = {
-      products: [],
+      catalog: [],
     };
+    this.load = this.load.bind(this);
   }
 
   async componentWillMount() {
+    this.load(this.props);
+  }
+
+  componentWillReceiveProps(props) {
+    this.load(props);
+  }
+
+  async load(props) {
+    const urlParts = props.match.url.split('/');
+    let categoryButton = true;
+    let catalog = await getCatalog();
+    if (urlParts[2]) {
+      catalog = getCategory(catalog, urlParts[2]);
+      categoryButton = false;
+    } else {
+      catalog = sliceCatalog(catalog);
+    }
     this.setState({
-      products: await getProducts('products'),
-      productsNames: await getProducts('products/names'),
-      productsFk: await getProducts('products/fk'),
-      productsZodiac: await getProducts('products/zodiac'),
-      productsAuto: await getProducts('products/auto'),
+      catalog,
+      categoryButton,
     });
   }
 
@@ -113,21 +160,14 @@ export default class extends Component {
             ]}
           />
           <H1>Гравированные чехлы</H1>
-          <CatalogCategory
-            products={this.state.productsNames} category="names" categoryName="Именные чехлы"
-          />
-          <CatalogCategory
-            products={this.state.productsFk} category="fk" categoryName="Футбольные клубы"
-          />
-          <CatalogCategory
-            products={this.state.productsAuto} category="auto" categoryName="Автомобили"
-          />
-          <CatalogCategory
-            products={this.state.productsZodiac} category="zodiac" categoryName="Знаки зодиака"
-          />
-          <CatalogCategory
-            products={this.state.products} categoryName="Принты"
-          />
+          {this.state.catalog ? this.state.catalog.map(item => (
+            <CatalogCategory
+              products={item.products}
+              category={item.category}
+              categoryName={item.categoryRu}
+              toCategoryButton={this.state.categoryButton}
+            />
+          )) : <MapPreloader />}
         </Section>
         {/* <PaginationWrapper> */}
         {/* <PaginationLink>1</PaginationLink> */}
@@ -141,5 +181,4 @@ export default class extends Component {
       </Wrapper>
     );
   }
-};
-
+}
