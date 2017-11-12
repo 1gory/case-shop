@@ -98,7 +98,7 @@ export default class extends Component {
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/product/59c2d957c9ae0a42557f413c">
+                <ExampleWrapper to="/catalog/zodiac">
                   <ImgExample src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt="" />
                   <div>С вашим гороскопом</div>
                 </ExampleWrapper>
