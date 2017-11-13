@@ -1,15 +1,26 @@
 import express from 'express';
 import request from 'request';
 import moment from 'moment';
+import Cookies from 'universal-cookie';
+import trafficSource from '../../services/trafficSource';
 import auth from '../../connectors/auth';
 import lead from '../../connectors/lead';
 import mailer from '../../services/mailer';
 import { config } from '../../config';
 
 const router = express.Router();
+const unassignedEnum = 815981;
 
 router.post('/order', async (req, res, next) => {
   try {
+    const cookies = new Cookies(req.headers.cookie);
+    const source = cookies.get('source');
+    let sourceEnum = await trafficSource(source);
+    let note = '';
+    if (source && !sourceEnum) {
+      sourceEnum = unassignedEnum;
+      note += `unassigned utm_source: ${source}`;
+    }
     const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
     const model = req.body.model;
@@ -68,6 +79,14 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
+            id: 386295,
+            values: [
+              {
+                value: sourceEnum,
+              },
+            ],
+          },
+          {
             id: 407505,
             values: [
               {
@@ -88,6 +107,14 @@ router.post('/order', async (req, res, next) => {
             values: [
               {
                 value: referer,
+              },
+            ],
+          },
+          {
+            id: 440641,
+            values: [
+              {
+                value: note,
               },
             ],
           },

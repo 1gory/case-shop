@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Cookies from 'universal-cookie';
+import QueryString from 'query-string';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Banner from './Banner/index';
@@ -18,14 +20,24 @@ const Wrapper = styled.div`
 `;
 
 export default class extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       mapPreloader: true,
     };
 
     this.handleWaypointEnter = this.handleWaypointEnter.bind(this);
+  }
+
+  componentDidMount() {
+    this.cookies = new Cookies();
+
+    const parsed = QueryString.parse(this.props.location.search);
+
+    if (!this.cookies.get('source') && parsed.utm_source) {
+      this.cookies.set('source', parsed.utm_source);
+    }
   }
 
   handleWaypointEnter() {

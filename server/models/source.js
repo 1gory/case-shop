@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const CategorySchema = new mongoose.Schema({
+const SourceSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -9,14 +9,14 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  enum: {
+    type: Number,
+    required: true,
+  },
   order: {
     type: Number,
     required: true,
   },
-  active: {
-    type: Boolean,
-    required: true,
-  },
 });
 
-export default mongoose.model('Category', CategorySchema, 'category');
+export default mongoose.model('Source', SourceSchema, 'source');
