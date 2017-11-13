@@ -69,7 +69,7 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <H3>Не можете определиться?</H3>
+        <H3>Не нашли нужный принт?</H3>
         <H4>Оставьте свой номер и мы с Вами свяжемся!</H4>
         {/* TODO fix all included styles */}
         <Form invalidName={this.props.invalidName}>
