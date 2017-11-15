@@ -18,7 +18,7 @@ export default () => (
     <Route path="/cooperation" component={Cooperation} />
     <Route path="/product/:id" component={Product} />
     <Route path="/payment" component={Payment} />
-    <Route path="/successPayment" component={SuccessPayment} />
-    <Route path="/errorPayment" component={ErrorPayment} />
+    <Route path="/shopSuccessUrl" component={SuccessPayment} />
+    <Route path="/shopFailUrl" component={ErrorPayment} />
   </Switch>
 );
