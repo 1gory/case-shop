@@ -8,7 +8,7 @@ import Jivosite from '../generic/Jivosite';
 import MenuList from './Menu';
 // import RubleSign from '../RubleSign';
 // import basketLogo from './basket-logo.svg';
-import logo from './logo.svg';
+import logo from '../generic/Icons/logo.svg';
 import hamburger from './hamburger.svg';
 import './styles.css';
 

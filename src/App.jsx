@@ -6,6 +6,9 @@ import Catalog from './components/Catalog';
 import Delivery from './components/Delivery';
 import Cooperation from './components/Cooperation';
 import Product from './components/Product';
+import Payment from './components/Payment';
+import SuccessPayment from './components/Payment/SuccessPayment';
+import ErrorPayment from './components/Payment/ErrorPayment';
 
 export default () => (
   <Switch>
@@ -14,5 +17,8 @@ export default () => (
     <Route path="/delivery" component={Delivery} />
     <Route path="/cooperation" component={Cooperation} />
     <Route path="/product/:id" component={Product} />
+    <Route path="/payment" component={Payment} />
+    <Route path="/successPayment" component={SuccessPayment} />
+    <Route path="/errorPayment" component={ErrorPayment} />
   </Switch>
 );

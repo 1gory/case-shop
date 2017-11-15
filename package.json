@@ -40,7 +40,8 @@
     "styled-components": "^2.1.2",
     "swipe-js-iso": "^2.0.3",
     "thumbnail": "^0.1.9",
-    "universal-cookie": "^2.0.8"
+    "universal-cookie": "^2.0.8",
+    "xml": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
