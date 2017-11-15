@@ -22,8 +22,6 @@ router.use(require('./api/order').default);
 router.use(require('./api/product').default);
 router.use(require('./api/catalog').default);
 
-router.use(require('./payments/payments').default);
-
 const getFormData = req =>
   new Promise((resolve, reject) => {
     const form = new multiparty.Form();

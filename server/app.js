@@ -31,6 +31,8 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.static(path.resolve(__dirname, '..', 'uploads')));
 
+app.use(require('./routes/payments/payments').default);
+
 app.use('/api', api);
 
 app.use('/', loader);
