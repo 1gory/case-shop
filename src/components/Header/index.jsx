@@ -13,7 +13,7 @@ import hamburger from './hamburger.svg';
 import './styles.css';
 
 if (typeof window !== 'undefined') {
-  ReactPixel.init('179889939225358');
+  ReactPixel.init('130472120992476');
   ReactPixel.pageView();
 }
 
