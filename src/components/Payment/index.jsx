@@ -86,28 +86,20 @@ export default class extends Component {
             <Preloader src={preloader} alt="" />
             <Icon src={icon} alt="" />
           </IconsWrapper>
-
           <form ref={(el) => { this.FormRef = el; }} action="https://money.yandex.ru/eshop.xml" method="POST">
             <input name="shopId" value="159341" type="hidden" />
             <input name="scid" value="151001" type="hidden" />
             <input name="sum" value={this.state.value} type="hidden" />
-
-            <ButtonsWrapper>
-              <Prepayment
-                name="customerNumber"
-                onClick={() => { this.handleSendForm(); }}
-              >
-                Предоплата
-              </Prepayment>
-
-              <FullPayment
-                name="customerNumber"
-                onClick={() => { this.handleSendForm(this.state.transferredValue); }}
-              >
-                Полная оплата (-10%)
-              </FullPayment>
-            </ButtonsWrapper>
+            <input name="customerNumber" value={this.state.customerNumber} type="hidden" />
           </form>
+          <ButtonsWrapper>
+            <Prepayment onClick={() => { this.handleSendForm(); }}>
+              Предоплата
+            </Prepayment>
+            <FullPayment onClick={() => { this.handleSendForm(this.state.transferredValue); }}>
+              Полная оплата (-10%)
+            </FullPayment>
+          </ButtonsWrapper>
         </PreloaderContainer>
       </Wrapper>
     );
