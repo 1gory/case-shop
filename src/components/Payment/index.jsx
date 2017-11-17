@@ -72,7 +72,7 @@ export default class extends Component {
     if (value) {
       this.setState({
         value: value * 0.9,
-      }, this.FormRef.submit());
+      }, () => { this.FormRef.submit(); });
     } else {
       this.FormRef.submit();
     }
