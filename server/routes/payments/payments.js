@@ -1,5 +1,6 @@
 import express from 'express';
 import xml from 'xml';
+import mailer from '../../services/mailer';
 import { config } from '../../config';
 
 const router = express.Router();
@@ -36,6 +37,7 @@ router.post('/avisoUrl', (req, res) => {
     },
   }];
 
+  mailer('Внесена предоплата', { prepayment: req.body.orderSumAmount, phone: req.body.customerNumber });
   res.send(xml(response, { declaration: true }));
 });
 

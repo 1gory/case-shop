@@ -5,7 +5,7 @@ import { uploadFileFormLogger, logger } from '../logger';
 uploadFileFormLogger.level = 'debug';
 logger.level = 'debug';
 
-export default (orderType, data) => {
+export default (mailType, data) => {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     pool: true,
@@ -27,11 +27,12 @@ export default (orderType, data) => {
   output += data.model ? `Модель: ${data.model} <br>` : '';
   output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
+  output += data.prepayment ? `Внесена предоплата: ${data.prepayment} <br>` : '';
 
   const mailOptions = {
     from: config.production.notificationMail,
     to: config.production.notificationRecipient,
-    subject: orderType,
+    subject: mailType,
     html: output,
   };
 
