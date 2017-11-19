@@ -98,8 +98,8 @@ export default class extends Component {
           <Contact
             icon={contactsEmail}
             label="Email"
-            info="casewood.store@gmail.com"
-            href="mailto:casewood.store@gmail.com"
+            info="store@casewood.ru"
+            href="mailto:store@casewood.ru"
           />
           <Contact
             icon={contactsPhone}
@@ -110,8 +110,8 @@ export default class extends Component {
           <Contact
             icon={contactsMessenger}
             label="WhatsApp, Viber, Telegram"
-            info="+7 (985) 935-59-88"
-            href="whatsapp://send?text=Здравствуйте!&phone=+79859355988"
+            info="+7 (915) 284-23-84"
+            href="whatsapp://send?text=Здравствуйте!&phone=+79152842384"
           />
           <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>
         </Contacts>
