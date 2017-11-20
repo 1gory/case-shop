@@ -33,6 +33,7 @@ router.post('/order', async (req, res, next) => {
     const cookieJar = request.jar();
     await auth(cookieJar);
     const date = new Date();
+    const timezoneOffset = req.body.timezoneOffset;
     date.setHours(date.getHours() + 3); // TODO fix problem with timezone
     await lead(
       {
@@ -115,6 +116,14 @@ router.post('/order', async (req, res, next) => {
             values: [
               {
                 value: note,
+              },
+            ],
+          },
+          {
+            id: 441251,
+            values: [
+              {
+                value: timezoneOffset,
               },
             ],
           },

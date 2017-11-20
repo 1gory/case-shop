@@ -14,6 +14,7 @@ import OurAdvantages from './OurAdvantages/index';
 import HowWeWork from './HowWeWork/index';
 import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
+import moment from 'moment';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -31,6 +32,9 @@ export default class extends Component {
   }
 
   componentDidMount() {
+
+    console.log(moment().utcOffset());
+
     this.cookies = new Cookies();
 
     const parsed = QueryString.parse(this.props.location.search);

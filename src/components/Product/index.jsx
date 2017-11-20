@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
 import ym from 'react-yandex-metrika';
+import moment from 'moment';
 import Header from '../Header';
 import Footer from '../Footer';
 import BreadCrumbs from '../generic/BreadCrumbs';
@@ -135,6 +136,7 @@ export default class extends Component {
     ReactPixel.track('Lead', { value: 1290 });
     ym('reachGoal', 'order');
     formData.image = this.cookies.get('imageUrl');
+    formData.timezoneOffset = moment().utcOffset();
     fetch('/api/order', {
       method: 'POST',
       headers: {
