@@ -21,6 +21,7 @@ router.use(require('./api/message').default);
 router.use(require('./api/order').default);
 router.use(require('./api/product').default);
 router.use(require('./api/catalog').default);
+router.use(require('./api/pack').default);
 
 const getFormData = req =>
   new Promise((resolve, reject) => {

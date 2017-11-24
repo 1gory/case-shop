@@ -69,13 +69,17 @@ const handleClick = () => {
   });
 };
 
-export default () => (
-  <Banner className="main-banner">
+export default ({ data }) => (
+  <Banner className={data.banner ? data.banner : 'main-banner'}>
     <Pixel className="main-banner-pixel" />
     <Wrapper>
       <Header>
-        <MainHeader>Качественные деревянные чехлы</MainHeader><br />
-        c вашей гравировкой
+        { data.sign }
+        { data.code === 'default' ? <div>
+          <MainHeader>Качественные деревянные чехлы</MainHeader>
+          <br />
+          c вашей гравировкой
+        </div> : ''}
       </Header>
       <Button onClick={handleClick}>
         Примеры гравировок

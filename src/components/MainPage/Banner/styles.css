@@ -9,6 +9,18 @@
   }
 }
 
+.marvel {
+  background-image: url('./sb-marvel-min.jpg');
+  background-color: #7b7b7b;
+}
+
+@media (min-width: 768px) {
+  .marvel {
+    background-image: url('./sb-marvel.jpg');
+  }
+}
+
+
 .main-banner-pixel {
   background-image: url('./pixel.png');
 }

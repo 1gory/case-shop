@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
 import OrderPopUp from './OrderPopUp';
+// import Card from '../../generic/Card/index';
+import getImage from '../../../functions/getImage';
 
 const CatalogAnchor = Scroll.Element;
 
@@ -78,32 +80,49 @@ export default class extends Component {
           <CatalogAnchor name="CatalogAnchor" />
           <H2>Примеры работы</H2>
           <RowWrapper>
-            <Row>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/russia">
-                  <ImgExample src="/case-examples/gray/russia.jpg" alt="" />
-                  <div>Россия</div>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/fk">
-                  <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
-                  <div>С логотипом любимой команды</div>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/names">
-                  <ImgExample src="/case-examples/gray/elena.jpg" alt="" />
-                  <div>С вашим именем</div>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/zodiac">
-                  <ImgExample src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt="" />
-                  <div>С вашим гороскопом</div>
-                </ExampleWrapper>
-              </Col>
-            </Row>
+            {this.props.collection ?
+              <Row>
+                {this.props.collection.map(product =>
+                  (<Col xs={6} sm={6} md={4} lg={3}>
+                    <ExampleWrapper to={`/product/${product._id}`}>
+                      <ImgExample
+                        src={getImage(product.print_code, 'reduced', 'turn', product.main_image_wood_type, 'gray', product.category)}
+                        alt=""
+                      />
+                      <div>{product.name}</div>
+                    </ExampleWrapper>
+                  </Col>))}
+              </Row> :
+              <Row>
+                <Col xs={6} sm={6} md={4} lg={3}>
+                  <ExampleWrapper to="/catalog/russia">
+                    <ImgExample src="/case-examples/gray/russia.jpg" alt="" />
+                    <div>Россия</div>
+                  </ExampleWrapper>
+                </Col>
+                <Col xs={6} sm={6} md={4} lg={3}>
+                  <ExampleWrapper to="/catalog/fk">
+                    <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
+                    <div>С логотипом любимой команды</div>
+                  </ExampleWrapper>
+                </Col>
+                <Col xs={6} sm={6} md={4} lg={3}>
+                  <ExampleWrapper to="/catalog/names">
+                    <ImgExample src="/case-examples/gray/elena.jpg" alt="" />
+                    <div>С вашим именем</div>
+                  </ExampleWrapper>
+                </Col>
+                <Col xs={6} sm={6} md={4} lg={3}>
+                  <ExampleWrapper to="/catalog/zodiac">
+                    <ImgExample
+                      src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt=""
+                    />
+                    <div>С вашим гороскопом</div>
+                  </ExampleWrapper>
+                </Col>
+              </Row>
+            }
+
             <Row>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/catalog/marvel">

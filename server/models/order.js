@@ -24,6 +24,4 @@ const OrderSchema = new mongoose.Schema({
   customer: [{ type: mongoose.Schema.ObjectId, ref: 'customer' }],
 });
 
-// OrderSchema.index({ name: 1 }, { unique: false, sparse: false });
-
 export default mongoose.model('Order', OrderSchema, 'order');

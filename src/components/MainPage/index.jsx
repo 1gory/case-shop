@@ -14,6 +14,7 @@ import OurAdvantages from './OurAdvantages/index';
 import HowWeWork from './HowWeWork/index';
 import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
+import getPack from '../../functions/getPack';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -28,6 +29,24 @@ export default class extends Component {
     };
 
     this.handleWaypointEnter = this.handleWaypointEnter.bind(this);
+  }
+
+  componentWillMount() {
+    const parsed = QueryString.parse(this.props.location.search);
+    if (parsed.category) {
+      getPack(parsed.category).then((res) => {
+        this.setState({
+          bannerCode: res.pack.name,
+          bannerSign: res.pack.sign,
+          banner: res.pack.banner,
+          collection: res.collection,
+        });
+      });
+    } else {
+      this.setState({
+        bannerCode: 'default',
+      });
+    }
   }
 
   componentDidMount() {
@@ -49,10 +68,14 @@ export default class extends Component {
   render() {
     return (<Wrapper>
       <Header />
-      <Banner />
+      <Banner
+        data={{
+          code: this.state.bannerCode, sign: this.state.bannerSign, banner: this.state.banner,
+        }}
+      />
       {/* <Offer /> */}
       {/* <Form /> */}
-      <CaseExamples />
+      <CaseExamples collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
       <OurAdvantages />
