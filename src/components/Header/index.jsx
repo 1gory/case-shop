@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ym from 'react-yandex-metrika';
 import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import { CSSTransitionGroup } from 'react-transition-group';
@@ -9,6 +10,8 @@ import MenuList from './Menu';
 // import RubleSign from '../RubleSign';
 // import basketLogo from './basket-logo.svg';
 import logo from '../generic/Icons/logo.svg';
+import logoInsta from '../generic/Icons/contact-social-insta.svg';
+import logoVk from '../generic/Icons/contact-social-vk.svg';
 import hamburger from './hamburger.svg';
 import './styles.css';
 
@@ -52,6 +55,11 @@ const Hamburger = styled.img`
 
 const Logo = styled.img`
   width: 150px;
+  padding-right: 10px;
+`;
+
+const LogoSocial = styled.img`
+  width: 30px;
 `;
 
 const MobileMenu = styled.div`
@@ -110,9 +118,17 @@ export default class extends Component {
         <Jivosite />
         <HeaderWrapper>
           <Header>
-            <Link to="/">
-              <Logo src={logo} alt="CASEWOOD" />
-            </Link>
+            <div>
+              <Link to="/">
+                <Logo src={logo} alt="CASEWOOD" />
+              </Link>
+              <a href="https://instagram.com/casewood.ru/" onClick={() => (ym('reachGoal', 'gotoinstagram'))}>
+                <LogoSocial src={logoInsta} alt="CASEWOOD Instagram" />
+              </a>
+              <a href="https://vk.com/casewoodru" onClick={() => (ym('reachGoal', 'gotovk'))}>
+                <LogoSocial src={logoVk} alt="CASEWOOD VK" />
+              </a>
+            </div>
             <Menu>
               <MenuList />
             </Menu>

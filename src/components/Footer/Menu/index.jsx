@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ym from 'react-yandex-metrika';
-import instagramIcon from './contact-social-insta.svg';
-import vkIcon from './contact-social-vk.svg';
+import instagramIcon from '../../generic/Icons/contact-social-insta.svg';
+import vkIcon from '../../generic/Icons/contact-social-vk.svg';
 
 const Wrapper = styled.div`
   background-color: #272727;
