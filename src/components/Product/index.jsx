@@ -133,7 +133,7 @@ export default class extends Component {
 
   // TODO move sending to separated method
   handleSendForm(formData) {
-    ReactPixel.track('Lead', { value: 1290 });
+    ReactPixel.track('Lead', { value: 1290, currency: 'USD' });
     ym('reachGoal', 'order');
     formData.image = this.cookies.get('imageUrl');
     formData.timezoneOffset = moment().utcOffset();
