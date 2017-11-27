@@ -1,3 +1,25 @@
+.harry {
+  background-image: url('./sb-harry-min.jpg');
+  background-color: #7b7b7b;
+}
+
+@media (min-width: 768px) {
+  .harry {
+    background-image: url('./sb-harry.jpg');
+  }
+}
+
+.ufc {
+  background-image: url('./sb-ufc-min.jpg');
+  background-color: #7b7b7b;
+}
+
+@media (min-width: 768px) {
+  .ufc {
+    background-image: url('./sb-ufc.jpg');
+  }
+}
+
 .main-banner {
   background-image: url('./sb-min.jpg');
   background-color: #7b7b7b;

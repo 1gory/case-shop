@@ -138,7 +138,9 @@ export default class extends Component {
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/catalog/ufc">
-                  <ImgExample src="/case-examples/gray/ufc.jpg" alt="" />
+                  <ImgExample
+                    src="/case-examples/gray/11_wanderlei_silva_turn_red_gray.jpg" alt=""
+                  />
                   <div>UFC</div>
                 </ExampleWrapper>
               </Col>
