@@ -106,7 +106,7 @@ export default class extends Component {
   }
 
   handleSendForm(formData) {
-    ReactPixel.track('Lead', { value: 1290, currency: 'USD' });
+    ReactPixel.track('Purchase', { value: 1290, currency: 'RUB' });
     ym('reachGoal', 'order');
     scroller.scrollTo('FileFormAnchor', {
       duration: 800,
