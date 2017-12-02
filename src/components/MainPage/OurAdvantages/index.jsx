@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Lightbox from 'react-images';
+import React from 'react';
 import styled from 'styled-components';
 import advantage1 from './advantage-1.jpg';
 import advantage3 from './advantage-3.jpg';
@@ -54,53 +53,27 @@ const Advantages = styled.div`
   }
 `;
 
-export default class extends Component {
-  constructor() {
-    super();
-    // this.closeLightbox = this.closeLightbox.bind(this);
-  }
-
-  closeLightbox() {
-    // console.log(this);
-  }
-
-  render() {
-    return (<Wrapper>
-      <H2>Наши преимущества</H2>
-      {/*<ResponsiveWrapper>*/}
-      {/*<Advantages>*/}
-      {/*<ImgWrapper>*/}
-      {/*<Img src={advantage1}>*/}
-      {/*<Advantage>Натуральное <br />дерево</Advantage>*/}
-      {/*</Img>*/}
-      {/*</ImgWrapper>*/}
-      {/*<ImgWrapper>*/}
-      {/*<Img src={advantage}>*/}
-      {/*<Advantage>Рельефная <br />фактура</Advantage>*/}
-      {/*</Img>*/}
-      {/*</ImgWrapper>*/}
-      {/*<ImgWrapper>*/}
-      {/*<Img src={advantage3}>*/}
-      {/*<Advantage>Основа <br />soft-touch</Advantage>*/}
-      {/*</Img>*/}
-      {/*</ImgWrapper>*/}
-      {/*</Advantages>*/}
-      {/*</ResponsiveWrapper>*/}
-
-      <Lightbox
-        images={
-          [
-            { src: 'http://casewood.ru/case-examples/gray/2_barcelona_turn_red_gray.jpg' },
-            { src: 'http://casewood.ru/case-examples/gray/2_barcelona_turn_red_gray.jpg' },
-            { src: 'http://casewood.ru/case-examples/gray/2_barcelona_turn_red_gray.jpg' },
-          ]
-          // { src: 'https://images.unsplash.com/photo-1454991727061-be514eae86f7?dpr=2&auto=format&w=1024&h=1024' },
-          // { src: 'https://images.unsplash.com/photo-1454991727061-be514eae86f7?dpr=2&auto=format&w=1024&h=1024' },
-          // { src: 'https://images.unsplash.com/photo-1454991727061-be514eae86f7?dpr=2&auto=format&w=1024&h=1024' }
-          // ]
-        }
-        onClose={()=>(alert(1))}
-      />
-    </Wrapper>);
-  }
-}
+export default () => (
+  <Wrapper>
+    <H2>Наши преимущества</H2>
+    <ResponsiveWrapper>
+      <Advantages>
+        <ImgWrapper>
+          <Img src={advantage1}>
+            <Advantage>Натуральное <br />дерево</Advantage>
+          </Img>
+        </ImgWrapper>
+        <ImgWrapper>
+          <Img src={advantage}>
+            <Advantage>Рельефная <br />фактура</Advantage>
+          </Img>
+        </ImgWrapper>
+        <ImgWrapper>
+          <Img src={advantage3}>
+            <Advantage>Основа <br />soft-touch</Advantage>
+          </Img>
+        </ImgWrapper>
+      </Advantages>
+    </ResponsiveWrapper>
+  </Wrapper>
+);
