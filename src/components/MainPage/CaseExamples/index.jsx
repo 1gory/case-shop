@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
 import OrderPopUp from './OrderPopUp';
-// import Card from '../../generic/Card/index';
+import Gallery from './Gallery';
+import RubleSign from '../../generic/RubleSign';
 import getImage from '../../../functions/getImage';
 
 const CatalogAnchor = Scroll.Element;
 
 const H2 = styled.h2`
+  padding: 30px 0;
+
   font-family: 'Lato-Regular';
   font-size: 24px;
   color: #4a4a4a;
@@ -48,6 +51,17 @@ const StyledButton = styled(Button)`
   margin-top: 30px;
 `;
 
+const CategoryName = styled.div`
+  height: 36px;
+  padding-bottom: 10px;
+`;
+
+const Price = styled.div`
+  font-family: 'Lato-Regular';
+  font-size: 18px;
+  color: #222222;
+`;
+
 export default class extends Component {
   constructor() {
     super();
@@ -79,6 +93,11 @@ export default class extends Component {
           <OrderPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
           <CatalogAnchor name="CatalogAnchor" />
           <H2>Примеры работы</H2>
+
+          <Gallery />
+
+          <H2>Тематики</H2>
+
           <RowWrapper>
             {this.props.collection ?
               <Row>
@@ -97,19 +116,22 @@ export default class extends Component {
                 <Col xs={6} sm={6} md={4} lg={3}>
                   <ExampleWrapper to="/catalog/russia">
                     <ImgExample src="/case-examples/gray/russia.jpg" alt="" />
-                    <div>Россия</div>
+                    <CategoryName>Россия</CategoryName>
+                    <Price>1290<RubleSign /></Price>
                   </ExampleWrapper>
                 </Col>
                 <Col xs={6} sm={6} md={4} lg={3}>
                   <ExampleWrapper to="/catalog/fk">
                     <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
-                    <div>С логотипом любимой команды</div>
+                    <CategoryName>С логотипом любимой команды</CategoryName>
+                    <Price>1290<RubleSign /></Price>
                   </ExampleWrapper>
                 </Col>
                 <Col xs={6} sm={6} md={4} lg={3}>
                   <ExampleWrapper to="/catalog/names">
                     <ImgExample src="/case-examples/gray/elena.jpg" alt="" />
-                    <div>С вашим именем</div>
+                    <CategoryName>С вашим именем</CategoryName>
+                    <Price>1290<RubleSign /></Price>
                   </ExampleWrapper>
                 </Col>
                 <Col xs={6} sm={6} md={4} lg={3}>
@@ -117,7 +139,8 @@ export default class extends Component {
                     <ImgExample
                       src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt=""
                     />
-                    <div>С вашим гороскопом</div>
+                    <CategoryName>С вашим гороскопом</CategoryName>
+                    <Price>1290<RubleSign /></Price>
                   </ExampleWrapper>
                 </Col>
               </Row>
@@ -127,13 +150,15 @@ export default class extends Component {
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/catalog/marvel">
                   <ImgExample src="/case-examples/gray/10_marvel_turn_bamb_white.jpg" alt="" />
-                  <div>Marvel</div>
+                  <CategoryName>Marvel</CategoryName>
+                  <Price>1290<RubleSign /></Price>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/catalog/auto">
                   <ImgExample src="/case-examples/gray/lexus.jpg" alt="" />
-                  <div>Ваше авто</div>
+                  <CategoryName>Ваше авто</CategoryName>
+                  <Price>1290<RubleSign /></Price>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
@@ -141,13 +166,15 @@ export default class extends Component {
                   <ImgExample
                     src="/case-examples/gray/11_wanderlei_silva_turn_red_gray.jpg" alt=""
                   />
-                  <div>UFC</div>
+                  <CategoryName>UFC</CategoryName>
+                  <Price>1290<RubleSign /></Price>
                 </ExampleWrapper>
               </Col>
               <Col xs={6} sm={6} md={4} lg={3}>
                 <ExampleWrapper to="/catalog/prints">
                   <ImgExample src="/case-examples/gray/12_skull_turn_red_gray.jpg" alt="" />
-                  <div>С вашей картинкой или логотипом</div>
+                  <CategoryName>С вашей картинкой или логотипом</CategoryName>
+                  <Price>1290<RubleSign /></Price>
                 </ExampleWrapper>
               </Col>
             </Row>

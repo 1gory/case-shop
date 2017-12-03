@@ -28,6 +28,7 @@
     "react-facebook-pixel": "^0.1.0",
     "react-flexbox-grid": "^1.1.5",
     "react-google-maps": "^7.3.0",
+    "react-grid-gallery": "^0.4.7",
     "react-input-mask": "^1.0.7",
     "react-router-dom": "^4.2.2",
     "react-scroll": "^1.6.7",
