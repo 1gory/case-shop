@@ -29,3 +29,4 @@ uploads*
 !/server/encryption/.gitkeep
 
 /public/product/*
+/public/video/*

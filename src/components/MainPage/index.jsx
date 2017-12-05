@@ -7,10 +7,11 @@ import Footer from '../Footer/index';
 import Banner from './Banner/index';
 // import Offer from './Offer/index';
 // import Form from './Form/index';
-import CaseExamples from './CaseExamples/index';
+import CaseExamples from './CaseExamples';
 import Catalog from './Catalog/index';
-import FeedbackForm from './FeedbackForm/index';
-import OurAdvantages from './OurAdvantages/index';
+import FeedbackForm from './FeedbackForm';
+import OurAdvantages from './OurAdvantages';
+import OurProduction from './OurProduction';
 import HowWeWork from './HowWeWork/index';
 import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
@@ -73,13 +74,14 @@ export default class extends Component {
           code: this.state.bannerCode, sign: this.state.bannerSign, banner: this.state.banner,
         }}
       />
-       {/*<Offer /> */}
+      {/* <Offer /> */}
       {/* <Form /> */}
       <CaseExamples collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
       <OurAdvantages />
       <HowWeWork />
+      <OurProduction />
       <Comments handleScroll={this.handleWaypointEnter} />
       {/* <FAQ /> */}
       <Footer mapPreloader={this.state.mapPreloader} />
