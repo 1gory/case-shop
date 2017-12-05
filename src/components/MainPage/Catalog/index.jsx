@@ -40,7 +40,6 @@ const GoToCatalogButton = styled(Link)`
   color: #222222;
 `;
 
-
 export default class extends Component {
   constructor() {
     super();

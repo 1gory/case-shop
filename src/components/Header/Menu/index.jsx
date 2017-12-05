@@ -43,7 +43,8 @@ export default () => (
   <Wrapper>
     <Links>
       <MenuLink to="/">Главная</MenuLink>
-      <MenuLink to="/catalog">Работы</MenuLink>
+      <MenuLink to="/gallery">Галерея</MenuLink>
+      <MenuLink to="/catalog">Каталог</MenuLink>
       <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
       <MenuLink to="/delivery">Доставка</MenuLink>
       {/* <MenuLink to="">Контакты</MenuLink> */}

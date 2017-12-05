@@ -73,7 +73,7 @@ export default class extends Component {
           code: this.state.bannerCode, sign: this.state.bannerSign, banner: this.state.banner,
         }}
       />
-      {/* <Offer /> */}
+       {/*<Offer /> */}
       {/* <Form /> */}
       <CaseExamples collection={this.state.collection} />
       <Catalog />

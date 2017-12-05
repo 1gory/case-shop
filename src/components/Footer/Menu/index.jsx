@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ym from 'react-yandex-metrika';
 import instagramIcon from '../../generic/Icons/contact-social-insta.svg';
 import vkIcon from '../../generic/Icons/contact-social-vk.svg';
+import logoYoutube from '../../generic/Icons/contact-social-youtube.svg';
 
 const Wrapper = styled.div`
   background-color: #272727;
@@ -29,7 +30,6 @@ const Icon = styled.img`
 
 const SocialNetworksIcons = styled.div`
   margin: 0 auto;
-  width: 150px;
   text-align: center;
 `;
 
@@ -52,9 +52,9 @@ export default () => (
         <StyledLink to="/delivery">Доставка</StyledLink>
       </LinkWrapper>
 
-      {/* <LinkWrapper>*/}
-      {/* <StyledLink to="/">Сотрудничество</StyledLink>*/}
-      {/* </LinkWrapper>*/}
+      {/* <LinkWrapper> */}
+      {/* <StyledLink to="/">Сотрудничество</StyledLink> */}
+      {/* </LinkWrapper> */}
     </FooterLinks>
 
     <SocialNetworksIcons>
@@ -63,6 +63,9 @@ export default () => (
       </a>
       <a href="https://instagram.com/casewood.ru/" onClick={() => (ym('reachGoal', 'gotoinstagram'))}>
         <Icon src={instagramIcon} />
+      </a>
+      <a href="https://youtube.com/channel/UCRhZ8w5tkM5PE74Fq3q4ESQ" onClick={() => (ym('reachGoal', 'gotoyoutube'))}>
+        <Icon src={logoYoutube} alt="CASEWOOD YouTube" />
       </a>
     </SocialNetworksIcons>
   </Wrapper>
