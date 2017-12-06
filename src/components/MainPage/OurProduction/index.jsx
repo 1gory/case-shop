@@ -34,24 +34,20 @@ const Video = styled(DefaultPlayer)`
   }
 `;
 
-const VideoBlock = () => (
-  <Video
-    loop
-    muted
-    controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-    poster="/video/preview.jpg"
-  >
-    <source src="/video/promo.mp4" type="video/mp4" />
-    {/*<track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default />*/}
-  </Video >
-);
-
 export default () => (
   <Wrapper>
     <VideoSection>
       <VideoWrapper>
         <H2>Наше производство</H2>
-        {typeof window !== 'undefined' && typeof window.navigator !== 'undefined' && VideoBlock}
+        {typeof window !== 'undefined' &&
+        <Video
+          loop
+          muted
+          controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+          poster="/video/preview.jpg"
+        >
+          <source src="/video/promo.mp4" type="video/mp4" />
+        </Video >}
       </VideoWrapper>
     </VideoSection>
   </Wrapper>
