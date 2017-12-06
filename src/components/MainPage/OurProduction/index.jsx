@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { DefaultPlayer } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -34,20 +34,24 @@ const Video = styled(DefaultPlayer)`
   }
 `;
 
+const VideoBlock = () => (
+  <Video
+    loop
+    muted
+    controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+    poster="/video/preview.jpg"
+  >
+    <source src="/video/promo.mp4" type="video/mp4" />
+    {/*<track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default />*/}
+  </Video >
+);
+
 export default () => (
   <Wrapper>
     <VideoSection>
       <VideoWrapper>
         <H2>Наше производство</H2>
-        <Video
-          loop
-          muted
-          controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-          poster="/video/preview.jpg"
-        >
-          <source src="/video/promo.mp4" type="video/mp4" />
-          <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default />
-        </Video >
+        {typeof window !== 'undefined' && typeof window.navigator !== 'undefined' && VideoBlock}
       </VideoWrapper>
     </VideoSection>
   </Wrapper>
