@@ -47,7 +47,7 @@ export default class extends Component {
   }
 
   handleSendForm(formData) {
-    ReactPixel.track('Purchase', { value: 1290, currency: 'RUB' });
+    ReactPixel.trackCustom('trackOrder');
     ym('reachGoal', 'order');
     formData.timezoneOffset = moment().utcOffset();
     fetch('/api/order', {
