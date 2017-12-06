@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { DefaultPlayer } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -42,7 +42,6 @@ export default () => (
         {typeof window !== 'undefined' &&
         <Video
           loop
-          muted
           controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
           poster="/video/preview.jpg"
         >
