@@ -204,7 +204,7 @@ export default class extends Component {
                 <Col xs={6} sm={6} md={4} lg={3}>
                   <ExampleWrapper to="/catalog/fk">
                     <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
-                    <CategoryName>С логотипом любимой команды</CategoryName>
+                    <CategoryName>С логотипом команды</CategoryName>
                     <Price>1290<RubleSign /></Price>
                   </ExampleWrapper>
                 </Col>

@@ -2,10 +2,11 @@ import React from 'react';
 import Scroll from 'react-scroll';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import white from './23_girl_front_bamb_white.jpg';
-import dark from './22_sailor_2_front_red_white.jpg';
+import lionPrint from './lion.jpg';
+import lionCase from './18_lion_turn_bamb_white.jpg';
+import arrow from './arrow.svg';
 import RubleSign from '../../generic/RubleSign';
-import Button from '../../generic/Form/Buttons/GhostButton';
+// import Button from '../../generic/Form/Buttons/GhostButton';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
@@ -45,6 +46,8 @@ const H2 = styled.h2`
 
 const H2Light = styled.span`
   font-family: 'Lato-Light';
+  display: inline-block;
+  padding-top: 5px;
 `;
 
 const Cases = styled.div`
@@ -71,20 +74,29 @@ const CaseWrapper = styled(Link)`
   color: #000;
 `;
 
+const Arrow = styled.img`
+  width: 55px;
+  padding-bottom: 70px;
+`;
+
 const Price = styled.div`
-  height: 80px;
+
   font-size: 24px;
   font-family: 'Lato-Regular';
 `;
 
-const ButtonWrapper = styled.div`
+const PriceWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 35px;
 `;
 
-const ToExamplesButton = Button.withComponent(Link);
+const SpecialOffer = styled.div`
+  font-family: 'Lato-Light';
+  color: #ff5657;
+  padding-top: 15px;
+`;
 
 const scroller = Scroll.scroller;
 
@@ -100,25 +112,26 @@ export default () => (
   <Wrapper>
     <ResponsiveWrapper>
       <H2 onClick={handleClick}>
-        Загрузите свое изображение <br />
-        <H2Light>Для гравировки по <br />индивидуальному заказу</H2Light>
+        Загрузи свое изображение <br />
+        <H2Light>Получи уникальный чехол</H2Light>
+        <SpecialOffer>И защитное стекло в подарок!</SpecialOffer>
       </H2>
-      <Cases>
-        <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
-          <Case src={white} />
-          <div>Гравировка <br />по фотографии</div>
-        </CaseWrapper>
-        <Price>1290<RubleSign /></Price>
-        <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
-          <Case src={dark} />
-          <div>Гравировка <br />по картинке</div>
-        </CaseWrapper>
-      </Cases>
+      <div>
+        <Cases>
+          <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
+            <Case src={lionPrint} />
+            <div>Ваша <br />картинка</div>
+          </CaseWrapper>
+          <Arrow src={arrow} />
+          <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
+            <Case src={lionCase} />
+            <div>Гравировка <br />на чехле</div>
+          </CaseWrapper>
+        </Cases>
+        <PriceWrapper>
+          <Price>1290<RubleSign /></Price>
+        </PriceWrapper>
+      </div>
     </ResponsiveWrapper>
-    <ButtonWrapper>
-      <ToExamplesButton to="/product/59ef645ffcd73411beec96c7">
-        Примеры гравировок
-      </ToExamplesButton>
-    </ButtonWrapper>
   </Wrapper>
 );

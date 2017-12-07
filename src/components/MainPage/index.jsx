@@ -5,8 +5,8 @@ import QueryString from 'query-string';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Banner from './Banner/index';
-// import Offer from './Offer/index';
-// import Form from './Form/index';
+import Offer from './Offer/index';
+import Form from './Form/index';
 import CaseExamples from './CaseExamples';
 import Catalog from './Catalog/index';
 import FeedbackForm from './FeedbackForm';
@@ -74,8 +74,8 @@ export default class extends Component {
           code: this.state.bannerCode, sign: this.state.bannerSign, banner: this.state.banner,
         }}
       />
-      {/* <Offer /> */}
-      {/* <Form /> */}
+      <Offer />
+      <Form />
       <CaseExamples collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
