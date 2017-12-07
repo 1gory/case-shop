@@ -125,20 +125,21 @@ export default class extends Component {
             }}
           >
             {/* For some reason the included components don't work correctly */}
-            <div>
-              <Avatar src={marinaAvatar} alt="avatar" />
-              <Name>Марина, Саратов</Name>
-              <Comment>
-                Заказала два чехла, себе и в продарок (на фото мой)
-                всё понравилось, доставили быстро.
-              </Comment>
-            </div>
 
             <div>
               <Avatar src={dmitryAvatar} alt="avatar" />
               <Name>Дмитрий, Москва</Name>
               <Comment>
                 Качественный чехол, приятно лежит в руке, еще не ронял, но выглядит прочным.
+              </Comment>
+            </div>
+
+            <div>
+              <Avatar src={marinaAvatar} alt="avatar" />
+              <Name>Марина, Саратов</Name>
+              <Comment>
+                Заказала два чехла, себе и в продарок (на фото мой)
+                всё понравилось, доставили быстро.
               </Comment>
             </div>
 
