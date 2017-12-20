@@ -1,13 +1,12 @@
 /* eslint no-param-reassign: 0 */
 
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import ym from 'react-yandex-metrika';
 import moment from 'moment';
 import modalClose from '../../../../icons/modal-close.svg';
 import Popup from '../../../generic/Popup';
-import SentState from './Sent';
 import Form from './Details';
 
 const WrapperH3 = styled.div`
@@ -28,63 +27,35 @@ const StyledImg = styled.img`
   padding-top: 5px;
 `;
 
-export default class extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isSent: false,
-    };
+const handleSendForm = (formData) => {
+  ReactPixel.trackCustom('trackOrder');
+  ym('reachGoal', 'order');
+  formData.timezoneOffset = moment().utcOffset();
+  fetch('/api/order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(formData),
+  }).then(async (data) => {
+    const response = await data.json();
+    if (response.status) {
+      window.location = '/checkout';
+    }
+  }).catch((e) => {
+    console.log(e);
+  });
+};
 
-    this.handleSendForm = this.handleSendForm.bind(this);
-    this.newOrder = this.newOrder.bind(this);
-  }
-
-  newOrder(event) {
-    event.preventDefault();
-    this.setState({
-      isSent: false,
-    });
-  }
-
-  handleSendForm(formData) {
-    ReactPixel.trackCustom('trackOrder');
-    ym('reachGoal', 'order');
-    formData.timezoneOffset = moment().utcOffset();
-    fetch('/api/order', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(formData),
-    }).then(async (data) => {
-      const response = await data.json();
-      if (response.status) {
-        this.setState({
-          isSent: true,
-        });
-      }
-    }).catch((e) => {
-      console.log(e);
-    });
-  }
-
-  // TODO компонент дублируется
-  render() {
-    return (
-      <Popup isOpened={this.props.isOpened}>
-        {/* TODO move to component */}
-        <WrapperH3>
-          <H3>Детали заказа</H3>
-          <StyledImg onClick={this.props.handleClose} src={modalClose} />
-        </WrapperH3>
-        {/* ====================== */}
-        {this.state.isSent ?
-          <SentState handleClick={this.newOrder} /> :
-          <Form handleSendForm={this.handleSendForm} />
-        }
-      </Popup>
-    );
-  }
-}
+export default props => (
+  <Popup isOpened={props.isOpened}>
+    {/* TODO move to component */}
+    <WrapperH3>
+      <H3>Детали заказа</H3>
+      <StyledImg onClick={props.handleClose} src={modalClose} />
+    </WrapperH3>
+    <Form handleSendForm={handleSendForm} />
+  </Popup>
+);

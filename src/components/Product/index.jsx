@@ -11,7 +11,6 @@ import Footer from '../Footer';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
-import SentState from './FormState/Sent';
 import getGalleryImage from '../../functions/getGalleryImage';
 
 const Wrapper = styled.div`
@@ -76,10 +75,8 @@ export default class extends Component {
     super();
     this.state = {
       product: {},
-      isSent: false,
     };
 
-    this.newOrder = this.newOrder.bind(this);
     this.handleSendForm = this.handleSendForm.bind(this);
   }
 
@@ -125,12 +122,6 @@ export default class extends Component {
     });
   }
 
-  newOrder() {
-    this.setState({
-      isSent: false,
-    });
-  }
-
   // TODO move sending to separated method
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
@@ -148,9 +139,7 @@ export default class extends Component {
     }).then(async (data) => {
       const response = await data.json();
       if (response.status) {
-        this.setState({
-          isSent: true,
-        });
+        window.location = '/checkout';
       }
     }).catch((e) => {
       console.log(e);
@@ -194,10 +183,7 @@ export default class extends Component {
           <Description>
             {this.state.product.description}
           </Description>
-          {this.state.isSent ?
-            <SentState handleClick={this.newOrder} /> :
-            <ProductForm handleSendForm={this.handleSendForm} />
-          }
+          <ProductForm handleSendForm={this.handleSendForm} />
         </Details>
         <Footer />
       </Wrapper>

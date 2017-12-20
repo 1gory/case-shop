@@ -59,7 +59,7 @@ export default class extends Component {
   render() {
     return (
       (
-        <div>
+        <form>
           <Messenger handleChangeForm={this.handleChangeForm} />
           <PhoneNumber
             handleChangeForm={this.handleChangeForm}
@@ -82,7 +82,7 @@ export default class extends Component {
           >
             Заказать
           </SendButton>
-        </div>
+        </form>
       )
     );
   }

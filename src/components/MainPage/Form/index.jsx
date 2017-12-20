@@ -59,7 +59,6 @@ const FileFormAnchor = Scroll.Element;
 const scroller = Scroll.scroller;
 
 const EMPTY_FORM_STATUS = 'empty';
-const SENT_FORM_STATUS = 'sent';
 const ERROR_FORM_STATUS = 'error';
 const LOADING_FORM_STATUS = 'loading';
 
@@ -130,9 +129,7 @@ export default class extends Component {
     }).then(async (data) => {
       const response = await data.json();
       if (response.status) {
-        this.setState({
-          fileFormStatus: SENT_FORM_STATUS,
-        });
+        window.location = '/checkout';
       }
     }).catch((/* error */) => {
       this.setState({
@@ -149,9 +146,6 @@ export default class extends Component {
         <Form>
           {<FormWrapper errorss={this.state.secrets} render={checkWidth()}>
             {this.state.fileFormStatus === ERROR_FORM_STATUS &&
-              <SentFileForm handleClick={this.newOrder} />
-            }
-            {this.state.fileFormStatus === SENT_FORM_STATUS &&
               <SentFileForm handleClick={this.newOrder} />
             }
             {this.state.fileFormStatus === LOADING_FORM_STATUS &&
