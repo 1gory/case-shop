@@ -8,6 +8,7 @@ import contactsPhone from './contact-phone.svg';
 import contactsMessenger from './contact-messengers.svg';
 import FeedbackPopUp from './FeedbackPopUp/index';
 import Button from '../../generic/Form/Buttons/GhostButton';
+import logoBlock from './block-white.svg';
 
 const ContactsAnchor = Scroll.Element;
 
@@ -16,13 +17,33 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Contacts = styled.div`
-  width: 250px;
-  margin: 0 auto;
+const ContactsWrapper = styled.div`
   padding: 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @media (min-width: 768px) {
+    max-width: 970px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const Contacts = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const ContactWrapper = styled.div`
+  width: 175px;
   display: flex;
   align-items: center;
   padding: 15px;
@@ -49,6 +70,17 @@ const Info = styled.a`
 
 const LeaveMessageButton = styled(Button)`
   margin: 15px;
+`;
+
+const Logo = styled.img`
+  display: none; 
+ 
+  @media (min-width: 768px) {
+    display: block;
+    height: 50px;
+    padding: 10px;
+    opacity: 0.5;
+  }
 `;
 
 const Contact = props => (
@@ -94,27 +126,30 @@ export default class extends Component {
           header="Оставить сообщение"
         />
         <ContactsAnchor name="ContactsAnchor" />
-        <Contacts>
-          <Contact
-            icon={contactsEmail}
-            label="Email"
-            info="store@casewood.ru"
-            href="mailto:store@casewood.ru"
-          />
-          <Contact
-            icon={contactsPhone}
-            label="Телефон для связи"
-            info="8 (499) 409-08-18"
-            href="tel:84994090818"
-          />
-          <Contact
-            icon={contactsMessenger}
-            label="WhatsApp, Viber, Telegram"
-            info="+7 (915) 284-23-84"
-            href="whatsapp://send?text=Здравствуйте!&phone=+79152842384"
-          />
+        <ContactsWrapper>
+          <Contacts>
+            <Logo src={logoBlock} />
+            <Contact
+              icon={contactsEmail}
+              label="Email"
+              info="store@casewood.ru"
+              href="mailto:store@casewood.ru"
+            />
+            <Contact
+              icon={contactsPhone}
+              label="Телефон для связи"
+              info="8 (499) 409-08-18"
+              href="tel:84994090818"
+            />
+            <Contact
+              icon={contactsMessenger}
+              label="WhatsApp, Viber, Telegram"
+              info="+7 (915) 284-23-84"
+              href="whatsapp://send?text=Здравствуйте!&phone=+79152842384"
+            />
+          </Contacts>
           <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>
-        </Contacts>
+        </ContactsWrapper>
       </Wrapper>
     );
   }
