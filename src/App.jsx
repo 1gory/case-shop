@@ -11,6 +11,7 @@ import Gallery from './components/Gallery';
 import Checkout from './components/Checkout';
 import SuccessPayment from './components/Payment/SuccessPayment';
 import ErrorPayment from './components/Payment/ErrorPayment';
+import GenericNotFound from './components/GenericNotFound';
 
 export default () => (
   <Switch>
@@ -24,5 +25,6 @@ export default () => (
     <Route path="/shopFailUrl" component={ErrorPayment} />
     <Route path="/gallery" component={Gallery} />
     <Route path="/checkout" component={Checkout} />
+    <Route path="*" component={GenericNotFound} />
   </Switch>
 );

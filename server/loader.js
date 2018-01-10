@@ -37,6 +37,11 @@ export default (req, res) => {
       });
       return res.end();
     }
+
+    if (context.status === 404) {
+      res.status(404);
+    }
+
     const RenderedApp = htmlData
       .replace('<style id="serverStyleTags"></style>', styleTags)
       .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
