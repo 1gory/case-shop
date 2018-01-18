@@ -1,7 +1,6 @@
 import React from 'react';
 import Scroll from 'react-scroll';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import lionPrint from './lion.jpg';
 import lionCase from './18_lion_turn_bamb_white.jpg';
 import arrow from './arrow.svg';
@@ -64,7 +63,7 @@ const Case = styled.img`
   padding-bottom: 15px;
 `;
 
-const CaseWrapper = styled(Link)`
+const CaseWrapper = styled.div`
   color: black;
   text-align: cener;
   font-size: 16px;
@@ -118,12 +117,12 @@ export default () => (
       </H2>
       <div>
         <Cases>
-          <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
+          <CaseWrapper>
             <Case src={lionPrint} />
             <div>Ваша <br />картинка</div>
           </CaseWrapper>
           <Arrow src={arrow} />
-          <CaseWrapper to="/product/59ef645ffcd73411beec96c7">
+          <CaseWrapper>
             <Case src={lionCase} />
             <div>Гравировка <br />на чехле</div>
           </CaseWrapper>
