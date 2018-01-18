@@ -7,9 +7,10 @@ const ObjectId = mongoose.Types.ObjectId;
 
 router.param('productId', (req, res, next, id) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new Error('NotFoundException'));
+    req.productUrl = id;
+  } else {
+    req.productId = id;
   }
-  req.productId = id;
   return next();
 });
 
@@ -20,7 +21,9 @@ router.param('category', (req, res, next, category) => {
 
 router.get('/products/id/:productId', async (req, res, next) => {
   try {
-    const product = await Product.find({ _id: ObjectId(req.productId) });
+    const product = req.productId ?
+      await Product.find({ _id: ObjectId(req.productId) }) :
+      await Product.find({ url: req.productUrl });
     res.json({
       status: 'success',
       result: product,
@@ -32,9 +35,9 @@ router.get('/products/id/:productId', async (req, res, next) => {
 
 router.get('/products/:category*?', async (req, res, next) => {
   try {
-    const query = { active: true };
+    const query = {active: true};
     query.category = req.category ? req.category : null;
-    const products = await Product.find(query, null, { sort: { order: 1 } });
+    const products = await Product.find(query, null, {sort: {order: 1}});
     res.json({
       status: 'success',
       result: products,

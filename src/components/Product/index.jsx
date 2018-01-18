@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
 import ym from 'react-yandex-metrika';
+import Helmet from 'react-helmet';
 import moment from 'moment';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -149,6 +150,9 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
+        <Helmet>
+          <title>{this.state.product.title ? this.state.product.title : 'Деревянные чехлы Casewood'}</title>
+        </Helmet>
         <Header />
         <BreadCrumbs
           breadcrumbs={[

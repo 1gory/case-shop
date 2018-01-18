@@ -88,6 +88,7 @@ const CatalogCategory = ({ products, categoryName, category, toCategoryButton })
             price={product.price}
             image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white', category)}
             id={product.id}
+            url={product.url}
           />
         </Col>))}
     </Row>

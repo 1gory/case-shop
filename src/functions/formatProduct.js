@@ -10,4 +10,6 @@ export default product => ({
   images: product.images,
   price: product.price,
   description: product.description,
+  title: product.title,
+  url: product.url,
 });

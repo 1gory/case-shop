@@ -46,7 +46,7 @@ const Price = styled.div`
 `;
 
 export default props => (
-  <WrapperLink to={`/product/${props.id}`}>
+  <WrapperLink to={`/product/${props.url ? `${props.url}` : `${props.id}`}`}>
     <Card>
       <Img src={props.image} />
       <Name>{props.name}</Name>

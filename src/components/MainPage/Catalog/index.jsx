@@ -69,6 +69,7 @@ export default class extends Component {
                 price={product.price}
                 image={getImage(product.printCode, 'reduced', 'turn', product.woodType, 'white')}
                 id={product.id}
+                url={product.url}
               />
             </Col>))}
         </Row>
