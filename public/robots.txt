@@ -1,0 +1,3 @@
+User-Agent: *
+Host: https://casewood.ru
+sitemap: https://casewood.ru/sitemap.xml

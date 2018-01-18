@@ -40,6 +40,7 @@
     "react-yandex-metrika": "^2.3.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "sitemap": "^1.13.0",
     "styled-components": "^2.2.4",
     "swipe-js-iso": "^2.0.4",
     "thumbnail": "^0.1.9",
