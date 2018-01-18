@@ -35,9 +35,9 @@ router.get('/products/id/:productId', async (req, res, next) => {
 
 router.get('/products/:category*?', async (req, res, next) => {
   try {
-    const query = {active: true};
+    const query = { active: true };
     query.category = req.category ? req.category : null;
-    const products = await Product.find(query, null, {sort: {order: 1}});
+    const products = await Product.find(query, null, { sort: { order: 1 } });
     res.json({
       status: 'success',
       result: products,
