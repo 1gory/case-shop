@@ -128,7 +128,7 @@ const images =
     },
     {
       src: '/gallery/8.jpg',
-      thumbnail: '/gallery/8.jpg',
+      thumbnail: '/gallery/thumbnail/8.jpg',
       thumbnailWidth: 373,
       thumbnailHeight: 250,
     },
