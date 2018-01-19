@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DefaultPlayer } from 'react-html5video';
-import 'react-html5video/dist/styles.css';
+import YouTube from 'react-youtube';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -28,25 +27,21 @@ const VideoWrapper = styled.div`
   }
 `;
 
-const Video = styled(DefaultPlayer)`
-  & video {
-    background-color: #3b3b3b;
-  }
-`;
+const opt = {
+  playerVars: { // https://developers.google.com/youtube/player_parameters
+    rel: 0,
+  },
+};
 
 export default () => (
   <Wrapper>
     <VideoSection>
       <VideoWrapper>
         <H2>Наше производство</H2>
-        {typeof window !== 'undefined' &&
-        <Video
-          loop
-          controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-          poster="/video/preview.jpg"
-        >
-          <source src="/video/promo.mp4" type="video/mp4" />
-        </Video >}
+        <YouTube
+          videoId="bl1xcf4piZ4"
+          opts={opt}
+        />
       </VideoWrapper>
     </VideoSection>
   </Wrapper>
