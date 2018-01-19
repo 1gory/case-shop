@@ -13,9 +13,15 @@ import BreadCrumbs from '../generic/BreadCrumbs';
 import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import getGalleryImage from '../../functions/getGalleryImage';
+import ImageForm from '../generic/UploadFileForm';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
+`;
+
+const ResponsiveWrapper = styled.div`
+  max-width: 970px;
+  margin: 0 auto;
 `;
 
 const Gallery = styled.div`
@@ -31,6 +37,10 @@ const MainImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (min-width: 970px) {
+    width: 450px;
+  }
 `;
 
 const MainImage = styled.img`
@@ -42,6 +52,10 @@ const Thumbs = styled.div`
   display: flex;
   overflow: hidden;
   overflow-x: scroll;
+  
+  @media (min-width: 970px) {
+    width: 450px;
+  }
 `;
 
 const Thumb = styled.img`
@@ -71,6 +85,51 @@ const Description = styled.p`
   margin: 0;
 `;
 
+const ProductCard = styled.div`
+  @media (min-width: 970px) {
+    display: flex;
+  }
+`;
+
+const IndividualCaseFormWrapper = styled.div`
+  margin: 35px 0;
+  
+  @media (min-width: 768px) {
+    margin: 90px 0;
+  }
+`;
+
+const IndividualCaseForm = styled.div`
+  padding: 60px 18px;
+  text-align: center;
+  background-color: #f3f3f3;
+`;
+
+const Message = styled.div`
+  font-family: 'Lato-Regular';
+  color: #222222;
+  margin-bottom: 25px;
+`;
+
+const Button = styled.button`
+  border-radius: 20px;
+  border: solid 1px #222222;
+  background: none;
+  padding: 8px 30px;
+  display: inline-block;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
+  text-decoration: none;
+  color: #222222;
+`;
+
+const ImageFormWrapper = styled.div`
+  @media (min-width: 970px) {
+    margin: 0 auto;
+    width: 425px;
+  }
+`;
+
 export default class extends Component {
   constructor() {
     super();
@@ -79,6 +138,7 @@ export default class extends Component {
     };
 
     this.handleSendForm = this.handleSendForm.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentWillMount() {
@@ -123,6 +183,13 @@ export default class extends Component {
     });
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({
+      individualCase: true,
+    });
+  }
+
   // TODO move sending to separated method
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
@@ -154,41 +221,66 @@ export default class extends Component {
           <title>{this.state.product.title ? this.state.product.title : 'Деревянные чехлы Casewood'}</title>
         </Helmet>
         <Header />
-        <BreadCrumbs
-          breadcrumbs={[
-            { name: 'Каталог', link: '/catalog' },
-            { name: this.state.product.name, link: `/product/${this.state.product.id}` },
-          ]}
-        />
-        {this.state.product.images && <Gallery>
-          <MainImageWrapper>
-            <MainImage
-              src={this.state.product.images[this.state.activeImageIndex]}
-            />
-          </MainImageWrapper>
-          <Thumbs>
-            {this.state.product.images.map((image, index) => {
-              if (this.state.product.activeImagesKeys.indexOf(index) !== -1) {
-                return (
-                  <Thumb
-                    onClick={() => this.handleClickToThumb(index)}
-                    src={image}
-                  />
-                );
-              }
-              return null;
-            })}
-          </Thumbs>
-        </Gallery>}
-        <Details>
-          <Name>
-            {this.state.product.name}
-          </Name>
-          <Description>
-            {this.state.product.description}
-          </Description>
-          <ProductForm handleSendForm={this.handleSendForm} />
-        </Details>
+        <ResponsiveWrapper>
+          <BreadCrumbs
+            breadcrumbs={[
+              { name: 'Каталог', link: '/catalog' },
+              { name: this.state.product.name,
+                link: `/product/${this.state.product.url ? this.state.product.url : this.state.product.id}`,
+              },
+            ]}
+          />
+          <ProductCard>
+            {this.state.product.images && <Gallery>
+              <MainImageWrapper>
+                <MainImage
+                  src={this.state.product.images[this.state.activeImageIndex]}
+                />
+              </MainImageWrapper>
+              <Thumbs>
+                {this.state.product.images.map((image, index) => {
+                  if (this.state.product.activeImagesKeys.indexOf(index) !== -1) {
+                    return (
+                      <Thumb
+                        onClick={() => this.handleClickToThumb(index)}
+                        src={image}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </Thumbs>
+            </Gallery>}
+            <Details>
+              <Name>
+                {this.state.product.name}
+              </Name>
+              <Description>
+                {this.state.product.description}
+              </Description>
+              <ProductForm handleSendForm={this.handleSendForm} />
+            </Details>
+          </ProductCard>
+
+          <IndividualCaseFormWrapper>
+            { this.state.individualCase &&
+            <ImageFormWrapper>
+              <ImageForm />
+            </ImageFormWrapper>}
+            {!this.state.individualCase &&
+            <IndividualCaseForm>
+              <Message>
+                Если вы хотите создать свою<br />
+                гравировку, воспользуйтесь<br />
+                специальной формой:
+              </Message>
+              <Button onClick={this.handleClick}>
+                Создать свою гравировку
+              </Button>
+            </IndividualCaseForm>
+            }
+          </IndividualCaseFormWrapper>
+        </ResponsiveWrapper>
         <Footer />
       </Wrapper>
     );
