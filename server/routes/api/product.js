@@ -38,7 +38,7 @@ router.get('/products/:category*?', async (req, res, next) => {
     const query = { active: true };
     query.category = req.category ? req.category : null;
     const products = await Product.find(query, null, { sort: { order: 1 } });
-    res.set({ 'Cache-Control': 'max-age=3600' });
+    res.set({ 'Cache-Control': 'max-age=604800' });
     res.json({
       status: 'success',
       result: products,
