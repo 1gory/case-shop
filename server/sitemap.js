@@ -7,7 +7,7 @@ import Product from './models/product';
 const router = express.Router();
 
 const getUrls = async () => {
-  const products = await Product.find({ active: true });
+  const products = await Product.find({active: true});
   return products.map(item => ({
     url: item.url ? `/product/${item.url}` : `/product/${item._id}`,
     changefreq: 'weekly',
@@ -17,23 +17,28 @@ const getUrls = async () => {
 
 router.get('/sitemap.xml', async (req, res) => {
   const productUrls = await getUrls();
-  const sietUrls = [{
-    url: '/gallery',
-    changefreq: 'weekly',
-    priority: 0.5,
-  }, {
-    url: '/catalog',
-    changefreq: 'weekly',
-    priority: 0.5,
-  }, {
-    url: '/cooperation',
-    changefreq: 'weekly',
-    priority: 0.5,
-  }, {
-    url: '/delivery',
-    changefreq: 'weekly',
-    priority: 0.5,
-  }];
+  const sietUrls = [
+    {
+      url: '/',
+      changefreq: 'weekly',
+      priority: 0.5,
+    }, {
+      url: '/gallery',
+      changefreq: 'weekly',
+      priority: 0.5,
+    }, {
+      url: '/catalog',
+      changefreq: 'weekly',
+      priority: 0.5,
+    }, {
+      url: '/cooperation',
+      changefreq: 'weekly',
+      priority: 0.5,
+    }, {
+      url: '/delivery',
+      changefreq: 'weekly',
+      priority: 0.5,
+    }];
 
   const sitemap = sm.createSitemap({
     hostname: 'https://casewood.ru',
