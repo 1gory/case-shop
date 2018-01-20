@@ -17,9 +17,9 @@ import hamburger from './hamburger.svg';
 import './styles.css';
 
 ReactGA.initialize('UA-112805996-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 if (typeof window !== 'undefined') {
+  ReactGA.pageview(window.location.pathname + window.location.search);
   ReactPixel.init('491227977912849');
   ReactPixel.pageView();
 }
