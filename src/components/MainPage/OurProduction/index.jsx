@@ -27,6 +27,10 @@ const VideoWrapper = styled.div`
   }
 `;
 
+const YouTubeVideo = styled(YouTube)`
+  width: 100%;
+`;
+
 const opt = {
   playerVars: { // https://developers.google.com/youtube/player_parameters
     rel: 0,
@@ -38,7 +42,7 @@ export default () => (
     <VideoSection>
       <VideoWrapper>
         <H2>Наше производство</H2>
-        <YouTube
+        <YouTubeVideo
           videoId="bl1xcf4piZ4"
           opts={opt}
         />

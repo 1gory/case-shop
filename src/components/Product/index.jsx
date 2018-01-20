@@ -15,7 +15,6 @@ import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import getGalleryImage from '../../functions/getGalleryImage';
 import ImageForm from '../generic/UploadFileForm';
-import NotFound from '../GenericNotFound';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
