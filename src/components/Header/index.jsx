@@ -4,6 +4,7 @@ import ym from 'react-yandex-metrika';
 import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ReactGA from 'react-ga';
 import Mertika from '../generic/YandexMetrika';
 // import Jivosite from '../generic/Jivosite';
 import MenuList from './Menu';
@@ -14,6 +15,9 @@ import logoInsta from '../generic/Icons/contact-social-insta.svg';
 import logoVk from '../generic/Icons/contact-social-vk.svg';
 import hamburger from './hamburger.svg';
 import './styles.css';
+
+ReactGA.initialize('UA-112805996-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 if (typeof window !== 'undefined') {
   ReactPixel.init('491227977912849');

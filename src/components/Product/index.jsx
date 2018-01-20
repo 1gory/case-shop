@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
@@ -14,6 +15,7 @@ import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import getGalleryImage from '../../functions/getGalleryImage';
 import ImageForm from '../generic/UploadFileForm';
+import NotFound from '../GenericNotFound';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -144,33 +146,40 @@ export default class extends Component {
   async componentWillMount() {
     const id = this.props.match.url.split('/').pop();
     const products = await getProducts(`products/id/${id}`);
-    products[0].images = products[0].images.map(image =>
-      getGalleryImage(
-        products[0].category,
-        products[0].printCode,
-        'compressed',
-        image,
-      ),
-    );
 
-    // add photo to the gallery for prints without real photos
-    if (products[0].activeImagesKeys.length <= 2) {
-      products[0].images.push(
+    if (products[0]) {
+      products[0].images = products[0].images.map(image =>
         getGalleryImage(
-          null,
-          'common',
-          '',
-          'photo3.jpg',
+          products[0].category,
+          products[0].printCode,
+          'compressed',
+          image,
         ),
       );
 
-      products[0].activeImagesKeys.push(products[0].images.length - 1);
-    }
+      // add photo to the gallery for prints without real photos
+      if (products[0].activeImagesKeys.length <= 2) {
+        products[0].images.push(
+          getGalleryImage(
+            null,
+            'common',
+            '',
+            'photo3.jpg',
+          ),
+        );
 
-    this.setState({
-      product: products[0],
-      activeImageIndex: products[0].activeImagesKeys[0],
-    });
+        products[0].activeImagesKeys.push(products[0].images.length - 1);
+      }
+
+      this.setState({
+        product: products[0],
+        activeImageIndex: products[0].activeImagesKeys[0],
+      });
+    } else {
+      this.setState({
+        notFound: true,
+      });
+    }
   }
 
   componentDidMount() {
@@ -215,6 +224,9 @@ export default class extends Component {
   }
 
   render() {
+    if (this.state.notFound) {
+      return <Redirect to="/404" />;
+    }
     return (
       <Wrapper>
         <Helmet>
