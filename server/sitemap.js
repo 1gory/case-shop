@@ -16,10 +16,29 @@ const getUrls = async () => {
 };
 
 router.get('/sitemap.xml', async (req, res) => {
+  const productUrls = await getUrls();
+  const sietUrls = [{
+    url: '/gallery',
+    changefreq: 'weekly',
+    priority: 0.5,
+  }, {
+    url: '/catalog',
+    changefreq: 'weekly',
+    priority: 0.5,
+  }, {
+    url: '/cooperation',
+    changefreq: 'weekly',
+    priority: 0.5,
+  }, {
+    url: '/delivery',
+    changefreq: 'weekly',
+    priority: 0.5,
+  }];
+
   const sitemap = sm.createSitemap({
     hostname: 'https://casewood.ru',
     cacheTime: 600000, // 600 sec - cache purge period
-    urls: await getUrls(),
+    urls: sietUrls.concat(productUrls),
   });
 
   sitemap.toXML((err, xml) => {
