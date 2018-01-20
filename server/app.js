@@ -5,6 +5,7 @@ import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import sitemap from './sitemap';
+import index from './routes/index';
 import api from './routes/api';
 import loader from './loader';
 import { logger } from './logger';
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 
 app.use(morgan('combined'));
 
+app.use('/', index);
 app.use('/', sitemap);
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
