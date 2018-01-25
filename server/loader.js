@@ -3,13 +3,19 @@
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
+import 'isomorphic-fetch';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter, matchPath } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import serialize from 'serialize-javascript';
 import App from '../src/App';
+import routes from '../src/routes';
 import { logger } from './logger';
+import { config } from './config';
 
-export default (req, res) => {
+const host = process.env.NODE_ENV === 'development' ? `${config.development.host}:${config.development.port}` : config.production.host;
+
+export default (req, res, next) => {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
 
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
@@ -18,35 +24,50 @@ export default (req, res) => {
       return res.status(404).end();
     }
 
-    const context = {};
+    const activeRoute = routes.find(route => matchPath(req.url, route));
 
-    const sheet = new ServerStyleSheet();
-    const markup = renderToString(
-      <StyleSheetManager sheet={sheet.instance}>
-        <StaticRouter location={req.url} context={context}>
-          <App />
-        </StaticRouter>
-      </StyleSheetManager>,
-    );
+    const requestInitialData =
+      activeRoute.component.requestInitialData &&
+      activeRoute.component.requestInitialData(req.url, host);
 
-    const styleTags = sheet.getStyleTags();
+    return Promise.resolve(requestInitialData)
+      .then((initialData) => {
+        if (initialData && initialData.status === 404) {
+          return res.status(404).end();
+        }
 
-    if (context.url) {
-      res.writeHead(301, {
-        Location: context.url,
-      });
-      return res.end();
-    }
+        const context = { initialData };
+        const sheet = new ServerStyleSheet();
 
-    if (context.status === 404) {
-      res.status(404);
-    }
+        const markup = renderToString(
+          <StyleSheetManager sheet={sheet.instance}>
+            <StaticRouter location={req.url} context={context}>
+              <App />
+            </StaticRouter>
+          </StyleSheetManager>,
+        );
 
-    const RenderedApp = htmlData
-      .replace('<style id="serverStyleTags"></style>', styleTags)
-      .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
+        const styleTags = sheet.getStyleTags();
 
-    res.send(RenderedApp);
-    return res.end();
+        if (context.url) {
+          res.writeHead(301, {
+            Location: context.url,
+          });
+          return res.end();
+        }
+
+        if (context.status === 404) {
+          res.status(404);
+        }
+
+        const RenderedApp = htmlData
+          .replace('<style id="serverStyleTags"></style>', styleTags)
+          .replace('"initialData"', serialize(initialData))
+          .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
+
+        res.send(RenderedApp);
+        return res.end();
+      }).catch(next);
   });
 };
+

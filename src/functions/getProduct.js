@@ -3,7 +3,7 @@
 import formatProduct from './formatProduct';
 
 export default url => (
-  fetch(`/api/${url}`, {
+  fetch(`${url}`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

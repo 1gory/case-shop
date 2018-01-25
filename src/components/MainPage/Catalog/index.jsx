@@ -50,7 +50,7 @@ export default class extends Component {
   }
 
   async componentWillMount() {
-    const products = await getProducts('products/prints');
+    const products = await getProducts('/api/products/prints');
 
     this.setState({
       products: products.slice(0, 4),

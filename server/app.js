@@ -1,9 +1,9 @@
-import 'ignore-styles';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
+import './ignore-styles';
 import sitemap from './sitemap';
 import index from './routes/index';
 import api from './routes/api';

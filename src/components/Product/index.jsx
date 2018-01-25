@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -131,58 +132,95 @@ const ImageFormWrapper = styled.div`
   }
 `;
 
-export default class extends Component {
-  constructor() {
-    super();
-    this.state = {
-      product: {},
-    };
+const formatGalleryImage = (images, category, printCode) => (
+  images.map(image =>
+    getGalleryImage(
+      category,
+      printCode,
+      'compressed',
+      image,
+    ),
+  )
+);
+
+const getProduct = (productData) => {
+  const product = JSON.parse(JSON.stringify(productData));
+  product.images = formatGalleryImage(
+    product.images,
+    product.category,
+    product.printCode,
+  );
+
+  // add photo to the gallery for prints without real photos
+  if (product.activeImagesKeys.length <= 2) {
+    product.images.push(
+      getGalleryImage(
+        null,
+        'common',
+        '',
+        'photo3.jpg',
+      ),
+    );
+
+    product.activeImagesKeys.push(product.images.length - 1);
+  }
+
+  return product;
+};
+
+class Product extends Component {
+
+  static async requestInitialData(url, host) {
+    const id = url.split('/').pop();
+    const products = await getProducts(`${host || ''}/api/products/id/${id}`);
+    const status = products[0] ? 200 : 404;
+    return { products, status };
+  }
+
+  constructor(props) {
+    super(props);
+
+    let initialData;
+    if (props.staticContext) {
+      initialData = props.staticContext.initialData;
+    } else {
+      initialData = window.__initialData__;
+      delete window.__initialData__;
+    }
+
+    if (initialData && initialData.products) {
+      const product = getProduct(initialData.products[0]);
+      this.state = {
+        product,
+        activeImageIndex: product.activeImagesKeys[0],
+      };
+    } else {
+      this.state = {
+        product: {},
+      };
+    }
 
     this.handleSendForm = this.handleSendForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  async componentWillMount() {
-    const id = this.props.match.url.split('/').pop();
-    const products = await getProducts(`products/id/${id}`);
-
-    if (products[0]) {
-      products[0].images = products[0].images.map(image =>
-        getGalleryImage(
-          products[0].category,
-          products[0].printCode,
-          'compressed',
-          image,
-        ),
-      );
-
-      // add photo to the gallery for prints without real photos
-      if (products[0].activeImagesKeys.length <= 2) {
-        products[0].images.push(
-          getGalleryImage(
-            null,
-            'common',
-            '',
-            'photo3.jpg',
-          ),
-        );
-
-        products[0].activeImagesKeys.push(products[0].images.length - 1);
-      }
-
-      this.setState({
-        product: products[0],
-        activeImageIndex: products[0].activeImagesKeys[0],
-      });
-    } else {
-      this.setState({
-        notFound: true,
-      });
-    }
-  }
-
   componentDidMount() {
     this.cookies = new Cookies();
+    if (!this.state.product.name) {
+      Product.requestInitialData(this.props.match.url).then(({ products }) => {
+        if (products[0]) {
+          const product = getProduct(products[0]);
+          this.setState({
+            product,
+            activeImageIndex: product.activeImagesKeys[0],
+          });
+        } else {
+          this.setState({
+            notFound: true,
+          });
+        }
+      });
+    }
   }
 
   handleClickToThumb(index) {
@@ -297,3 +335,5 @@ export default class extends Component {
     );
   }
 }
+
+export default Product;
