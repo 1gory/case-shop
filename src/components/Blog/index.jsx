@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import getArticles from '../../functions/getArticles';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Header from '../Header';
@@ -35,6 +36,9 @@ const GoToArticleLink = styled(Link)`
 
 const Article = ({ title, singleArticle, shortDescription, content, url }) => (
   <ArticleWrapper>
+    <Helmet>
+      <title>Каталог | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <H2>{title}</H2>
     <Description>
       {!singleArticle ? shortDescription : <div dangerouslySetInnerHTML={{ __html: content }} />}

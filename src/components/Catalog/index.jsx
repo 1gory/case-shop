@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
@@ -153,6 +154,9 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
+        <Helmet>
+          <title>Каталог | Деревянные чехлы для iPhone Casewood</title>
+        </Helmet>
         <Header />
         <Section>
           <BreadCrumbs

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
 import Banner from './Banner';
@@ -11,6 +12,9 @@ const Wrapper = styled.div`
 
 export default () => (
   <Wrapper>
+    <Helmet>
+      <title>Доставка | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <Header />
     <Banner />
     <Details />

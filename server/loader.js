@@ -8,12 +8,22 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import serialize from 'serialize-javascript';
+import Helmet from 'react-helmet';
 import App from '../src/App';
 import routes from '../src/routes';
 import { logger } from './logger';
 import { config } from './config';
 
 const host = process.env.NODE_ENV === 'development' ? `${config.development.host}:${config.development.port}` : config.production.host;
+
+const initialDataHeaderToString = header => (
+  `${header.title ? `<title>${header.title}</title>` : ''}
+   ${header.metaDescription ? `<meta name="description" content="${header.metaDescription}">` : ''}`
+);
+
+const HelmetHeaderToString = header => (
+  `${header.title.toString()}${header.meta.toString()}${header.link.toString()}`
+);
 
 export default (req, res, next) => {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
@@ -47,6 +57,10 @@ export default (req, res, next) => {
           </StyleSheetManager>,
         );
 
+        const header = initialData && initialData.header ?
+          initialDataHeaderToString(initialData.header) :
+          HelmetHeaderToString(Helmet.renderStatic());
+
         const styleTags = sheet.getStyleTags();
 
         if (context.url) {
@@ -61,6 +75,7 @@ export default (req, res, next) => {
         }
 
         const RenderedApp = htmlData
+          .replace('<meta name="header">', header)
           .replace('<style id="serverStyleTags"></style>', styleTags)
           .replace('"initialData"', serialize(initialData))
           .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);

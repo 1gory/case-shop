@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Header from './Header/index';
 import Footer from './Footer/index';
 
@@ -19,6 +20,9 @@ export default ({ staticContext }) => {
   }
 
   return (<Wrapper>
+    <Helmet>
+      <title>Страница не найдена | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <Header />
     <H1>Страница не найдена</H1>
     <Footer />

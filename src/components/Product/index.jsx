@@ -174,7 +174,15 @@ class Product extends Component {
     const id = url.split('/').pop();
     const products = await getProducts(`${host || ''}/api/products/id/${id}`);
     const status = products[0] ? 200 : 404;
-    return { products, status };
+    let header;
+    if (products[0]) {
+      header = {
+        title: products[0].title,
+        metaDescription: products[0].metaDescription,
+      };
+    }
+
+    return { products, status, header };
   }
 
   constructor(props) {

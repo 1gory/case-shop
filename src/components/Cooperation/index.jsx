@@ -3,6 +3,7 @@
 import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -91,6 +92,9 @@ const List = styled.ul`
 
 export default () => (
   <Wrapper>
+    <Helmet>
+      <title>Сотрудничество | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <Header />
     <BannerWrapper>
       <Row>

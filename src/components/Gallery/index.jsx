@@ -3,6 +3,7 @@
 import React from 'react';
 import ym from 'react-yandex-metrika';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Header from '../Header';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Gallery from '../generic/Gallery';
@@ -232,6 +233,9 @@ const images =
 
 export default () => (
   <div>
+    <Helmet>
+      <title>Галерея работ | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <Header />
     <Section>
       <BreadCrumbs

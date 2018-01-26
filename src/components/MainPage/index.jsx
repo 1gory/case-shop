@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import QueryString from 'query-string';
+import Helmet from 'react-helmet';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
 import Banner from './Banner/index';
@@ -68,6 +69,9 @@ export default class extends Component {
 
   render() {
     return (<Wrapper>
+      <Helmet>
+        <title>Деревянные чехлы для iPhone с гравировкой | Стекло в подарок</title>
+      </Helmet>
       <Header />
       <Banner
         data={{

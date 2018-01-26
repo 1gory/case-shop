@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
 import TransparentButton from '../generic/Form/Buttons/TransparentButton';
@@ -24,6 +25,9 @@ const Message = styled.h3`
 
 export default () => (
   <div>
+    <Helmet>
+      <title>Спасибо! | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
     <Header />
     <div>
       <Wrapper>
