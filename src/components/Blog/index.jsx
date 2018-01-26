@@ -49,7 +49,6 @@ const Article = ({ title, singleArticle, shortDescription, content, url }) => (
 );
 
 const Delimiter = styled.hr`
-  color: ccc;
   border: 0.5px solid #ccc;
 `;
 

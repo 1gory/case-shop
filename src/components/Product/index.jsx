@@ -16,6 +16,7 @@ import getProducts from '../../functions/getProduct';
 import ProductForm from './FormState/Form';
 import getGalleryImage from '../../functions/getGalleryImage';
 import ImageForm from '../generic/UploadFileForm';
+import RubleSign from '../generic/RubleSign';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -130,6 +131,17 @@ const ImageFormWrapper = styled.div`
     margin: 0 auto;
     width: 425px;
   }
+`;
+
+const Price = styled.div`
+  font-family: Lato-Regular;
+  font-size: 24px;
+  text-align: center;
+`;
+
+const Delimiter = styled.hr`
+  border: 0.5px solid #ccc;
+  margin: 20px 0;
 `;
 
 const formatGalleryImage = (images, category, printCode) => (
@@ -315,6 +327,10 @@ class Product extends Component {
               <Description>
                 {this.state.product.description}
               </Description>
+              <Delimiter />
+              <Price>
+                {this.state.product.price}<RubleSign />
+              </Price>
               <ProductForm handleSendForm={this.handleSendForm} />
             </Details>
           </ProductCard>
