@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import { CSSTransitionGroup } from 'react-transition-group';
 import ReactGA from 'react-ga';
-import Mertika from '../generic/YandexMetrika';
+import YandexMetrica from '../generic/YandexMetrica';
 // import Jivosite from '../generic/Jivosite';
 import MenuList from './Menu';
 // import RubleSign from '../RubleSign';
@@ -118,7 +118,7 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
-        <Mertika />
+        <YandexMetrica />
         {/* <Jivosite /> */}
         <HeaderWrapper>
           <Header>

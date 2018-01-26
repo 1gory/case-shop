@@ -4,7 +4,7 @@ import { YMInitializer } from 'react-yandex-metrika';
 export default () => (
   <div>
     <YMInitializer
-      accounts={[40431935]}
+      accounts={[47458822]}
       options={{
         clickmap: true,
         trackLinks: true,
