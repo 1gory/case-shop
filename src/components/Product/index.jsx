@@ -66,6 +66,7 @@ const Thumb = styled.img`
   background-color: #fff;
   margin: 8px 8px 0 0;
   padding: 5px;
+  cursor: pointer;
 `;
 
 const Details = styled.div`

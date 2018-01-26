@@ -61,6 +61,7 @@ const CategoryName = styled.div`
 
 const Price = styled.div`
   font-family: 'Lato-Regular';
+  font-weight: lighter;
   font-size: 18px;
   color: #222222;
 `;
