@@ -1,6 +1,7 @@
 import request from 'request-promise';
+import { amoCrmConfig } from '../config';
 
-const link = 'https://cswd.amocrm.ru/private/api/v2/json/leads/set';
+const link = `https://${amoCrmConfig.project}.amocrm.ru/private/api/v2/json/leads/set`;
 
 export default (data, cookie) => (
   request.post({

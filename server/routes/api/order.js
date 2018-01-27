@@ -9,7 +9,7 @@ import mailer from '../../services/mailer';
 import { config } from '../../config';
 
 const router = express.Router();
-const unassignedEnum = 815981;
+const unassignedEnum = 566419;
 
 router.post('/order', async (req, res, next) => {
   try {
@@ -40,7 +40,15 @@ router.post('/order', async (req, res, next) => {
         name: customerName,
         custom_fields: [
           {
-            id: 386299,
+            id: 247265,
+            values: [
+              {
+                value: customerName,
+              },
+            ],
+          },
+          {
+            id: 247263,
             values: [
               {
                 value: date,
@@ -48,7 +56,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 386315,
+            id: 247339,
             values: [
               {
                 value: phone,
@@ -56,7 +64,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 386353,
+            id: 247271,
             values: [
               {
                 value: model,
@@ -64,7 +72,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 386225,
+            id: 247381,
             values: [
               {
                 value: material,
@@ -72,7 +80,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 386367,
+            id: 247383,
             values: [
               {
                 value: messenger,
@@ -80,7 +88,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 386295,
+            id: 247411,
             values: [
               {
                 value: sourceEnum,
@@ -88,7 +96,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 407505,
+            id: 247323,
             values: [
               {
                 value: image,
@@ -96,7 +104,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 428587,
+            id: 247375,
             values: [
               {
                 value: ip,
@@ -104,7 +112,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 434443,
+            id: 247353,
             values: [
               {
                 value: referer,
@@ -112,7 +120,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 440641,
+            id: 247377,
             values: [
               {
                 value: note,
@@ -120,7 +128,7 @@ router.post('/order', async (req, res, next) => {
             ],
           },
           {
-            id: 441251,
+            id: 247267,
             values: [
               {
                 value: timezoneOffset,

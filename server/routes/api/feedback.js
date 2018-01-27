@@ -25,7 +25,7 @@ router.post('/feedback', async (req, res, next) => {
         name: 'Запрос обратной связи',
         custom_fields: [
           {
-            id: 428587,
+            id: 247375,
             values: [
               {
                 value: ip,
@@ -33,7 +33,7 @@ router.post('/feedback', async (req, res, next) => {
             ],
           },
           {
-            id: 386315,
+            id: 247339,
             values: [
               {
                 value: phone,
@@ -41,7 +41,7 @@ router.post('/feedback', async (req, res, next) => {
             ],
           },
           {
-            id: 386379,
+            id: 247265,
             values: [
               {
                 value: customerName,

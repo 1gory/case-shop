@@ -26,7 +26,7 @@ router.post('/message', async (req, res, next) => {
         name: 'Сообщение',
         custom_fields: [
           {
-            id: 386315,
+            id: 247339,
             values: [
               {
                 value: phone,
@@ -34,7 +34,7 @@ router.post('/message', async (req, res, next) => {
             ],
           },
           {
-            id: 428575,
+            id: 247921,
             values: [
               {
                 value: message,
@@ -42,7 +42,7 @@ router.post('/message', async (req, res, next) => {
             ],
           },
           {
-            id: 428587,
+            id: 247375,
             values: [
               {
                 value: ip,
