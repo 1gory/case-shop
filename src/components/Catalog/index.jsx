@@ -1,7 +1,9 @@
+/* eslint-disable no-underscore-dangle */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Header from '../Header/index';
@@ -104,11 +106,13 @@ const CatalogCategory = ({ products, categoryName, category, toCategoryButton })
 
 const getCategory = (catalog, categoryName) => {
   const category = catalog.find(item => (item.category === categoryName));
-  return [{
+  return category ? [{
+    title: category.title,
+    metaDescription: category.metaDescription,
     category: category.category,
     categoryRu: category.categoryRu,
     products: category.products,
-  }];
+  }] : [];
 };
 
 const sliceCatalog = catalog => (catalog.map(item => ({
@@ -117,18 +121,60 @@ const sliceCatalog = catalog => (catalog.map(item => ({
   products: item.products.slice(0, 4),
 })));
 
-export default class extends Component {
-  constructor() {
-    super();
+export default class Catalog extends Component {
 
-    this.state = {
-      catalog: [],
-    };
+  static async requestInitialData(url, host) {
+    const id = url.split('/').pop();
+    let singleCategory = true;
+    let catalog = await getCatalog(`${host || ''}/api/catalog`);
+    let status = 200;
+    let header;
+    if (id === 'catalog') {
+      catalog = sliceCatalog(catalog);
+      singleCategory = false;
+    } else {
+      catalog = getCategory(catalog, id);
+      status = catalog[0] ? 200 : 404;
+      if (catalog[0]) {
+        header = {
+          title: catalog[0].title,
+          metaDescription: catalog[0].metaDescription,
+        };
+      }
+    }
+
+    return { catalog, singleCategory, status, header };
+  }
+
+  constructor(props) {
+    super(props);
+
+    let initialData;
+    if (props.staticContext) {
+      initialData = props.staticContext.initialData;
+    } else {
+      initialData = window.__initialData__;
+      delete window.__initialData__;
+    }
+
+    if (initialData && initialData.catalog) {
+      this.state = {
+        catalog: initialData.catalog,
+        singleCategory: initialData.singleCategory,
+      };
+    } else {
+      this.state = {
+        catalog: [],
+      };
+    }
+
     this.load = this.load.bind(this);
   }
 
   async componentWillMount() {
-    this.load(this.props);
+    if (!this.state.catalog[0]) {
+      this.load(this.props);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -136,33 +182,49 @@ export default class extends Component {
   }
 
   async load(props) {
-    const urlParts = props.match.url.split('/');
-    let categoryButton = true;
-    let catalog = await getCatalog();
-    if (urlParts[2]) {
-      catalog = getCategory(catalog, urlParts[2]);
-      categoryButton = false;
-    } else {
-      catalog = sliceCatalog(catalog);
-    }
-    this.setState({
-      catalog,
-      categoryButton,
+    Catalog.requestInitialData(props.match.url).then(({ catalog, singleCategory }) => {
+      if (catalog[0]) {
+        this.setState({
+          catalog,
+          singleCategory,
+        });
+      } else {
+        this.setState({ notFound: true });
+      }
     });
   }
 
   render() {
+    const breadcrumbs = [
+      { name: 'Каталог', link: '/catalog' },
+    ];
+    if (this.state.singleCategory) {
+      breadcrumbs.push({ name: this.state.catalog[0].categoryRu, link: `${this.state.catalog[0].category}` });
+    }
+    if (this.state.notFound) {
+      return <Redirect to="/404" />;
+    }
     return (
       <Wrapper>
         <Helmet>
-          <title>Каталог | Деревянные чехлы для iPhone Casewood</title>
+          <title>
+            {this.state.singleCategory ?
+              this.state.catalog[0].title :
+              'Каталог | Деревянные чехлы для iPhone Casewood'
+            }
+          </title>
+          <meta
+            name="description"
+            content={this.state.singleCategory ?
+              this.state.catalog[0].metaDescription :
+              'Каталог деревянных чехлов, выберите нужный вам принт, или загрузите свой мы сделаем индивидуальную гравировку'
+            }
+          />
         </Helmet>
         <Header />
         <Section>
           <BreadCrumbs
-            breadcrumbs={[
-              { name: 'Каталог', link: '/catalog' },
-            ]}
+            breadcrumbs={breadcrumbs}
           />
           <H1>Гравированные чехлы</H1>
           {this.state.catalog ? this.state.catalog.map(item => (
@@ -170,7 +232,7 @@ export default class extends Component {
               products={item.products}
               category={item.category}
               categoryName={item.categoryRu}
-              toCategoryButton={this.state.categoryButton}
+              toCategoryButton={!this.state.singleCategory}
             />
           )) : <MapPreloader />}
         </Section>

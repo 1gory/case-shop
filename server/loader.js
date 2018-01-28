@@ -42,8 +42,10 @@ export default (req, res, next) => {
 
     return Promise.resolve(requestInitialData)
       .then((initialData) => {
+        let url = req.url;
         if (initialData && initialData.status === 404) {
-          return res.status(404).end();
+          url = '/404';
+          res.status(404);
         }
 
         const context = { initialData };
@@ -51,7 +53,7 @@ export default (req, res, next) => {
 
         const markup = renderToString(
           <StyleSheetManager sheet={sheet.instance}>
-            <StaticRouter location={req.url} context={context}>
+            <StaticRouter location={url} context={context}>
               <App />
             </StaticRouter>
           </StyleSheetManager>,

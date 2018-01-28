@@ -23,7 +23,12 @@ router.get('/catalog', async (req, res, next) => {
     ]);
 
     const categories = group[0].categories;
-    const categoriesRu = group[0].categoriesRu;
+
+    const allCategories = await Category.find(
+      { active: true },
+      null,
+      { sort: { order: 1 } },
+    );
 
     const products = await Product.find(
       { active: true, category: { $in: categories } },
@@ -31,12 +36,11 @@ router.get('/catalog', async (req, res, next) => {
       { sort: { order: 1 } },
     );
 
-    const result = products.reduce((previous, current) => {
+    const groupedProducts = products.reduce((previous, current) => {
       let categoryObj = previous.find(item => (item.category === current.category));
       if (categoryObj === undefined) {
         categoryObj = {
           category: current.category,
-          categoryRu: categoriesRu[categories.indexOf(current.category)],
           products: [],
         };
         previous.push(categoryObj);
@@ -44,6 +48,18 @@ router.get('/catalog', async (req, res, next) => {
       categoryObj.products.push(current);
       return previous;
     }, []);
+
+    const result = allCategories.map((categoryItem) => {
+      const categoryProducts =
+        groupedProducts.find(productItem => (productItem.category === categoryItem.name));
+      return {
+        title: categoryItem.title,
+        metaDescription: categoryItem.meta_description,
+        category: categoryItem.name,
+        categoryRu: categoryItem.name_ru,
+        products: categoryProducts.products || [],
+      };
+    });
 
     res.json({
       result,

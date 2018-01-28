@@ -7,15 +7,13 @@ const ProductSchema = new mongoose.Schema({
   },
   url: {
     type: String,
-    required: false,
+    required: true,
   },
   title: {
     type: String,
-    required: false,
   },
   meta_description: {
     type: String,
-    required: false,
   },
   price: {
     type: Number,

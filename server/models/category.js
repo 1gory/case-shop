@@ -5,9 +5,15 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  nameRu: {
+  name_ru: {
     type: String,
     required: true,
+  },
+  title: {
+    type: String,
+  },
+  meta_description: {
+    type: String,
   },
   order: {
     type: Number,
