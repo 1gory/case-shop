@@ -10,6 +10,9 @@ const Wrapper = styled.div`
 
 const Marker = styled.img`
   width: 40px;
+  position: relative;
+  top: -40px;
+  left: -20px;
 `;
 
 const LocationIcon = styled.img`
@@ -63,7 +66,7 @@ export default () => (
         <LocationIcon src={locationIcon} />
         <div>
           <Label>Адресс:</Label>
-          <Address>4-й Лихачевский переулок, 13 стр.1</Address>
+          <Address>Алтуфьевское шоссе д.5, Москва</Address>
         </div>
       </Location>
     </LocationWrapper>
@@ -72,15 +75,14 @@ export default () => (
         key: 'AIzaSyDtghT2dehFPUOPIn1JECSjwLBY0qW8-bk',
         language: 'ru',
       }}
-      defaultCenter={{ lat: 55.856689, lng: 37.530180 }}
-      defaultZoom={12}
+      defaultCenter={{ lat: 55.850664, lng: 37.582478 }}
+      defaultZoom={14}
       options={{
         styles: MapStyle,
         scrollwheel: false,
-        zoom: 13,
       }}
     >
-      <div lat={55.856689} lng={37.530180}>
+      <div lat={55.850664} lng={37.582478}>
         <Marker src={locationIcon} />
       </div>
     </GoogleMap>
