@@ -182,14 +182,16 @@ export default class extends Component {
                 <Value>Игорь Валерьевич П.</Value>
                 <Param>Номер телефона получателя</Param>
                 <Value>+7 (916) 228-24-56</Value>
-                <Param>Сумма</Param>
-                <Summ>{this.state.transferredValue} <RubleSign /></Summ>
+                {this.state.transferredValue && <div>
+                  <Param>Сумма</Param>
+                  <Summ>{this.state.transferredValue} <RubleSign /></Summ>
+                </div>}
                 <ButtonWrapper>
                   <GhostButton onClick={(e) => { this.handleClickBack(e); }}>Назад</GhostButton>
                 </ButtonWrapper>
               </SbPaymentInfo>
             </Card>
-            <YandexKassaCard
+            {this.state.transferredValue && <YandexKassaCard
               sberbankChecked={this.state.sberbankChecked}
               onClick={() => { this.handleSendForm(this.state.transferredValue); }}
             >
@@ -204,7 +206,7 @@ export default class extends Component {
                 <PaymentServiceLogo src={yandexMoney} alt="Оплата Яндекс деньги" />
                 <PaymentServiceLogo src={mir} alt="Оплата картой МИР" />
               </PaymentIcons>
-            </YandexKassaCard>
+            </YandexKassaCard>}
           </CardsWrapper>
         </PreloaderContainer>
       </Wrapper>

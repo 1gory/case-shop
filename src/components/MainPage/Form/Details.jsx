@@ -81,7 +81,7 @@ export default class extends Component {
   render() {
     return (
       <DetailsFormWrapper>
-        <H3>Наш оператор свяжется с вами, чтобы обсудить детали заказ</H3>
+        <H3>Наш оператор свяжется с вами, чтобы обсудить детали заказа</H3>
         <Messenger handleChangeForm={this.handleChangeForm} />
         <PhoneNumber
           handleChangeForm={async (e) => {
