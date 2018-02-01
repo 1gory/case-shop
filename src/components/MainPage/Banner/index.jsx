@@ -50,6 +50,12 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
   font-family: 'Lato-Regular', sans-serif;
+`;
+
+const MainHeader = styled.h1`
+  font-weight: lighter; 
+  margin: 5px;
+  font-family: 'Lato-Light', sans-serif;
   font-size: 24px;
   
   @media (min-width: 768px) {
@@ -57,8 +63,10 @@ const Header = styled.div`
   }
 `;
 
-const MainHeader = styled.span`
-  font-family: 'Lato-Light', sans-serif;
+const SubHeader = MainHeader.withComponent('h2');
+
+const SubHeaderExtended = styled(SubHeader)`
+  font-weight: bold; 
 `;
 
 const handleClick = () => {
@@ -76,9 +84,8 @@ export default ({ data }) => (
       <Header>
         { data.sign }
         { data.code === 'default' ? <div>
-          <MainHeader>Качественные деревянные чехлы</MainHeader>
-          <br />
-          c вашей гравировкой
+          <MainHeader>Деревянные чехлы для iPhone</MainHeader>
+          <SubHeaderExtended>c вашей гравировкой</SubHeaderExtended>
         </div> : ''}
       </Header>
       <Button onClick={handleClick}>
