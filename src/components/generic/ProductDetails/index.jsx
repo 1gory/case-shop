@@ -76,7 +76,7 @@ export const Model = ({ handleChangeForm }) => (
       <option value="iPhone 7PLUS">iPhone 7PLUS</option>
       <option value="iPhone 8">iPhone 8</option>
       <option value="iPhone 8PLUS">iPhone 8PLUS</option>
-      <option value="iPhone 10">iPhone 10</option>
+      <option value="iPhone 10">iPhone X</option>
     </Dropdown>
   </Label>
 );
