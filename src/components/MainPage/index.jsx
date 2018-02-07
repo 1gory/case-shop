@@ -71,6 +71,11 @@ export default class extends Component {
     return (<Wrapper>
       <Helmet>
         <title>Деревянные чехлы для iPhone с гравировкой | Стекло в подарок</title>
+        <meta
+          name="description"
+          content="Чехол из дерева с гравировкой станет отличным подарком для друзей и близких.
+          Мы делаем деревянные чехлы для iphone на все существующие модели."
+        />
       </Helmet>
       <Header />
       <Banner
