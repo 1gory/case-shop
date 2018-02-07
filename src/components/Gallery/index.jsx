@@ -235,6 +235,11 @@ export default () => (
   <div>
     <Helmet>
       <title>Галерея работ | Деревянные чехлы для iPhone Casewood</title>
+      <meta
+        name="description"
+        content="Галерея готовых работ.
+        Еще больше фото смотрите в нашем instagram и группе вконтакте"
+      />
     </Helmet>
     <Header />
     <Section>

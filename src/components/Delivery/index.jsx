@@ -14,6 +14,11 @@ export default () => (
   <Wrapper>
     <Helmet>
       <title>Доставка | Деревянные чехлы для iPhone Casewood</title>
+      <meta
+        name="description"
+        content="Осуществляем доставку по всей планете!
+        Мы подберем для вас оптимальный вариант доставвки."
+      />
     </Helmet>
     <Header />
     <Banner />
