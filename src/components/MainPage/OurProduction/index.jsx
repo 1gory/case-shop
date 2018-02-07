@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import YouTube from 'react-youtube';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -43,6 +44,10 @@ const Description = styled.div`
   }
 `;
 
+const AboutLink = styled(Link)`
+  color: #ccc;
+`;
+
 const opt = {
   playerVars: { // https://developers.google.com/youtube/player_parameters
     rel: 0,
@@ -60,9 +65,11 @@ export default () => (
         />
       </VideoWrapper>
       <Description>
-        Чехол из дерева с гравировкой станет отличным подарком для друзей и близких.
+        Деревянный чехол с гравировкой станет отличным подарком для друзей и близких.
         Каждый чехол, который мы гравируем - особенный.
-        Мы делаем деревянные чехлы для iphone на все существующие модели.
+        Мы делаем деревянные чехлы для iphone на все существующие модели.<br />
+        Чтобы лучше познакомится, мы подготовлили <AboutLink to="/about">
+        страницу «о компании».</AboutLink>
       </Description>
     </VideoSection>
   </Wrapper>

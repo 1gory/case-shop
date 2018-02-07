@@ -6,6 +6,7 @@ import Product from './components/Product';
 import Payment from './components/Payment';
 import Gallery from './components/Gallery';
 import Blog from './components/Blog';
+import About from './components/About';
 import Checkout from './components/Checkout';
 import SuccessPayment from './components/Payment/SuccessPayment';
 import ErrorPayment from './components/Payment/ErrorPayment';
@@ -70,6 +71,11 @@ export default [
   },
   {
     id: 11,
+    path: '/about',
+    component: About,
+  },
+  {
+    id: 12,
     path: '*',
     component: GenericNotFound,
   },
