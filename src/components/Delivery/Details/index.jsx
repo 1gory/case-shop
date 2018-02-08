@@ -60,6 +60,11 @@ const ItalicText = styled.span`
   font-family: 'Lato-Italic';
 `;
 
+const Description = styled.div`
+  padding: 20px 0;
+  font-family: 'Lato-Regular';
+`;
+
 const scroller = Scroll.scroller;
 
 const handleClick = () => {
@@ -85,15 +90,15 @@ export default () => (
           <td>Стоимость</td>
         </Subhead>
         <tr>
-          <td>Доставка курьером <br />
-            в пределах МКАД</td>
-          <td>350р.</td>
-        </tr>
-        <tr>
           <td>Самовывоз<br />
             (<LinkToFooter onClick={handleClick}>как забрать</LinkToFooter>)
           </td>
-          <td>-</td>
+          <td>бесплатно</td>
+        </tr>
+        <tr>
+          <td>Доставка курьером <br />
+            в пределах МКАД</td>
+          <td>350р.</td>
         </tr>
       </Table>
 
@@ -105,8 +110,17 @@ export default () => (
         </thead>
         <tr>
           <td>
+            «Почта России» обычное отправление <ItalicText>
+            (5-10 дней, в зависимости от региона)</ItalicText>
+          </td>
+          <td>
+            190р. - 290р.
+          </td>
+        </tr>
+        <tr>
+          <td>
             «Почта России» первый
-            класс <ItalicText>(5-7 дней, в
+            класс <ItalicText>(4-7 дней, в
             зависимости от региона)</ItalicText>
           </td>
           <td>
@@ -117,42 +131,18 @@ export default () => (
           <td>
             Доставка транспортными
             компаниями <ItalicText>(курьер до
-            двери по России)</ItalicText>
+            двери, доставка до склада, 2-5 дней, в
+            зависимости от региона)</ItalicText>
           </td>
           <td>
-            стоимость уточняйте
-            у менеджера
-          </td>
-        </tr>
-        <tr>
-          <td>
-            «СДЭК», «ДЕЛОВЫЕ
-            ЛИНИИ», «EMS», «DHL»,
-            «ponyexpress» и др.
-          </td>
-          <td>
-            стоимость уточняйте
-            у менеджера
+            от 350р.
           </td>
         </tr>
       </Table>
 
-      <Table>
-        <thead>
-          <tr>
-            <th colSpan="2">Доставка по России</th>
-          </tr>
-        </thead>
-        <tr>
-          <td>
-            «СДЭК», «EMS»
-          </td>
-          <td>
-            стоимость уточняйте
-            у менеджера
-          </td>
-        </tr>
-      </Table>
+      <Description>
+        Напишите нам и мы подберем для Вас оптимальный по стоимости и срокам вариант доставки.
+      </Description>
     </TableWrapper>
   </Wrapper>
 );

@@ -1,6 +1,7 @@
 /* eslint-disable max-len: ["error"] */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import HowWeWorkIcon1 from './HowWeWork1';
@@ -65,6 +66,10 @@ const Description = styled.div`
   color: rgba(0, 0, 0, 0.7);
   width: 200px;
   margin: 0 auto;
+  
+  & a {
+    color: inherit;
+  }
 `;
 
 const Delimiter = styled.div`
@@ -111,7 +116,7 @@ export default () => (
           </IconWrapper4>
           <Name>Изготовление</Name>
           <Description>
-            Мы изготовим чехол учитывая все Ваши пожелания и отправим его в день заказа
+            Мы изготовим чехол учитывая все Ваши пожелания и отправим его в надежной упаковке
           </Description>
           <Delimiter />
         </Col>
@@ -122,7 +127,8 @@ export default () => (
           </IconWrapper3>
           <Name>Доставка</Name>
           <Description>
-            Вы получаете чехол через 1-3 дня (Мск, Спб), либо в течение 3-7 дней
+            Вы получаете чехол через 1-3 дня (Мск, Спб). Для регионов <Link to="/delivery">
+            сроки считаются отдельно</Link>
           </Description>
         </Col>
       </Row>
