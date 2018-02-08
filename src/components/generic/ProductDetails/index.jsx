@@ -59,7 +59,7 @@ export const Messenger = ({ handleChangeForm }) => (
       <option value="whatsapp">WhatsApp</option>
       <option value="telegram">Telegram</option>
       <option value="viber">Viber</option>
-      <option value="other">Другое</option>
+      <option value="call">Позвонить</option>
     </Dropdown>
   </Label>
 );
