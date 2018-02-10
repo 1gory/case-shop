@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import YouTube from 'react-youtube';
+import Waypoint from 'react-waypoint';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -54,8 +55,9 @@ const opt = {
   },
 };
 
-export default () => (
+export default ({ handleScroll }) => (
   <Wrapper>
+    <Waypoint onEnter={handleScroll} />
     <VideoSection>
       <VideoWrapper>
         <H2>Наше производство</H2>

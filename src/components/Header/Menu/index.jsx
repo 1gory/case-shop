@@ -47,6 +47,7 @@ export default () => (
       <MenuLink to="/catalog">Каталог</MenuLink>
       <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
       <MenuLink to="/delivery">Доставка</MenuLink>
+      <MenuLink to="/about">О компании</MenuLink>
       {/* <MenuLink to="">Контакты</MenuLink> */}
     </Links>
   </Wrapper>

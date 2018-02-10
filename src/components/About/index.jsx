@@ -5,6 +5,15 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
+import casesEngraving from './cases-engraving-machine.jpg';
+import metalEngraving from './metal-engraving-machine.jpg';
+import stickers from './stickers.jpg';
+import oldLogo from './old-logo.jpg';
+import newLogo from './new-logo.jpg';
+import cases from './cases.jpg';
+import envelops from './envelope.jpg';
+import makingCase from './makingCase.jpg';
+import doneCases from './doneCases.jpg';
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -63,6 +72,26 @@ const DescriptionSubHeader = styled.h2`
   }
 `;
 
+const Img = styled.img`
+  padding: 20px;
+  border-radius: 50%;
+  display: ${({ hide }) => (!hide ? 'block' : 'none')};
+  width: 120px;
+  height: 120px;
+  
+  @media (min-width: 768px) {
+    display: block;
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+const ImagesWrapper = styled.div`
+   padding: 15px 0 20px 0;
+   display: flex;
+   justify-content: center;
+`;
+
 export default () => (
   <Wrapper>
     <Helmet>
@@ -81,17 +110,25 @@ export default () => (
           За это время успели накопить богатый опыт производства и оформления дизайна деревянных чехлов.
           В нашем арсенале имеется различное оборудование для всех видов лазерных гравировок, что позволяет нам выполнять гравировку не только на чехлах, но и заниматься производством различной продукции в рамках других проектов (лазерная резка, гравировка на металле, изготовление сувенирной продукции и.т.п)
         </Description>
-
+        <ImagesWrapper>
+          <Img src={casesEngraving} alt="Станок для гравировки чехлов" />
+          <Img src={metalEngraving} alt="Станок для гравировки металла" />
+          <Img src={stickers} alt="Стикеры с лого Casewood" hide />
+        </ImagesWrapper>
         <Description>
           <DescriptionSubHeader>Наш проект развивался в несколько этапов</DescriptionSubHeader>
 
           С 2015 года мы испробовали различные материалы для изготовления чехлов, различные породы дерева, пластиковые основы, много экспериментировали с методами гравировки.
-          В результате было решено использовать чехлы с толстой деревянной пластиной на основе soft-touch пластика.
+          В результате было решено использовать чехлы с толстой деревянной пластиной на основе из soft-touch пластика.
           С 2017 года сменили логотип и провели редизайн сайта, сделали мобильную версию и подключили платежные системы, для удобной оплаты.
           В настоящее время экспериментируем с различной гравировкой по фотографиям, постоянно добавляем новые принты в каталог.
 
         </Description>
-
+        <ImagesWrapper>
+          <Img src={oldLogo} alt="Старый логотип Casewood" hide />
+          <Img src={cases} alt="Деревянные чехлы Casewood" />
+          <Img src={newLogo} alt="Новый логотип Casewood" />
+        </ImagesWrapper>
         <Description>
           <DescriptionSubHeader>Наши главные ценности - довольные покупатели</DescriptionSubHeader>
           Мы стараемся выстраивать теплые человеческие отношения с покупателями.
@@ -99,8 +136,11 @@ export default () => (
           Важным звеном является логистика - зачастую доставка требуется к определенной дате и обычная отправка почтой может не уложиться в срок.
           Мы работаем с различными курьерскими компаниями, и подбираем оптимальный вариант доставки. Также у нас имеются подарочные конверты и упаковки, которые украсят подарок и добавят торжественности моменту.
         </Description>
-
-
+        <ImagesWrapper>
+          <Img src={envelops} alt="Конверты для отправки Casewood" />
+          <Img src={makingCase} alt="Изготовление деревянного чехла" hide />
+          <Img src={doneCases} alt="Продукция Casewood" />
+        </ImagesWrapper>
         <Description>
           <DescriptionSubHeader>Команда</DescriptionSubHeader>
           Для вас трудится небольшая, но слаженная команда профессионалов. <br />

@@ -90,8 +90,8 @@ export default class extends Component {
       <FeedbackForm />
       <OurAdvantages />
       <HowWeWork />
-      <OurProduction />
-      <Comments handleScroll={this.handleWaypointEnter} />
+      <OurProduction handleScroll={this.handleWaypointEnter} />
+      {/* <Comments handleScroll={this.handleWaypointEnter} /> */}
       {/* <FAQ /> */}
       <Footer mapPreloader={this.state.mapPreloader} />
     </Wrapper>);
