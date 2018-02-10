@@ -35,7 +35,7 @@ const MenuLink = styled(Link)`
   
   @media (min-width: 768px) {
     display: inline-block;
-    padding-left: 25px;
+    padding-left: 22px;
   }
 `;
 
@@ -44,7 +44,7 @@ export default () => (
     <Links>
       <MenuLink to="/">Главная</MenuLink>
       <MenuLink to="/gallery">Галерея</MenuLink>
-      <MenuLink to="/catalog">Каталог</MenuLink>
+      {/* <MenuLink to="/catalog">Каталог</MenuLink> */}
       <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
       <MenuLink to="/delivery">Доставка</MenuLink>
       <MenuLink to="/about">О компании</MenuLink>
