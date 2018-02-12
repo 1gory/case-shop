@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
@@ -90,6 +91,14 @@ const List = styled.ul`
   }
 `;
 
+const Link = styled(RouterLink)`
+  color: black;
+`;
+
+const Email = styled.a`
+  color: black;
+`;
+
 export default () => (
   <Wrapper>
     <Helmet>
@@ -130,7 +139,9 @@ export default () => (
         <Description>
           <DescriptionSubHeader>Приемущества работы с Casewood</DescriptionSubHeader>
           У вас интернет магазин/розничная точка, сеть магазинов?
-          Сотрудничая с <a href="https://casewood.ru/">нами</a> вы сможете расширить свой ассортимент сегментом премиум чехлов для популярных моделей телефонов по минимальной цене
+          Сотрудничая с <b><Link to="/">нами</Link></b> вы сможете расширить свой ассортимент сегментом премиум чехлов для популярных моделей телефонов по минимальной цене.
+          Наше производство находится <b>в Москве.</b><br />
+          Прочитайте больше <b><Link to="/about">о нашей компании</Link></b>.
         </Description>
 
         <Description>
@@ -146,6 +157,13 @@ export default () => (
             <li>Доставка вашим клиентам от вашего имени/магазина</li>
           </List>
           Деревянный чехол - «эко» товар, который всегда в тренде. Для деревянных чехлов используем два вида дерева, светлое (бамбук), темное (махагон).
+        </Description>
+
+        <Description>
+          <DescriptionSubHeader>Контакты</DescriptionSubHeader>
+          Мы всегда рады обращениям к нам по любым вопросам <br />
+          <Email href="mailto:info@casewood.ru">info@casewood.ru</Email> - для вопросов, претензий, отзывов<br />
+          <Email href="mailto:store@casewood.ru">store@casewood.ru</Email> - реклама, сотрудничество
         </Description>
       </Section>
     </SectionWrapper>
