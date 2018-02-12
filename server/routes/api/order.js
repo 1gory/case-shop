@@ -31,115 +31,115 @@ router.post('/order', async (req, res, next) => {
       req.body.customerName : `Заказ ${moment().utcOffset('+0300').format('HH:mm')}`;
     const image = req.body.image ? `${config.production.url}/${req.body.image}` : null;
     const cookieJar = request.jar();
-    await auth(cookieJar);
+    // await auth(cookieJar);
     const date = new Date();
     const timezoneOffset = req.body.timezoneOffset;
     date.setHours(date.getHours() + 3); // TODO fix problem with timezone
-    await lead(
-      {
-        name: customerName,
-        custom_fields: [
-          {
-            id: 247265,
-            values: [
-              {
-                value: customerName,
-              },
-            ],
-          },
-          {
-            id: 247263,
-            values: [
-              {
-                value: date,
-              },
-            ],
-          },
-          {
-            id: 247339,
-            values: [
-              {
-                value: phone,
-              },
-            ],
-          },
-          {
-            id: 247271,
-            values: [
-              {
-                value: model,
-              },
-            ],
-          },
-          {
-            id: 247381,
-            values: [
-              {
-                value: material,
-              },
-            ],
-          },
-          {
-            id: 247383,
-            values: [
-              {
-                value: messenger,
-              },
-            ],
-          },
-          {
-            id: 247411,
-            values: [
-              {
-                value: sourceEnum,
-              },
-            ],
-          },
-          {
-            id: 247323,
-            values: [
-              {
-                value: image,
-              },
-            ],
-          },
-          {
-            id: 247375,
-            values: [
-              {
-                value: ip,
-              },
-            ],
-          },
-          {
-            id: 247353,
-            values: [
-              {
-                value: referer,
-              },
-            ],
-          },
-          {
-            id: 247377,
-            values: [
-              {
-                value: note,
-              },
-            ],
-          },
-          {
-            id: 247267,
-            values: [
-              {
-                value: timezoneOffset,
-              },
-            ],
-          },
-        ],
-      },
-      cookieJar,
-    );
-    mailer('Заказ', { phone, model, material, customerName });
+    // await lead(
+    //   {
+    //     name: customerName,
+    //     custom_fields: [
+    //       {
+    //         id: 247265,
+    //         values: [
+    //           {
+    //             value: customerName,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247263,
+    //         values: [
+    //           {
+    //             value: date,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247339,
+    //         values: [
+    //           {
+    //             value: phone,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247271,
+    //         values: [
+    //           {
+    //             value: model,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247381,
+    //         values: [
+    //           {
+    //             value: material,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247383,
+    //         values: [
+    //           {
+    //             value: messenger,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247411,
+    //         values: [
+    //           {
+    //             value: sourceEnum,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247323,
+    //         values: [
+    //           {
+    //             value: image,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247375,
+    //         values: [
+    //           {
+    //             value: ip,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247353,
+    //         values: [
+    //           {
+    //             value: referer,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247377,
+    //         values: [
+    //           {
+    //             value: note,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247267,
+    //         values: [
+    //           {
+    //             value: timezoneOffset,
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   },
+    //   cookieJar,
+    // );
+    mailer('Заказ', { phone, model, material, customerName, image, messenger });
     res.json({
       status: 'success',
     });

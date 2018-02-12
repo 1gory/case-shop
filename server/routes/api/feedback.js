@@ -19,39 +19,39 @@ router.post('/feedback', async (req, res, next) => {
       customer,
     });
     const cookieJar = request.jar();
-    await auth(cookieJar);
-    await lead(
-      {
-        name: 'Запрос обратной связи',
-        custom_fields: [
-          {
-            id: 247375,
-            values: [
-              {
-                value: ip,
-              },
-            ],
-          },
-          {
-            id: 247339,
-            values: [
-              {
-                value: phone,
-              },
-            ],
-          },
-          {
-            id: 247265,
-            values: [
-              {
-                value: customerName,
-              },
-            ],
-          },
-        ],
-      },
-      cookieJar,
-    );
+    // await auth(cookieJar);
+    // await lead(
+    //   {
+    //     name: 'Запрос обратной связи',
+    //     custom_fields: [
+    //       {
+    //         id: 247375,
+    //         values: [
+    //           {
+    //             value: ip,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247339,
+    //         values: [
+    //           {
+    //             value: phone,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247265,
+    //         values: [
+    //           {
+    //             value: customerName,
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   },
+    //   cookieJar,
+    // );
     mailer('Запрос обратной связи', { phone, customerName });
     res.json({
       status: 'success',

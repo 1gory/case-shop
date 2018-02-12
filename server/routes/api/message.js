@@ -20,40 +20,40 @@ router.post('/message', async (req, res, next) => {
       customer,
     });
     const cookieJar = request.jar();
-    await auth(cookieJar);
-    await lead(
-      {
-        name: 'Сообщение',
-        custom_fields: [
-          {
-            id: 247339,
-            values: [
-              {
-                value: phone,
-              },
-            ],
-          },
-          {
-            id: 247921,
-            values: [
-              {
-                value: message,
-              },
-            ],
-          },
-          {
-            id: 247375,
-            values: [
-              {
-                value: ip,
-              },
-            ],
-          },
-        ],
-      },
-      cookieJar,
-    );
-    mailer('Сообщение', { phone });
+    // await auth(cookieJar);
+    // await lead(
+    //   {
+    //     name: 'Сообщение',
+    //     custom_fields: [
+    //       {
+    //         id: 247339,
+    //         values: [
+    //           {
+    //             value: phone,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247921,
+    //         values: [
+    //           {
+    //             value: message,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         id: 247375,
+    //         values: [
+    //           {
+    //             value: ip,
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   },
+    //   cookieJar,
+    // );
+    mailer('Сообщение', { phone, message });
     res.json({
       status: 'success',
     });
