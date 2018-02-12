@@ -138,8 +138,8 @@ export default class extends Component {
             <Contact
               icon={contactsPhone}
               label="Телефон для связи"
-              info="8 (916) 228-24-56"
-              href="tel:89162282456"
+              info="+7 (916) 228-24-56"
+              href="tel:+79162282456"
             />
             <Contact
               icon={contactsMessenger}
