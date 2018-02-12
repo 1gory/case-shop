@@ -28,8 +28,8 @@ export default (mailType, data) => {
   output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
   output += data.image ? `image: ${data.image} <br>` : '';
-  output += data.messenger ? `image: ${data.messenger} <br>` : '';
-  output += data.message ? `image: ${data.message} <br>` : '';
+  output += data.messenger ? `messenger: ${data.messenger} <br>` : '';
+  output += data.message ? `message: ${data.message} <br>` : '';
   output += data.prepayment ? `Внесена предоплата: ${data.prepayment} <br>` : '';
 
   const mailOptions = {

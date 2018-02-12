@@ -1,16 +1,16 @@
 import express from 'express';
-import request from 'request';
+// import request from 'request';
 import Message from '../../models/message';
 import Customer from '../../models/customer';
-import auth from '../../connectors/auth';
-import lead from '../../connectors/lead';
+// import auth from '../../connectors/auth';
+// import lead from '../../connectors/lead';
 import mailer from '../../services/mailer';
 
 const router = express.Router();
 
 router.post('/feedback', async (req, res, next) => {
   try {
-    const ip = req.headers['x-forwarded-for'];
+    // const ip = req.headers['x-forwarded-for'];
     const phone = req.body.phone;
     const customerName = req.body.name;
     const customer = await Customer.findOneOrCreate({ phone }, { phone, customerName });
@@ -18,7 +18,7 @@ router.post('/feedback', async (req, res, next) => {
       message: 'Перезвоните мне, пожалуйста',
       customer,
     });
-    const cookieJar = request.jar();
+    // const cookieJar = request.jar();
     // await auth(cookieJar);
     // await lead(
     //   {
