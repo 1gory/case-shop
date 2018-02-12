@@ -3,6 +3,7 @@
 import express from 'express';
 import sm from 'sitemap';
 import Product from './models/product';
+import Category from './models/category';
 
 const router = express.Router();
 
@@ -15,8 +16,18 @@ const getUrls = async () => {
   }));
 };
 
+const getCategories = async () => {
+  const categories = await Category.find();
+  return categories.map(item => ({
+    url: `/catalog/${item.name}`,
+    changefreq: 'weekly',
+    priority: 0.5,
+  }));
+};
+
 router.get('/sitemap.xml', async (req, res) => {
   const productUrls = await getUrls();
+  const categoryUrls = await getCategories();
   const sietUrls = [
     {
       url: '/',
@@ -43,7 +54,7 @@ router.get('/sitemap.xml', async (req, res) => {
   const sitemap = sm.createSitemap({
     hostname: 'https://casewood.ru',
     cacheTime: 600000, // 600 sec - cache purge period
-    urls: sietUrls.concat(productUrls),
+    urls: sietUrls.concat(categoryUrls).concat(productUrls),
   });
 
   sitemap.toXML((err, xml) => {
