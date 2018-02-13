@@ -289,6 +289,10 @@ class Product extends Component {
       <Wrapper>
         <Helmet>
           <title>{this.state.product.title ? this.state.product.title : 'Деревянные чехлы Casewood'}</title>
+          <meta
+            name="description"
+            content={this.state.product.metaDescription}
+          />
         </Helmet>
         <Header />
         <ResponsiveWrapper>

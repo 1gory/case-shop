@@ -99,10 +99,10 @@ const Email = styled.a`
 export default () => (
   <Wrapper>
     <Helmet>
-      <title>О нас | Casewood</title>
+      <title>О нас | Деревянные чехлы для iPhone Casewood</title>
       <meta
         name="description"
-        content=">О компании casewood"
+        content="О компании casewood"
       />
     </Helmet>
     <Header />

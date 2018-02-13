@@ -14,8 +14,9 @@ import FeedbackForm from './FeedbackForm';
 import OurAdvantages from './OurAdvantages';
 import OurProduction from './OurProduction';
 import HowWeWork from './HowWeWork/index';
-import Comments from './Comments/index';
+// import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
+import Description from './Description';
 import getPack from '../../functions/getPack';
 
 const Wrapper = styled.div`
@@ -93,6 +94,7 @@ export default class extends Component {
       <OurProduction handleScroll={this.handleWaypointEnter} />
       {/* <Comments handleScroll={this.handleWaypointEnter} /> */}
       {/* <FAQ /> */}
+      <Description />
       <Footer mapPreloader={this.state.mapPreloader} />
     </Wrapper>);
   }
