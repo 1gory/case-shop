@@ -30,11 +30,15 @@ const Button = styled.button`
   color: #222222;
 `;
 
+const WhatsappLink = styled.a`
+  color: green;
+`;
+
 export default ({ handleClick }) => (
   <Wrapper>
-    <H4>Ошибка!</H4>
+    <H4>Что-то пошло не так!</H4>
     <Message>
-      Не удалось загрузить<br /> изображение
+      Просто отправьте изображение нам в <WhatsappLink href="whatsapp://send?text=Здравствуйте!&phone=+79152842384">WhatsApp!</WhatsappLink>
     </Message>
     <Button onClick={handleClick}>Попробвать снова</Button>
   </Wrapper>
