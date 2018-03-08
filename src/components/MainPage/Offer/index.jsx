@@ -111,9 +111,9 @@ export default () => (
   <Wrapper>
     <ResponsiveWrapper>
       <H2 onClick={handleClick}>
-        Загрузи свое изображение <br />
-        <H2Light>Получи уникальный чехол</H2Light>
-        <SpecialOffer>И защитное стекло в подарок!</SpecialOffer>
+        Бесплатно подготовим макет<br />
+        <H2Light>Загрузите свое изображение</H2Light>
+        <SpecialOffer>И дарим защитное стекло в подарок!</SpecialOffer>
       </H2>
       <div>
         <Cases>
