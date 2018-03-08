@@ -4,15 +4,11 @@ import { Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
-import TransparentButton from '../../generic/Form/Buttons/TransparentButton';
 import OrderPopUp from './OrderPopUp';
-import Gallery from '../../generic/Gallery';
 import RubleSign from '../../generic/RubleSign';
 import getImage from '../../../functions/getImage';
 
 const CatalogAnchor = Scroll.Element;
-
-const ToGalleryButton = TransparentButton.withComponent(Link);
 
 const H2 = styled.h2`
   margin-top: 0;
@@ -24,7 +20,7 @@ const H2 = styled.h2`
 
 const Wrapper = styled.div`
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 `;
 
 const ImgExample = styled.img`
@@ -66,75 +62,6 @@ const Price = styled.div`
   color: #222222;
 `;
 
-const GalleryWrapper = styled.div`
-  background: #fff;
-  padding: 10px 0 60px 0;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const images =
-  [
-    {
-      src: '/gallery/1.jpg',
-      thumbnail: '/gallery/thumbnail/1.jpg',
-      thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/2.jpg',
-      thumbnail: '/gallery/thumbnail/2.jpg',
-      thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/3.jpg',
-      thumbnail: '/gallery/thumbnail/3.jpg',
-      thumbnailWidth: 188,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/5.jpg',
-      thumbnail: '/gallery/thumbnail/5.jpg',
-      thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/6.jpg',
-      thumbnail: '/gallery/thumbnail/6.jpg',
-      thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/4.jpg',
-      thumbnail: '/gallery/thumbnail/4.jpg',
-      thumbnailWidth: 188,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/7.jpg',
-      thumbnail: '/gallery/thumbnail/7.jpg',
-      thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/9.jpg',
-      thumbnail: '/gallery/thumbnail/9.jpg',
-      thumbnailWidth: 188,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/8.jpg',
-      thumbnail: '/gallery/thumbnail/8.jpg',
-      thumbnailWidth: 373,
-      thumbnailHeight: 250,
-    },
-  ];
-
 export default class extends Component {
   constructor() {
     super();
@@ -166,19 +93,7 @@ export default class extends Component {
           <OrderPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
           <CatalogAnchor name="CatalogAnchor" />
 
-          <GalleryWrapper>
-            <H2>Примеры работы</H2>
-
-            <Gallery images={images} />
-
-            <ButtonWrapper>
-              <ToGalleryButton to="/gallery">
-                Еще примеры
-              </ToGalleryButton>
-            </ButtonWrapper>
-          </GalleryWrapper>
-
-          <H2>Тематики</H2>
+          <H2>Каталог</H2>
 
           <RowWrapper>
             {this.props.collection ?

@@ -13,7 +13,9 @@ import Catalog from './Catalog/index';
 import FeedbackForm from './FeedbackForm';
 import OurAdvantages from './OurAdvantages';
 import OurProduction from './OurProduction';
-import HowWeWork from './HowWeWork/index';
+import HowWeWork from './HowWeWork';
+import Packaging from './Packaging';
+import Gallery from './Gallery';
 // import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
 import Description from './Description';
@@ -87,6 +89,8 @@ export default class extends Component {
       />
       <Offer />
       <Form />
+      <Gallery />
+      <Packaging />
       <CaseExamples collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
