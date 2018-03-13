@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Model, Material, Messenger, PhoneNumber, CustomerName } from '../../../generic/ProductDetails';
-import validatePhone from '../../../../functions/validatePhone';
+import { Model, Material, Messenger, PhoneNumber, CustomerName } from '../../generic/ProductDetails/index';
+import validatePhone from '../../../functions/validatePhone';
 
 const H4 = styled.h4`
   font-size: 16px;

@@ -20,6 +20,7 @@ import Gallery from './Gallery';
 // import FAQ from './FAQ/index';
 import Description from './Description';
 import getPack from '../../functions/getPack';
+import OrderPopUp from './OrderPopUp';
 
 const Wrapper = styled.div`
   background-color: #f9f9f9;
@@ -31,9 +32,12 @@ export default class extends Component {
 
     this.state = {
       mapPreloader: true,
+      isOpened: false,
     };
 
     this.handleWaypointEnter = this.handleWaypointEnter.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillMount() {
@@ -64,6 +68,18 @@ export default class extends Component {
     }
   }
 
+  handleOpen() {
+    this.setState({
+      isOpened: true,
+    });
+  }
+
+  handleClose() {
+    this.setState({
+      isOpened: false,
+    });
+  }
+
   handleWaypointEnter() {
     this.setState({
       mapPreloader: false,
@@ -87,16 +103,17 @@ export default class extends Component {
           code: this.state.bannerCode, sign: this.state.bannerSign, banner: this.state.banner,
         }}
       />
+      <OrderPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
       <Offer />
       <Form />
       <Gallery />
-      <Packaging />
-      <CaseExamples collection={this.state.collection} />
+      <Packaging handleOpen={this.handleOpen} />
+      <OurProduction handleScroll={this.handleWaypointEnter} />
+      <CaseExamples handleOpen={this.handleOpen} collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
-      <OurAdvantages />
       <HowWeWork />
-      <OurProduction handleScroll={this.handleWaypointEnter} />
+      <OurAdvantages />
       {/* <Comments handleScroll={this.handleWaypointEnter} /> */}
       {/* <FAQ /> */}
       <Description />

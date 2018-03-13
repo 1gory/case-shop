@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
-import OrderPopUp from './OrderPopUp';
 import RubleSign from '../../generic/RubleSign';
 import getImage from '../../../functions/getImage';
 
@@ -62,125 +61,95 @@ const Price = styled.div`
   color: #222222;
 `;
 
-export default class extends Component {
-  constructor() {
-    super();
+export default (props) => (
+  <Wrapper>
+    <CatalogAnchor name="CatalogAnchor" />
 
-    this.state = {
-      isOpened: false,
-    };
+    <H2>Каталог</H2>
 
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
+    <RowWrapper>
+      {props.collection ?
+        <Row>
+          {props.collection.map(product =>
+            (<Col xs={6} sm={6} md={4} lg={3}>
+              <ExampleWrapper to={`/product/${product._id}`}>
+                <ImgExample
+                  src={getImage(product.print_code, 'reduced', 'turn', product.main_image_wood_type, 'gray', product.category)}
+                  alt=""
+                />
+                <div>{product.name}</div>
+              </ExampleWrapper>
+            </Col>))}
+        </Row> :
+        <Row>
+          <Col xs={6} sm={6} md={4} lg={3}>
+            <ExampleWrapper to="/catalog/russia">
+              <ImgExample src="/case-examples/gray/russia.jpg" alt="" />
+              <CategoryName>Россия</CategoryName>
+              <Price>1290<RubleSign /></Price>
+            </ExampleWrapper>
+          </Col>
+          <Col xs={6} sm={6} md={4} lg={3}>
+            <ExampleWrapper to="/catalog/fk">
+              <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
+              <CategoryName>С логотипом команды</CategoryName>
+              <Price>1290<RubleSign /></Price>
+            </ExampleWrapper>
+          </Col>
+          <Col xs={6} sm={6} md={4} lg={3}>
+            <ExampleWrapper to="/catalog/names">
+              <ImgExample src="/case-examples/gray/elena.jpg" alt="" />
+              <CategoryName>С вашим именем</CategoryName>
+              <Price>1290<RubleSign /></Price>
+            </ExampleWrapper>
+          </Col>
+          <Col xs={6} sm={6} md={4} lg={3}>
+            <ExampleWrapper to="/catalog/zodiac">
+              <ImgExample
+                src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt=""
+              />
+              <CategoryName>С вашим гороскопом</CategoryName>
+              <Price>1290<RubleSign /></Price>
+            </ExampleWrapper>
+          </Col>
+        </Row>
+      }
 
-  handleOpen() {
-    this.setState({
-      isOpened: true,
-    });
-  }
-
-  handleClose() {
-    this.setState({
-      isOpened: false,
-    });
-  }
-
-  render() {
-    return (
-      (
-        <Wrapper>
-          <OrderPopUp isOpened={this.state.isOpened} handleClose={this.handleClose} />
-          <CatalogAnchor name="CatalogAnchor" />
-
-          <H2>Каталог</H2>
-
-          <RowWrapper>
-            {this.props.collection ?
-              <Row>
-                {this.props.collection.map(product =>
-                  (<Col xs={6} sm={6} md={4} lg={3}>
-                    <ExampleWrapper to={`/product/${product._id}`}>
-                      <ImgExample
-                        src={getImage(product.print_code, 'reduced', 'turn', product.main_image_wood_type, 'gray', product.category)}
-                        alt=""
-                      />
-                      <div>{product.name}</div>
-                    </ExampleWrapper>
-                  </Col>))}
-              </Row> :
-              <Row>
-                <Col xs={6} sm={6} md={4} lg={3}>
-                  <ExampleWrapper to="/catalog/russia">
-                    <ImgExample src="/case-examples/gray/russia.jpg" alt="" />
-                    <CategoryName>Россия</CategoryName>
-                    <Price>1290<RubleSign /></Price>
-                  </ExampleWrapper>
-                </Col>
-                <Col xs={6} sm={6} md={4} lg={3}>
-                  <ExampleWrapper to="/catalog/fk">
-                    <ImgExample src="/case-examples/gray/2_barcelona_turn_red_gray.jpg" alt="" />
-                    <CategoryName>С логотипом команды</CategoryName>
-                    <Price>1290<RubleSign /></Price>
-                  </ExampleWrapper>
-                </Col>
-                <Col xs={6} sm={6} md={4} lg={3}>
-                  <ExampleWrapper to="/catalog/names">
-                    <ImgExample src="/case-examples/gray/elena.jpg" alt="" />
-                    <CategoryName>С вашим именем</CategoryName>
-                    <Price>1290<RubleSign /></Price>
-                  </ExampleWrapper>
-                </Col>
-                <Col xs={6} sm={6} md={4} lg={3}>
-                  <ExampleWrapper to="/catalog/zodiac">
-                    <ImgExample
-                      src="/case-examples/gray/4_aries_zodiac_turn_bamb_gray.jpg" alt=""
-                    />
-                    <CategoryName>С вашим гороскопом</CategoryName>
-                    <Price>1290<RubleSign /></Price>
-                  </ExampleWrapper>
-                </Col>
-              </Row>
-            }
-
-            <Row>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/marvel">
-                  <ImgExample src="/case-examples/gray/10_marvel_turn_bamb_white.jpg" alt="" />
-                  <CategoryName>Marvel</CategoryName>
-                  <Price>1290<RubleSign /></Price>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/auto">
-                  <ImgExample src="/case-examples/gray/lexus.jpg" alt="" />
-                  <CategoryName>Ваше авто</CategoryName>
-                  <Price>1290<RubleSign /></Price>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/ufc">
-                  <ImgExample
-                    src="/case-examples/gray/11_wanderlei_silva_turn_red_gray.jpg" alt=""
-                  />
-                  <CategoryName>UFC</CategoryName>
-                  <Price>1290<RubleSign /></Price>
-                </ExampleWrapper>
-              </Col>
-              <Col xs={6} sm={6} md={4} lg={3}>
-                <ExampleWrapper to="/catalog/prints">
-                  <ImgExample src="/case-examples/gray/12_skull_turn_red_gray.jpg" alt="" />
-                  <CategoryName>С вашей картинкой или логотипом</CategoryName>
-                  <Price>1290<RubleSign /></Price>
-                </ExampleWrapper>
-              </Col>
-            </Row>
-          </RowWrapper>
-          <StyledButton onClick={this.handleOpen}>
-            Заказать
-          </StyledButton>
-        </Wrapper>
-      )
-    );
-  }
-}
+      <Row>
+        <Col xs={6} sm={6} md={4} lg={3}>
+          <ExampleWrapper to="/catalog/marvel">
+            <ImgExample src="/case-examples/gray/10_marvel_turn_bamb_white.jpg" alt="" />
+            <CategoryName>Marvel</CategoryName>
+            <Price>1290<RubleSign /></Price>
+          </ExampleWrapper>
+        </Col>
+        <Col xs={6} sm={6} md={4} lg={3}>
+          <ExampleWrapper to="/catalog/auto">
+            <ImgExample src="/case-examples/gray/lexus.jpg" alt="" />
+            <CategoryName>Ваше авто</CategoryName>
+            <Price>1290<RubleSign /></Price>
+          </ExampleWrapper>
+        </Col>
+        <Col xs={6} sm={6} md={4} lg={3}>
+          <ExampleWrapper to="/catalog/ufc">
+            <ImgExample
+              src="/case-examples/gray/11_wanderlei_silva_turn_red_gray.jpg" alt=""
+            />
+            <CategoryName>UFC</CategoryName>
+            <Price>1290<RubleSign /></Price>
+          </ExampleWrapper>
+        </Col>
+        <Col xs={6} sm={6} md={4} lg={3}>
+          <ExampleWrapper to="/catalog/prints">
+            <ImgExample src="/case-examples/gray/12_skull_turn_red_gray.jpg" alt="" />
+            <CategoryName>С вашей картинкой или логотипом</CategoryName>
+            <Price>1290<RubleSign /></Price>
+          </ExampleWrapper>
+        </Col>
+      </Row>
+    </RowWrapper>
+    <StyledButton onClick={props.handleOpen}>
+      Заказать
+    </StyledButton>
+  </Wrapper>
+);

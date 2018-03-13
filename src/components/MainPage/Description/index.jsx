@@ -9,9 +9,13 @@ const Wrapper = styled.div`
   color: #3b3b3b;
 
   @media (min-width: 768px) {
-    width: 768px;
+    width: 1170px;;
     margin: 0 auto;
   }
+`;
+
+const DescriptionWrapper = styled.div`
+  padding: 0 20px;
 `;
 
 const Link = styled(RouterLink)`
@@ -20,9 +24,11 @@ const Link = styled(RouterLink)`
 
 export default () => (
   <Wrapper>
-    У нас вы можете заказать деревянные чехлы на айфон любых моделей.<br />
-    Мы находимся в городе Москве, <Link to="/delivery">
-    но отправляем заказы по всей России и СНГ</Link>.<br />
-    Быстрая доставка по Москве. Самовывоз - бесплатно.
+    <DescriptionWrapper>
+      У нас вы можете заказать деревянные чехлы на айфон любых моделей.<br />
+      Мы находимся в городе Москве, <Link to="/delivery">
+      но отправляем заказы по всей России и СНГ</Link>.<br />
+      Быстрая доставка по Москве. Самовывоз - бесплатно.
+    </DescriptionWrapper>
   </Wrapper>
 );

@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import ReactPixel from 'react-facebook-pixel';
 import ym from 'react-yandex-metrika';
 import moment from 'moment';
-import modalClose from '../../../../icons/modal-close.svg';
-import Popup from '../../../generic/Popup';
+import modalClose from '../../../icons/modal-close.svg';
+import Popup from '../../generic/Popup/index';
 import Form from './Details';
 
 const WrapperH3 = styled.div`

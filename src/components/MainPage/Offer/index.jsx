@@ -1,8 +1,8 @@
 import React from 'react';
 import Scroll from 'react-scroll';
 import styled from 'styled-components';
-import lionPrint from './lion.jpg';
-import lionCase from './18_lion_turn_bamb_white.jpg';
+import photo from './photo.jpg';
+import caseWithEngraving from './case.jpg';
 import arrow from './arrow.svg';
 import RubleSign from '../../generic/RubleSign';
 // import Button from '../../generic/Form/Buttons/GhostButton';
@@ -111,19 +111,19 @@ export default () => (
   <Wrapper>
     <ResponsiveWrapper>
       <H2 onClick={handleClick}>
-        Бесплатно подготовим макет<br />
-        <H2Light>Загрузите свое изображение</H2Light>
+        Загрузите свое изображение<br />
+        <H2Light>Бесплатно подготовим макет</H2Light>
         <SpecialOffer>И дарим защитное стекло в подарок!</SpecialOffer>
       </H2>
       <div>
         <Cases>
           <CaseWrapper>
-            <Case src={lionPrint} />
+            <Case src={photo} />
             <div>Ваша <br />картинка</div>
           </CaseWrapper>
           <Arrow src={arrow} />
           <CaseWrapper>
-            <Case src={lionCase} />
+            <Case src={caseWithEngraving} />
             <div>Гравировка <br />на чехле</div>
           </CaseWrapper>
         </Cases>

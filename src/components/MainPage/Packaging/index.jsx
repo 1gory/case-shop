@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Gallery from '../../generic/Gallery';
+import Button from '../../generic/Form/Buttons/PrimaryButton';
 
 const H2 = styled.h2`
   font-family: 'Lato-Regular';
@@ -28,6 +29,10 @@ const Description = styled.div`
   color: #3b3b3b;
 `;
 
+const StyledButton = styled(Button)`
+  margin-top: 10px;
+`;
+
 const images =
   [
     {
@@ -51,7 +56,7 @@ const images =
   ];
 
 
-export default () => (
+export default ({ handleOpen }) => (
   <Wrapper>
     <PackagingWrapper>
       <H2>Упаковка</H2>
@@ -62,6 +67,10 @@ export default () => (
         <br />Также изготавливаем деревянные шкатулки из фанеры c индивидуальным дизайном,
         гравировкой и надписями.
       </Description>
+
+      <StyledButton onClick={handleOpen}>
+        Заказать
+      </StyledButton>
     </PackagingWrapper>
   </Wrapper>
 );

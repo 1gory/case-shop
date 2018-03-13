@@ -94,6 +94,6 @@ export const Material = ({ handleChangeForm }) => (
 export const CustomerName = ({ handleChangeForm }) => (
   <Label>
     <span>Как к вам обращаться?</span>
-    <TextInput handleChangeForm={handleChangeForm} placeholder="Ф.И.О" name="customerName" />
+    <TextInput handleChangeForm={handleChangeForm} placeholder="Имя" name="customerName" />
   </Label>
 );
