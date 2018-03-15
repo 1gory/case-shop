@@ -60,13 +60,14 @@ export default ({ handleScroll }) => (
     <Waypoint onEnter={handleScroll} />
     <VideoSection>
       <VideoWrapper>
-        <H2>Наше производство</H2>
+        <H2>Гравировка на чехлах</H2>
         <YouTubeVideo
           videoId="bl1xcf4piZ4"
           opts={opt}
         />
       </VideoWrapper>
       <Description>
+        Гравировка на чехлах выполняется с помощью точного лазерного оборудования.
         Деревянный чехол с гравировкой станет отличным подарком для друзей и близких.
         Каждый чехол, который мы гравируем - особенный.
         Мы делаем деревянные чехлы для iphone на все существующие модели.<br />
