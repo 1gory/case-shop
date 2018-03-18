@@ -1,22 +1,14 @@
 import React from 'react';
 import Scroll from 'react-scroll';
 import styled from 'styled-components';
-import photo from './photo.jpg';
-import caseWithEngraving from './case.jpg';
-import arrow from './arrow.svg';
+import casePrint from './casePrint.jpg';
+import casePhoto from './casePhoto.jpg';
 import RubleSign from '../../generic/RubleSign';
-// import Button from '../../generic/Form/Buttons/GhostButton';
 
 const Wrapper = styled.div`
   padding-bottom: 60px;
   padding-top: 60px;
   background-color: #fff;
-  
-  // @media (min-width: 768px) {
-  //   padding-top: 120px;
-  //   display: flex;
-  //   justify-content: center;
-  // }
 `;
 
 const ResponsiveWrapper = styled.div`
@@ -73,13 +65,7 @@ const CaseWrapper = styled.div`
   color: #000;
 `;
 
-const Arrow = styled.img`
-  width: 55px;
-  padding-bottom: 70px;
-`;
-
 const Price = styled.div`
-
   font-size: 24px;
   font-family: 'Lato-Regular';
 `;
@@ -118,13 +104,12 @@ export default () => (
       <div>
         <Cases>
           <CaseWrapper>
-            <Case src={photo} />
-            <div>Ваша <br />картинка</div>
+            <Case src={casePrint} alt="Гравировка на чехле по картинке" />
+            <div>Гравировка <br />по картинке</div>
           </CaseWrapper>
-          <Arrow src={arrow} />
           <CaseWrapper>
-            <Case src={caseWithEngraving} />
-            <div>Гравировка <br />на чехле</div>
+            <Case src={casePhoto} alt="Гравировка на чехле по фото" />
+            <div>Гравировка <br />по фото</div>
           </CaseWrapper>
         </Cases>
         <PriceWrapper>
