@@ -2,12 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
-import Scroll from 'react-scroll';
 import Button from '../../generic/Form/Buttons/PrimaryButton';
 import RubleSign from '../../generic/RubleSign';
 import getImage from '../../../functions/getImage';
-
-const CatalogAnchor = Scroll.Element;
 
 const H2 = styled.h2`
   margin-top: 0;
@@ -61,10 +58,8 @@ const Price = styled.div`
   color: #222222;
 `;
 
-export default (props) => (
+export default props => (
   <Wrapper>
-    <CatalogAnchor name="CatalogAnchor" />
-
     <H2>Каталог</H2>
 
     <RowWrapper>

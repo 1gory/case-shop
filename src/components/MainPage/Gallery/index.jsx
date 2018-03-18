@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Scroll from 'react-scroll';
 import TransparentButton from '../../generic/Form/Buttons/TransparentButton';
 import Gallery from '../../generic/Gallery';
+
+const GalleryAnchor = Scroll.Element;
 
 const ToGalleryButton = TransparentButton.withComponent(Link);
 
@@ -95,8 +98,8 @@ const images =
 export default () => (
   <Wrapper>
     <GalleryWrapper>
+      <GalleryAnchor name="GalleryAnchor" />
       <H2>Примеры работы</H2>
-
       <Gallery images={images} />
 
       <ButtonWrapper>

@@ -70,7 +70,7 @@ const SubHeaderExtended = styled(SubHeader)`
 `;
 
 const handleClick = () => {
-  scroller.scrollTo('CatalogAnchor', {
+  scroller.scrollTo('GalleryAnchor', {
     duration: 800,
     delay: 100,
     smooth: true,
