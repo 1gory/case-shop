@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
+import ym from 'react-yandex-metrika';
 
 const H2 = styled.h2`
   font-family: 'Lato-Regular';
@@ -77,6 +78,7 @@ export default class extends Component {
   onChange(e) {
     const postIndexLength = String(parseInt(e.target.value, 10)).length;
     if (postIndexLength === 6) {
+      ym('reachGoal', 'inputIndex');
       const postIndex = e.target.value;
       fetch(`/api/postcalc?toIndex=${postIndex}`, {
         headers: {
