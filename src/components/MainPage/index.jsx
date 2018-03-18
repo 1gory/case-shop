@@ -16,6 +16,7 @@ import OurProduction from './OurProduction';
 import HowWeWork from './HowWeWork';
 import Packaging from './Packaging';
 import Gallery from './Gallery';
+import Delivery from './Delivery';
 // import Comments from './Comments/index';
 // import FAQ from './FAQ/index';
 import Description from './Description';
@@ -108,6 +109,7 @@ export default class extends Component {
       <Form />
       <Gallery />
       <Packaging handleOpen={this.handleOpen} />
+      <Delivery />
       <OurProduction handleScroll={this.handleWaypointEnter} />
       <CaseExamples handleOpen={this.handleOpen} collection={this.state.collection} />
       <Catalog />

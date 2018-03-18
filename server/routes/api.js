@@ -23,6 +23,7 @@ router.use(require('./api/product').default);
 router.use(require('./api/catalog').default);
 router.use(require('./api/pack').default);
 router.use(require('./api/article').default);
+router.use(require('./api/postCalculator').default);
 
 const getFormData = req =>
   new Promise((resolve, reject) => {
