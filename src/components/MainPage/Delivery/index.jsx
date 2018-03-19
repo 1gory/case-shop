@@ -26,7 +26,7 @@ const DeliveryWrapper = styled.div`
 const Description = styled.div`
   color: #3b3b3b;
   text-align: left;
-  padding: 10px 0 30px 0;
+  padding: 10px 20px 30px 20px;
   color: #3b3b3b;
 `;
 
@@ -60,6 +60,12 @@ const ErrorMessage = styled(DeliveryDetails)`
 const DeliveryTime = styled(DeliveryDetails)``;
 
 const DeliveryCosts = styled(DeliveryDetails)``;
+
+const CourierDescription = styled.div``;
+
+const PostDescription = styled.div`
+  padding-top: 10px;
+`;
 
 export default class extends Component {
   constructor() {
@@ -111,10 +117,18 @@ export default class extends Component {
         <DeliveryWrapper>
           <H2>Доставка</H2>
           <Description>
-            Мы отправляем чехлы по России «Первым классом»
-            и не делаем дополнительных наценок на отправку.
-            Введите свой индекс (6 цифр), чтобы узнать стоимость и сроки доставки до вашего города.
-            День отправления не учитывается.
+            <CourierDescription>
+              По Москве и Московской области отправляем курьером
+              на сдедующий день после заказа.<br />
+              <b>Стоимость отправки курьером - от 280р.</b><br />
+            </CourierDescription>
+            <PostDescription>
+              По России отправляем «Первым классом» и не делаем своих наценок.<br />
+              <b>Стоимость отправки почтой - от 168 руб.</b><br />
+              Введите свой индекс (6 цифр), чтобы узнать стоимость и
+              сроки доставки до вашего города.
+              День отправления не учитывается.
+            </PostDescription>
           </Description>
 
           <IndexInputWrapper>

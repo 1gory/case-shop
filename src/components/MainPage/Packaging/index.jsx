@@ -25,7 +25,7 @@ const PackagingWrapper = styled.div`
 
 const Description = styled.div`
   text-align: left;
-  padding: 20px 10px;
+  padding: 20px;
   color: #3b3b3b;
 `;
 
