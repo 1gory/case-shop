@@ -24,6 +24,7 @@ export default (mailType, data) => {
 
   let output = '';
   output += `Телефон: ${data.phone} <br>`;
+  output += `Whatsapp: <a href="whatsapp://send?text=Здравствуйте! Пишу вам по поводу заказа на деревянный чехол.&amp;phone=${data.phone}">${data.phone}</a><br>`;
   output += data.model ? `Модель: ${data.model} <br>` : '';
   output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
