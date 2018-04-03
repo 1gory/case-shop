@@ -55,6 +55,10 @@ const Case = styled.img`
   padding-bottom: 15px;
 `;
 
+const CasePhoto = styled(Case)`
+  width: 195px;
+`;
+
 const CaseWrapper = styled.div`
   color: black;
   text-align: cener;
@@ -108,8 +112,8 @@ export default () => (
             <div>Гравировка <br />по картинке</div>
           </CaseWrapper>
           <CaseWrapper>
-            <Case src={casePhoto} alt="Гравировка на чехле по фото" />
-            <div>Гравировка <br />по фото</div>
+            <CasePhoto src={casePhoto} alt="Ваше фото на чехле" />
+            <div>Ваше фото<br />на чехле</div>
           </CaseWrapper>
         </Cases>
         <PriceWrapper>
