@@ -69,7 +69,7 @@ export default class extends Component {
     super();
 
     this.state = {
-      isOpened: checkWidth(),
+      isOpened: true,
       fileFormStatus: EMPTY_FORM_STATUS,
     };
 

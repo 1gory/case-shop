@@ -11,16 +11,6 @@ const DetailsFormWrapper = styled.form`
   padding: 40px 25px 10px 25px;
   color: #4a4a4a;
   overflow: hidden;
-  
-  @media (min-width: 768px) {
-    padding-top: 0;
-  }
-`;
-
-const H3 = styled.h3`
-  font-size: 16px;
-  font-family: 'Lato-Regular';
-  margin-bottom: 30px;
 `;
 
 const H4 = styled.h4`
@@ -81,7 +71,6 @@ export default class extends Component {
   render() {
     return (
       <DetailsFormWrapper>
-        <H3>Наш оператор свяжется с вами, чтобы обсудить детали</H3>
         <Messenger handleChangeForm={this.handleChangeForm} />
         <PhoneNumber
           handleChangeForm={async (e) => {
