@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ReactGA from 'react-ga';
 import ym from 'react-yandex-metrika';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
@@ -107,6 +108,7 @@ export default class extends Component {
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
     ym('reachGoal', 'order');
+    ReactGA.event({ category: 'order_category', action: 'Order' });
     scroller.scrollTo('FileFormAnchor', {
       duration: 800,
       delay: 0,
