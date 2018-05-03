@@ -108,7 +108,7 @@ export default class extends Component {
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
     ym('reachGoal', 'order');
-    ReactGA.event({ category: 'order_category', action: 'Order' });
+    ReactGA.event({ category: 'order_category', action: 'order' });
     scroller.scrollTo('FileFormAnchor', {
       duration: 800,
       delay: 0,

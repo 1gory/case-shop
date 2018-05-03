@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
+import ReactGA from 'react-ga';
 import ym from 'react-yandex-metrika';
 import Helmet from 'react-helmet';
 import moment from 'moment';
@@ -261,6 +262,7 @@ class Product extends Component {
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
     ym('reachGoal', 'order');
+    ReactGA.event({ category: 'order_category', action: 'order' });
     formData.image = this.cookies.get('imageUrl');
     formData.timezoneOffset = moment().utcOffset();
     fetch('/api/order', {

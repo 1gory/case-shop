@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 import ReactPixel from 'react-facebook-pixel';
 import ym from 'react-yandex-metrika';
 import moment from 'moment';
@@ -30,6 +31,7 @@ const StyledImg = styled.img`
 const handleSendForm = (formData) => {
   ReactPixel.trackCustom('trackOrder');
   ym('reachGoal', 'order');
+  ReactGA.event({ category: 'order_category', action: 'order' });
   formData.timezoneOffset = moment().utcOffset();
   fetch('/api/order', {
     method: 'POST',
