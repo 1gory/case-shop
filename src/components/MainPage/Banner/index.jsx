@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Scroll from 'react-scroll';
+import arrow from './arrow-button.svg';
 import './styles.css';
 
 const Banner = styled.div`
@@ -9,7 +10,7 @@ const Banner = styled.div`
   color: white;
   
   @media (min-width: 768px) {
-    height: 660px;
+    height: 550px;
   }
 `;
 
@@ -21,20 +22,10 @@ const Pixel = styled.div`
   position: absolute;
 `;
 
-const Button = styled.button`
-  font-family: 'Lato-Regular', sans-serif;
-  border: 1px solid white;
-  color: white;
-  background: none;
-  padding: 15px 40px;
-  border-radius: 30px;
-  margin-top: 45px;
-  font-size: 20px;
-  cursor: pointer;
-  
-  @media (min-width: 768px) {
-    margin-top: 60px;
-  }
+const Button = styled.img`
+  padding-top: 130px;
+  width: 60px;
+  opacity: 0.6;
 `;
 
 const Wrapper = styled.div`
@@ -70,7 +61,7 @@ const SubHeaderExtended = styled(SubHeader)`
 `;
 
 const handleClick = () => {
-  scroller.scrollTo('GalleryAnchor', {
+  scroller.scrollTo('OfferAnchor', {
     duration: 800,
     delay: 100,
     smooth: true,
@@ -85,12 +76,10 @@ export default ({ data }) => (
         { data.sign }
         { data.code === 'default' ? <div>
           <MainHeader>Деревянные чехлы для iPhone</MainHeader>
-          <SubHeaderExtended>c вашей гравировкой</SubHeaderExtended>
+          <SubHeaderExtended>c вашей гравировкой или фотографией</SubHeaderExtended>
         </div> : ''}
       </Header>
-      <Button onClick={handleClick}>
-        Примеры гравировок
-      </Button>
+      <Button src={arrow} onClick={handleClick} />
     </Wrapper>
   </Banner>
 );

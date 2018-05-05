@@ -33,7 +33,7 @@ const SkipArrow = styled.img`
   width: 40px;
   
   @media (min-width: 768px) {
-    margin-bottom: 75px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -54,6 +54,16 @@ const FormWrapper = styled.div`
     transition: margin 0.4s ease-in;
     transition-delay: ${(errorss ? '0.5s' : '0')};`)
   };
+`;
+
+const H2 = styled.h2`
+  font-size: 24px;
+  font-family: 'Lato-Light', sans-serif;
+  padding: 30px 0;
+`;
+
+const SubHeader = styled.span`
+  font-family: 'Lato-Regular', sans-serif;
 `;
 
 const FileFormAnchor = Scroll.Element;
@@ -145,6 +155,10 @@ export default class extends Component {
       <Wrapper>
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
+        <H2>
+          Загрузите свое изображение<br />
+          <SubHeader>и мы бесплатно подготовим макет</SubHeader>
+        </H2>
         <Form>
           {<FormWrapper errorss={this.state.secrets} render={checkWidth()}>
             {this.state.fileFormStatus === ERROR_FORM_STATUS &&

@@ -5,8 +5,6 @@ import Scroll from 'react-scroll';
 import TransparentButton from '../../generic/Form/Buttons/TransparentButton';
 import Gallery from '../../generic/Gallery';
 
-const GalleryAnchor = Scroll.Element;
-
 const ToGalleryButton = TransparentButton.withComponent(Link);
 
 const GalleryWrapper = styled.div`
@@ -98,7 +96,6 @@ const images =
 export default () => (
   <Wrapper>
     <GalleryWrapper>
-      <GalleryAnchor name="GalleryAnchor" />
       <H2>Примеры работы</H2>
       <Gallery images={images} />
 
