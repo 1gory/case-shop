@@ -58,7 +58,6 @@ export const Messenger = ({ handleChangeForm }) => (
     <Dropdown name="messenger" onChange={handleChangeForm}>
       <option value="whatsapp">WhatsApp</option>
       <option value="telegram">Telegram</option>
-      <option value="viber">Viber</option>
       <option value="call">Позвонить</option>
     </Dropdown>
   </Label>
@@ -68,7 +67,6 @@ export const Model = ({ handleChangeForm }) => (
   <Label>
     <span>Устройство</span>
     <Dropdown name="model" onChange={handleChangeForm}>
-      <option value="iPhone 4/4S">iPhone 4/4S</option>
       <option value="iPhone 5/5S/5SE">iPhone 5/5S/5SE</option>
       <option value="iPhone 6/6S">iPhone 6/6S</option>
       <option value="iPhone 6 PLUS/6S PLUS">iPhone 6 PLUS/6S PLUS</option>

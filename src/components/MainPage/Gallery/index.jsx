@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Scroll from 'react-scroll';
 import TransparentButton from '../../generic/Form/Buttons/TransparentButton';
 import Gallery from '../../generic/Gallery';
 

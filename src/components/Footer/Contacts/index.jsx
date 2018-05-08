@@ -143,7 +143,7 @@ export default class extends Component {
             />
             <Contact
               icon={contactsMessenger}
-              label="WhatsApp, Viber, Telegram"
+              label="WhatsApp, Telegram"
               info="+7 (915) 284-23-84"
               href="whatsapp://send?text=Здравствуйте!&phone=+79152842384"
             />
