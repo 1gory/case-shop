@@ -75,7 +75,7 @@ export default () => (
         <MenuLink to="/">Главная</MenuLink>
         <MenuLink to="/gallery">Галерея</MenuLink>
         <MenuLink to="/catalog">Каталог</MenuLink>
-        <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
+        {/* <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink> */}
         <MenuLink to="/delivery">Доставка</MenuLink>
       </FooterMenu>
 

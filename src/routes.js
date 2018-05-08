@@ -1,7 +1,7 @@
 import MainPage from './components/MainPage';
 import Catalog from './components/Catalog';
 import Delivery from './components/Delivery';
-import Cooperation from './components/Cooperation';
+// import Cooperation from './components/Cooperation';
 import Product from './components/Product';
 import Payment from './components/Payment';
 import Gallery from './components/Gallery';
@@ -29,11 +29,11 @@ export default [
     path: '/delivery',
     component: Delivery,
   },
-  {
-    id: 3,
-    path: '/cooperation',
-    component: Cooperation,
-  },
+  // {
+  //   id: 3,
+  //   path: '/cooperation',
+  //   component: Cooperation,
+  // },
   {
     id: 4,
     path: '/product/:id',

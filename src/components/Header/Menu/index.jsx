@@ -44,8 +44,8 @@ export default () => (
     <Links>
       {/* <MenuLink to="/">Главная</MenuLink> */}
       <MenuLink to="/gallery">Галерея</MenuLink>
-      {/* <MenuLink to="/catalog">Каталог</MenuLink> */}
-      <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink>
+      <MenuLink to="/catalog">Каталог</MenuLink>
+      {/* <MenuLink to="/cooperation" onlyDesktop>Сотрудничество</MenuLink> */}
       <MenuLink to="/delivery">Доставка</MenuLink>
       <MenuLink to="/about">О компании</MenuLink>
       {/* <MenuLink to="">Контакты</MenuLink> */}
