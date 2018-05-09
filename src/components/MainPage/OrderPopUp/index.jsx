@@ -30,7 +30,7 @@ const StyledImg = styled.img`
 
 const handleSendForm = (formData) => {
   ReactPixel.trackCustom('trackOrder');
-  ReactPixel.track('Purchase', { value: '1290.00', currency: 'RUB' });
+  ReactPixel.track('Lead');
   ym('reachGoal', 'order');
   ReactGA.event({ category: 'order_category', action: 'order' });
   formData.timezoneOffset = moment().utcOffset();
