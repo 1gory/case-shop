@@ -261,6 +261,7 @@ class Product extends Component {
   // TODO move sending to separated method
   handleSendForm(formData) {
     ReactPixel.trackCustom('trackOrder');
+    ReactPixel.track('Purchase', { value: '1290.00', currency: 'RUB' });
     ym('reachGoal', 'order');
     ReactGA.event({ category: 'order_category', action: 'order' });
     formData.image = this.cookies.get('imageUrl');
