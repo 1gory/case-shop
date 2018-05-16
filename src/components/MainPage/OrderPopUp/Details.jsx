@@ -27,7 +27,7 @@ export default class extends Component {
 
     this.state = {
       messenger: 'whatsapp',
-      model: 'iPhone 4/4S',
+      model: 'iPhone 5/5S/SE',
       material: 'light',
     };
 
