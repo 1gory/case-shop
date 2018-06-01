@@ -29,7 +29,7 @@ const DeliveryWrapper = styled.div`
 const Description = styled.div`
   color: #3b3b3b;
   text-align: center;
-  padding: 10px 20px 30px 20px;
+  padding: 10px 20px;
   color: #3b3b3b;
   
   @media (min-width: 768px) {
@@ -42,10 +42,12 @@ const Logo = styled.img`
   height: 110px;
   display: block;
   margin: 0 auto;
-  padding: 30px 0;
+  padding-top: 10px;
+  padding-bottom: 30px;
   
   @media (min-width: 768px) {
-    padding: 50px 0;
+    padding-top: 25px;
+    padding-bottom: 50px;
   }
 `;
 
@@ -95,6 +97,7 @@ const DeliveryDescription = styled.div`
   font-family: 'Lato-Light', sans-serif;
   font-weight: 600;
   padding-top: 10px;
+  padding-bottom: 20px;
   
   @media (min-width: 768px) {
     max-width: 300px;
@@ -166,14 +169,14 @@ export default class extends Component {
           <H2>Доставка</H2>
           <Description>
             <DeliveryDescription>
-              <Logo src={kremlin} />
+              <Logo src={kremlin} alt="Доставка по Москве" />
               По Москве и Московской области отправляем курьером
               на следующий день после заказа.<br />
               <Price>Стоимость отправки курьером -
                 <br /> от <PriceValue>280</PriceValue><RubleSign /></Price>
             </DeliveryDescription>
             <DeliveryDescription>
-              <Logo src={russia} />
+              <Logo src={russia} alt="Доставка по России" />
               По регионам России отправляем «Первым классом».
                Стоимость и сроки отправки зависят от региона.
               <Price>Стоимость отправки почтой -
