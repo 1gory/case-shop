@@ -40,7 +40,7 @@ export default () => (
       <Row>
         <Col xs={12} sm={4} md={4} lg={4}>
           <OfferCard
-            price={1290}
+            price={1490}
             name={<span>Нанесение вашего фото на чехол<br /> (цветное или черно-белое)</span>}
             description="Качественное нанесение фото, высокая детализация"
             image={printOffer}
@@ -58,7 +58,7 @@ export default () => (
         </Col>
         <Col xs={12} sm={4} md={4} lg={4}>
           <OfferCard
-            price={1290}
+            price={1490}
             name={<span>Нанесение логотипа <br />или картинки</span>}
             description="Насыщенные цвета, стойкая печать защищенная лаком "
             image={logoOffer}

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
 import ym from 'react-yandex-metrika';
+import RubleSign from './../../generic/RubleSign';
+import kremlin from './kremlin.svg';
+import russia from './russia.svg';
 
 const H2 = styled.h2`
   font-family: 'Lato-Regular';
@@ -25,9 +28,36 @@ const DeliveryWrapper = styled.div`
 
 const Description = styled.div`
   color: #3b3b3b;
-  text-align: left;
+  text-align: center;
   padding: 10px 20px 30px 20px;
   color: #3b3b3b;
+  
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const Logo = styled.img`
+  height: 110px;
+  display: block;
+  margin: 0 auto;
+  padding: 30px 0;
+  
+  @media (min-width: 768px) {
+    padding: 50px 0;
+  }
+`;
+
+const Price = styled.div`
+  font-family: 'Lato-Regular', sans-serif;
+  line-height: 1.5em;
+  font-weight: bold;
+  padding-top: 20px;
+`;
+
+const PriceValue = styled.span`
+  font-size: 18px;
 `;
 
 // TODO move to separated file
@@ -37,7 +67,7 @@ const StyledInputMask = styled(InputMask)`
   padding: 8px 15px;
   width: 100%;
   box-sizing: border-box;
-  font-family: 'Lato-Regular';
+  font-family: 'Lato-Regular', sans-serif;
   color: #4a4a4a;
 `;
 
@@ -61,10 +91,28 @@ const DeliveryTime = styled(DeliveryDetails)``;
 
 const DeliveryCosts = styled(DeliveryDetails)``;
 
-const CourierDescription = styled.div``;
-
-const PostDescription = styled.div`
+const DeliveryDescription = styled.div`
+  font-family: 'Lato-Light', sans-serif;
+  font-weight: 600;
   padding-top: 10px;
+  
+  @media (min-width: 768px) {
+    max-width: 300px;
+  }
+`;
+
+const IndexDescription = styled.p`
+  font-family: 'Lato-Regular', sans-serif;
+  width: auto;
+  padding: 10px;
+  padding-top: 0;
+  
+  @media (min-width: 768px) {
+    padding-bottom: 25px;
+    padding-top: 15px;
+    margin: 0 auto;
+    max-width: 500px;
+  }
 `;
 
 export default class extends Component {
@@ -117,19 +165,27 @@ export default class extends Component {
         <DeliveryWrapper>
           <H2>Доставка</H2>
           <Description>
-            <CourierDescription>
+            <DeliveryDescription>
+              <Logo src={kremlin} />
               По Москве и Московской области отправляем курьером
-              на сдедующий день после заказа.<br />
-              <b>Стоимость отправки курьером - от 280р.</b><br />
-            </CourierDescription>
-            <PostDescription>
-              По России отправляем «Первым классом» и не делаем своих наценок.<br />
-              <b>Стоимость отправки почтой - от 168 руб.</b><br />
-              Введите свой индекс (6 цифр), чтобы узнать стоимость и
-              сроки доставки до вашего города.
-              День отправления не учитывается.
-            </PostDescription>
+              на следующий день после заказа.<br />
+              <Price>Стоимость отправки курьером -
+                <br /> от <PriceValue>280</PriceValue><RubleSign /></Price>
+            </DeliveryDescription>
+            <DeliveryDescription>
+              <Logo src={russia} />
+              По регионам России отправляем «Первым классом».
+               Стоимость и сроки отправки зависят от региона.
+              <Price>Стоимость отправки почтой -
+                <br /> от <PriceValue>168</PriceValue><RubleSign /></Price>
+            </DeliveryDescription>
           </Description>
+
+          <IndexDescription>
+            Введите свой индекс (6 цифр), чтобы узнать стоимость и
+            сроки доставки до вашего города.
+            День отправления не учитывается.
+          </IndexDescription>
 
           <IndexInputWrapper>
             <StyledInputMask
