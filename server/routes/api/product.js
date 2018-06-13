@@ -1,16 +1,10 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import Product from '../../models/product';
 
 const router = express.Router();
-const ObjectId = mongoose.Types.ObjectId;
 
-router.param('productId', (req, res, next, id) => {
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    req.productUrl = id;
-  } else {
-    req.productId = id;
-  }
+router.param('productUrl', (req, res, next, id) => {
+  req.productUrl = id;
   return next();
 });
 
@@ -19,11 +13,9 @@ router.param('category', (req, res, next, category) => {
   return next();
 });
 
-router.get('/products/id/:productId', async (req, res, next) => {
+router.get('/products/id/:productUrl', async (req, res, next) => {
   try {
-    const product = req.productId ?
-      await Product.find({ _id: ObjectId(req.productId) }) :
-      await Product.find({ url: req.productUrl });
+    const product = await Product.find({ url: req.productUrl });
     res.json({
       status: 'success',
       result: product,
