@@ -90,7 +90,7 @@ export default class extends Component {
   render() {
     return (<Wrapper>
       <Helmet>
-        <title>Деревянные чехлы для iPhone с гравировкой | Стекло в подарок</title>
+        <title>Деревянные чехлы для iPhone с гравировкой или фотографией</title>
         <meta
           name="description"
           content="Чехол из дерева с гравировкой станет отличным подарком для друзей и близких.
