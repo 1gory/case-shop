@@ -25,7 +25,7 @@ export default (mailType, data) => {
   const textMessage = `Здравствуйте, ${data.customerName}! Пишу вам по поводу заказа на деревянный чехол. Вы выбрали ${data.material} чехол на ${data.model} и прислали фото. Подготовить для вас макет?`;
 
   const macMessage = encodeURI(`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`);
-  const windowsMessage = `${encodeURI(`https://api.whatsapp.com/send?text=${textMessage}`)}&phone=${data.phone}&source=&data=`;
+  const windowsMessage = `${encodeURI(`https://api.whatsapp.com/send?text=${textMessage}`)}&phone=${data.phone.replace(/[-\s()]/g, '')}&source=&data=`;
 
   let output = '';
   output += `Телефон: ${data.phone} <br>`;
