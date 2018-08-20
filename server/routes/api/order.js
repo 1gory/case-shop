@@ -139,7 +139,7 @@ router.post('/order', async (req, res, next) => {
       },
       cookieJar,
     );
-    mailer('Заказ', { phone, model, material, customerName, image, messenger });
+    mailer('Заказ', { phone, model, material, customerName, image, messenger, referer });
     res.json({
       status: 'success',
     });

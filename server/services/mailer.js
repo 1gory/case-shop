@@ -36,6 +36,7 @@ export default (mailType, data) => {
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
   output += data.image ? `image: ${data.image} <br>` : '';
   output += data.messenger ? `messenger: ${data.messenger} <br>` : '';
+  output += `Страница заказа: ${data.referer} <br>`;
   output += data.message ? `message: ${data.message} <br>` : '';
   output += data.prepayment ? `Внесена предоплата: ${data.prepayment} <br>` : '';
 
