@@ -43,21 +43,27 @@ const images =
       thumbnailHeight: 250,
     },
     {
+      src: '/gallery/3_2.jpg',
+      thumbnail: '/gallery/thumbnail/3_2.jpg',
+      thumbnailWidth: 188,
+      thumbnailHeight: 250,
+    },
+    {
       src: '/gallery/2.jpg',
       thumbnail: '/gallery/thumbnail/2.jpg',
       thumbnailWidth: 333,
       thumbnailHeight: 250,
     },
     {
-      src: '/gallery/3.jpg',
-      thumbnail: '/gallery/thumbnail/3.jpg',
+      src: '/gallery/4_2.jpg',
+      thumbnail: '/gallery/thumbnail/4_2.jpg',
       thumbnailWidth: 188,
       thumbnailHeight: 250,
     },
     {
-      src: '/gallery/5.jpg',
-      thumbnail: '/gallery/thumbnail/5.jpg',
-      thumbnailWidth: 333,
+      src: '/gallery/5_2.jpg',
+      thumbnail: '/gallery/thumbnail/5_2.jpg',
+      thumbnailWidth: 188,
       thumbnailHeight: 250,
     },
     {
@@ -67,27 +73,21 @@ const images =
       thumbnailHeight: 250,
     },
     {
-      src: '/gallery/4.jpg',
-      thumbnail: '/gallery/thumbnail/4.jpg',
-      thumbnailWidth: 188,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/7.jpg',
-      thumbnail: '/gallery/thumbnail/7.jpg',
+      src: '/gallery/5.jpg',
+      thumbnail: '/gallery/thumbnail/5.jpg',
       thumbnailWidth: 333,
-      thumbnailHeight: 250,
-    },
-    {
-      src: '/gallery/9.jpg',
-      thumbnail: '/gallery/thumbnail/9.jpg',
-      thumbnailWidth: 188,
       thumbnailHeight: 250,
     },
     {
       src: '/gallery/8.jpg',
       thumbnail: '/gallery/thumbnail/8.jpg',
       thumbnailWidth: 373,
+      thumbnailHeight: 250,
+    },
+    {
+      src: '/gallery/9.jpg',
+      thumbnail: '/gallery/thumbnail/9.jpg',
+      thumbnailWidth: 188,
       thumbnailHeight: 250,
     },
   ];
