@@ -24,8 +24,6 @@ export default (mailType, data) => {
 
   const textMessage = `Здравствуйте, ${data.customerName}! Пишу вам по поводу заказа на деревянный чехол. Вы выбрали ${data.material} чехол на ${data.model} и прислали фото. Подготовить для вас макет?`;
 
-  console.log(textMessage);
-
   let output = '';
   output += `Телефон: ${data.phone} <br>`;
   output += `<a href=${encodeURI(`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`)}>Whatsapp Mac</a><br>`;
