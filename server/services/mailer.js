@@ -22,9 +22,12 @@ export default (mailType, data) => {
     },
   });
 
+  const textMessage = `Здравствуйте, ${data.customerName}! Пишу вам по поводу заказа на деревянный чехол. Вы выбрали ${data.material} чехол на ${data.model} и прислали фото. Подготовить для вас макет?`;
+
   let output = '';
   output += `Телефон: ${data.phone} <br>`;
-  output += `Whatsapp: <a href="whatsapp://send?text=Здравствуйте! Пишу вам по поводу заказа на деревянный чехол.&amp;phone=${data.phone}">${data.phone}</a><br>`;
+  output += `<a href=${`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`}>Whatsapp Mac</a><br>`;
+  output += `<a href=${`https://api.whatsapp.com/send?text=${textMessage}?phone=${data.phone}&source=&data=`}>Whatsapp Windows</a><br>`;
   output += data.model ? `Модель: ${data.model} <br>` : '';
   output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
