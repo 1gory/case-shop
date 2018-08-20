@@ -24,10 +24,13 @@ export default (mailType, data) => {
 
   const textMessage = `Здравствуйте, ${data.customerName}! Пишу вам по поводу заказа на деревянный чехол. Вы выбрали ${data.material} чехол на ${data.model} и прислали фото. Подготовить для вас макет?`;
 
+  const macMessage = encodeURI(`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`);
+  const windowsMessage = `${encodeURI(`https://api.whatsapp.com/send?text=${textMessage}`)}&phone=${data.phone}&source=&data=`;
+
   let output = '';
   output += `Телефон: ${data.phone} <br>`;
-  output += `<a href=${encodeURI(`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`)}>Whatsapp Mac</a><br>`;
-  output += `<a href=${encodeURI(`https://api.whatsapp.com/send?text=${textMessage}&phone=${data.phone}&source=&data=`)}>Whatsapp Windows</a><br>`;
+  output += `<a href=${macMessage}>Whatsapp Mac</a><br>`;
+  output += `<a href=${windowsMessage}>Whatsapp Windows</a><br>`;
   output += data.model ? `Модель: ${data.model} <br>` : '';
   output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
