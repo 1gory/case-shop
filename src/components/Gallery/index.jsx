@@ -67,8 +67,8 @@ const images =
       thumbnailHeight: 250,
     },
     {
-      src: '/gallery/4.jpg',
-      thumbnail: '/gallery/thumbnail/4.jpg',
+      src: '/gallery/4_2.jpg',
+      thumbnail: '/gallery/thumbnail/4_2.jpg',
       thumbnailWidth: 188,
       thumbnailHeight: 250,
     },

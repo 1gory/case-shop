@@ -36,12 +36,15 @@ const Name = styled.h3`
 `;
 
 const Description = styled.p`
-  opacity: 0.8;
   font-family: 'Lato-Light',sans-serif;
   color: #fff;
   margin: 0;
   padding: 0 30px;
-  text-shadow: 1px 1px 1px black, 1px 1px 1px black;
+  text-shadow: 1px 1px 3px black, 1px 1px 1px black;
+  
+  @media (min-width: 768px) {
+    opacity: 0.8;
+  }
 `;
 
 const Price = styled.div`
