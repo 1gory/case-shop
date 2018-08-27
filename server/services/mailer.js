@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
-import {config} from '../config';
-import {uploadFileFormLogger, logger} from '../logger';
+import { config } from '../config';
+import { uploadFileFormLogger, logger } from '../logger';
 
 uploadFileFormLogger.level = 'debug';
 logger.level = 'debug';
@@ -22,7 +22,7 @@ export default (mailType, data) => {
     },
   });
 
-  const material = data.material === 'light' ? 'светлое' : 'темное';
+  const material = data.material === 'light' ? 'светлый' : 'темный';
   const textMessage = `Здравствуйте, ${data.customerName}! Пишу вам по поводу заказа на деревянный чехол. Вы выбрали ${material} чехол на ${data.model} и прислали фото. Подготовить для вас макет?`;
 
   const macMessage = encodeURI(`whatsapp://send?text=${textMessage}&amp;phone=${data.phone}`);
@@ -38,7 +38,7 @@ export default (mailType, data) => {
     output += `${textMessage}<br>`;
   }
   output += data.model ? `Модель: ${data.model} <br>` : '';
-  output += data.material ? `Дерево: ${material} <br>` : '';
+  output += data.material ? `Дерево: ${data.material} <br>` : '';
   output += data.customerName ? `ФИО: ${data.customerName} <br>` : '';
   output += data.image ? `image: ${data.image} <br>` : '';
   output += `Страница заказа: ${data.referer} <br>`;
