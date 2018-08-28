@@ -168,7 +168,10 @@ export default class extends Component {
           Загрузите изображение<br />
           <SubHeader>
             мы бесплатно сделаем макет<br />
-            и вышлем в <MessengerImg src={whatsappIcon} alt="вышлем в Whatsapp" /> или <MessengerImg
+            и вышлем вам в <MessengerImg
+              src={whatsappIcon}
+              alt="вышлем в Whatsapp"
+            /> или <MessengerImg
               src={telegramIcon}
               alt="вышлем в Telegram"
             />
