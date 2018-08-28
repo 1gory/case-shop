@@ -171,7 +171,7 @@ export default class extends Component {
         <H2>
           Загрузите изображение<br />
           <SubHeader>
-            <NoWrap>мы бесплатно сделаем макет<br /></NoWrap>
+            мы бесплатно сделаем макет<br />
             <NoWrap>
               и вышлем вам в <MessengerImg
                 src={whatsappIcon}
