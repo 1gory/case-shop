@@ -21,6 +21,10 @@ const SendButton = styled.button`
   background-color: ${({ disabled }) => (disabled ? '#797979' : '#3b3b3b')}
 `;
 
+const ButtonWrapper = styled.div`
+  text-align: center;
+`;
+
 export default class extends Component {
   constructor() {
     super();
@@ -70,18 +74,20 @@ export default class extends Component {
           <Model handleChangeForm={this.handleChangeForm} />
           <Material handleChangeForm={this.handleChangeForm} />
           <CustomerName handleChangeForm={this.handleChangeForm} />
-          <SendButton
-            onClick={(event) => {
-              event.preventDefault();
-              if (this.checkPhone(this.state)) {
-                this.disableForm();
-                this.props.handleSendForm(this.state);
-              }
-            }}
-            disabled={this.state.disabled}
-          >
-            Заказать
-          </SendButton>
+          <ButtonWrapper>
+            <SendButton
+              onClick={(event) => {
+                event.preventDefault();
+                if (this.checkPhone(this.state)) {
+                  this.disableForm();
+                  this.props.handleSendForm(this.state);
+                }
+              }}
+              disabled={this.state.disabled}
+            >
+              Заказать
+            </SendButton>
+          </ButtonWrapper>
         </form>
       )
     );

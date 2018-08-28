@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   color: #3b3b3b;
 
   @media (min-width: 768px) {
-    width: 1170px;;
+    text-align: center;
+    width: 1170px;
     margin: 0 auto;
   }
 `;

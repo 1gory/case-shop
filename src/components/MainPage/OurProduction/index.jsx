@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   text-align: center;
-  padding: 50px 0 30px 0;
+  padding: 50px 0 0 0;
 `;
 
 const H2 = styled.h2`

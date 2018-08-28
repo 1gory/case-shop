@@ -88,7 +88,7 @@ const Contact = props => (
     <ContactIcon src={props.icon} />
     <div>
       <Label>{props.label}</Label>
-      <Info href={props.href}>{props.info}</Info>
+      <Info href={props.href} target="_blank" rel="noopener noreferrer">{props.info}</Info>
     </div>
   </ContactWrapper>
 );
@@ -145,7 +145,7 @@ export default class extends Component {
               icon={contactsMessenger}
               label="WhatsApp, Telegram"
               info="+7 (915) 284-23-84"
-              href="whatsapp://send?text=Здравствуйте!&phone=+79152842384"
+              href="https://api.whatsapp.com/send?text=Здравствуйте!&phone=+79152842384"
             />
           </Contacts>
           <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>

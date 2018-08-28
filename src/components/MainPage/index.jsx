@@ -111,11 +111,11 @@ export default class extends Component {
       {/* <Packaging handleOpen={this.handleOpen} /> */}
       <Delivery />
       <OurProduction handleScroll={this.handleWaypointEnter} />
+      <OurAdvantages handleOpen={this.handleOpen} />
+      <HowWeWork />
       <CaseExamples handleOpen={this.handleOpen} collection={this.state.collection} />
       <Catalog />
       <FeedbackForm />
-      <HowWeWork />
-      <OurAdvantages />
       {/* <Comments handleScroll={this.handleWaypointEnter} /> */}
       {/* <FAQ /> */}
       <Description />

@@ -13,6 +13,8 @@ import DetailsForm from './Details';
 import './styles.css';
 
 import UpoadFileForm from '../../generic/UploadFileForm';
+import whatsappIcon from '../../generic/Icons/whatsapp.svg';
+import telegramIcon from '../../generic/Icons/telegram.svg';
 import SentFileForm from './State/Sent';
 import Loading from './State/Loading';
 
@@ -64,6 +66,12 @@ const H2 = styled.h2`
 
 const SubHeader = styled.span`
   font-family: 'Lato-Regular', sans-serif;
+`;
+
+const MessengerImg = styled.img`
+  width: 25px;
+  vertical-align: middle;
+  padding-bottom: 2px;
 `;
 
 const FileFormAnchor = Scroll.Element;
@@ -157,8 +165,14 @@ export default class extends Component {
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <H2>
-          Загрузите свое изображение<br />
-          <SubHeader>и мы бесплатно подготовим макет</SubHeader>
+          Загрузите изображение<br />
+          <SubHeader>
+            мы бесплатно сделаем макет<br />
+            и вышлем в <MessengerImg src={whatsappIcon} alt="вышлем в Whatsapp" /> или <MessengerImg
+              src={telegramIcon}
+              alt="вышлем в Telegram"
+            />
+          </SubHeader>
         </H2>
         <Form>
           {<FormWrapper errorss={this.state.secrets} render={checkWidth()}>

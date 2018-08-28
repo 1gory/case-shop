@@ -256,10 +256,20 @@ export default () => (
       <Sign>
         Еще больше примеров работ в нашей группе vk и в нашем instagram:
         <div>
-          <a href="https://instagram.com/casewood.ru/" onClick={() => (ym('reachGoal', 'gotoinstagram'))}>
+          <a
+            href="https://instagram.com/casewood.ru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => (ym('reachGoal', 'gotoinstagram'))}
+          >
             <LogoSocial src={logoInsta} alt="CASEWOOD Instagram" />
           </a>
-          <a href="https://vk.com/casewoodru" onClick={() => (ym('reachGoal', 'gotovk'))}>
+          <a
+            href="https://vk.com/casewoodru"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => (ym('reachGoal', 'gotovk'))}
+          >
             <LogoSocial src={logoVk} alt="CASEWOOD VK" />
           </a>
         </div>

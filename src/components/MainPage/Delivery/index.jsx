@@ -64,6 +64,7 @@ const PriceValue = styled.span`
 
 // TODO move to separated file
 const StyledInputMask = styled(InputMask)`
+  text-align: center;
   border: 1px solid #cccccc;
   border-radius: 20px;
   padding: 8px 15px;
