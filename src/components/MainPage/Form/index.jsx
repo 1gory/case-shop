@@ -59,7 +59,7 @@ const FormWrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-size: 24px;
+  font-size: 23px;
   font-family: 'Lato-Light', sans-serif;
   padding: 30px 0;
 `;
