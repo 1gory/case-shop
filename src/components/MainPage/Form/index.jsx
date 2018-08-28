@@ -68,6 +68,10 @@ const SubHeader = styled.span`
   font-family: 'Lato-Regular', sans-serif;
 `;
 
+const NoWrap = styled.span`
+  white-space: nowrap;
+`;
+
 const MessengerImg = styled.img`
   width: 25px;
   vertical-align: middle;
@@ -167,14 +171,16 @@ export default class extends Component {
         <H2>
           Загрузите изображение<br />
           <SubHeader>
-            мы бесплатно сделаем макет<br />
-            и вышлем вам в <MessengerImg
-              src={whatsappIcon}
-              alt="вышлем в Whatsapp"
-            /> или <MessengerImg
-              src={telegramIcon}
-              alt="вышлем в Telegram"
-            />
+            <NoWrap>мы бесплатно сделаем макет<br /></NoWrap>
+            <NoWrap>
+              и вышлем вам в <MessengerImg
+                src={whatsappIcon}
+                alt="вышлем в Whatsapp"
+              /> или <MessengerImg
+                src={telegramIcon}
+                alt="вышлем в Telegram"
+              />
+            </NoWrap>
           </SubHeader>
         </H2>
         <Form>
