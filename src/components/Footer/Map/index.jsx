@@ -65,7 +65,7 @@ export default () => (
       <Location>
         <LocationIcon src={locationIcon} />
         <div>
-          <Label>Адресс:</Label>
+          <Label>Адрес:</Label>
           <Address>Алтуфьевское шоссе д.5, Москва</Address>
         </div>
       </Location>
