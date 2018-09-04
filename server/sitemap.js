@@ -4,13 +4,23 @@ import express from 'express';
 import sm from 'sitemap';
 import Product from './models/product';
 import Category from './models/category';
+import Article from './models/article';
 
 const router = express.Router();
 
-const getUrls = async () => {
+const getProductUrls = async () => {
   const products = await Product.find({ active: true });
   return products.map(item => ({
     url: item.url ? `/product/${item.url}` : `/product/${item._id}`,
+    changefreq: 'weekly',
+    priority: 0.5,
+  }));
+};
+
+const getBlogUrls = async () => {
+  const articles = await Article.find({ active: true });
+  return articles.map(item => ({
+    url: `/blog/${item.url}`,
     changefreq: 'weekly',
     priority: 0.5,
   }));
@@ -26,7 +36,8 @@ const getCategories = async () => {
 };
 
 router.get('/sitemap.xml', async (req, res) => {
-  const productUrls = await getUrls();
+  const blogUrls = await getBlogUrls();
+  const productUrls = await getProductUrls();
   const categoryUrls = await getCategories();
   const sietUrls = [
     {
@@ -54,7 +65,7 @@ router.get('/sitemap.xml', async (req, res) => {
   const sitemap = sm.createSitemap({
     hostname: 'https://casewood.ru',
     cacheTime: 600000, // 600 sec - cache purge period
-    urls: sietUrls.concat(categoryUrls).concat(productUrls),
+    urls: sietUrls.concat(categoryUrls).concat(productUrls).concat(blogUrls),
   });
 
   sitemap.toXML((err, xml) => {
