@@ -10,21 +10,27 @@ import Footer from '../Footer';
 const H2 = styled.h2`
   font-family: 'Lato-Regular';
   font-size: 24px;
-  color: #4a4a4a
+  color: #4a4a4a;
+  text-align: left;
+  
+  @media (min-width: 768px) {
+    text-align: ${({ singleArticle }) => (singleArticle ? 'center' : 'left')};
+  }
 `;
 
 const Wrapper = styled.div`
-
+  max-width: 970px;
+  margin: 0 auto;
 `;
 
 const ArticlesWrapper = styled.div`
-   max-width: 970px;
-   margin: 0 auto;
-   padding-bottom: 100px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 100px;
 `;
 
 const ArticleWrapper = styled.div`
-   padding: 15px;
+  padding: 15px;
 `;
 
 const GoToArticleLink = styled(Link)`
@@ -34,28 +40,37 @@ const GoToArticleLink = styled(Link)`
   color: #3b3b3b;
 `;
 
-const Article = ({ title, singleArticle, shortDescription, content, url }) => (
-  <ArticleWrapper>
-    <Helmet>
-      <title>Каталог | Деревянные чехлы для iPhone Casewood</title>
-    </Helmet>
-    <H2>{title}</H2>
-    <Description>
-      {!singleArticle ? shortDescription : <div dangerouslySetInnerHTML={{ __html: content }} />}
-    </Description>
-    {!singleArticle && <GoToArticleLink to={`/blog/${url}`}>Читать далее </GoToArticleLink>}
-    <Delimiter />
-  </ArticleWrapper>
-);
-
 const Delimiter = styled.hr`
   border: 0.5px solid #ccc;
+  margin-top: 20px;
 `;
 
 const Description = styled.div`
-  font-family: 'Lato-Light';
+  font-family: PT Serif,serif;
+  font-size: 15px;
+  line-height: 1.5;
   color: #3b3b3b;
+  
+  @media (min-width: 768px) {
+    font-size: 19px;
+  }
 `;
+
+const Article = ({ title, singleArticle, shortDescription, content, url }) => (
+  <ArticleWrapper>
+    <Helmet>
+      <title>Блог | Деревянные чехлы для iPhone Casewood</title>
+    </Helmet>
+    <H2 singleArticle={singleArticle}>{title}</H2>
+    <Description>
+      {!singleArticle ? shortDescription : <div dangerouslySetInnerHTML={{ __html: content }} />}
+    </Description>
+    {!singleArticle && <div>
+      <GoToArticleLink to={`/blog/${url}`}>Читать далее </GoToArticleLink>
+      <Delimiter />
+    </div>}
+  </ArticleWrapper>
+);
 
 export default class extends Component {
   constructor(props) {
@@ -93,25 +108,33 @@ export default class extends Component {
   }
 
   render() {
-    return (<Wrapper>
-      <Header />
-      <ArticlesWrapper>
-        <BreadCrumbs
-          breadcrumbs={[
-            { name: 'Блог', link: '/blog' },
-          ]}
-        />
-        {this.state.articles && this.state.articles.map(article => (
-          <Article
-            singleArticle={this.state.singleArticle}
-            title={article.title}
-            shortDescription={article.short_description}
-            url={article.url}
-            content={article.content}
+    const breadcrumbs = [
+      { name: 'Блог', link: '/blog' },
+    ];
+    if (this.state.singleArticle) {
+      breadcrumbs.push({ name: this.state.articles[0].title, link: `${this.state.articles[0].url}` });
+    }
+    return (
+      <div>
+        <Header />
+        <Wrapper>
+          <BreadCrumbs
+            breadcrumbs={breadcrumbs}
           />
-        ))}
-      </ArticlesWrapper>
-      <Footer />
-    </Wrapper>);
+          <ArticlesWrapper>
+            {this.state.articles && this.state.articles.map(article => (
+              <Article
+                singleArticle={this.state.singleArticle}
+                title={article.title}
+                shortDescription={article.short_description}
+                url={article.url}
+                content={article.content}
+              />
+            ))}
+          </ArticlesWrapper>
+        </Wrapper>
+        <Footer />
+      </div>
+    );
   }
 }

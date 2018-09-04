@@ -45,7 +45,7 @@ const Description = styled.div`
   }
 `;
 
-const AboutLink = styled(Link)`
+const StyledLink = styled(Link)`
   color: #ccc;
 `;
 
@@ -71,8 +71,9 @@ export default ({ handleScroll }) => (
         Деревянный чехол с гравировкой станет отличным подарком для друзей и близких.
         Каждый чехол, который мы гравируем - особенный.
         Мы делаем деревянные чехлы для iphone на все существующие модели.<br />
-        Чтобы лучше познакомиться, мы подготовлили <AboutLink to="/about">
-        страницу «о компании».</AboutLink>
+        Чтобы лучше познакомиться, мы подготовлили <StyledLink to="/about">
+        страницу «о компании».</StyledLink><br />
+        Кроме того ведем <StyledLink to="/blog">свой блог.</StyledLink>
       </Description>
     </VideoSection>
   </Wrapper>
