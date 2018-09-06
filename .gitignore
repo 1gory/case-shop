@@ -30,3 +30,6 @@ uploads*
 
 /public/product/*
 /public/video/*
+
+#saas
+src/**/*.css
