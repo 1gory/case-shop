@@ -1,0 +1,24 @@
+.article {
+    padding-top: 10px;
+
+    h2 {
+        font-family: 'Lato-Regular';
+        font-size: 22px;
+        color: #4a4a4a;
+        text-align: left;
+    }
+
+    img {
+        margin: 0 auto;
+        display: block;
+        padding: 20px 0;
+    }
+
+    .images {
+        display: flex;
+    }
+}
+
+.article-title {
+    padding-top: 20px;
+}

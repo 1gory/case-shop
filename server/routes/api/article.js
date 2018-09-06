@@ -15,7 +15,7 @@ router.get('/articles/:articleName*?', async (req, res, next) => {
       query.url = req.articleName;
     }
 
-    const articles = await Article.find(query, null, { sort: { order: 1 } });
+    const articles = await Article.find(query, null, { sort: { order: -1 } });
     res.set({ 'Cache-Control': 'max-age=604800' });
     res.json({
       status: 'success',

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import './article.css';
 import getArticles from '../../functions/getArticles';
 import BreadCrumbs from '../generic/BreadCrumbs';
 import Header from '../Header';
@@ -9,12 +10,19 @@ import Footer from '../Footer';
 
 const H2 = styled.h2`
   font-family: 'Lato-Regular';
-  font-size: 24px;
+  font-size: 22px;
+  color: #4a4a4a;
+  text-align: left;
+`;
+
+const H1 = styled.h1`
+  font-family: 'Lato-Regular';
+  font-size: 26px;
   color: #4a4a4a;
   text-align: left;
   
   @media (min-width: 768px) {
-    text-align: ${({ singleArticle }) => (singleArticle ? 'center' : 'left')};
+    text-align: center;
   }
 `;
 
@@ -56,19 +64,27 @@ const Description = styled.div`
   }
 `;
 
-const Article = ({ title, singleArticle, shortDescription, content, url }) => (
+const ArticlePreview = ({ title, shortDescription, url }) => (
   <ArticleWrapper>
     <Helmet>
       <title>Блог | Деревянные чехлы для iPhone Casewood</title>
     </Helmet>
-    <H2 singleArticle={singleArticle}>{title}</H2>
+    <H2>{title}</H2>
+    <Description>{shortDescription}</Description>
+    <GoToArticleLink to={`/blog/${url}`}>Читать далее </GoToArticleLink>
+    <Delimiter />
+  </ArticleWrapper>
+);
+
+const Article = ({ title, content }) => (
+  <ArticleWrapper>
+    <Helmet>
+      <title>{title} | Casewood</title>
+    </Helmet>
+    <H1 className="article-title">{title}</H1>
     <Description>
-      {!singleArticle ? shortDescription : <div dangerouslySetInnerHTML={{ __html: content }} />}
+      <div className="article" dangerouslySetInnerHTML={{ __html: content }} />
     </Description>
-    {!singleArticle && <div>
-      <GoToArticleLink to={`/blog/${url}`}>Читать далее </GoToArticleLink>
-      <Delimiter />
-    </div>}
   </ArticleWrapper>
 );
 
@@ -123,13 +139,18 @@ export default class extends Component {
           />
           <ArticlesWrapper>
             {this.state.articles && this.state.articles.map(article => (
-              <Article
-                singleArticle={this.state.singleArticle}
-                title={article.title}
-                shortDescription={article.short_description}
-                url={article.url}
-                content={article.content}
-              />
+              this.state.singleArticle ?
+                <Article
+                  title={article.title}
+                  shortDescription={article.short_description}
+                  url={article.url}
+                  content={article.content}
+                /> :
+                <ArticlePreview
+                  title={article.title}
+                  shortDescription={article.short_description}
+                  url={article.url}
+                />
             ))}
           </ArticlesWrapper>
         </Wrapper>
