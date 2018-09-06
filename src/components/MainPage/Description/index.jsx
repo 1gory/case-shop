@@ -35,9 +35,11 @@ export default () => (
         iPhone SE
       </Link>, <Link to="/product/derevyannyj-chekhol-dlya-iphone-6">
         iPhone 6
+      </Link>, <Link to="/product/derevyannyj-chekhol-dlya-iphone-6-plus">
+      iPhone 6 Plus
       </Link>, <Link to="/product/derevyannyj-chekhol-dlya-iphone-6s">
         iPhone 6s
-      </Link>, <Link to="/product/derevyannyj-chekhol-dlya-iphone-6s-plus">
+      </Link>, <br /> <Link to="/product/derevyannyj-chekhol-dlya-iphone-6s-plus">
         iPhone 6s Plus
       </Link>, <Link to="/product/derevyannyj-chekhol-dlya-iphone-7">
         iPhone 7
