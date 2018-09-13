@@ -31,5 +31,9 @@ uploads*
 /public/product/*
 /public/video/*
 
+/files/product/*
+!/files/product/.gitkeep
+!/files/thumbnail/.gitkeep
+
 #saas
 src/**/*.css
