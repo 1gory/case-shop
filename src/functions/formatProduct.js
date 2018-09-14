@@ -8,6 +8,7 @@ export default product => ({
   printCode: product.print_code,
   activeImagesKeys: product.active_images_keys,
   images: product.images,
+  productImages: product.product_images,
   price: product.price,
   description: product.description,
   metaDescription: product.meta_description,

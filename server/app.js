@@ -30,6 +30,7 @@ app.use('/', index);
 app.use('/', sitemap);
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+app.use(express.static(path.resolve(__dirname, '..', 'files')));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.static(path.resolve(__dirname, '..', 'uploads')));
 

@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 import ReactPixel from 'react-facebook-pixel';
@@ -157,6 +157,10 @@ const formatGalleryImage = (images, category, printCode) => (
   )
 );
 
+const getProductImagesUrls = images => (
+  images.map(image => `/product/${image.name}`)
+);
+
 const getProduct = (productData) => {
   const product = JSON.parse(JSON.stringify(productData));
   product.images = formatGalleryImage(
@@ -165,19 +169,13 @@ const getProduct = (productData) => {
     product.printCode,
   );
 
-  // add photo to the gallery for prints without real photos
-  if (product.activeImagesKeys.length <= 2) {
-    product.images.push(
-      getGalleryImage(
-        null,
-        'common',
-        '',
-        'photo3.jpg',
-      ),
-    );
-
-    product.activeImagesKeys.push(product.images.length - 1);
+  // remove-it
+  const productImages = getProductImagesUrls(product.productImages);
+  let counter = product.images.length;
+  for (let i = 0; i < productImages.length; i++) {
+    product.activeImagesKeys.push(counter++);
   }
+  product.images = product.images.concat(productImages);
 
   return product;
 };
@@ -302,7 +300,8 @@ class Product extends Component {
           <BreadCrumbs
             breadcrumbs={[
               { name: 'Каталог', link: '/catalog' },
-              { name: this.state.product.name,
+              {
+                name: this.state.product.name,
                 link: `/product/${this.state.product.url ? this.state.product.url : this.state.product.id}`,
               },
             ]}

@@ -1,5 +1,11 @@
+/* eslint no-underscore-dangle: 0 */
+
 import express from 'express';
+import mongoose from 'mongoose';
 import Product from '../../models/product';
+import Photo from '../../models/photo';
+
+const ObjectId = mongoose.Types.ObjectId;
 
 const router = express.Router();
 
@@ -15,10 +21,16 @@ router.param('category', (req, res, next, category) => {
 
 router.get('/products/id/:productUrl', async (req, res, next) => {
   try {
-    const product = await Product.find({ url: req.productUrl });
+    const product = await Product.findOne({ url: req.productUrl });
+    const photo = await Photo.find({ product: ObjectId(product._id) });
     res.json({
       status: 'success',
-      result: product,
+      result: [
+        {
+          ...product._doc,
+          product_images: photo,
+        },
+      ],
     });
   } catch (e) {
     next(e);
