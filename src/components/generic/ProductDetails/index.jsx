@@ -65,7 +65,7 @@ export const Messenger = ({ handleChangeForm }) => (
 
 export const Model = ({ handleChangeForm }) => (
   <Label>
-    <span>Устройство</span>
+    <span>Модель iPhone</span>
     <Dropdown name="model" onChange={handleChangeForm}>
       <option value="iPhone 5/5S/5SE">iPhone 5/5S/5SE</option>
       <option value="iPhone 6/6S">iPhone 6/6S</option>
