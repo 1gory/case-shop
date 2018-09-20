@@ -16,9 +16,15 @@ const Wrapper = styled.div`
 
 const BuyButton = styled(Button)`
   background: #fff;
-  border: none;
+  // border: none;
   margin-bottom: 30px;
   margin-top: 0;
+  
+  &:hover {
+    border: solid 1px #fff;
+    background: #000;  
+    color: #fff;  
+  }
 `;
 
 const Background = styled.div`

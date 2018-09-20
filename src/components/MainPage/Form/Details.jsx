@@ -21,7 +21,7 @@ const H4 = styled.h4`
 
 const StyledButton = styled(Button)`
   margin-top: 18px;
-  background-color: ${({ disabled }) => (disabled ? '#c1999a' : '#7f5152')};
+  ${({ disabled }) => (disabled && 'background-color: #c1999a;')}
 `;
 
 

@@ -26,6 +26,11 @@ const Button = styled.img`
   padding-top: 130px;
   width: 60px;
   opacity: 0.6;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 1;  
+  }
 `;
 
 const Wrapper = styled.div`

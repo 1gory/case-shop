@@ -64,6 +64,14 @@ const H2 = styled.h2`
   padding: 30px 0;
 `;
 
+const Br = styled.br`
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
 const SubHeader = styled.span`
   font-family: 'Lato-Regular', sans-serif;
 `;
@@ -169,19 +177,19 @@ export default class extends Component {
         <FileFormAnchor name="FileFormAnchor" />
         <SkipArrow src={skip} alt="" />
         <H2>
-          Загрузите изображение<br />
           <SubHeader>
-            мы бесплатно сделаем макет<br />
-            <NoWrap>
-              и вышлем вам в <MessengerImg
-                src={whatsappIcon}
-                alt="вышлем в Whatsapp"
-              /> или <MessengerImg
-                src={telegramIcon}
-                alt="вышлем в Telegram"
-              />
-            </NoWrap>
+          Загрузите свое изображение<br />
           </SubHeader>
+          бесплатно за 30 мин. сделаем макет <Br />
+          <NoWrap>
+            и вышлем вам в <MessengerImg
+              src={whatsappIcon}
+              alt="вышлем в Whatsapp"
+            /> или <MessengerImg
+              src={telegramIcon}
+              alt="вышлем в Telegram"
+            />
+          </NoWrap>
         </H2>
         <Form>
           {<FormWrapper errorss={this.state.secrets} render={checkWidth()}>

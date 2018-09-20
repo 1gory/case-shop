@@ -11,4 +11,11 @@ export default styled.button`
   font-size: 16px;
   text-decoration: none;
   color: #222222;
+  cursor: pointer;
+  
+  &:hover {
+    border: solid 1px #fff;
+    background: #000;  
+    color: #fff; 
+  }
 `;

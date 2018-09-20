@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
-
+import TransparentButton from '../../generic/Form/Buttons/TransparentButton';
 import Card from '../../generic/Card/index';
 import getProducts from '../../../functions/getProduct';
 import getImage from '../../../functions/getImage';
+
+const GoToCatalogButton = TransparentButton.withComponent(Link);
 
 const Wrapper = styled.div`
   color: #4a4a4a;
@@ -25,19 +27,6 @@ const RowWrapper = styled.div`
     max-width: 1170px;
     margin: 0 auto;
   }
-`;
-
-const GoToCatalogButton = styled(Link)`
-  border-radius: 20px;
-  border: solid 1px #222222;
-  background: none;
-  padding: 8px 30px;
-  margin-top: 40px;
-  display: inline-block;
-  font-family: 'Lato-Regular';
-  font-size: 16px;
-  text-decoration: none;
-  color: #222222;
 `;
 
 export default class extends Component {
