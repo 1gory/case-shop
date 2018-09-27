@@ -86,7 +86,7 @@ export default ({ name, description, price, image, onClick }) => (<Wrapper>
       </Section>
       <Price>{price}<RubleSign height={15} white /></Price>
       <BuyButton onClick={onClick}>
-        Заказать
+        Сделать макет
       </BuyButton>
     </CardContent>
   </Background>
