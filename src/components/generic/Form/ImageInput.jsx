@@ -25,7 +25,7 @@ const FileLabel = styled.label`
   }
 `;
 
-export default ({ handleChangeFile}) => (
+export default ({ handleChangeFile }) => (
   <FileLabel>
     Выберите файл..
     <input

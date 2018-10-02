@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import ym from 'react-yandex-metrika';
 import UploadedFileForm from './State/Uploaded';
 import EmptyFileForm from './State/Empty';
 import LoadingFileForm from './State/Loading';
@@ -80,6 +81,7 @@ export default class extends Component {
   }
 
   handleChangeFile(event) {
+    ym('reachGoal', 'fileUpload');
     this.setState({
       fileFormStatus: LOADING_FORM_STATUS,
     });
