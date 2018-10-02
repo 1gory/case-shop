@@ -31,7 +31,7 @@ export default ({ handleChangeFile}) => (
     <input
       onChange={handleChangeFile}
       type="file"
-      accept="image/x-png,image/gif,image/jpeg"
+      accept="image/png,image/x-png,image/gif,image/jpeg"
     />
   </FileLabel>
 );
