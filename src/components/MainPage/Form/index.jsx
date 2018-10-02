@@ -178,9 +178,9 @@ export default class extends Component {
         <SkipArrow src={skip} alt="" />
         <H2>
           <SubHeader>
-          Загрузите свое изображение<br />
+          Загрузите свое изображение.<br />
           </SubHeader>
-          бесплатно за 30 мин. сделаем макет <Br />
+          Бесплатно за 30 мин. сделаем макет <Br />
           <NoWrap>
             и вышлем вам в <MessengerImg
               src={whatsappIcon}
