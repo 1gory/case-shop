@@ -22,7 +22,7 @@ router.param('category', (req, res, next, category) => {
 router.get('/products/id/:productUrl', async (req, res, next) => {
   try {
     const product = await Product.findOne({ url: req.productUrl });
-    const photo = await Photo.find({ product: ObjectId(product._id) });
+    const photo = await Photo.find({ product: ObjectId(product._id) }).sort([['order', 1]]);
     res.json({
       status: 'success',
       result: [
