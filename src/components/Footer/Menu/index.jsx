@@ -90,15 +90,35 @@ export default () => (
     </MenuWrapper>
 
     <SocialNetworksIcons>
-      <a href="https://vk.com/casewoodru" onClick={() => (ym('reachGoal', 'gotovk'))}>
-        <Icon src={vkIcon} />
-      </a>
-      <a href="https://instagram.com/casewood.ru/" onClick={() => (ym('reachGoal', 'gotoinstagram'))}>
-        <Icon src={instagramIcon} />
-      </a>
-      <a href="https://youtube.com/channel/UCRhZ8w5tkM5PE74Fq3q4ESQ" onClick={() => (ym('reachGoal', 'gotoyoutube'))}>
-        <Icon src={logoYoutube} alt="CASEWOOD YouTube" />
-      </a>
+      <noindex>
+        <a
+          href="https://vk.com/casewoodru"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          onClick={() => (ym('reachGoal', 'gotovk'))}
+        >
+          <Icon src={vkIcon} />
+        </a>
+      </noindex>
+      <noindex>
+        <a
+          href="https://instagram.com/casewood.ru/"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          onClick={() => (ym('reachGoal', 'gotoinstagram'))}
+        >
+          <Icon src={instagramIcon} />
+        </a>
+      </noindex>
+      <noindex>
+        <a
+          rel="nofollow noopener noreferrer"
+          href="https://youtube.com/channel/UCRhZ8w5tkM5PE74Fq3q4ESQ"
+          onClick={() => (ym('reachGoal', 'gotoyoutube'))}
+        >
+          <Icon src={logoYoutube} alt="CASEWOOD YouTube" />
+        </a>
+      </noindex>
     </SocialNetworksIcons>
   </Wrapper>
 );

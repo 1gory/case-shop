@@ -123,22 +123,26 @@ export default class extends Component {
               <Link to="/">
                 <Logo src={logo} alt="CASEWOOD" />
               </Link>
-              <a
-                href="https://instagram.com/casewood.ru/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => (ym('reachGoal', 'gotoinstagram'))}
-              >
-                <LogoSocial src={logoInsta} alt="CASEWOOD Instagram" />
-              </a>
-              <a
-                href="https://vk.com/casewoodru"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => (ym('reachGoal', 'gotovk'))}
-              >
-                <LogoSocial src={logoVk} alt="CASEWOOD VK" />
-              </a>
+              <noindex>
+                <a
+                  href="https://instagram.com/casewood.ru/"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  onClick={() => (ym('reachGoal', 'gotoinstagram'))}
+                >
+                  <LogoSocial src={logoInsta} alt="CASEWOOD Instagram" />
+                </a>
+              </noindex>
+              <noindex>
+                <a
+                  href="https://vk.com/casewoodru"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  onClick={() => (ym('reachGoal', 'gotovk'))}
+                >
+                  <LogoSocial src={logoVk} alt="CASEWOOD VK" />
+                </a>
+              </noindex>
             </div>
             <Menu>
               <MenuList />
