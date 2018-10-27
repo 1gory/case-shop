@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const Message = styled.h3`
-  color: #59cb78;
+  color: red;
   font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
