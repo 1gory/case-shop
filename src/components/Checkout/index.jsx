@@ -32,7 +32,8 @@ export default () => (
     <div>
       <Wrapper>
         <Message>
-          Спасибо! <br /> Мы свяжемся с вами как можно скорее.
+          К сожалению, интернет-магазин временно не работает.
+          Для связи с администрацией пишите info@casewood.ru
         </Message>
         <MainPageButton to="/">Вернуться на главную</MainPageButton>
       </Wrapper>

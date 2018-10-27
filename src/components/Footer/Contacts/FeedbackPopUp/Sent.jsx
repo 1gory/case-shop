@@ -25,7 +25,8 @@ const Button = styled.button`
 
 export default ({ handleClick }) => (
   <Message>
-    Спасибо! Мы свяжемся с вами как можно скорее.
+    К сожалению, интернет-магазин временно не работает.
+    Для связи с администрацией пишите info@casewood.ru
     <Button onClick={handleClick}>Отправить еще сообщение</Button>
   </Message>
 );

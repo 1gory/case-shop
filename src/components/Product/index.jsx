@@ -175,6 +175,14 @@ const getProduct = (productData) => {
   for (let i = 0; i < productImages.length; i++) {
     product.activeImagesKeys.push(counter++);
   }
+
+  // add alt for old images
+  product.imagesAlt = [];
+  for (let i = 0; i < product.images.length; i++) {
+    product.imagesAlt.push('');
+  }
+
+  product.imagesAlt = product.imagesAlt.concat();
   product.images = product.images.concat(productImages);
 
   return product;
@@ -320,6 +328,7 @@ class Product extends Component {
                       <Thumb
                         onClick={() => this.handleClickToThumb(index)}
                         src={image}
+                        alt={this.state.product.imagesAlt[index]}
                       />
                     );
                   }
