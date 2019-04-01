@@ -59,6 +59,7 @@ export default props => (
     <Text>К сожалению, интернет-магазин закрыт,<br />
       если вас интересует вопрос приобретения, можете связаться с нами:
       <br />
+      <br />
       <a href="https://api.whatsapp.com/send?phone=79162282456">
         <StyledButton>Связаться</StyledButton>
       </a>
