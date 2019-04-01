@@ -31,12 +31,12 @@ const Text = styled.p`
   text-align: center;
 `;
 
-const Price = styled.div`
-  display: inline-block;
-  font-size: 22px;
-  padding-top: 15px;
-  padding-bottom: 25px;
-`;
+// const Price = styled.div`
+//   display: inline-block;
+//   font-size: 22px;
+//   padding-top: 15px;
+//   padding-bottom: 25px;
+// `;
 
 const StyledButton = styled(Button)`
   color: green;
@@ -56,8 +56,8 @@ export default props => (
       <H3>Внимание!</H3>
       <StyledImg onClick={props.handleClose} src={modalClose} />
     </WrapperH3>
-    <Text>К сожалению, интернет-магазин закрыт,<br /> но вы можете заказать<br />
-      деревянный чехол без граврировки<br /> всего за <br /><Price>490р</Price>
+    <Text>К сожалению, интернет-магазин закрыт,<br />
+      если вас интересует вопрос приобретения, можете связаться с нами:
       <br />
       <a href="https://api.whatsapp.com/send?phone=79162282456"><StyledButton>Заказать</StyledButton></a>
     </Text>
