@@ -2,10 +2,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
-import Button from '../generic/Form/Buttons/TransparentButton';
+import TransparentButton from '../generic/Form/Buttons/TransparentButton';
+
+const MainPageButton = TransparentButton.withComponent(Link);
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -13,32 +16,11 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const RedText = styled.div`
-  color: red;
-`;
-
 const Message = styled.h3`
+  color: #59cb78;
   font-family: 'Lato-Regular';
   font-size: 16px;
   font-weight: normal;
-`;
-
-const Price = styled.div`
-  font-size: 22px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-`;
-
-const StyledButton = styled(Button)`
-  color: green;
-  border: 1px solid green;
-  margin-top: 0;
-  
-   &:hover {
-    border: solid 1px #fff;
-    background: #59cb78;  
-    color: #fff; 
-  }
 `;
 
 export default () => (
@@ -50,14 +32,9 @@ export default () => (
     <div>
       <Wrapper>
         <Message>
-          <RedText>К сожалению, интернет-магазин закрыт</RedText><br /> но вы можете заказать<br />
-          деревянный чехол без граврировки<br /> всего за <br /><Price>490р</Price>
+          Спасибо! <br /> Мы свяжемся с вами как можно скорее.
         </Message>
-        <a href="https://api.whatsapp.com/send?phone=79162282456"><StyledButton>Заказать</StyledButton></a>
-        <br />
-        <br />
-        <br />
-        <span>Для связи с администрацией пишите info@casewood.ru</span>
+        <MainPageButton to="/">Вернуться на главную</MainPageButton>
       </Wrapper>
     </div>
     <Footer />
