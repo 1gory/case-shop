@@ -38,7 +38,7 @@ export default ({ handleClick }) => (
   <Wrapper>
     <H4>Что-то пошло не так!</H4>
     <Message>
-      Просто отправьте изображение нам в <WhatsappLink href="whatsapp://send?text=Здравствуйте!&phone=+79152842384">WhatsApp!</WhatsappLink>
+      Просто отправьте изображение нам в <WhatsappLink href="whatsapp://send?text=Здравствуйте!&phone=+79162282456">WhatsApp!</WhatsappLink>
     </Message>
     <Button onClick={handleClick}>Попробвать снова</Button>
   </Wrapper>

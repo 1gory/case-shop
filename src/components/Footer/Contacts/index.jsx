@@ -138,14 +138,14 @@ export default class extends Component {
             <Contact
               icon={contactsPhone}
               label="Телефон для связи"
-              info="+7 (915) 284-23-84"
-              href="https://api.whatsapp.com/send?text=Здравствуйте!&phone=+79152842384"
+              info="+7 (916) 228-24-56"
+              href="https://api.whatsapp.com/send?text=Здравствуйте!&phone=+79162282456"
             />
             <Contact
               icon={contactsMessenger}
               label="WhatsApp, Telegram"
-              info="+7 (915) 284-23-84"
-              href="https://api.whatsapp.com/send?text=Здравствуйте!&phone=+79152842384"
+              info="+7 (916) 228-24-56"
+              href="https://api.whatsapp.com/send?text=Здравствуйте!&phone=+79162282456"
             />
           </Contacts>
           <LeaveMessageButton onClick={this.handleOpen}>Оставить сообщение</LeaveMessageButton>
