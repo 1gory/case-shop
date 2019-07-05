@@ -17,7 +17,7 @@ ReactGA.initialize('UA-112805996-1');
 
 if (typeof window !== 'undefined') {
   ReactGA.pageview(window.location.pathname + window.location.search);
-  ReactPixel.init('398529017539421');
+  ReactPixel.init('2004284103182141');
   ReactPixel.pageView();
 }
 
