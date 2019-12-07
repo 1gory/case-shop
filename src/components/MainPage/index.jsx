@@ -35,7 +35,7 @@ export default class extends Component {
     this.state = {
       mapPreloader: true,
       isOpened: false,
-      isSalePopupOpened: false,
+      isSalePopupOpened: true,
     };
 
     this.handleWaypointEnter = this.handleWaypointEnter.bind(this);
