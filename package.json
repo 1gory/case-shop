@@ -44,7 +44,7 @@
     "react-youtube": "^7.5.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "serialize-javascript": "^1.4.0",
+    "serialize-javascript": "^2.1.1",
     "sitemap": "^1.13.0",
     "styled-components": "^2.2.4",
     "swipe-js-iso": "^2.0.4",
